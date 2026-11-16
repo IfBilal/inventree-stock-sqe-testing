@@ -37,4 +37,4 @@ Workflow: `.github/workflows/quality-gate.yml` (runs on every **pull request** t
 | a11y PR #15 | see `docs/COMPLETION_REPORT.md` §6 | green before merge | all required jobs |
 
 ## CI-produced mutation scores
-`evidence/ci/mutation_ci_run_43911640347.txt`: 159 mutants, 140 killed → **88.1 %** (gate then 85 %: passed). `evidence/ci/mutation_ci_run_43920009616.txt`: after the first killing tests, **98.7 % adjusted** (gate 90 %: passed). PR #16 shows the same sample without the killing tests: 90.4 % raw → 94.3 % adjusted once equivalents were listed. Hence the gate is now 95 %.
+`evidence/ci/mutation_ci_run_43911640347.txt`: 159 mutants, 140 killed → **88.1 %** (gate then 85 %: passed). `evidence/ci/mutation_ci_run_43920009616.txt`: after the first killing tests, **98.7 % adjusted** (gate 90 %: passed). PR #16 (first run) shows the same sample without the killing tests: 90.4 % raw → 94.3 % adjusted once equivalents were listed. Hence the gate is now 95 %.

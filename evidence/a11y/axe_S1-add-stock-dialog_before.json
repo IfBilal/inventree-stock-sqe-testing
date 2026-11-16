@@ -35,9 +35,9 @@
      ],
      "none": [],
      "impact": "critical",
-     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-ohqwefaux\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-start; --group-wrap: nowrap;\">",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-om4e7j8mt\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-start; --group-wrap: nowrap;\">",
      "target": [
-      "#mantine-ohqwefaux"
+      "#mantine-om4e7j8mt"
      ],
      "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
     },
@@ -59,9 +59,9 @@
      ],
      "none": [],
      "impact": "critical",
-     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-s904nq9o0\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: space-between; --group-wrap: nowrap;\">",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-5p7jfk5lp\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: space-between; --group-wrap: nowrap;\">",
      "target": [
-      "#mantine-s904nq9o0"
+      "#mantine-5p7jfk5lp"
      ],
      "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
     }
@@ -588,41 +588,6 @@
       ".m_849cf0da.mantine-Anchor-root[href=\"/web/stock/location/1/\"] > p"
      ],
      "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.1 (foreground color: #4c6ef5, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-    }
-   ]
-  },
-  {
-   "id": "presentation-role-conflict",
-   "impact": "minor",
-   "tags": [
-    "cat.aria",
-    "best-practice",
-    "ACT"
-   ],
-   "description": "Ensure elements marked as presentational do not have global ARIA or tabindex so that all screen readers ignore them",
-   "help": "Elements marked as presentational should be consistently ignored",
-   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/presentation-role-conflict?application=playwright",
-   "nodes": [
-    {
-     "any": [],
-     "all": [],
-     "none": [
-      {
-       "id": "has-global-aria-attribute",
-       "data": [
-        "aria-label"
-       ],
-       "relatedNodes": [],
-       "impact": "minor",
-       "message": "Element does not have global ARIA attribute"
-      }
-     ],
-     "impact": "minor",
-     "html": "<img class=\"m_9e117634 mantine-I...\" aria-label=\"Thumbnail\" alt=\"\" src=\"http://127.0.0.1:800...\" style=\"--image-radius: var(...\">",
-     "target": [
-      "img[aria-label=\"Thumbnail\"]"
-     ],
-     "failureSummary": "Fix all of the following:\n  Element does not have global ARIA attribute"
     }
    ]
   },

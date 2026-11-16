@@ -6,7 +6,7 @@
   "category": "Data integrity",
   "severity": "Critical",
   "priority": "P1",
-  "status": "Open",
+  "status": "Closed (fixed)",
   "risk": "PR-01",
   "found": "Phase 1/4/6",
   "tests": "unit + API + E2E (strict xfail / expected failure)",
@@ -30,6 +30,16 @@
     "when": "2026-11-16 23:00",
     "status": "In verification",
     "note": "pipeline run 43920009616: unit, api, e2e, sonar green"
+   },
+   {
+    "when": "2026-11-16 23:00",
+    "status": "Verified",
+    "note": "pipeline green (run 43920009616), unit/API/E2E tests of the defect pass without xfail"
+   },
+   {
+    "when": "2026-11-16 23:05",
+    "status": "Closed",
+    "note": "PR #13 merged; issue #1 closed"
    }
   ]
  },
@@ -197,7 +207,7 @@
   "category": "Accessibility",
   "severity": "Medium",
   "priority": "P2",
-  "status": "Fix proposed (PR)",
+  "status": "Closed (fixed)",
   "risk": "PR-09",
   "found": "Phase 8",
   "tests": "Lighthouse + axe",
@@ -211,6 +221,16 @@
     "when": "2026-11-16 21:20",
     "status": "Fix proposed",
     "note": "branch fix/a11y-stock-item-page; Lighthouse 78\u219285"
+   },
+   {
+    "when": "2026-11-17",
+    "status": "Fix revised",
+    "note": "first alt=\"\" version introduced axe presentation-role-conflict; alt now uses aria-label (review finding)"
+   },
+   {
+    "when": "2026-11-17",
+    "status": "Closed",
+    "note": "PR #15 merged after green pipeline; issue #10 closed"
    }
   ]
  },

@@ -1,6 +1,6 @@
 # API AND INTEGRATION TESTING (Phase 6)
 Run: `scripts/test_api.sh api` (resets the DB, starts the server, runs pytest + requests against `http://127.0.0.1:8000`). Every test creates its own item (order-independent). Evidence: `evidence/api/request_log.jsonl` (all requests), `docs/API_COVERAGE.md`, `docs/TRACEABILITY.md`.
-**Result (2026-11-16):** 136 passed, 8 strict xfail (each = a baseline defect, see below), 0 failed.
+**Result (2026-11-17, final):** 244 passed, 35 strict xfail (each = a baseline defect, see below), 0 failed — `scripts/test_api.sh api`, 8 min 14 s.
 
 ## What is tested
 | File | Content |
@@ -26,6 +26,6 @@ Endpoint 4/4, operation 4/4, documented status codes 11/11 (201, 400, 401, 403, 
 | W-02 | Unknown top-level fields (e.g. typo `note`) are silently accepted | PR-04 | reject unknown fields |
 | W-03 | No idempotency key: a client retry after a lost response is applied twice | PR-06 | accept `Idempotency-Key` |
 | W-04 | `pk` given as a numeric string is accepted (loose typing) | — | strict typing (low) |
-| W-05 | 500 responses expose the Python exception class (`"error":"TypeError"`) | PR-10 | generic error body (see DEF-04) |
+| W-05 | 500 responses expose the Python exception class (`"error":"TypeError"`) | PR-04 | generic error body (see DEF-04) |
 | W-06 | The audit endpoint silently ignores the `object_pk` filter and returns every item's history | PR-07 | support or reject the filter |
 | W-07 | Add/remove on a serialized item or on a depleted item returns 201 although nothing changed | PR-05 | return 400/200 with a message |

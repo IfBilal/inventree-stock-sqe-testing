@@ -17,6 +17,23 @@ for f in glob.glob(os.path.join(ROOT, 'evidence/traceability/*.json')):
     lvl = os.path.basename(f)[:-5]
     for r in json.load(open(f)):
         rows.append({**r, 'level': lvl})
+# E2E: results come from the Playwright JSON report (reports/playwright-report.json); the requirements of a test follow from its use case (docs/USE_CASES.md)
+UC_REQ = {'UC01': ['FR-01', 'FR-02', 'FR-03a', 'BR-1'], 'UC02': ['FR-05', 'FR-06', 'FR-07', 'BR-1'], 'UC03': ['FR-08', 'BR-3'], 'UC04': ['BR-3', 'BR-1', 'FR-01'],
+          'UC05': ['BR-4', 'FR-09'], 'UC06': ['FR-03a', 'FR-07', 'BR-1']}
+PW = os.path.join(ROOT, 'reports/playwright-report.json')
+if os.path.exists(PW):
+    def walk(suite):
+        for sp in suite.get('specs', []):
+            for t in sp['tests']:
+                yield sp['title'], t
+        for c in suite.get('suites', []):
+            yield from walk(c)
+    for st in json.load(open(PW))['suites']:
+        for title, t in walk(st):
+            uc = title.split()[0].split('-')[0]
+            if uc not in UC_REQ: continue
+            ok = t['status'] == 'expected'
+            rows.append({'id': 'e2e/' + title[:90], 'outcome': ('passed' if t['expectedStatus'] == 'passed' else 'xfailed') if ok else 'failed', 'req': UC_REQ[uc], 'risk': [], 'seq': [], 'level': 'e2e'})
 by_req = collections.defaultdict(list)
 for r in rows:
     for q in r['req']:

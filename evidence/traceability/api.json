@@ -106,7 +106,7 @@
 },
 {
 "id": "api/test_business_rules_api.py::test_duplicate_pk_entries_exceeding_available_are_rejected",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "BR-1",
 "FR-07"
@@ -190,11 +190,19 @@
 "seq": []
 },
 {
+"id": "api/test_business_rules_api.py::test_remove_from_depleted_item_is_rejected",
+"outcome": "passed",
+"req": [
+"BR-3"
+],
+"risk": [],
+"seq": []
+},
+{
 "id": "api/test_business_rules_api.py::test_repeating_a_rejected_request_leaves_no_trace",
 "outcome": "passed",
 "req": [
-"FR-03a",
-"FR-07"
+"FR-03a"
 ],
 "risk": [
 "PR-06"
@@ -2698,7 +2706,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:limit-above]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "BR-1",
 "FR-03a",
@@ -2715,8 +2723,7 @@
 "outcome": "passed",
 "req": [
 "BR-1",
-"FR-05",
-"FR-07"
+"FR-05"
 ],
 "risk": [
 "PR-01",
@@ -2729,8 +2736,7 @@
 "outcome": "passed",
 "req": [
 "BR-1",
-"FR-05",
-"FR-07"
+"FR-05"
 ],
 "risk": [
 "PR-01",

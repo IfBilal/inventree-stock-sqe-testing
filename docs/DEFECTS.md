@@ -4,7 +4,7 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 
 | ID | Issue | Title | Category | Severity | Priority | Status | Triage decision | Risk | Found in |
 |---|---|---|---|---|---|---|---|---|---|
-| DEF-01 | [#1](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/1) | Over-removal silently clamped (data loss) | Data integrity | Critical | P1 | Open | accepted | PR-01 | Phase 1/4/6 |
+| DEF-01 | [#1](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/1) | Over-removal silently clamped (data loss) | Data integrity | Critical | P1 | Closed (fixed) | accepted | PR-01 | Phase 1/4/6 |
 | DEF-02 | [#2](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/2) | Quantity 0 accepted as silent no-op | Validation | Medium | P2 | Open | accepted | PR-04 | Phase 1/6/7 |
 | DEF-03 | [#3](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/3) | Resulting quantity overflow: item unreadable, stock list returns 500 | Data integrity | Critical | P1 | Open | accepted | PR-04, PR-01 | Phase 1/6 |
 | DEF-04 | [#4](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/4) | Malformed items (null/string/int) -> HTTP 500 | Validation | Medium | P2 | Open | accepted | PR-04 | Phase 6 (generator) |
@@ -13,7 +13,7 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | SEC-01 | [#7](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/7) | No Content-Security-Policy header | Security | Medium | P3 | Open | accepted | PR-02, PR-10 | Phase 9 |
 | SEC-02 | [#8](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/8) | Session cookie without SameSite (default config) | Security | Low | P3 | Open | accepted | PR-02 | Phase 9 |
 | SEC-03 | [#9](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/9) | react-router 6.30.6 advisories in the shipped bundle | Security | Medium | P3 | Open | accepted | PR-10 | Phase 9 |
-| A11Y-01 | [#10](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/10) | Item page: images without alt, no main landmark | Accessibility | Medium | P2 | Fix proposed (PR) | accepted | PR-09 | Phase 8 |
+| A11Y-01 | [#10](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/10) | Item page: images without alt, no main landmark | Accessibility | Medium | P2 | Closed (fixed) | accepted | PR-09 | Phase 8 |
 | A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, button names, ARIA) | Accessibility | Medium | P3 | Open | accepted | PR-09 | Phase 8 |
 | UX-01 | [#12](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/12) | Enter in quantity field does not submit the dialog | Usability | Low | P3 | Open | accepted | PR-09 | Phase 7 |
 
@@ -24,6 +24,8 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | DEF-01 | 2026-11-16 21:50 | Fix proposed | PR #13 opened; tests-only commit → pipeline red (run 43916868389) |
 | DEF-01 | 2026-11-16 22:30 | Fix pushed | commit 35683ef; pipeline red on a related test (depleted item) → commit 05a49ce |
 | DEF-01 | 2026-11-16 23:00 | In verification | pipeline run 43920009616: unit, api, e2e, sonar green |
+| DEF-01 | 2026-11-16 23:00 | Verified | pipeline green (run 43920009616), unit/API/E2E tests of the defect pass without xfail |
+| DEF-01 | 2026-11-16 23:05 | Closed | PR #13 merged; issue #1 closed |
 | DEF-02 | 2026-11-16 | Opened | triage: accepted |
 | DEF-03 | 2026-11-16 17:50 | Opened | Phase 1 audit, High/P2 |
 | DEF-03 | 2026-11-16 20:15 | Re-triaged | severity High→Critical, P2→P1: one corrupted item breaks the whole stock list (found in Phase 6) |
@@ -35,6 +37,8 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | SEC-03 | 2026-11-16 | Opened | triage: accepted |
 | A11Y-01 | 2026-11-16 21:15 | Opened | Phase 8, Medium/P2 |
 | A11Y-01 | 2026-11-16 21:20 | Fix proposed | branch fix/a11y-stock-item-page; Lighthouse 78→85 |
+| A11Y-01 | 2026-11-17 | Fix revised | first alt="" version introduced axe presentation-role-conflict; alt now uses aria-label (review finding) |
+| A11Y-01 | 2026-11-17 | Closed | PR #15 merged after green pipeline; issue #10 closed |
 | A11Y-02 | 2026-11-16 | Opened | triage: accepted |
 | UX-01 | 2026-11-16 | Opened | triage: accepted |
 

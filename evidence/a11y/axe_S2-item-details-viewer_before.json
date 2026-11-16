@@ -375,7 +375,7 @@
         {
          "html": "<tr class=\"m_4e7aa4fd mantine-Table-tr\" data-with-row-border=\"true\" data-striped=\"odd\" style=\"vertical-align: top;\">",
          "target": [
-          ".__m__-_r_7d_ > .m_1b7284a3.mantine-Paper-root[data-with-border=\"true\"] > .m_6d731127.mantine-Stack-root > table > tbody > tr:nth-child(1)"
+          ".__m__-_r_7t_ > .m_1b7284a3.mantine-Paper-root[data-with-border=\"true\"] > .m_6d731127.mantine-Stack-root > table > tbody > tr:nth-child(1)"
          ]
         }
        ],

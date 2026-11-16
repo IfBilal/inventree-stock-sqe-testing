@@ -6,7 +6,7 @@
         "measures": [
             {
                 "metric": "complexity",
-                "value": "773"
+                "value": "777"
             },
             {
                 "metric": "duplicated_lines_density",
@@ -15,7 +15,7 @@
             },
             {
                 "metric": "functions",
-                "value": "223"
+                "value": "224"
             },
             {
                 "metric": "classes",
@@ -38,7 +38,7 @@
             },
             {
                 "metric": "branch_coverage",
-                "value": "18.2",
+                "value": "18.9",
                 "bestValue": false
             },
             {
@@ -48,20 +48,20 @@
             },
             {
                 "metric": "ncloc",
-                "value": "5114"
+                "value": "5136"
             },
             {
                 "metric": "line_coverage",
-                "value": "47.1",
+                "value": "47.5",
                 "bestValue": false
             },
             {
                 "metric": "lines",
-                "value": "8390"
+                "value": "8423"
             },
             {
                 "metric": "coverage",
-                "value": "40.2",
+                "value": "40.6",
                 "bestValue": false
             },
             {
@@ -105,7 +105,7 @@
             },
             {
                 "metric": "cognitive_complexity",
-                "value": "803",
+                "value": "807",
                 "bestValue": false
             },
             {

@@ -2,7 +2,17 @@
 {"class": "enum-member-11", "expected": "valid", "field": "event_type", "id": "auditList:event_type:EP:enum-member-11", "location": "query", "operation": "auditList", "outcome": "match", "technique": "EP"}
 {"class": "enum-member-12", "expected": "valid", "field": "event_type", "id": "auditList:event_type:EP:enum-member-12", "location": "query", "operation": "auditList", "outcome": "match", "technique": "EP"}
 {"class": "enum-non-member", "expected": "invalid", "field": "event_type", "id": "auditList:event_type:EP:enum-non-member", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "null", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:null", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
 {"class": "valid-typical", "expected": "valid", "field": "limit", "id": "auditList:limit:EP:valid-typical", "location": "query", "operation": "auditList", "outcome": "match", "technique": "EP"}
+{"class": "not-a-number", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:not-a-number", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "empty-string", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:empty-string", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "type-bool-true", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:type-bool-true", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "type-empty-list", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:type-empty-list", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "type-empty-object", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:type-empty-object", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "type-text", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:type-text", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "fractional", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:fractional", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "below-range", "expected": "invalid", "field": "limit", "id": "auditList:limit:EP:below-range", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
+{"class": "min-below", "expected": "invalid", "field": "limit", "id": "auditList:limit:BVA:min-below", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "BVA"}
 {"class": "min-at", "expected": "valid", "field": "limit", "id": "auditList:limit:BVA:min-at", "location": "query", "operation": "auditList", "outcome": "match", "technique": "BVA"}
 {"class": "min-above", "expected": "valid", "field": "limit", "id": "auditList:limit:BVA:min-above", "location": "query", "operation": "auditList", "outcome": "match", "technique": "BVA"}
 {"class": "null", "expected": "invalid", "field": "offset", "id": "auditList:offset:EP:null", "location": "query", "operation": "auditList", "outcome": "mismatch", "technique": "EP"}
@@ -178,7 +188,7 @@
 {"class": "max-above", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:max-above", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
 {"class": "limit-below", "expected": "valid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:limit-below", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
 {"class": "limit-at", "expected": "valid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:limit-at", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
-{"class": "limit-above", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:limit-above", "location": "body", "operation": "stockRemove", "outcome": "mismatch", "technique": "BVA"}
+{"class": "limit-above", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:limit-above", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
 {"class": "null", "expected": "invalid", "field": "items[].status", "id": "stockRemove:items[].status:EP:null", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
 {"class": "enum-member-10", "expected": "valid", "field": "items[].status", "id": "stockRemove:items[].status:EP:enum-member-10", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
 {"class": "enum-member-50", "expected": "valid", "field": "items[].status", "id": "stockRemove:items[].status:EP:enum-member-50", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
