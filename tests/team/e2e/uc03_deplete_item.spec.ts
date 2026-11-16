@@ -44,7 +44,6 @@ test('UC03-EF1 an already depleted item offers nothing to remove and nothing cha
 });
 
 test('UC03-EF2 removing 26 from 25 is rejected', async ({ page }) => {
-  knownDefect(test, 'DEF-01');
   const a = await api(); const pk = await newItem(a, 25);
   await openItem(page, pk);
   await doOp(page, 'Remove Stock', '26');

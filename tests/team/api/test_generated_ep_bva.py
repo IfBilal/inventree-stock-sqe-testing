@@ -32,7 +32,6 @@ for op in ('stockAdd', 'stockRemove'):
     KNOWN[f'{op}:items[].merge:EP:type-integer-1'] = 'W-08'
     KNOWN[f'{op}:items[].merge:EP:type-integer-0'] = 'W-08'
     KNOWN[f'{op}:items[].pk:EP:type-bool-true'] = 'W-12'
-KNOWN['stockRemove:items[].quantity:BVA:limit-above'] = 'DEF-01'
 for _c in CASES:   # every INVALID query-parameter case of the audit endpoint: not validated (W-09)
     if _c['location'] == 'query' and _c['expected'] == 'invalid' and _c['id'] != 'auditList:event_type:EP:null':   # type errors of event_type ARE validated (400)
         KNOWN[_c['id']] = 'W-09'

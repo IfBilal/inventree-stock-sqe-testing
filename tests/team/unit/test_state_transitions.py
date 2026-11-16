@@ -40,9 +40,11 @@ def test_depleted_add_returns_to_in_stock(make_item, request_ctx):
 
 # ---- disallowed transitions (one or more from every state)
 @pytest.mark.req('BR-3')
-def test_depleted_remove_is_ignored_no_change_no_history(make_item, request_ctx):
+def test_depleted_remove_is_rejected_no_change_no_history(make_item, request_ctx):
+    """DEPLETED --remove--> disallowed. Baseline: silently ignored (201 no-op). After the DEF-01 fix a removal larger than the available quantity (here 1 > 0) is rejected."""
     z = make_item(0)
-    _remove(payload(z, 1), request_ctx)
+    with pytest.raises(ValidationError, match=r'available quantity \(0\)'):
+        _remove(payload(z, 1), request_ctx)
     assert reload(z).quantity == 0 and history(z, REMOVE) == []
 
 

@@ -6,7 +6,7 @@ Run: `scripts/test_api.sh api` (resets the DB, starts the server, runs pytest + 
 | File | Content |
 |---|---|
 | `test_generated_ep_bva.py` | 103 generated EP/BVA cases on every input of `POST /api/stock/add/` and `/remove/` (see `docs/TEST_DATA_GENERATION.md`); success → read-back of quantity and history; rejection → quantity and history unchanged |
-| `test_business_rules_api.py` | BR-4 role matrix (manager/viewer/anonymous × add/remove, read-back), BR-2 installed item, BR-3 depletion (retained/deleted), restock, remove from depleted, cross-workflow sequence with ordered history, repeated valid/rejected requests (no duplicates), atomic multi-item, duplicate pk, serialized item |
+| `test_business_rules_api.py` | BR-4 role matrix (manager/viewer/anonymous × add/remove, read-back), BR-2 installed item, BR-3 depletion (retained/deleted), restock, remove from depleted (rejected after the DEF-01 fix), cross-workflow sequence with ordered history, repeated valid/rejected requests (no duplicates), atomic multi-item, duplicate pk, serialized item |
 | `test_endpoint_weaknesses.py` | method/content-type/auth probes and the weaknesses below |
 ## API coverage criteria (measured, `docs/API_COVERAGE.md`)
 Endpoint 4/4, operation 4/4, documented status codes 11/11 (201, 400, 401, 403, 200, 404), roles per write endpoint 6/6, inputs with EP cases 14/14, content types 4/4, unsupported methods 8/8 (405), plus sequence/state coverage. All figures are computed from the logged requests.
