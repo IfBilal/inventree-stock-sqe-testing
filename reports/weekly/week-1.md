@@ -21,8 +21,8 @@
 |---|---|---|---|---|
 | G1 Find defects effectively | Defect density = confirmed functional defects ÷ KLOC (module ncloc 5114) | 6 ÷ 5.114 = **1.17/KLOC** (all 12 findings: 2.35) | reported; > 1.0 triggers extra exploratory testing | above 1.0 → exploratory weakness probes executed (W-01…W-13) |
 | G2 Cover requirements | Requirements coverage | tested **16/16**, verified passing 15/16 | 100 % by Phase 13 | target met (tested) |
-| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 1 = **0 %** | ≤ 10 % | met |
-| G4 Effective tests | Mutation score (adjusted) | **96.0 %** (raw 96.0 %) | ≥ 85 % | met |
+| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 2 = **0 %** | ≤ 10 % | met |
+| G4 Effective tests | Mutation score (adjusted) | **100.0 %** (raw 96.0 %) | ≥ 85 % | met |
 
 ## 3. Control actions taken
 - After every phase two or more independent reviewer agents graded the work against the rubric; all findings were fixed and re-reviewed (`reviews/`).

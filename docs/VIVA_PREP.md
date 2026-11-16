@@ -33,7 +33,7 @@ The viva checks every component: each member reruns a selected test and explains
 | Use cases + Playwright | `scripts/test_e2e.sh` (3 min) or `cd tests/team && npx playwright test e2e/uc06_correct_rejected.spec.ts` | the 6 use cases, flows, why some tests are *expected failures* (`test.fail`) on the baseline |
 | Usability + keyboard | `UC06-MAIN`, `UC06-AF2` | error message explains the correction; focus order; UX-01 (Enter does not submit) |
 | Lighthouse + axe | `node a11y/lighthouse_run.mjs after`, `A11Y_PHASE=after npx playwright test e2e/a11y.spec.ts`, `python tools/a11y_report.py` | dedup rule (both tools = once), the fix (alt + main), before/after 78 → 85 |
-| Security | `npx playwright test e2e/access.spec.ts`; ZAP/pip-audit in `docs/SECURITY.md` | access matrix (17 decisions), passive-only ZAP, cookie attributes, why csrftoken is not HttpOnly, dependency findings |
+| Security | `npx playwright test e2e/access.spec.ts`; ZAP/pip-audit in `docs/SECURITY.md` | access matrix (20 decisions), passive-only ZAP, cookie attributes, why csrftoken is not HttpOnly, dependency findings |
 | Performance | `scripts/perf_run.sh` (9 min) | limits declared first, p95, 1 vs 5 users, 19.5 % failures = SQLite lock, recovery test |
 **Live-task playbook:** change the deplete rule (BR-3) e.g. `delete_on_deplete` default → predicted failures: UC03-AF1/MAIN, API `test_depletion_*`, unit BR3 MCC rows; the pipeline gates `unit`, `api`, `e2e`, `mutation` (custom operator CBR-3).
 

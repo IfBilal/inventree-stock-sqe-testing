@@ -52,7 +52,7 @@ Counts: 10 product, 3 project risks. **Critical 1** (PR-01), **High 9** (PR-02, 
 | ID | Owner | Status | Residual L×I (evidence) | Basis |
 |---|---|---|---|---|
 | PR-01 | M1 | **Mitigated** — DEF-01 fixed in PR #13 (unit, API, E2E verified); DEF-03 related and still open | 1×5 | limit BVA at 3 levels, CBR-1 mutants 2/2 killed |
-| PR-02 | M3 | **Mitigated** — access matrix 17/17, denied calls leave no trace; CSP/SameSite open (SEC-01/02) | 1×5 | `docs/SECURITY.md` |
+| PR-02 | M3 | **Mitigated** — access matrix 20/20, denied calls leave no trace; CSP/SameSite open (SEC-01/02) | 1×5 | `docs/SECURITY.md` |
 | PR-03 | M1 | **Mitigated** — complete MCC 32/32, MC/DC, 6 basis paths | 1×4 | CBR-2 mutants 5/5 killed |
 | PR-04 | M2 | **Open (High)** — DEF-02, DEF-03, DEF-04 confirmed and open | 4×3 | strict-xfail tests |
 | PR-05 | M2 | **Mitigated** — atomicity verified (unit, API, recovery) | 1×4 | `test_recovery.py` |

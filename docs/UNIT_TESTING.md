@@ -1,7 +1,7 @@
 # WHITE-BOX UNIT TESTING (Phase 4) — own tests in `tests/team/unit/`
 Run: `scripts/test_unit.sh` (tests) · `scripts/coverage_unit.sh` (branch coverage + per-function scope check; writes `evidence/coverage/` and `docs/COVERAGE_SCOPE.md`).
 Tools: pytest 9.2.0, pytest-django 4.14.0, coverage.py 7.17.3 (branch mode). Hermetic throw-away SQLite DB (`data/unit_test.sqlite3`), never the app DB. Upstream tests are not run or counted.
-**Result (2026-11-16, final):** 270 passed, **8 strict-xfail** (each documents an open baseline defect, with `raises=` so they cannot pass vacuously: DEF-02 ×2, DEF-03 ×2, DEF-04 ×4); in-scope coverage **statements 297/297 = 100 %, branches 131/132 (the single missed branch is unreachable and defended)** over 32 functions in 5 files (`docs/COVERAGE_SCOPE.md`). DEF-01's strict-xfail tests were turned into normal passing tests by the fix (PR #13).
+**Result (2026-11-16, final):** 275 passed, **8 strict-xfail** (each documents an open baseline defect, with `raises=` so they cannot pass vacuously: DEF-02 ×2, DEF-03 ×2, DEF-04 ×4); in-scope coverage **statements 297/297 = 100 %, branches 131/132 (the single missed branch is unreachable and defended)** over 32 functions in 5 files (`docs/COVERAGE_SCOPE.md`). DEF-01's strict-xfail tests were turned into normal passing tests by the fix (PR #13).
 
 ## Scope (business logic of WF-A/WF-B)
 See `docs/TEST_BASIS.md` §7 (identical to `SCOPE` in `tools/scope_coverage.py`): serializers, `StockItem` model logic incl. `can_delete` and the tracking/audit helpers, the pk-prefetch field, and the permission classes.

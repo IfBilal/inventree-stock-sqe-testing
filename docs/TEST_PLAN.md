@@ -14,7 +14,7 @@ Verify the quality of the Stock adjustment workflows of InvenTree 1.8.0 dev (com
 | High | PR-02, PR-03, PR-04, PR-06, PR-07, PR-10, PJ-01..03 | Unit/API with read-back, access matrix, dependency audit | EP, BVA, decision table, **MCC + MC/DC for the multi-condition decision (PR-03)**, recovery test |
 | Medium | PR-05, PR-08, PR-09 | API/E2E/tool-based | API integration with mixed items, k6, Lighthouse + axe |
 | Low | — | smoke | none currently (no risk scored ≤ 5) |
-Levels from the project statement: Unit (pytest + coverage.py), API/integration (pytest + requests, generated EP/BVA), Browser E2E (Playwright, 6 use cases), usability/accessibility (Playwright, Lighthouse, axe-core), security (access matrix, ZAP passive, pip-audit), performance/recovery (k6, test double), static analysis (SonarQube), mutation (mutmut + custom operators), CI (GitHub Actions).
+Levels from the project statement: Unit (pytest + coverage.py), API/integration (pytest + requests, generated EP/BVA), Browser E2E (Playwright, 6 use cases), usability/accessibility (Playwright, Lighthouse, axe-core), security (access matrix, ZAP passive, pip-audit), performance/recovery (k6, test double), static analysis (SonarQube), mutation (own AST runner with standard + 4 custom operators; mutmut attempted and unusable), CI (GitHub Actions).
 
 ## 3. Roles and responsibilities
 | Member | Roll | Owned area (examined in viva) | Management role |
@@ -28,7 +28,7 @@ Test management documents are reviewed by all three; the owner is accountable fo
 Linux 7.0, Python 3.12.3, Django 5.2.19, SQLite, Node 24.11.1, Playwright 1.65.1 (Chromium), k6 2.3.0, SonarQube Community Build 26.10 run from the zip distribution on JDK 21 (the Docker daemon is not running on this machine, so Docker is **not** used), server `127.0.0.1:8000`. Exact versions: `docs/TOOL_VERSIONS.md`. 12 CPUs, 15 GB RAM, ~5 GB free disk (risk PJ-01).
 
 ## 5. Test data
-Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (10), Mouse (25), Monitor (0), all `delete_on_deplete=False`. Unit/API tests create their own data in a throw-away DB or reset per test. Boundary/EP values for API tests are produced by `tools/gen_testdata.py` from `openapi/stock.yaml` (planned for Phase 5).
+Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (10), Mouse (25), Monitor (0), all `delete_on_deplete=False`. Unit/API tests create their own data in a throw-away DB or reset per test. Boundary/EP values for API tests are produced by `tools/gen_testdata.py` from `openapi/stock.yaml` (produced in Phase 5).
 
 ## 6. Schedule (internal targets; the official deadline is set by the instructor) — updated v0.2
 | Phase | Planned window | Actual | Responsible |

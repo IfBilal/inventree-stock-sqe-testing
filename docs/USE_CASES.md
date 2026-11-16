@@ -29,7 +29,7 @@ Actor: Manager. Pre: logged in as manager, Keyboard qty 10.
 | UC02-MAIN | Main | Stock actions → Remove stock → 4 → Submit | success; qty 6; history has 1 remove entry (4, 6) | PASS |
 | UC02-AF1 | Alternative | remove 9 | qty 1; history (9, 1) | PASS |
 | UC02-AF2 | Alternative | remove 4 with notes "damaged" | qty 6; history note "damaged" | PASS |
-| UC02-EF1 | Exception | remove 11 (> 10) | **Rejected** with a message naming the available quantity (10); qty stays 10; no history entry (baseline: "Success — Stock removed", quantity becomes 0) | FAIL (A-1, DEF-01) |
+| UC02-EF1 | Exception | remove 11 (> 10) | **Rejected** with a message naming the available quantity (10); qty stays 10; no history entry (baseline: "Success — Stock removed", quantity becomes 0) | baseline FAIL (DEF-01) → PASS after PR #13 |
 | UC02-EF2 | Exception | quantity 0 | Error shown; qty stays 10; no history entry | FAIL (A-2) |
 **Post (main):** qty 6, one `STOCK_REMOVE` history (audit) entry. **Post (EF):** qty and history unchanged.
 
@@ -43,7 +43,7 @@ Actor: Manager. Pre: logged in as manager, Mouse qty 25 and `delete_on_deplete=F
 | UC03-AF1 | Alternative | Pre: set `delete_on_deplete=True` through the API (PATCH by manager) → remove 25 | Item no longer exists: item page 404, `GET /api/stock/2/` = 404 | PASS |
 | UC03-AF2 | Alternative | Remove 24, then remove 1 | After 1st: qty 1 (still in stock); after 2nd: qty 0 | PASS |
 | UC03-EF1 | Exception | Pre: item with qty 0 → open Remove Stock | The dialog lists **no entries** ("No entries available", no quantity field); qty 0, no history entry (the baseline API alone would accept the call as a silent 201 no-op; after the DEF-01 fix it answers 400) | PASS |
-| UC03-EF2 | Exception | remove 26 (> 25) | Rejected; qty stays 25; no history entry | FAIL (A-1) |
+| UC03-EF2 | Exception | remove 26 (> 25) | Rejected; qty stays 25; no history entry | baseline FAIL (DEF-01) → PASS after PR #13 |
 **Post:** exactly as each flow's Expected column.
 
 ## UC-04 Restock a depleted item (M2) — WF-A and WF-B — BR-3, BR-1, FR-01
@@ -78,7 +78,7 @@ Actor: Manager. Pre: logged in as manager, fresh item with qty 10.
 | ID | Flow | Steps | Expected | Baseline |
 |---|---|---|---|---|
 | UC06-MAIN | Main (Add) | Add 1.123456 → rejected, the error says "Ensure that there are no more than 5 decimal places." → change to 1.12345 → Submit | Error first (dialog open, qty unchanged); then success "Stock added"; qty 11.12345; one history entry | PASS |
-| UC06-AF1 | Alternative (Remove) | Remove 15 → rejected with a message that names the available quantity (10) → correct to 10 → Submit | Error first (qty 10, no history); then success; qty 0 (item retained); one history entry | FAIL (no rejection at 15: DEF-01) |
+| UC06-AF1 | Alternative (Remove) | Remove 15 → rejected with a message that names the available quantity (10) → correct to 10 → Submit | Error first (qty 10, no history); then success; qty 0 (item retained); one history entry | baseline FAIL (DEF-01) → PASS after PR #13 |
 | UC06-AF2 | Alternative (keyboard) | Keyboard only: focus reaches quantity → notes → Submit in that order; Enter inside the quantity field does not submit (UX-01); Tab to Submit and Enter submits | Focus order as stated; dialog still open after Enter in the field; form submitted from the Submit button; qty 12 | PASS |
 | UC06-EF1 | Exception | After the 6-decimal rejection correct to 0 | Rejected again with a message; qty stays 10 | FAIL (DEF-02) |
 | UC06-EF2 | Exception | After the rejection enter text "abc" | "A valid number is required."; qty stays 10 | PASS |

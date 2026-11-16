@@ -1,5 +1,5 @@
 # AI-use record (SE3002 §7)
-Tool: Claude Code (Anthropic, model Claude Sonnet 5.5) driven by the team. The instructor has permitted AI use. Every output is checked against real tool runs; prompts are kept in `docs/prompts/`.
+Tool: Claude Code (Anthropic, model Claude Sonnet 5.5) driven by the team. The instructor has permitted AI use. Every output is checked against real tool runs; the prompt history is the Claude Code session transcript on the team's machine (not copied into the repository; the members must keep it for the viva).
 
 | # | Date | Phase | Purpose | AI output | What was checked / changed |
 |---|---|---|---|---|---|

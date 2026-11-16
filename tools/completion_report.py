@@ -20,7 +20,7 @@ open_def = [d for d in defects if d['status'].startswith('Open')]
 crit_high_open = [d for d in open_def if d['severity'] in ('Critical', 'High')]
 mut = J('evidence/mutation/results.json')
 eq = J('docs/mutation_equivalents.json')
-equiv_n = sum(1 for r in mut['results'] if r['status'] == 'survived' and f"{r['function']}|{r['desc']}" in eq)
+equiv_n = sum(1 for r in mut['results'] if r['status'] == 'survived' and f"{r['function']}|{r['desc']}|{r['original']}" in eq)
 mut_adj = 100 * mut['killed'] / (mut['total'] - equiv_n)
 cov = open(os.path.join(R, 'docs/COVERAGE_SCOPE.md')).read()
 m = re.search(r'statements (\d+)/(\d+) \(([\d.]+) %\), branches (\d+)/(\d+) \(([\d.]+) %\)', cov)
@@ -35,6 +35,7 @@ gen_tests = 29
 pw = J('evidence/phase7/playwright_report_e2e.json')
 pw_stats = pw.get('stats', {})
 am = J('evidence/security/access_matrix_results.json')
+zmsg_n = J('evidence/security/zap_number_of_messages.json')['numberOfMessages']
 perf = {}
 for vu in (1, 5):
     for run in (1, 2):
@@ -65,19 +66,19 @@ o = ['# TEST COMPLETION REPORT AND RELEASE / HOLD DECISION\n',
      f"| API / integration | {fl.get('api', {}).get('passed', '?')} passed, {fl.get('api', {}).get('xfailed', '?')} strict-xfail; API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |",
      f"| Browser E2E (6 use cases, 30 flows) + usability | Playwright: {pw_stats.get('expected', '?')} as expected, {pw_stats.get('unexpected', '?')} unexpected, {pw_stats.get('flaky', 0)} flaky (flows annotated as expected failures expose the still-open defects) | `docs/USE_CASES.md`, `docs/USABILITY.md` |",
      '| Accessibility | Lighthouse accessibility 78 → 85 and SEO 75 → 83 on the fixed screen; image-alt and landmark-one-main resolved; remaining issues logged | `docs/ACCESSIBILITY.md` |',
-     f"| Security | access matrix {sum(1 for x in am if x['ok'])}/{len(am)}; ZAP passive (1 601 messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |",
+     f"| Security | access matrix {sum(1 for x in am if x['ok'])}/{len(am)}; ZAP passive ({zmsg_n} messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |",
      '| Performance and recovery | targets declared first; 1 vs 5 users × 2 runs; failure-and-recovery test with test double (rollback, retry, no duplicates) | `docs/PERFORMANCE.md` |',
-     f"| Mutation | {mut['total']} mutants, raw {mut['score_raw']} %, adjusted **{mut_adj:.1f} %** after killing 12 survivors; 15 equivalents documented; 4 custom operators | `docs/MUTATION.md` |",
+     f"| Mutation | {mut['total']} mutants, raw {mut['score_raw']} %, adjusted **{mut_adj:.1f} %** (10 survivors proven equivalent, 16 killed by added tests over two rounds); 4 custom operators | `docs/MUTATION.md` |",
      '| CI quality gate | 8-job pipeline, branch protection, no escape hatches, fix PR red→green, blocked PR | `docs/CI_QUALITY_GATE.md` |',
      f"| Requirements coverage | tested {req_tested}/{req_total}, verified passing {req_ver}/{req_total} | `docs/TRACEABILITY.md` |",
      '\n## 3. Tested / not tested (scope and residual gaps)\n| Tested | Not tested (and why) |\n|---|---|\n| Both workflows (add/remove), BR-1…BR-4, FR-01…FR-11, roles manager/viewer/anonymous, UI + API + model level, SQLite, Basic/session auth | transfer, count, serialization, merge, disassemble workflows (out of scope); purchase/sales/build orders; plugins; PostgreSQL/MySQL behaviour and true row locking (no server available — assumption A-4); OAuth2 token authentication; mobile/barcode UIs; i18n; ZAP **active** scanning (statement requires passive only); frontend unit tests |',
      '\n## 4. Open defects (GitHub Issues; triage in `docs/DEFECTS.md`)\n| ID | Issue | Title | Severity | Priority | Status |\n|---|---|---|---|---|---|']
 for d in defects:
     o.append(f"| {d['id']} | [#{d['issue']}](https://github.com/{REPO}/issues/{d['issue']}) | {d['title']} | {d['severity']} | {d['priority']} | {d['status']} |")
-o.append('\nPareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 1 closed defect reopened (target ≤ 10 %).\n')
+o.append('\nPareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 2 closed defects reopened (target ≤ 10 %).\n')
 o.append('## 5. Residual risk per risk (register `docs/RISK_REGISTER.md`; re-assessed from evidence)\n| Risk | Initial L×I | Evidence-based residual L×I | Rationale | Linked defects |\n|---|---|---|---|---|')
 RES = [('PR-01', 25, '1×5 = 5', 'over-removal rejected after the fix; limit BVA at 3 levels; CBR-1 mutants 2/2 killed', 'DEF-01 (fixed), DEF-03'),
-       ('PR-02', 10, '1×5 = 5', 'access matrix 17/17; no side effect on denied calls; SameSite/CSP hardening open', 'SEC-01, SEC-02'),
+       ('PR-02', 10, '1×5 = 5', f'access matrix {sum(1 for x in am if x["ok"])}/{len(am)}; no side effect on denied calls; SameSite/CSP hardening open', 'SEC-01, SEC-02'),
        ('PR-03', 12, '1×4 = 4', 'complete MCC 32/32 + MC/DC; CBR-2 mutants 5/5 killed', '—'),
        ('PR-04', 12, '4×3 = 12 (High)', 'zero accepted, overflow and malformed items still open', 'DEF-02, DEF-03, DEF-04'),
        ('PR-05', 8, '1×4 = 4', 'atomicity verified at unit, API and recovery level', '—'),
@@ -121,7 +122,7 @@ w = ['# WEEKLY PROGRESS REPORT — week 1 (2026-11-16 … 2026-11-22) against th
      '\n## 2. GQM metrics (definitions and targets: `docs/GQM.md`)\n| Goal | Metric | Value | Target | Reading |\n|---|---|---|---|---|',
      f"| G1 Find defects effectively | Defect density = confirmed functional defects ÷ KLOC (module ncloc {sonar.get('ncloc')}) | {len([d for d in defects if d['id'].startswith('DEF')])} ÷ 5.114 = **{len([d for d in defects if d['id'].startswith('DEF')]) / 5.114:.2f}/KLOC** (all 12 findings: {len(defects) / 5.114:.2f}) | reported; > 1.0 triggers extra exploratory testing | above 1.0 → exploratory weakness probes executed (W-01…W-13) |",
      f"| G2 Cover requirements | Requirements coverage | tested **{req_tested}/{req_total}**, verified passing {req_ver}/{req_total} | 100 % by Phase 13 | target met (tested) |",
-     '| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 1 = **0 %** | ≤ 10 % | met |',
+     '| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 2 = **0 %** | ≤ 10 % | met |',
      f"| G4 Effective tests | Mutation score (adjusted) | **{mut_adj:.1f} %** (raw {mut['score_raw']} %) | ≥ 85 % | met |",
      '\n## 3. Control actions taken\n- After every phase two or more independent reviewer agents graded the work against the rubric; all findings were fixed and re-reviewed (`reviews/`).\n- The first mutation run was invalidated and repeated from scratch on a clean export after a working-tree mistake invalidated its results (no false results are reported).\n- Performance risk PR-08 re-scored from Medium to High after measurement.\n',
      f"## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)\nAgent hours logged so far: **{tot_agent:.2f} h** against a three-point estimate of 70.0 h for the whole project (the estimate assumed human effort; human review hours are to be added by the members).\n"]

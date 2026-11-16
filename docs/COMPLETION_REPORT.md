@@ -25,9 +25,9 @@ Reasons (evidence-based): exit criteria **EC-1 (functional) and EC-3 (performanc
 | API / integration | 244 passed, 35 strict-xfail; API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
 | Browser E2E (6 use cases, 30 flows) + usability | Playwright: 33 as expected, 0 unexpected, 0 flaky (flows annotated as expected failures expose the still-open defects) | `docs/USE_CASES.md`, `docs/USABILITY.md` |
 | Accessibility | Lighthouse accessibility 78 → 85 and SEO 75 → 83 on the fixed screen; image-alt and landmark-one-main resolved; remaining issues logged | `docs/ACCESSIBILITY.md` |
-| Security | access matrix 20/20; ZAP passive (1 601 messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |
+| Security | access matrix 20/20; ZAP passive (1599 messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |
 | Performance and recovery | targets declared first; 1 vs 5 users × 2 runs; failure-and-recovery test with test double (rollback, retry, no duplicates) | `docs/PERFORMANCE.md` |
-| Mutation | 248 mutants, raw 96.0 %, adjusted **96.0 %** after killing 12 survivors; 15 equivalents documented; 4 custom operators | `docs/MUTATION.md` |
+| Mutation | 248 mutants, raw 96.0 %, adjusted **100.0 %** (10 survivors proven equivalent, 16 killed by added tests over two rounds); 4 custom operators | `docs/MUTATION.md` |
 | CI quality gate | 8-job pipeline, branch protection, no escape hatches, fix PR red→green, blocked PR | `docs/CI_QUALITY_GATE.md` |
 | Requirements coverage | tested 16/16, verified passing 15/16 | `docs/TRACEABILITY.md` |
 
@@ -52,13 +52,13 @@ Reasons (evidence-based): exit criteria **EC-1 (functional) and EC-3 (performanc
 | A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, button names, ARIA) | Medium | P3 | Open |
 | UX-01 | [#12](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/12) | Enter in quantity field does not submit the dialog | Low | P3 | Open |
 
-Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 1 closed defect reopened (target ≤ 10 %).
+Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 2 closed defects reopened (target ≤ 10 %).
 
 ## 5. Residual risk per risk (register `docs/RISK_REGISTER.md`; re-assessed from evidence)
 | Risk | Initial L×I | Evidence-based residual L×I | Rationale | Linked defects |
 |---|---|---|---|---|
 | PR-01 | 25 | 1×5 = 5 | over-removal rejected after the fix; limit BVA at 3 levels; CBR-1 mutants 2/2 killed | DEF-01 (fixed), DEF-03 |
-| PR-02 | 10 | 1×5 = 5 | access matrix 17/17; no side effect on denied calls; SameSite/CSP hardening open | SEC-01, SEC-02 |
+| PR-02 | 10 | 1×5 = 5 | access matrix 20/20; no side effect on denied calls; SameSite/CSP hardening open | SEC-01, SEC-02 |
 | PR-03 | 12 | 1×4 = 4 | complete MCC 32/32 + MC/DC; CBR-2 mutants 5/5 killed | — |
 | PR-04 | 12 | 4×3 = 12 (High) | zero accepted, overflow and malformed items still open | DEF-02, DEF-03, DEF-04 |
 | PR-05 | 8 | 1×4 = 4 | atomicity verified at unit, API and recovery level | — |
@@ -81,7 +81,8 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
-| 43949292832 | push | `main` | in_progress | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43949292832 |
+| 43951957664 | push | `main` | in_progress | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43951957664 |
+| 43949292832 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43949292832 |
 | 43943448899 | pull_request | `fix/a11y-stock-item-page` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43943448899 |
 | 43939159652 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43939159652 |
 | 43938002471 | pull_request | `fix/a11y-stock-item-page` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43938002471 |
@@ -92,7 +93,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 43933669553 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43933669553 |
 | 43931016096 | pull_request | `fix/a11y-stock-item-page` | failure | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43931016096 |
 | 43927967237 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43927967237 |
-| 43927877708 | pull_request | `bad/remove-mutation-killing-tests` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43927877708 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.
