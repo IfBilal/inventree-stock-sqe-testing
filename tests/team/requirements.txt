@@ -1,0 +1,7 @@
+pytest
+pytest-cov
+requests
+coverage
+mutmut
+pyyaml
+pip-audit

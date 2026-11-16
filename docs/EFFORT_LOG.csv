@@ -1,0 +1,3 @@
+date,phase,area,member_or_agent,hours_actual,note
+2026-11-16,0,Setup,AI-assisted,1.5,Env + repo + seed + frontend build + reset determinism
+2026-11-16,1,Scope,AI-assisted,0.7,Test basis + use cases
