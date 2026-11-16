@@ -1,4 +1,4 @@
-# RISK REGISTER — InvenTree Stock (Add/Remove)  · v0.2
+# RISK REGISTER — InvenTree Stock (Add/Remove)  · v0.3
 
 Scale: Likelihood L (1 rare … 5 almost certain), Impact I (1 negligible … 5 severe). Score = L × I.
 Level: **Critical ≥ 20**, **High 12–19**, **Medium 6–11**, **Low ≤ 5**. **Floor rule:** any risk with Impact = 5 is at least **High** (a single occurrence is unacceptable regardless of likelihood).
@@ -48,22 +48,22 @@ Counts: 10 product, 3 project risks. **Critical 1** (PR-01), **High 9** (PR-02, 
 | PJ-02 | 3: AI-assisted work volume | 5: component marks reduced to zero |
 | PJ-03 | 4: mutmut on Django is slow | 3: schedule slip |
 
-## Tracking (kept updated at each phase gate)
-| ID | Owner | Status (2026-11-16) | Residual L×I (target) | Next review |
+## Tracking (re-assessed from evidence, v0.3 — see `docs/COMPLETION_REPORT.md` §5)
+| ID | Owner | Status | Residual L×I (evidence) | Basis |
 |---|---|---|---|---|
-| PR-01 | M1 | Open — defect confirmed, fix planned (Phase 12) | 1×5 after fix | Phase 12 |
-| PR-02 | M3 | Open — access matrix planned (Phase 9) | 1×5 | Phase 9 |
-| PR-03 | M1 | Open — MCC/MC/DC planned (Phase 4) | 1×4 | Phase 4 |
-| PR-04 | M2 | Open — DEF-02, DEF-03 confirmed | 2×3 | Phase 6 |
-| PR-05 | M2 | Open | 1×4 | Phase 6 |
-| PR-06 | M3 | Open | 1×4 | Phase 10 |
-| PR-07 | M2 | Open | 2×4 | Phase 6 |
-| PR-08 | M3 | Open | 2×3 | Phase 10 |
-| PR-09 | M3 | Open | 2×2 | Phase 8 |
-| PR-10 | M3 | Open | 2×4 | Phase 9 |
-| PJ-01 | M1 | Mitigated for SonarQube (JDK 21 + tmpfs); ZAP/mutation pending | 2×3 | Phase 9 |
-| PJ-02 | all | Open — viva sheets in Phase 14 | 2×5 | Phase 14 |
-| PJ-03 | M1 | Open | 2×3 | Phase 11 |
+| PR-01 | M1 | **Mitigated** — DEF-01 fixed in PR #13 (unit, API, E2E verified); DEF-03 related and still open | 1×5 | limit BVA at 3 levels, CBR-1 mutants 2/2 killed |
+| PR-02 | M3 | **Mitigated** — access matrix 17/17, denied calls leave no trace; CSP/SameSite open (SEC-01/02) | 1×5 | `docs/SECURITY.md` |
+| PR-03 | M1 | **Mitigated** — complete MCC 32/32, MC/DC, 6 basis paths | 1×4 | CBR-2 mutants 5/5 killed |
+| PR-04 | M2 | **Open (High)** — DEF-02, DEF-03, DEF-04 confirmed and open | 4×3 | strict-xfail tests |
+| PR-05 | M2 | **Mitigated** — atomicity verified (unit, API, recovery) | 1×4 | `test_recovery.py` |
+| PR-06 | M3 | **Reduced** — retry after failure is safe (recovery test); no idempotency key (W-03) | 2×4 | `docs/PERFORMANCE.md` §6 |
+| PR-07 | M2 | **Reduced** — history read back after success and rejection; W-01, W-06 | 2×4 | API tests |
+| PR-08 | M3 | **Materialised → High** — 19.5 % failures at 5 users (DEF-06) | 5×3 | k6 runs |
+| PR-09 | M3 | **Reduced** — one screen fixed (78→85); others open | 3×2 | `docs/ACCESSIBILITY.md` |
+| PR-10 | M3 | **Reduced** — backend 0/166; frontend moderate advisories (SEC-03) | 2×4 | audits |
+| PJ-01 | M1 | **Closed** — all tools ran | 1×4 | — |
+| PJ-02 | all | **Open** — viva guide written (`docs/VIVA_PREP.md`); depends on the team | 2×5 | — |
+| PJ-03 | M1 | **Closed** — full mutation run 25 min on 5 workers | 1×3 | `docs/MUTATION.md` |
 
 ## Technique/depth by risk level (see TEST_PLAN §2)
 | Level | Minimum techniques | Depth |

@@ -89,3 +89,98 @@ def test_update_save_inside_a_pending_event_adds_exactly_one_audit_entry(item, u
         item.quantity = 14
         item.save(user=user, notes='inner')
     assert AuditLogEntry.objects.filter(object_pk=str(item.pk)).count() == before + 1
+
+
+# ---- M009/M010 (validate_pk) and M189 (delete): `get_global_setting(..., cache=False)` — the setting is read FRESH on every call
+def test_validate_pk_reads_the_allow_out_of_stock_setting_fresh_each_time(item, markers):
+    from common.models import InvenTreeSetting
+    from rest_framework.exceptions import ValidationError
+    from stock.serializers import StockAdjustmentItemSerializer as S
+    item.customer = markers.customer                      # a non-adjustable item (BR-2)
+    key = 'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER'
+    for value, rejected in ((False, True), (True, False), (False, True)):
+        InvenTreeSetting.set_setting(key, value, None)
+        if rejected:
+            with pytest.raises(ValidationError):
+                S(require_in_stock=True).validate_pk(item)
+        else:
+            assert S(require_in_stock=True).validate_pk(item) is item
+
+
+def test_delete_reads_the_allow_delete_serialized_setting_fresh_each_time(make_item):
+    from common.models import InvenTreeSetting
+    from django.core.exceptions import ValidationError
+    key = 'STOCK_ALLOW_DELETE_SERIALIZED'
+    InvenTreeSetting.set_setting(key, False, None)
+    s = make_item(1, serial='SET-1')
+    with pytest.raises(ValidationError):
+        s.delete()
+    InvenTreeSetting.set_setting(key, True, None)
+    s.delete()                                            # now allowed: a stale cached False would still refuse
+    InvenTreeSetting.set_setting(key, False, None)
+    t = make_item(1, serial='SET-2')
+    with pytest.raises(ValidationError):
+        t.delete()
+
+
+# ---- M010/M011 (validate_pk) and M193 (delete): cache=False means the setting is read FRESH from the database. A direct row update
+# (which does NOT invalidate any cache, unlike set_setting) exposes a stale cached read.
+def _set_raw(key, value):
+    from common.models import InvenTreeSetting
+    InvenTreeSetting.set_setting(key, True, None)                    # make sure the row exists
+    InvenTreeSetting.objects.filter(key=key).update(value=str(value))
+
+
+def test_validate_pk_does_not_use_a_cached_setting_value(item, markers):
+    from rest_framework.exceptions import ValidationError
+    from stock.serializers import StockAdjustmentItemSerializer as S
+    item.customer = markers.customer
+    key = 'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER'
+    _set_raw(key, False)
+    with pytest.raises(ValidationError):
+        S(require_in_stock=True).validate_pk(item)                    # reads (and would cache) False
+    _set_raw(key, True)                                               # changed behind the cache's back
+    assert S(require_in_stock=True).validate_pk(item) is item         # must see True immediately
+    _set_raw(key, False)
+
+
+def test_delete_does_not_use_a_cached_setting_value(make_item):
+    from django.core.exceptions import ValidationError
+    key = 'STOCK_ALLOW_DELETE_SERIALIZED'
+    _set_raw(key, False)
+    s = make_item(1, serial='RAW-1')
+    with pytest.raises(ValidationError):
+        s.delete()
+    _set_raw(key, True)
+    s.delete()
+    _set_raw(key, False)
+
+
+# ---- M051: StockRemoveSerializer.validate keeps the base validation (non-empty list, items sorted by pk so error indices are stable)
+def test_remove_rejects_an_empty_items_list(request_ctx):
+    from rest_framework.exceptions import ValidationError
+    from test_adjustment_serializers import _remove
+    with pytest.raises(ValidationError, match='list of stock items'):
+        _remove({'items': []}, request_ctx)
+
+
+def test_remove_reports_the_error_index_of_the_pk_sorted_entry(make_item, request_ctx):
+    from rest_framework.exceptions import ValidationError
+    from test_adjustment_serializers import _remove
+    a, b = make_item(10), make_item(5)                                # a.pk < b.pk
+    with pytest.raises(ValidationError) as exc:
+        _remove({'items': [{'pk': b.pk, 'quantity': 9}, {'pk': a.pk, 'quantity': 3}]}, request_ctx)   # input order b, a
+    assert list(exc.value.detail['items'].keys()) == ['1']            # sorted order a (0), b (1): the over-removal is entry 1
+
+
+# ---- M075: is_in_stock() defaults — each check is ON by default
+def test_is_in_stock_defaults_check_status_quantity_and_production(item):
+    assert item.is_in_stock() is True
+    item.is_building = True
+    assert item.is_in_stock() is False                                # check_in_production default True
+    item.is_building = False
+    item.quantity = 0
+    assert item.is_in_stock() is False                                # check_quantity default True
+    item.quantity = 5
+    item.status = 70
+    assert item.is_in_stock() is False                                # check_status default True

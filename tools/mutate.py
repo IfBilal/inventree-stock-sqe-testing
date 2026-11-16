@@ -131,10 +131,12 @@ def generate(src, lo, hi):
                 s = starts[st.lineno - 1] + (st.col_offset)
                 e = off(st.end_lineno, st.end_col_offset)
                 add('SDL', s, e, 'pass', st.lineno, 'delete statement: ' + ast.unparse(st)[:60])
-    # drop duplicates and invalid (syntax-breaking) mutants
+    # drop duplicates and invalid (syntax-breaking) mutants. A custom (CBR-*) mutant replaces the identical standard (ROR) mutant, so the
+    # same mutation is never counted twice (review finding: CBR-4 duplicated ROR).
+    muts.sort(key=lambda m: (0 if m.op.startswith('CBR') else 1))
     seen, out = set(), []
     for m in muts:
-        key = (m.op, m.start, m.end, m.repl)
+        key = (m.start, m.end, m.repl)
         if key in seen:
             continue
         seen.add(key)
@@ -146,6 +148,7 @@ def generate(src, lo, hi):
         if new == src:
             continue
         out.append(m)
+    out.sort(key=lambda m: m.start)
     return out
 
 

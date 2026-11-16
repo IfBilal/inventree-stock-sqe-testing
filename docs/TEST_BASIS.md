@@ -79,7 +79,7 @@ States of a StockItem w.r.t. adjustment: `IN_STOCK (q>0)`, `DEPLETED (q=0, retai
 
 ## 7. Unit-test scope (server-side business logic on the add/remove path; single source of truth = `SCOPE` in `tools/scope_coverage.py`)
 Measured per function with coverage.py (branch mode); every function is listed:
-1. `stock/serializers.py`: `StockAdjustmentItemSerializer.{__init__, validate_pk, validate_quantity}`, `StockAdjustmentSerializer.{to_internal_value, validate}`, `StockAddSerializer.save`, `StockRemoveSerializer.save`
+1. `stock/serializers.py`: `StockAdjustmentItemSerializer.{__init__, validate_pk, validate_quantity}`, `StockAdjustmentSerializer.{to_internal_value, validate}`, `StockAddSerializer.save`, `StockRemoveSerializer.validate` (the DEF-01 fix, PR #13), `StockRemoveSerializer.save`
 2. `stock/models.py`: `StockItem.{is_in_stock, lock_quantity, updateQuantity, add_stock, take_stock, optional_transfer_fields, model_reference_fields, _apply_model_reference_fields, _resolve_status_kwarg, _apply_status_change, _apply_optional_transfer_fields, can_delete, installed_item_count, save, delete, tracking_event, _tracking_deltas, _audit_deltas, _is_empty_tracking_event}`
 3. `stock/api.py`: `StockAdjustView.get_serializer_context` (class bodies `StockAdd`/`StockRemove` hold declarations only)
 4. `InvenTree/fields.py`: `PrefetchedPrimaryKeyRelatedField.{__init__, to_internal_value}` (the pk lookup behind `validate_pk`)

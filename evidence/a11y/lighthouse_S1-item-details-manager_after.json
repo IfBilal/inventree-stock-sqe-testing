@@ -4,14 +4,14 @@
  "mainDocumentUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
  "finalDisplayedUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
  "finalUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
- "fetchTime": "2026-11-16T15:58:19.377Z",
+ "fetchTime": "2026-11-16T18:16:04.052Z",
  "gatherMode": "navigation",
  "runWarnings": [],
  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
  "environment": {
   "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.0.0 Mobile Safari/537.36",
   "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
-  "benchmarkIndex": 3147,
+  "benchmarkIndex": 3206.5,
   "credits": {
    "axe-core": "4.14.0"
   }
@@ -212,344 +212,344 @@
     ],
     "items": [
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-DU13tscW.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-DU13tscW.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-BbIA61XA.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-BbIA61XA.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-C3aadO_j.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-C3aadO_j.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-BHGytsdU.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-BHGytsdU.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-DfYBsOXx.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-DfYBsOXx.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-BMbPSnGI.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-BMbPSnGI.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CEQC_vcN.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CEQC_vcN.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CI5C4RYE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CI5C4RYE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-Ddn8BVMk.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-Ddn8BVMk.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-B2JGANqv.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-B2JGANqv.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-BuPYsIAC.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-BuPYsIAC.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-CcYugkhz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-CcYugkhz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-D0DHzycM.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-D0DHzycM.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-Bu1r6iLI.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-Bu1r6iLI.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-DoN58-zx.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-DoN58-zx.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-B5I407x8.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-B5I407x8.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-CQj2pV9X.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-CQj2pV9X.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-C1_vh8D1.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-C1_vh8D1.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-C70oapZP.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-C70oapZP.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-wP9XT8fe.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-wP9XT8fe.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-DuR8w-i1.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-DuR8w-i1.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-BVZKmIZx.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-BVZKmIZx.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-CiMdNwNF.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-CiMdNwNF.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-68qnzoFI.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-68qnzoFI.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CLUJd17Z.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CLUJd17Z.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CmL10cBa.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CmL10cBa.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-C4EKR8sD.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-C4EKR8sD.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-DhrrIIaH.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-DhrrIIaH.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-BmBJyewv.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-BmBJyewv.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-CMpWSRmh.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-CMpWSRmh.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-CtmUPbD8.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-CtmUPbD8.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-Dcu8BphZ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-Dcu8BphZ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-BlV3PZvh.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-BlV3PZvh.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-Dr0Dq1sp.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-Dr0Dq1sp.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-CmG_TtTS.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-CmG_TtTS.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-BSR9iBVo.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-BSR9iBVo.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-fffMEkjF.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-fffMEkjF.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-Cx8DgdIO.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-Cx8DgdIO.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-D9LT2Qn2.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-D9LT2Qn2.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-BzZvr8IB.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-BzZvr8IB.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-CYs_Sr4D.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-CYs_Sr4D.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-fK1JTp4Z.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-fK1JTp4Z.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-DMor6bYd.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-DMor6bYd.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-CNJh2RBU.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-CNJh2RBU.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-BYR3b7yF.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-BYR3b7yF.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-DrCyhIjv.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-DrCyhIjv.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-hRXKHjB3.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-hRXKHjB3.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-C4Ud0D40.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-C4Ud0D40.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DYmSCq87.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DYmSCq87.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DN0mkdss.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DN0mkdss.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-CUamMDNg.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-CUamMDNg.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-BqMOVAYF.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-BqMOVAYF.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-C24NEbQj.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-C24NEbQj.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-CtgG73BV.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-CtgG73BV.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-CZqrri1s.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-CZqrri1s.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-ydpOu1iH.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-ydpOu1iH.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-DiaIyuFt.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-DiaIyuFt.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-Bz1hfTb7.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-Bz1hfTb7.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-OwVklEO8.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-OwVklEO8.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-2mVD-S1o.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-2mVD-S1o.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-CIsZn0wu.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-CIsZn0wu.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-8vJRYw6-.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-8vJRYw6-.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-BTV1bfrB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-BTV1bfrB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-CgkO0nYB.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-CgkO0nYB.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-DCgoG0uS.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-DCgoG0uS.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-UZC3TYsj.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-UZC3TYsj.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-C_QVslrw.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-C_QVslrw.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-Cz3Aa7TD.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-Cz3Aa7TD.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-XBMsAcgc.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-XBMsAcgc.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-Drvf681g.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-Drvf681g.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-D3Iz_1Dp.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-D3Iz_1Dp.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-BrJnpx9Y.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-BrJnpx9Y.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-Cp5HhJng.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-Cp5HhJng.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-BGnQTJtF.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-BGnQTJtF.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BwxJGMso.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BwxJGMso.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BaGR1BOL.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BaGR1BOL.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-DB60XW_C.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-DB60XW_C.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-BLd3_2pJ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-BLd3_2pJ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-Dmm56o3v.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-Dmm56o3v.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-B-iwMKYl.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-B-iwMKYl.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-NCciGo9Y.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-NCciGo9Y.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-C10tPzfa.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-C10tPzfa.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-Xfh9neAo.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-Xfh9neAo.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-DlsMaVEt.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-DlsMaVEt.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-B7i6e8XX.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-B7i6e8XX.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-3rxpjYrQ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-3rxpjYrQ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
@@ -564,80 +564,80 @@
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-BAPDmRnk.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-BAPDmRnk.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-7kbFcfEk.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-7kbFcfEk.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-Bj4UPO7F.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-Bj4UPO7F.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-S0ZBMsKv.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-S0ZBMsKv.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-erqXovmY.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-erqXovmY.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-B7Wu9jff.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-B7Wu9jff.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-BPVKeNuM.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-BPVKeNuM.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-_tX8IMOE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-_tX8IMOE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-CZVclgh0.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-CZVclgh0.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-tDf6oQLL.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-tDf6oQLL.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-6yRBBXkk.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-6yRBBXkk.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-Bv1bIg9g.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-Bv1bIg9g.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-Dk0NljLb.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-Dk0NljLb.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-C6wS8T9i.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-C6wS8T9i.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-CyyKaKA6.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-CyyKaKA6.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-BCuIrp_F.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-BCuIrp_F.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-kJIHcCSE.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-kJIHcCSE.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-BqsVNiWW.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-BqsVNiWW.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-DtEQ18Rj.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-DtEQ18Rj.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-Cvv7TAFQ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-Cvv7TAFQ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
@@ -652,352 +652,352 @@
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-BTmMB3dc.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-BTmMB3dc.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-4i57eHuq.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-4i57eHuq.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-D2C87V0U.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-D2C87V0U.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-xxB9mwJh.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-xxB9mwJh.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-BimV5Wba.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-BimV5Wba.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-DkvC9r_7.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-DkvC9r_7.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconSun-DPnEG6cQ.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconSun-DPnEG6cQ.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconSun--k5wa58h.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconSun--k5wa58h.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-CntoO6HD.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-CntoO6HD.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-Bcu69-Sz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-Bcu69-Sz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-CE4aTRr-.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-CE4aTRr-.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-Ds5gPF5A.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-Ds5gPF5A.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-Cv0yixNB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-Cv0yixNB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-CBjNt1C3.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-CBjNt1C3.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-Cqoco5w9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-Cqoco5w9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-C3I13JDw.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-C3I13JDw.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-DOgPmO0c.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-DOgPmO0c.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-Bc5ou7-_.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-Bc5ou7-_.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-C-efCT_9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-C-efCT_9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-e8FKRlvl.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-e8FKRlvl.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-C7TQYoKP.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-C7TQYoKP.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-CYGDNIS1.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-CYGDNIS1.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-CRqtpiLA.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-CRqtpiLA.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-DXV3OTMN.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-DXV3OTMN.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-CcFOBz7r.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-CcFOBz7r.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-BOTpXFqM.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-BOTpXFqM.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-CwifKZ9d.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-CwifKZ9d.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-04HvJX71.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-04HvJX71.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-BDOFV4RX.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-BDOFV4RX.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-CvWvU_d0.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-CvWvU_d0.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-CewyB_Fv.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-CewyB_Fv.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-D6F0NbIz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-D6F0NbIz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-BRsZgjvB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-BRsZgjvB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-Cd63PJI1.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-Cd63PJI1.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-DabFwpqB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-DabFwpqB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-CUAdjZa6.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-CUAdjZa6.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-rd_oL4JC.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-rd_oL4JC.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-CKDBWzZF.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-CKDBWzZF.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-aMkSygKV.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-aMkSygKV.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-DFPEEvab.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-DFPEEvab.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/formatters-DCcQ1LUb.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/formatters-DCcQ1LUb.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/formatters-buh4_jTs.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/formatters-buh4_jTs.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Expand-KQdTACRO.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Expand-KQdTACRO.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Expand-Dgs-YSr_.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Expand-Dgs-YSr_.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-DosUJjmV.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-DosUJjmV.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-BJiFVcnc.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-BJiFVcnc.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-7F5OVHqB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-7F5OVHqB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-DkEdVR8s.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-DkEdVR8s.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-obUltEqA.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-obUltEqA.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-nbpFoPo4.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-nbpFoPo4.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BnI891a8.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BnI891a8.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BzN6dXbE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BzN6dXbE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-B1b8oCJe.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-B1b8oCJe.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-BjRU8WmN.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-BjRU8WmN.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-6wwc-UcA.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-6wwc-UcA.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-DOK-DYza.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-DOK-DYza.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-C31N_W-h.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-C31N_W-h.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-CQM2NZYw.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-CQM2NZYw.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-BAhjynMT.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-BAhjynMT.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-gzhn07Nr.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-gzhn07Nr.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-Bz6olL0_.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-Bz6olL0_.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-C3Z6-AmR.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-C3Z6-AmR.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-BszuK77B.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-BszuK77B.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-ByTLzniz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-ByTLzniz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-VvradoRf.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-VvradoRf.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-BKutyYCN.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-BKutyYCN.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/browser-B2WCG2G-.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/browser-B2WCG2G-.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/browser-BhLyo8zp.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/browser-BhLyo8zp.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-Bw7hjPIj.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-Bw7hjPIj.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-BjFx0R3x.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-BjFx0R3x.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-CifT1Xe9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-CifT1Xe9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-BseJfu46.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-BseJfu46.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-BrEKQdrY.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-BrEKQdrY.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-MgKoKq3o.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-MgKoKq3o.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-BmH-AZYK.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-BmH-AZYK.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-CgSwGITZ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-CgSwGITZ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-e3w4Sui9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-e3w4Sui9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-68mUnrhO.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-68mUnrhO.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-B49HiqBY.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-B49HiqBY.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-DotMtXAj.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-DotMtXAj.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-qT3eaXmz.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-qT3eaXmz.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-c-EJ75sL.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-c-EJ75sL.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-DqMpY-n5.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-DqMpY-n5.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-B6kopBl-.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-B6kopBl-.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-vCC2wNrq.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-vCC2wNrq.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-DsRPnhvE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-DsRPnhvE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
@@ -1403,7 +1403,7 @@
        "type": "node",
        "lhId": "1-0-DIV",
        "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV",
-       "selector": "div.m_6d731127 > div.m_1b7284a3 > div#mantine-dy10ni9xz > div.m_576c9d4",
+       "selector": "div.m_6d731127 > div.m_1b7284a3 > div#mantine-wri0z9ck3 > div.m_576c9d4",
        "boundingRect": {
         "top": 232,
         "bottom": 626,
@@ -1424,7 +1424,7 @@
           "type": "node",
           "lhId": "1-1-DIV",
           "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV,1,DIV",
-          "selector": "div.m_1b7284a3 > div#mantine-dy10ni9xz > div.m_576c9d4 > div.m_3eebeb36",
+          "selector": "div.m_1b7284a3 > div#mantine-wri0z9ck3 > div.m_576c9d4 > div.m_3eebeb36",
           "boundingRect": {
            "top": 416,
            "bottom": 417,
@@ -1434,7 +1434,7 @@
            "height": 1
           },
           "snippet": "<div class=\"m_3eebeb36 mantine-Divider-root\" data-orientation=\"horizontal\" role=\"separator\" aria-orientation=\"horizontal\">",
-          "nodeLabel": "div.m_1b7284a3 > div#mantine-dy10ni9xz > div.m_576c9d4 > div.m_3eebeb36"
+          "nodeLabel": "div.m_1b7284a3 > div#mantine-wri0z9ck3 > div.m_576c9d4 > div.m_3eebeb36"
          }
         },
         {
@@ -1442,7 +1442,7 @@
           "type": "node",
           "lhId": "1-2-BUTTON",
           "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV,2,DIV,0,BUTTON",
-          "selector": "div#mantine-dy10ni9xz > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
+          "selector": "div#mantine-wri0z9ck3 > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
           "boundingRect": {
            "top": 417,
            "bottom": 451,
@@ -1452,7 +1452,7 @@
            "height": 34
           },
           "snippet": "<button class=\"mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87c…\" data-variant=\"transparent\" data-size=\"lg\" type=\"button\" style=\"--ai-size: var(--ai-size-lg); --ai-bg: transparent; --ai-hover: transparen…;\">",
-          "nodeLabel": "div#mantine-dy10ni9xz > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto"
+          "nodeLabel": "div#mantine-wri0z9ck3 > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto"
          }
         }
        ]
@@ -1615,7 +1615,7 @@
        "type": "node",
        "lhId": "1-2-BUTTON",
        "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV,2,DIV,0,BUTTON",
-       "selector": "div#mantine-dy10ni9xz > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
+       "selector": "div#mantine-wri0z9ck3 > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
        "boundingRect": {
         "top": 417,
         "bottom": 451,
@@ -1625,7 +1625,7 @@
         "height": 34
        },
        "snippet": "<button class=\"mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87c…\" data-variant=\"transparent\" data-size=\"lg\" type=\"button\" style=\"--ai-size: var(--ai-size-lg); --ai-bg: transparent; --ai-hover: transparen…;\">",
-       "nodeLabel": "div#mantine-dy10ni9xz > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
+       "nodeLabel": "div#mantine-wri0z9ck3 > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
        "explanation": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
       }
      }
@@ -1976,7 +1976,7 @@
        "type": "node",
        "lhId": "1-16-P",
        "path": "1,HTML,1,BODY,3,DIV,4,DIV,0,DIV,0,DIV,0,DIV,0,DIV,1,P",
-       "selector": "div#mantine-6sloz7we6 > div > div > p.mantine-focus-auto",
+       "selector": "div#mantine-sxd0ezrgw > div > div > p.mantine-focus-auto",
        "boundingRect": {
         "top": 920,
         "bottom": 937,
@@ -1997,7 +1997,7 @@
           "type": "node",
           "lhId": "1-17-DIV",
           "path": "1,HTML,1,BODY,3,DIV,4,DIV,0,DIV,0,DIV,0,DIV",
-          "selector": "div.m_b37d9ac7 > div > div#mantine-6sloz7we6 > div",
+          "selector": "div.m_b37d9ac7 > div > div#mantine-sxd0ezrgw > div",
           "boundingRect": {
            "top": 883,
            "bottom": 984,
@@ -2851,7 +2851,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 98,
        "column": 5
@@ -2870,7 +2870,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 81,
        "column": 205071
@@ -2889,7 +2889,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 23,
        "column": 15667
@@ -2908,7 +2908,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 88,
        "column": 142443
@@ -2928,6 +2928,25 @@
       "source": {
        "type": "source-location",
        "url": "http://127.0.0.1:8000/web/logged-in",
+       "urlProvider": "network",
+       "line": -2,
+       "column": -2
+      }
+     },
+     {
+      "featureId": {
+       "type": "link",
+       "text": "backdrop-filter",
+       "url": "https://webstatus.dev/features/backdrop-filter"
+      },
+      "displayStatus": {
+       "type": "baseline-status",
+       "status": "low",
+       "displayString": "Newly Available (2024-09-16)"
+      },
+      "source": {
+       "type": "source-location",
+       "url": "http://127.0.0.1:8000/web/stock/item/1/details",
        "urlProvider": "network",
        "line": -2,
        "column": -2
@@ -3110,7 +3129,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 81,
        "column": 205071
@@ -3148,7 +3167,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BnI891a8.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BzN6dXbE.js",
        "urlProvider": "network",
        "line": 3,
        "column": 9473
@@ -3205,7 +3224,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/ThemeContext-CtmUPbD8.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/ThemeContext-Dcu8BphZ.js",
        "urlProvider": "network",
        "line": 12,
        "column": 7446
@@ -3224,7 +3243,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 88,
        "column": 36706
@@ -3281,7 +3300,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/NotesEditor-NCciGo9Y.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/NotesEditor-C10tPzfa.js",
        "urlProvider": "network",
        "line": 156,
        "column": 12452
@@ -3300,7 +3319,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/web/logged-in",
+       "url": "http://127.0.0.1:8000/web/stock/item/1/details",
        "urlProvider": "network",
        "line": -2,
        "column": -2
@@ -3667,7 +3686,7 @@
      },
      {
       "index": "66",
-      "line": "  <div id=\"spa_bundle\"><script type=\"module\" src=\"/static/web/assets/index-9Rn9KJRf.js\"></script><script type=\"module\" src=\"/static/web/assets/DesktopAppView-BnI891a8.js\"></script><script type=\"module\" src=\"/static/web/assets/MobileAppView-B7i6e8XX.js\"></script></div>",
+      "line": "  <div id=\"spa_bundle\"><script type=\"module\" src=\"/static/web/assets/index-ChFL23nO.js\"></script><script type=\"module\" src=\"/static/web/assets/DesktopAppView-BzN6dXbE.js\"></script><script type=\"module\" src=\"/static/web/assets/MobileAppView-3rxpjYrQ.js\"></script></div>",
       "message": "Syntax not understood"
      },
      {
@@ -4723,7 +4742,7 @@
     "height": 20
    },
    "1-29-A": {
-    "id": "mantine-dy10ni9xz-tab-details",
+    "id": "mantine-wri0z9ck3-tab-details",
     "top": 232,
     "bottom": 278,
     "left": 28,
@@ -4732,7 +4751,7 @@
     "height": 46
    },
    "1-30-A": {
-    "id": "mantine-dy10ni9xz-tab-allocations",
+    "id": "mantine-wri0z9ck3-tab-allocations",
     "top": 278,
     "bottom": 324,
     "left": 28,
@@ -4741,7 +4760,7 @@
     "height": 46
    },
    "1-31-A": {
-    "id": "mantine-dy10ni9xz-tab-attachments",
+    "id": "mantine-wri0z9ck3-tab-attachments",
     "top": 324,
     "bottom": 370,
     "left": 28,
@@ -4750,7 +4769,7 @@
     "height": 46
    },
    "1-32-A": {
-    "id": "mantine-dy10ni9xz-tab-notes",
+    "id": "mantine-wri0z9ck3-tab-notes",
     "top": 370,
     "bottom": 416,
     "left": 28,
@@ -5906,883 +5925,883 @@
  "timing": {
   "entries": [
    {
-    "startTime": 14965.55,
+    "startTime": 15129.28,
     "name": "lh:config",
-    "duration": 327.14,
+    "duration": 307.41,
     "entryType": "measure"
    },
    {
-    "startTime": 14970.29,
+    "startTime": 15135.24,
     "name": "lh:config:resolveArtifactsToDefns",
-    "duration": 34.94,
+    "duration": 37.53,
     "entryType": "measure"
    },
    {
-    "startTime": 15292.85,
+    "startTime": 15436.85,
     "name": "lh:runner:gather",
-    "duration": 16312.35,
+    "duration": 16189.31,
     "entryType": "measure"
    },
    {
-    "startTime": 15359.82,
+    "startTime": 15496.5,
     "name": "lh:driver:connect",
-    "duration": 5.31,
+    "duration": 5.55,
     "entryType": "measure"
    },
    {
-    "startTime": 15365.37,
+    "startTime": 15502.36,
     "name": "lh:driver:navigate",
-    "duration": 10.39,
+    "duration": 6.65,
     "entryType": "measure"
    },
    {
-    "startTime": 15376.32,
+    "startTime": 15509.26,
     "name": "lh:gather:getBenchmarkIndex",
-    "duration": 1005.68,
+    "duration": 1004.49,
     "entryType": "measure"
    },
    {
-    "startTime": 16382.13,
+    "startTime": 16513.97,
     "name": "lh:gather:getVersion",
-    "duration": 0.78,
+    "duration": 1.06,
     "entryType": "measure"
    },
    {
-    "startTime": 16383.06,
+    "startTime": 16515.16,
     "name": "lh:gather:getDevicePixelRatio",
-    "duration": 1.19,
+    "duration": 1.5,
     "entryType": "measure"
    },
    {
-    "startTime": 16384.64,
+    "startTime": 16517.06,
     "name": "lh:prepare:navigationMode",
-    "duration": 15.55,
+    "duration": 18.48,
     "entryType": "measure"
    },
    {
-    "startTime": 16385.41,
+    "startTime": 16518.16,
     "name": "lh:gather:getVersion",
+    "duration": 0.68,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 16533.2,
+    "name": "lh:gather:prepareThrottlingAndNetwork",
+    "duration": 2.31,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 16569.47,
+    "name": "lh:driver:navigate",
+    "duration": 11880.98,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29242.2,
+    "name": "lh:computed:NetworkRecords",
+    "duration": 6.23,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29249.25,
+    "name": "lh:gather:getArtifact:DevtoolsLog",
+    "duration": 0.05,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29249.33,
+    "name": "lh:gather:getArtifact:Trace",
+    "duration": 0.03,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29249.38,
+    "name": "lh:gather:getArtifact:Accessibility",
+    "duration": 241.36,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29490.77,
+    "name": "lh:gather:getArtifact:AnchorElements",
+    "duration": 15.82,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29506.61,
+    "name": "lh:gather:getArtifact:ConsoleMessages",
+    "duration": 0.03,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29506.67,
+    "name": "lh:gather:getArtifact:Doctype",
+    "duration": 1,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29507.69,
+    "name": "lh:gather:getArtifact:Inputs",
+    "duration": 2.57,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29510.28,
+    "name": "lh:gather:getArtifact:ImageElements",
+    "duration": 82.94,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 29593.38,
+    "name": "lh:gather:getArtifact:InspectorIssues",
     "duration": 0.47,
     "entryType": "measure"
    },
    {
-    "startTime": 16398.48,
-    "name": "lh:gather:prepareThrottlingAndNetwork",
-    "duration": 1.64,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 16433.5,
-    "name": "lh:driver:navigate",
-    "duration": 11923.52,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29229.78,
-    "name": "lh:computed:NetworkRecords",
-    "duration": 4.18,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29234.65,
-    "name": "lh:gather:getArtifact:DevtoolsLog",
-    "duration": 0.04,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29234.72,
-    "name": "lh:gather:getArtifact:Trace",
-    "duration": 0.04,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29234.78,
-    "name": "lh:gather:getArtifact:Accessibility",
-    "duration": 234.09,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29468.91,
-    "name": "lh:gather:getArtifact:AnchorElements",
-    "duration": 15.5,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29484.44,
-    "name": "lh:gather:getArtifact:ConsoleMessages",
-    "duration": 0.04,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29484.48,
-    "name": "lh:gather:getArtifact:Doctype",
-    "duration": 1.19,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29485.71,
-    "name": "lh:gather:getArtifact:Inputs",
-    "duration": 2.37,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29488.1,
-    "name": "lh:gather:getArtifact:ImageElements",
-    "duration": 91.14,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29579.44,
-    "name": "lh:gather:getArtifact:InspectorIssues",
-    "duration": 0.5,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 29579.98,
+    "startTime": 29593.89,
     "name": "lh:gather:getArtifact:LinkElements",
-    "duration": 9.15,
+    "duration": 8.61,
     "entryType": "measure"
    },
    {
-    "startTime": 29588.82,
+    "startTime": 29602.19,
     "name": "lh:computed:MainResource",
     "duration": 0.24,
     "entryType": "measure"
    },
    {
-    "startTime": 29589.17,
+    "startTime": 29602.54,
     "name": "lh:gather:getArtifact:MainDocumentContent",
-    "duration": 1.84,
+    "duration": 1.64,
     "entryType": "measure"
    },
    {
-    "startTime": 29591.04,
+    "startTime": 29604.22,
     "name": "lh:gather:getArtifact:MetaElements",
-    "duration": 3.11,
+    "duration": 3.28,
     "entryType": "measure"
    },
    {
-    "startTime": 29594.2,
+    "startTime": 29607.55,
     "name": "lh:gather:getArtifact:NetworkUserAgent",
     "duration": 0.12,
     "entryType": "measure"
    },
    {
-    "startTime": 29594.33,
+    "startTime": 29607.68,
     "name": "lh:gather:getArtifact:RobotsTxt",
-    "duration": 64.73,
+    "duration": 70.25,
     "entryType": "measure"
    },
    {
-    "startTime": 29659.18,
+    "startTime": 29678.04,
     "name": "lh:gather:getArtifact:Scripts",
-    "duration": 10.16,
+    "duration": 10.57,
     "entryType": "measure"
    },
    {
-    "startTime": 29669.42,
+    "startTime": 29688.7,
     "name": "lh:gather:getArtifact:SourceMaps",
-    "duration": 771.53,
+    "duration": 765.14,
     "entryType": "measure"
    },
    {
-    "startTime": 30441.03,
+    "startTime": 30453.87,
     "name": "lh:gather:getArtifact:Stacks",
-    "duration": 29.45,
+    "duration": 33.13,
     "entryType": "measure"
    },
    {
-    "startTime": 30441.34,
+    "startTime": 30453.99,
     "name": "lh:gather:collectStacks",
-    "duration": 29.08,
+    "duration": 32.98,
     "entryType": "measure"
    },
    {
-    "startTime": 30470.53,
+    "startTime": 30487.03,
     "name": "lh:gather:getArtifact:ViewportDimensions",
-    "duration": 3.58,
+    "duration": 2.26,
     "entryType": "measure"
    },
    {
-    "startTime": 30474.17,
+    "startTime": 30489.32,
     "name": "lh:gather:getArtifact:FullPageScreenshot",
-    "duration": 1122.81,
+    "duration": 1128.9,
     "entryType": "measure"
    },
    {
-    "startTime": 31605.62,
+    "startTime": 31626.55,
     "name": "lh:runner:audit",
-    "duration": 337.21,
+    "duration": 316.91,
     "entryType": "measure"
    },
    {
-    "startTime": 31605.75,
+    "startTime": 31626.67,
     "name": "lh:runner:auditing",
-    "duration": 336.59,
+    "duration": 316.34,
     "entryType": "measure"
    },
    {
-    "startTime": 31606.66,
+    "startTime": 31627.48,
     "name": "lh:audit:is-on-https",
-    "duration": 1.99,
+    "duration": 1.86,
     "entryType": "measure"
    },
    {
-    "startTime": 31609.04,
+    "startTime": 31629.71,
     "name": "lh:audit:redirects-http",
-    "duration": 0.91,
+    "duration": 0.86,
     "entryType": "measure"
    },
    {
-    "startTime": 31610.24,
+    "startTime": 31630.86,
     "name": "lh:audit:errors-in-console",
-    "duration": 169.51,
+    "duration": 149.56,
     "entryType": "measure"
    },
    {
-    "startTime": 31610.69,
+    "startTime": 31631.28,
     "name": "lh:computed:JSBundles",
-    "duration": 168.31,
+    "duration": 148.59,
     "entryType": "measure"
    },
    {
-    "startTime": 31779.99,
+    "startTime": 31780.56,
     "name": "lh:audit:image-aspect-ratio",
-    "duration": 1,
+    "duration": 0.8,
     "entryType": "measure"
    },
    {
-    "startTime": 31781.13,
+    "startTime": 31781.5,
     "name": "lh:audit:image-size-responsive",
-    "duration": 1.27,
+    "duration": 1.04,
     "entryType": "measure"
    },
    {
-    "startTime": 31781.39,
+    "startTime": 31781.76,
     "name": "lh:computed:ImageRecords",
-    "duration": 0.23,
+    "duration": 0.22,
     "entryType": "measure"
    },
    {
-    "startTime": 31782.55,
+    "startTime": 31782.68,
     "name": "lh:audit:deprecations",
-    "duration": 0.62,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31783.31,
-    "name": "lh:audit:third-party-cookies",
-    "duration": 0.66,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31784.14,
-    "name": "lh:audit:valid-source-maps",
-    "duration": 17.08,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31784.47,
-    "name": "lh:computed:EntityClassification",
-    "duration": 14.71,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31801.36,
-    "name": "lh:audit:csp-xss",
-    "duration": 0.67,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31802.17,
-    "name": "lh:audit:has-hsts",
-    "duration": 0.63,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31802.92,
-    "name": "lh:audit:origin-isolation",
-    "duration": 0.56,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31803.59,
-    "name": "lh:audit:clickjacking-mitigation",
-    "duration": 0.56,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31804.27,
-    "name": "lh:audit:trusted-types-xss",
-    "duration": 0.55,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31804.96,
-    "name": "lh:audit:accesskeys",
     "duration": 0.52,
     "entryType": "measure"
    },
    {
-    "startTime": 31805.64,
+    "startTime": 31783.32,
+    "name": "lh:audit:third-party-cookies",
+    "duration": 0.47,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31783.93,
+    "name": "lh:audit:valid-source-maps",
+    "duration": 3.49,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31784.18,
+    "name": "lh:computed:EntityClassification",
+    "duration": 1.63,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31787.53,
+    "name": "lh:audit:csp-xss",
+    "duration": 0.55,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31788.19,
+    "name": "lh:audit:has-hsts",
+    "duration": 0.55,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31788.84,
+    "name": "lh:audit:origin-isolation",
+    "duration": 0.49,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31789.43,
+    "name": "lh:audit:clickjacking-mitigation",
+    "duration": 0.46,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31789.99,
+    "name": "lh:audit:trusted-types-xss",
+    "duration": 0.47,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31790.59,
+    "name": "lh:audit:accesskeys",
+    "duration": 0.48,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31791.21,
     "name": "lh:audit:aria-allowed-attr",
-    "duration": 2.8,
+    "duration": 1.73,
     "entryType": "measure"
    },
    {
-    "startTime": 31808.79,
+    "startTime": 31793.08,
     "name": "lh:audit:aria-allowed-role",
-    "duration": 2.93,
+    "duration": 1.78,
     "entryType": "measure"
    },
    {
-    "startTime": 31811.95,
+    "startTime": 31794.99,
     "name": "lh:audit:aria-command-name",
-    "duration": 0.73,
+    "duration": 0.41,
     "entryType": "measure"
    },
    {
-    "startTime": 31812.91,
+    "startTime": 31795.52,
     "name": "lh:audit:aria-conditional-attr",
-    "duration": 3.13,
+    "duration": 17.69,
     "entryType": "measure"
    },
    {
-    "startTime": 31816.19,
+    "startTime": 31813.37,
     "name": "lh:audit:aria-deprecated-role",
-    "duration": 1.6,
+    "duration": 1.63,
     "entryType": "measure"
    },
    {
-    "startTime": 31817.94,
+    "startTime": 31815.13,
     "name": "lh:audit:aria-dialog-name",
     "duration": 0.43,
     "entryType": "measure"
    },
    {
-    "startTime": 31818.48,
+    "startTime": 31815.69,
     "name": "lh:audit:aria-hidden-body",
-    "duration": 1.61,
+    "duration": 1.73,
     "entryType": "measure"
    },
    {
-    "startTime": 31820.23,
+    "startTime": 31817.53,
     "name": "lh:audit:aria-hidden-focus",
-    "duration": 0.5,
+    "duration": 0.45,
     "entryType": "measure"
    },
    {
-    "startTime": 31820.86,
+    "startTime": 31818.1,
     "name": "lh:audit:aria-input-field-name",
-    "duration": 0.47,
+    "duration": 0.46,
     "entryType": "measure"
    },
    {
-    "startTime": 31821.44,
+    "startTime": 31818.68,
     "name": "lh:audit:aria-meter-name",
-    "duration": 0.52,
+    "duration": 0.49,
     "entryType": "measure"
    },
    {
-    "startTime": 31822.07,
+    "startTime": 31819.28,
     "name": "lh:audit:aria-progressbar-name",
-    "duration": 0.53,
+    "duration": 0.54,
     "entryType": "measure"
    },
    {
-    "startTime": 31822.73,
+    "startTime": 31819.93,
     "name": "lh:audit:aria-prohibited-attr",
-    "duration": 1.54,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31824.43,
-    "name": "lh:audit:aria-required-attr",
-    "duration": 1.75,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31826.3,
-    "name": "lh:audit:aria-required-children",
-    "duration": 1.78,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31828.19,
-    "name": "lh:audit:aria-required-parent",
-    "duration": 1.56,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31829.87,
-    "name": "lh:audit:aria-roles",
     "duration": 1.49,
     "entryType": "measure"
    },
    {
-    "startTime": 31831.48,
+    "startTime": 31821.53,
+    "name": "lh:audit:aria-required-attr",
+    "duration": 1.56,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31823.21,
+    "name": "lh:audit:aria-required-children",
+    "duration": 1.69,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31825.01,
+    "name": "lh:audit:aria-required-parent",
+    "duration": 1.52,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31826.64,
+    "name": "lh:audit:aria-roles",
+    "duration": 1.43,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31828.18,
     "name": "lh:audit:aria-text",
     "duration": 0.58,
     "entryType": "measure"
    },
    {
-    "startTime": 31832.17,
+    "startTime": 31828.87,
     "name": "lh:audit:aria-toggle-field-name",
-    "duration": 0.59,
+    "duration": 0.62,
     "entryType": "measure"
    },
    {
-    "startTime": 31832.87,
+    "startTime": 31829.61,
     "name": "lh:audit:aria-tooltip-name",
     "duration": 0.62,
     "entryType": "measure"
    },
    {
-    "startTime": 31833.6,
+    "startTime": 31830.34,
     "name": "lh:audit:aria-treeitem-name",
     "duration": 0.66,
     "entryType": "measure"
    },
    {
-    "startTime": 31834.38,
+    "startTime": 31831.11,
     "name": "lh:audit:aria-valid-attr-value",
-    "duration": 1.55,
+    "duration": 1.5,
     "entryType": "measure"
    },
    {
-    "startTime": 31836.04,
+    "startTime": 31832.72,
     "name": "lh:audit:aria-valid-attr",
-    "duration": 1.48,
+    "duration": 1.52,
     "entryType": "measure"
    },
    {
-    "startTime": 31837.63,
+    "startTime": 31834.36,
     "name": "lh:audit:button-name",
+    "duration": 1.62,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31836.1,
+    "name": "lh:audit:bypass",
+    "duration": 1.59,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31837.82,
+    "name": "lh:audit:color-contrast",
+    "duration": 1.67,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31839.63,
+    "name": "lh:audit:definition-list",
+    "duration": 0.78,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31840.52,
+    "name": "lh:audit:dlitem",
+    "duration": 0.72,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31841.35,
+    "name": "lh:audit:document-title",
+    "duration": 1.58,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31843.04,
+    "name": "lh:audit:duplicate-id-aria",
+    "duration": 17.12,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31860.44,
+    "name": "lh:audit:empty-heading",
     "duration": 1.6,
     "entryType": "measure"
    },
    {
-    "startTime": 31839.34,
-    "name": "lh:audit:bypass",
-    "duration": 1.52,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31840.96,
-    "name": "lh:audit:color-contrast",
-    "duration": 1.57,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31842.65,
-    "name": "lh:audit:definition-list",
-    "duration": 15.8,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31858.62,
-    "name": "lh:audit:dlitem",
-    "duration": 0.87,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31859.62,
-    "name": "lh:audit:document-title",
-    "duration": 1.72,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31861.45,
-    "name": "lh:audit:duplicate-id-aria",
-    "duration": 1.55,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31863.13,
-    "name": "lh:audit:empty-heading",
-    "duration": 0.8,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31864.05,
+    "startTime": 31862.27,
     "name": "lh:audit:form-field-multiple-labels",
-    "duration": 0.81,
+    "duration": 1.66,
     "entryType": "measure"
    },
    {
-    "startTime": 31864.96,
+    "startTime": 31864.16,
     "name": "lh:audit:frame-title",
-    "duration": 0.81,
+    "duration": 1.59,
     "entryType": "measure"
    },
    {
-    "startTime": 31865.89,
+    "startTime": 31865.99,
     "name": "lh:audit:heading-order",
-    "duration": 0.86,
+    "duration": 1.75,
     "entryType": "measure"
    },
    {
-    "startTime": 31866.88,
+    "startTime": 31868.11,
     "name": "lh:audit:html-has-lang",
-    "duration": 1.65,
+    "duration": 1.91,
     "entryType": "measure"
    },
    {
-    "startTime": 31868.64,
+    "startTime": 31870.16,
     "name": "lh:audit:html-lang-valid",
-    "duration": 1.52,
+    "duration": 1.64,
     "entryType": "measure"
    },
    {
-    "startTime": 31870.28,
+    "startTime": 31871.92,
     "name": "lh:audit:html-xml-lang-mismatch",
-    "duration": 0.93,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31871.32,
-    "name": "lh:audit:identical-links-same-purpose",
-    "duration": 1.56,
+    "duration": 0.95,
     "entryType": "measure"
    },
    {
     "startTime": 31872.99,
+    "name": "lh:audit:identical-links-same-purpose",
+    "duration": 1.58,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31874.68,
     "name": "lh:audit:image-alt",
     "duration": 1.47,
     "entryType": "measure"
    },
    {
-    "startTime": 31874.57,
+    "startTime": 31876.27,
     "name": "lh:audit:image-redundant-alt",
-    "duration": 1.67,
+    "duration": 1.61,
     "entryType": "measure"
    },
    {
-    "startTime": 31876.35,
+    "startTime": 31877.99,
     "name": "lh:audit:input-button-name",
-    "duration": 0.9,
+    "duration": 0.92,
     "entryType": "measure"
    },
    {
-    "startTime": 31877.36,
+    "startTime": 31879.01,
     "name": "lh:audit:input-image-alt",
-    "duration": 1.02,
+    "duration": 0.94,
     "entryType": "measure"
    },
    {
-    "startTime": 31878.5,
+    "startTime": 31880.06,
     "name": "lh:audit:label-content-name-mismatch",
-    "duration": 1.63,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31880.26,
-    "name": "lh:audit:label",
-    "duration": 0.97,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31881.34,
-    "name": "lh:audit:landmark-one-main",
-    "duration": 1.46,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31882.94,
-    "name": "lh:audit:link-name",
     "duration": 1.5,
     "entryType": "measure"
    },
    {
-    "startTime": 31884.57,
+    "startTime": 31881.67,
+    "name": "lh:audit:label",
+    "duration": 0.92,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31882.69,
+    "name": "lh:audit:landmark-one-main",
+    "duration": 1.43,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31884.23,
+    "name": "lh:audit:link-name",
+    "duration": 1.49,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31885.83,
     "name": "lh:audit:link-in-text-block",
-    "duration": 1,
+    "duration": 0.99,
     "entryType": "measure"
    },
    {
-    "startTime": 31885.68,
+    "startTime": 31886.93,
     "name": "lh:audit:list",
-    "duration": 1.09,
+    "duration": 1.13,
     "entryType": "measure"
    },
    {
-    "startTime": 31886.88,
+    "startTime": 31888.18,
     "name": "lh:audit:listitem",
-    "duration": 1.22,
+    "duration": 1.11,
     "entryType": "measure"
    },
    {
-    "startTime": 31888.22,
+    "startTime": 31889.39,
     "name": "lh:audit:meta-refresh",
     "duration": 1.12,
     "entryType": "measure"
    },
    {
-    "startTime": 31889.47,
+    "startTime": 31890.62,
     "name": "lh:audit:meta-viewport",
-    "duration": 1.68,
+    "duration": 1.59,
     "entryType": "measure"
    },
    {
-    "startTime": 31891.26,
+    "startTime": 31892.33,
     "name": "lh:audit:object-alt",
-    "duration": 1.15,
+    "duration": 1.13,
     "entryType": "measure"
    },
    {
-    "startTime": 31892.52,
+    "startTime": 31893.56,
     "name": "lh:audit:select-name",
-    "duration": 1.14,
+    "duration": 1.13,
     "entryType": "measure"
    },
    {
-    "startTime": 31893.78,
+    "startTime": 31894.8,
     "name": "lh:audit:skip-link",
-    "duration": 1.15,
+    "duration": 1.13,
     "entryType": "measure"
    },
    {
-    "startTime": 31895.04,
+    "startTime": 31896.04,
     "name": "lh:audit:tabindex",
-    "duration": 1.57,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31896.74,
-    "name": "lh:audit:table-duplicate-name",
-    "duration": 1.64,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31898.49,
-    "name": "lh:audit:table-fake-caption",
-    "duration": 1.61,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31900.24,
-    "name": "lh:audit:target-size",
     "duration": 1.55,
     "entryType": "measure"
    },
    {
-    "startTime": 31901.91,
+    "startTime": 31897.7,
+    "name": "lh:audit:table-duplicate-name",
+    "duration": 1.65,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31899.47,
+    "name": "lh:audit:table-fake-caption",
+    "duration": 1.62,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31901.19,
+    "name": "lh:audit:target-size",
+    "duration": 1.49,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31902.8,
     "name": "lh:audit:td-has-header",
-    "duration": 1.36,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31903.4,
-    "name": "lh:audit:td-headers-attr",
-    "duration": 1.68,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31905.19,
-    "name": "lh:audit:th-has-data-cells",
-    "duration": 1.71,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31907.01,
-    "name": "lh:audit:valid-lang",
     "duration": 1.3,
     "entryType": "measure"
    },
    {
-    "startTime": 31908.43,
+    "startTime": 31904.22,
+    "name": "lh:audit:td-headers-attr",
+    "duration": 1.63,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31905.97,
+    "name": "lh:audit:th-has-data-cells",
+    "duration": 1.65,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31907.74,
+    "name": "lh:audit:valid-lang",
+    "duration": 1.29,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31909.14,
     "name": "lh:audit:video-caption",
-    "duration": 1.42,
+    "duration": 1.3,
     "entryType": "measure"
    },
    {
-    "startTime": 31909.89,
+    "startTime": 31910.46,
     "name": "lh:audit:custom-controls-labels",
-    "duration": 0.11,
+    "duration": 0.07,
     "entryType": "measure"
    },
    {
-    "startTime": 31910,
+    "startTime": 31910.54,
     "name": "lh:audit:custom-controls-roles",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.01,
+    "startTime": 31910.55,
     "name": "lh:audit:focus-traps",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.02,
+    "startTime": 31910.56,
     "name": "lh:audit:focusable-controls",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.04,
+    "startTime": 31910.57,
     "name": "lh:audit:interactive-element-affordance",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.04,
+    "startTime": 31910.58,
     "name": "lh:audit:logical-tab-order",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.05,
+    "startTime": 31910.59,
     "name": "lh:audit:managed-focus",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.06,
+    "startTime": 31910.59,
     "name": "lh:audit:offscreen-content-hidden",
-    "duration": 0,
+    "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.07,
+    "startTime": 31910.6,
     "name": "lh:audit:use-landmarks",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.08,
+    "startTime": 31910.61,
     "name": "lh:audit:visual-order-follows-dom",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 31910.22,
+    "startTime": 31910.75,
     "name": "lh:audit:autocomplete-valid",
-    "duration": 0.71,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31911.05,
-    "name": "lh:audit:presentation-role-conflict",
-    "duration": 1.67,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31912.84,
-    "name": "lh:audit:svg-img-alt",
-    "duration": 1.26,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31914.21,
-    "name": "lh:audit:doctype",
-    "duration": 0.48,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31914.82,
-    "name": "lh:audit:charset",
-    "duration": 0.57,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31915.54,
-    "name": "lh:audit:geolocation-on-start",
-    "duration": 13.38,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31929.08,
-    "name": "lh:audit:inspector-issues",
-    "duration": 0.49,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31929.66,
-    "name": "lh:audit:js-libraries",
-    "duration": 0.41,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31930.19,
-    "name": "lh:audit:notification-on-start",
-    "duration": 0.44,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31930.75,
-    "name": "lh:audit:paste-preventing-inputs",
-    "duration": 0.39,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31931.25,
-    "name": "lh:audit:baseline",
-    "duration": 2.11,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31933.51,
-    "name": "lh:audit:meta-description",
-    "duration": 0.43,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31934.08,
-    "name": "lh:audit:http-status-code",
-    "duration": 0.4,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31934.59,
-    "name": "lh:audit:link-text",
     "duration": 0.68,
     "entryType": "measure"
    },
    {
-    "startTime": 31935.44,
-    "name": "lh:audit:crawlable-anchors",
-    "duration": 0.81,
+    "startTime": 31911.54,
+    "name": "lh:audit:presentation-role-conflict",
+    "duration": 1.65,
     "entryType": "measure"
    },
    {
-    "startTime": 31936.41,
-    "name": "lh:audit:is-crawlable",
-    "duration": 1.14,
+    "startTime": 31913.31,
+    "name": "lh:audit:svg-img-alt",
+    "duration": 1.3,
     "entryType": "measure"
    },
    {
-    "startTime": 31937.69,
-    "name": "lh:audit:robots-txt",
-    "duration": 2.43,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31940.3,
-    "name": "lh:audit:hreflang",
-    "duration": 0.69,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31941.15,
-    "name": "lh:audit:canonical",
-    "duration": 0.74,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31942.02,
-    "name": "lh:audit:structured-data",
-    "duration": 0.32,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 31942.35,
-    "name": "lh:runner:generate",
+    "startTime": 31914.72,
+    "name": "lh:audit:doctype",
     "duration": 0.46,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31915.29,
+    "name": "lh:audit:charset",
+    "duration": 0.56,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31915.98,
+    "name": "lh:audit:geolocation-on-start",
+    "duration": 0.49,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31916.59,
+    "name": "lh:audit:inspector-issues",
+    "duration": 0.4,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31917.07,
+    "name": "lh:audit:js-libraries",
+    "duration": 0.35,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31917.54,
+    "name": "lh:audit:notification-on-start",
+    "duration": 0.43,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31918.08,
+    "name": "lh:audit:paste-preventing-inputs",
+    "duration": 0.38,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31918.57,
+    "name": "lh:audit:baseline",
+    "duration": 1.86,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31920.55,
+    "name": "lh:audit:meta-description",
+    "duration": 0.4,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31921.06,
+    "name": "lh:audit:http-status-code",
+    "duration": 0.36,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31921.53,
+    "name": "lh:audit:link-text",
+    "duration": 0.56,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31922.21,
+    "name": "lh:audit:crawlable-anchors",
+    "duration": 0.56,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31922.89,
+    "name": "lh:audit:is-crawlable",
+    "duration": 0.93,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31923.94,
+    "name": "lh:audit:robots-txt",
+    "duration": 5.52,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31929.64,
+    "name": "lh:audit:hreflang",
+    "duration": 11.86,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31941.69,
+    "name": "lh:audit:canonical",
+    "duration": 0.83,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31942.66,
+    "name": "lh:audit:structured-data",
+    "duration": 0.35,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 31943.02,
+    "name": "lh:runner:generate",
+    "duration": 0.43,
     "entryType": "measure"
    }
   ],
-  "total": 16649.56
+  "total": 16506.22
  },
  "i18n": {
   "rendererFormattedStrings": {

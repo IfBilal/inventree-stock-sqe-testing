@@ -10,7 +10,7 @@ PATTERNS = [(re.compile(r'continue-on-error\s*:\s*(true|\$\{\{)', re.I), 'contin
             (re.compile(r'set\s+\+e\b'), 'set +e'),
             (re.compile(r'if:\s*always\(\)'), 'if: always()')]
 bad = []
-files = glob.glob(os.path.join(ROOT, '.github/workflows/*.y*ml')) + [os.path.join(ROOT, 'scripts', s) for s in ('coverage_unit.sh', 'test_unit.sh', 'test_api.sh', 'test_e2e.sh', 'mutation_setup.sh')]
+files = glob.glob(os.path.join(ROOT, '.github/workflows/*.y*ml')) + [os.path.join(ROOT, 'scripts', s) for s in ('coverage_unit.sh', 'test_unit.sh', 'test_api.sh', 'test_e2e.sh', 'mutation_setup.sh', 'stop.sh', 'perf_run.sh', 'reset.sh', 'start.sh', 'build_frontend.sh')]
 for f in files:
     if not os.path.exists(f):
         continue

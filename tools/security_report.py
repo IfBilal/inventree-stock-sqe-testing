@@ -27,13 +27,18 @@ o = ['# DEFENSIVE SECURITY ASSESSMENT (Phase 9) — local copy, synthetic data a
 o.append('## 2. Access matrix — verified automatically with Playwright (`tests/team/e2e/access.spec.ts`, results `evidence/security/access_matrix_results.json`)\nExpected decisions come from the role design (TEST_BASIS §4): `stock_manager` view/add/change/delete, `stock_viewer` view only, anonymous nothing. **%d decisions checked (allowed and denied), %d match the matrix.**\n' % (len(matrix), sum(1 for m in matrix if m['ok'])))
 o.append('| Role | Action | Route | Expected | Observed | Result | Evidence |\n|---|---|---|---|---|---|---|')
 for m in matrix:
-    o.append(f"| {m['role']} | {m['action']} | `{m['route']}` | {m['expected']} | {m['observed']} | {'**allowed/denied as expected**' if m['ok'] else '**MISMATCH**'} | {m['evidence']} |")
-o.append('\nDenied add/remove requests additionally assert that **no side effect occurred** (quantity unchanged, no history entry). Verdict: **no access-control weakness found** (control working: RuleSet → Django permission → `ModelPermission` on `StockItem`).\n')
+    o.append(f"| {m['role']} | {m['action']} | `{m['route']}` | {m['expected']} | {m['observed']} | {'**' + m.get('decision', '?') + ' as expected**' if m['ok'] else '**MISMATCH**'} | {m['evidence']} |")
+o.append('\nDenied add **and remove** requests additionally assert that **no side effect occurred** (quantity unchanged, no history entry) — asserted in `access.spec.ts` for both actions. Verdict: **no access-control weakness found** (control working: RuleSet → Django permission → `ModelPermission` on `StockItem`).\n')
 
 risk_order = {'High': 0, 'Medium': 1, 'Low': 2, 'Informational': 3}
 g = collections.defaultdict(list)
 for a in zap: g[(a['risk'], a['alert'])].append(a)
-o.append('## 3. OWASP ZAP passive scan while the Playwright tests run both workflows\n13 browser flows (UC-01 and UC-02, all alternative and exception flows) were routed through ZAP; **%d HTTP messages** recorded (`evidence/security/zap_urls.json`, 234 distinct URLs), passive queue drained before export. Mode confirmed `safe`. Raw alerts: `evidence/security/zap_alerts_raw.json`.\n' % 1601)
+zmsg = int(J('evidence/security/zap_number_of_messages.json')['numberOfMessages'])
+zrun = J('evidence/security/zap_playwright_run.json')['stats']
+zpost = J('evidence/security/zap_workflow_post_evidence.json')['post_requests_to_workflow_endpoints']
+zmode = J('evidence/security/zap_mode.json')['mode']
+zurls = len(J('evidence/security/zap_urls.json')['urls'])
+o.append(f"## 3. OWASP ZAP passive scan while the Playwright tests run both workflows\nScript: `scripts/zap_passive_run.sh` (launch command saved in `evidence/security/zap_launch_command.txt`; **mode queried from the ZAP API: `{zmode}`** — passive scanners only, no spider, no active scan, `zap_mode.json`). The Playwright specs UC-01 (add) and UC-02 (remove) — {zrun['expected']} tests, {zrun['unexpected']} unexpected results — ran through the proxy: **{zmsg} HTTP messages** recorded ({zurls} distinct URLs), including **{sum(zpost.values())} POST requests to the workflow endpoints** ({', '.join(f'{k.replace('http://127.0.0.1:8000','')}: {v}' for k, v in zpost.items())}; `zap_workflow_post_evidence.json`), passive queue drained before export. Raw alerts: `zap_alerts_raw.json`; raw `Set-Cookie` headers: `zap_set_cookie_headers.txt`.\n")
 o.append('| Risk | Alert | Instances | Evidence (first) | Component | Likely impact | Recommended correction |\n|---|---|---|---|---|---|---|')
 KB = {
  'Content Security Policy (CSP) Header Not Set': ('Web pages (`/web/*`); no CSP in `InvenTree/settings.py`', 'No browser-enforced restriction on script/style sources: a successful XSS (none found) would face no second line of defence.', 'Send a `Content-Security-Policy` header (e.g. `default-src \'self\'`) from the reverse proxy / Django CSP middleware.'),
@@ -50,9 +55,9 @@ for (risk, name), v in sorted(g.items(), key=lambda x: (risk_order.get(x[0][0], 
     ev = (v[0].get('evidence') or '').replace('\n', ' ')[:55]
     o.append(f"| {risk} | {name} | {len(v)} | `{ev}` | {comp} | {imp} | {fix} |")
 o.append('\n### 3.1 Security controls reviewed (≥ 2 required) — corroborated with source/configuration and live headers\n| Control | Observation (ZAP / live) | Source / config corroboration | Verdict |\n|---|---|---|---|\n'
- '| **Session cookie attributes** | `sessionid`: HttpOnly present; SameSite absent; Secure absent (HTTP dev server) | `settings.py` L958-993: `SESSION_COOKIE_SAMESITE = COOKIE_MODE` (default `False` → attribute omitted); `SESSION_COOKIE_SECURE` default false (true behind HTTPS); HttpOnly is Django\'s default | **Partially met**: HttpOnly ✔; SameSite and Secure need deployment settings (finding F-2) |\n'
+ '| **Session cookie attributes** | raw header (`zap_set_cookie_headers.txt`): `sessionid=…; HttpOnly; Max-Age=1209600; Path=/` — HttpOnly present, SameSite absent, Secure absent (HTTP dev server) | `settings.py` L958-993: `SESSION_COOKIE_SAMESITE = COOKIE_MODE` (default `False` → attribute omitted); `SESSION_COOKIE_SECURE` default false (true behind HTTPS); HttpOnly is Django\'s default | **Partially met**: HttpOnly ✔; SameSite and Secure need deployment settings (finding F-2) |\n'
  '| **Role-based access checks** | Viewer / anonymous denied on add and remove, no side effect (§2) | `ModelPermission` (DRF `DjangoModelPermissions`) on `StockItem` queryset + `update_group_roles` (see TEST_BASIS §4 BR-4) | **Met** (no findings) |\n'
- '| **CSRF protection** | `POST /api/auth/v1/auth/login` without a CSRF token → **403** (live check); `csrftoken` cookie + `X-CSRFToken` header used by the SPA | `CSRF_HEADER_NAME`, `CSRF_COOKIE_NAME` in `settings.py` L970-975; `django.middleware.csrf` enabled | **Met** |\n'
+ '| **CSRF protection** | `POST /api/auth/v1/auth/login` without a CSRF token → **403** (live check, saved: `evidence/security/csrf_login_check.txt`); `csrftoken` cookie + `X-CSRFToken` header used by the SPA | `CSRF_HEADER_NAME`, `CSRF_COOKIE_NAME` in `settings.py` L970-975; `django.middleware.csrf` enabled | **Met** |\n'
  '| **Clickjacking / MIME-sniffing / referrer headers** | Responses carry `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: same-origin`, `Cross-Origin-Opener-Policy: same-origin` | `SecurityMiddleware`, `XFrameOptionsMiddleware` in `settings.py` | **Met** (CSP missing: finding F-1) |\n'
  '| **Authentication endpoint** | Login via allauth headless API; wrong credentials → 401 (UC05, API tests) | — | **Met** (note DEF-05: first login after restart silently fails — usability) |')
 
@@ -60,7 +65,7 @@ nvul = [x for x in pip if x.get('vulns')]
 o.append('\n## 4. Dependency audit\n### 4.1 Backend — `pip-audit` on `upstream/src/backend/requirements.txt` (pinned, hash-locked)\n'
  f"Packages checked: **{len(pip)}** (full list with versions: `evidence/security/pip_audit_packages.txt`; raw `evidence/security/pip_audit.json`; includes Django 5.2.19, djangorestframework, gunicorn 26.2.0, requests, cryptography…). Result: **{len(nvul)} packages with known vulnerabilities** — *documented control with no findings* (checked 2026-11-16 against the PyPI/OSV advisory databases).\n")
 sev = collections.Counter(a['advisory']['severity'] for a in adv)
-o.append(f"### 4.2 Frontend — `yarn audit` on `upstream/src/frontend/yarn.lock`\n{ysum['totalDependencies']} dependencies checked; advisories: {dict(sev)} (raw `evidence/security/yarn_audit.jsonl`).\n")
+o.append(f"### 4.2 Frontend — `yarn audit` on `upstream/src/frontend/yarn.lock`\n{ysum['totalDependencies']} dependencies checked; advisories: {dict(sev)} (raw `evidence/security/yarn_audit.jsonl`). The 9 advisory lines are **5 unique advisories**: the remaining 4 are the same `glob`/`minimatch` advisories reported through additional dependency paths (e.g. via `nyc`).\n")
 o.append('| Package (version) | Severity | Advisory | Dependency path | Runtime or build-time | Likely impact | Recommended correction |\n|---|---|---|---|---|---|---|')
 seen = set()
 for a in adv:

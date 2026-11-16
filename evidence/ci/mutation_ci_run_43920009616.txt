@@ -1,0 +1,9 @@
+# CI mutation job, run 43920009616 (PR #13, commit 05a49ce, after the killing tests; gate threshold 90 %)
+planned mutants: 166 (standard + custom), workers: 3
+baseline ok in worker 0 (38s)
+baseline ok in worker 1 (34s)
+baseline ok in worker 2 (34s)
+DONE total=166 killed=157 survived=9 score=94.6% in 1077s
+mutants 166, killed 157, survived 9 (equivalent: 7) -> adjusted score 98.7 % (threshold 90.0 %)
+  SURVIVOR M037 SDL StockRemoveSerializer.validate L2055 delete statement: data = super().validate(data)
+  SURVIVOR M076 AOR StockItem.add_stock L3429 + -> -

@@ -1,86 +1,52 @@
 {
- "StockAdjustmentItemSerializer.validate_pk|False -> True": {
-  "justification": "`get_global_setting(..., backup_value=False, cache=False)`: `backup_value` only applies when the setting row is missing (never) and `cache` only changes caching of a setting read; no observable difference.",
+ "StockAdjustmentItemSerializer.validate_pk|False -> True|False": {
+  "justification": "`backup_value=False` of `get_global_setting`: it only applies when the setting is not defined, which cannot happen for `STOCK_ALLOW_OUT_OF_STOCK_TRANSFER` (a declared global setting with a default) \u2014 unobservable. (The `cache=False` constant of the same call IS observable and is killed by `test_validate_pk_does_not_use_a_cached_setting_value`.)",
   "line": 1839,
-  "operator": "CRP",
-  "id_round2": "M002"
+  "operator": "CRP"
  },
- "StockAdjustmentSerializer.validate|delete statement: super().validate(data)": {
-  "justification": "The base `Serializer.validate` returns its argument unchanged: deleting the call has no effect.",
+ "StockAdjustmentSerializer.validate|delete statement: super().validate(data)|super().validate(data)": {
+  "justification": "The base `serializers.Serializer.validate` returns its argument unchanged and its return value is discarded: deleting the call has no effect.",
   "line": 1940,
-  "operator": "SDL",
-  "id_round2": "M005"
+  "operator": "SDL"
  },
- "StockAddSerializer.save|or -> and": {
+ "StockAddSerializer.save|or -> and| or ": {
   "justification": "Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable.",
   "line": 2032,
-  "operator": "LCR",
-  "id_round2": "M006"
+  "operator": "LCR"
  },
- "StockAddSerializer.save|<= -> <": {
-  "justification": "Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable.",
+ "StockAddSerializer.save|POSITIVE_GUARD quantity <= 0 boundary moved| <= ": {
+  "justification": "Redundant guard (see above): the model-level `quantity <= 0` check returns False anyway.",
   "line": 2032,
-  "operator": "ROR",
-  "id_round2": "M007"
+  "operator": "CBR-4"
  },
- "StockAddSerializer.save|POSITIVE_GUARD quantity <= 0 boundary moved": {
-  "justification": "Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable.",
-  "line": 2032,
-  "operator": "CBR-4",
-  "id_round2": "M008"
- },
- "StockRemoveSerializer.save|or -> and": {
+ "StockRemoveSerializer.save|or -> and| or ": {
   "justification": "Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable.",
-  "line": 2067,
-  "operator": "LCR",
-  "id_round2": "M009"
+  "line": 2100,
+  "operator": "LCR"
  },
- "StockRemoveSerializer.save|<= -> <": {
-  "justification": "Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable.",
-  "line": 2067,
-  "operator": "ROR",
-  "id_round2": "M010"
+ "StockRemoveSerializer.save|POSITIVE_GUARD quantity <= 0 boundary moved| <= ": {
+  "justification": "Redundant guard (see above): `take_stock(0)` returns False.",
+  "line": 2100,
+  "operator": "CBR-4"
  },
- "StockRemoveSerializer.save|POSITIVE_GUARD quantity <= 0 boundary moved": {
-  "justification": "Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable.",
-  "line": 2067,
-  "operator": "CBR-4",
-  "id_round2": "M011"
- },
- "StockItem.add_stock|delete statement: tracking_info['quantity'] = float(self.quantity + quantity)": {
-  "justification": "The quantity delta is dropped from `additional_data` (it is recorded as a field change, `changes['quantity']`, which the tests assert), so the value is inert.",
+ "StockItem.add_stock|delete statement: tracking_info['quantity'] = float(self.quantity + quantity)|tracking_info['quantity'] = float(self.quantity + quantity)": {
+  "justification": "The quantity delta is dropped from the stored audit data: the observed entry is `additional_data={'deltas': {'added': 2.5}}` and `changes={'quantity': ['10.00000','12.50000'], \u2026}` (the quantity is recorded as a FIELD CHANGE, asserted by `test_add_records_history_with_deltas_and_notes`), so the value of `tracking_info['quantity']` is inert.",
   "line": 3429,
-  "operator": "SDL",
-  "id_round2": "M013"
+  "operator": "SDL"
  },
- "StockItem.take_stock|<= -> <": {
+ "StockItem.add_stock|+ -> -| + ": {
+  "justification": "Same statement: the arithmetic of the inert `tracking_info['quantity']` value (see above) is unobservable.",
+  "line": 3429,
+  "operator": "AOR"
+ },
+ "StockItem.take_stock|POSITIVE_GUARD quantity <= 0 boundary moved| <= ": {
   "justification": "First `quantity <= 0` guard: the second guard after the `min()` clamp rejects the same input, so moving this boundary has no effect.",
   "line": 3466,
-  "operator": "ROR",
-  "id_round2": "M014"
+  "operator": "CBR-4"
  },
- "StockItem.take_stock|POSITIVE_GUARD quantity <= 0 boundary moved": {
-  "justification": "First `quantity <= 0` guard: the second guard after the `min()` clamp rejects the same input, so moving this boundary has no effect.",
-  "line": 3466,
-  "operator": "CBR-4",
-  "id_round2": "M015"
- },
- "StockItem.save|and -> or": {
-  "justification": "`(user or notes) and not has_pending_event`: with `or`, an extra `audit_event(...)` context is opened; the audit layer attaches it to the same entry, so the number and content of audit entries are identical (checked by `test_update_save_inside_a_pending_event_adds_exactly_one_audit_entry`).",
-  "line": 552,
-  "operator": "LCR",
-  "id_round2": "M025"
- },
- "StockItem.delete|False -> True": {
-  "justification": "`cache=False` argument of `get_global_setting` (caching of a setting read): no observable difference.",
-  "line": 578,
-  "operator": "CRP",
-  "id_round2": "M026"
- },
- "StockAdjustView.get_serializer_context|delete statement: context['request'] = self.request": {
+ "StockAdjustView.get_serializer_context|delete statement: context['request'] = self.request|context['request'] = self.request": {
   "justification": "DRF `GenericAPIView.get_serializer_context` already supplies `request`; the explicit assignment is redundant.",
   "line": 240,
-  "operator": "SDL",
-  "id_round2": "M027"
+  "operator": "SDL"
  }
 }

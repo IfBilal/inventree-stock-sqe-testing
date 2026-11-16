@@ -36,7 +36,9 @@ def _unavailable(when):
 @pytest.mark.parametrize('when', ['enter', 'exit'])
 def test_remove_fails_then_recovers_without_duplicates(when, admin_client, item, monkeypatch):
     from stock.models import StockItem
+    from audit.models import AuditLogEntry
     body = {'items': [{'pk': item.pk, 'quantity': 4}]}
+    audit_before, items_before = AuditLogEntry.objects.count(), StockItem.objects.count()
 
     # 1. the dependency becomes unavailable before the write completes
     with monkeypatch.context() as m:
@@ -47,6 +49,7 @@ def test_remove_fails_then_recovers_without_duplicates(when, admin_client, item,
     # 2. persisted state after the failure: atomic rollback — nothing half-written
     assert reload(item).quantity == Decimal(10)
     assert history(item, REMOVE) == []
+    assert AuditLogEntry.objects.count() == audit_before and StockItem.objects.count() == items_before     # no record of ANY kind was left behind
 
     # 3. dependency restored (the double is undone by the context manager) -> retry the SAME request
     r = admin_client.post('/api/stock/remove/', body, format='json')
@@ -56,6 +59,7 @@ def test_remove_fails_then_recovers_without_duplicates(when, admin_client, item,
     assert reload(item).quantity == Decimal(6)
     entries = history(item, REMOVE)
     assert len(entries) == 1 and entries[0].additional_data['deltas']['removed'] == 4.0
+    assert AuditLogEntry.objects.count() == audit_before + 1 and StockItem.objects.count() == items_before   # exactly ONE new record in total (no duplicates)
 
 
 @pytest.mark.req('FR-10')
