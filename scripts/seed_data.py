@@ -38,5 +38,5 @@ loc, _ = StockLocation.objects.get_or_create(name='Main Warehouse', defaults={'d
 for name, qty in [('Keyboard', 10), ('Mouse', 25), ('Monitor', 0)]:
     p, _ = Part.objects.get_or_create(name=name, defaults={'description': f'{name} (synthetic)', 'category': cat, 'component': True, 'purchaseable': True})
     if not StockItem.objects.filter(part=p).exists():
-        StockItem.objects.create(part=p, location=loc, quantity=qty)
+        StockItem.objects.create(part=p, location=loc, quantity=qty, delete_on_deplete=False)  # explicit: deterministic baseline
 print('SEED_OK users=%d parts=%d items=%d' % (User.objects.count(), Part.objects.count(), StockItem.objects.count()))

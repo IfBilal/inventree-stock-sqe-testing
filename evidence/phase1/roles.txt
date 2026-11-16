@@ -1,0 +1,12 @@
+## ROLES (add/remove on pk1 qty 1)
+# admin:admin12345
+{"items":[{"pk":1,"quantity":"1.00000","status":null,"merge":false}]}  -> HTTP 201
+{"items":[{"pk":1,"quantity":"1.00000","status":null,"merge":false}]}  -> HTTP 201
+# manager:manager12345
+{"items":[{"pk":1,"quantity":"1.00000","status":null,"merge":false}]}  -> HTTP 201
+{"items":[{"pk":1,"quantity":"1.00000","status":null,"merge":false}]}  -> HTTP 201
+# viewer:viewer12345
+{"detail":"You do not have permission to perform this action."}  -> HTTP 403
+{"detail":"You do not have permission to perform this action."}  -> HTTP 403
+# unauthenticated
+{"detail":"Authentication credentials were not provided."}  -> HTTP 401

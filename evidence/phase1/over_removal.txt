@@ -1,0 +1,16 @@
+## OVER-REMOVAL: Keyboard pk1 qty 10, delete_on_deplete=False, remove 100
+  qty(pk=1)= 10.0 
+{"items":[{"pk":1,"quantity":"100.00000","status":null,"merge":false}]}  -> HTTP 201
+  qty(pk=1)= 0.0 
+## ZERO: Mouse pk2 qty 25, add 0 and remove 0
+{"items":[{"pk":2,"quantity":"0.00000","status":null,"merge":false}]}  -> HTTP 201
+{"items":[{"pk":2,"quantity":"0.00000","status":null,"merge":false}]}  -> HTTP 201
+  qty(pk=2)= 25.0 
+## NEGATIVE: add -1
+{"items":{"0":{"quantity":["Ensure this value is greater than or equal to 0."]}}}  -> HTTP 400
+  qty(pk=2)= 25.0 
+## OVERFLOW: Mouse pk2 add 9999999999.99999 (max per request) twice
+{"items":[{"pk":2,"quantity":"9999999999.99999","status":null,"merge":false}]}  -> HTTP 201
+  qty(pk=2)= <none> Error details can be found in the admin panel
+{"error":"InvalidOperation","error_class":"<class 'decimal.InvalidOperation'>","detail":"Error details can be found in the admin panel","path":"/api/stock/add/","status_code":500}  -> HTTP 500
+  qty(pk=2)= <none> Error details can be found in the admin panel
