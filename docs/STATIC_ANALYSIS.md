@@ -3,10 +3,10 @@
 Tool: SonarQube Community Build **26.10.0.133078**, Python analyzer plugin 5.32, scanner 6.2.1.4610, JDK 21.0.13 (Temurin). Server run locally from the zip distribution (no Docker daemon available on the machine); data directory on tmpfs because Elasticsearch's 90 % disk watermark blocked start on the nearly full disk — metrics are exported to `evidence/sonar/` immediately after each scan.
 Scope (`sonar-project.properties`): `upstream/src/backend/InvenTree/stock` (excluding migrations, fixtures, locale, tests); upstream tests and `tests/team` are declared as **tests**, so they are not counted as production code.
 Run: `scripts/sonar_scan.sh` (re-runs the scan and re-exports metrics). Raw data: `evidence/sonar/project_measures.json`.
-Analysis warnings: exactly one — `No report was found for sonar.python.coverage.reportPaths` (no coverage report exists before Phase 4); no analyzer errors. Dashboard screenshot: `evidence/sonar/dashboard.png`.
+Analysis warnings on the baseline scan: exactly one — `No report was found for sonar.python.coverage.reportPaths` (no coverage report existed before Phase 4); no analyzer errors. Dashboard screenshots: `evidence/sonar/dashboard_baseline.png` (baseline) and `dashboard_phase4.png` (after Phase 4). The "Limited security analysis" banner in the UI is a Community Build notice: it has no taint-analysis / injection-flow rules, so a clean security result is weaker evidence than with the commercial editions — one more reason for the dynamic security work of Phase 9.
 Analyzer validation: a throw-away file with a hard-coded password and `a == a` produced 1 vulnerability and 1 bug, proving the analyzer flags problems, so the **0 issues** below is a genuine result, not a tool failure (InvenTree enforces ruff in its CI).
 
-## 1. Metrics (baseline, before our tests — coverage is 0 because no coverage report was supplied yet)
+## 1. Metrics — BASELINE export (2026-11-16 18:24, before any test; `evidence/sonar/project_measures_baseline.json`, `dashboard_baseline.png`; coverage is 0 because no coverage report existed yet)
 | Metric | Value | What it shows / how we read it |
 |---|---|---|
 | Lines / Lines of code (ncloc) | 8 390 / 5 114 | Size of the analysed module (11 files, 223 functions, 117 classes). Basis for density measures; ncloc excludes comments and blanks. |
@@ -21,6 +21,15 @@ Analyzer validation: a throw-away file with a hard-coded password and `a == a` p
 | Coverage / line / branch | 0 % / 0 % / 0 % | Share of code run by tests. 0 because **no coverage report** has been imported yet; becomes meaningful after Phase 4 (`evidence/coverage/coverage.xml`). |
 | Quality gate | OK | Sonar way gate evaluates *new* code; on first analysis it passes. |
 Important limits: a clean static report does not contradict the dynamic defects we found (DEF-01 over-removal clamping, DEF-02 zero accepted, DEF-03 overflow → 500): they are *behavioural* defects against our requirements that static rules cannot know. This is itself a finding for the test completion report.
+
+## 1-bis. Evolution after Phase 4 (re-scan with the unit-test coverage report; `evidence/sonar/project_measures_phase4.json`)
+| Metric | Baseline | After Phase 4 | Why |
+|---|---|---|---|
+| Coverage / line / branch | 0 % / 0 % / – | **40.2 % / 47.1 % / 18.2 %** | Imported coverage.py XML. Low for the **whole module** because merge, disassemble, serialization, transfer, count, filters and generators are out of scope; our in-scope functions are at 100 %/99–100 % (`docs/COVERAGE_SCOPE.md`). SonarQube cannot restrict coverage to a function list, hence the separate per-function check in CI (Phase 12). |
+| Bugs / smells / vulnerabilities / hotspots | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 (after fix) | — |
+| Complexity, cognitive, duplication, ncloc | 773 / 803 / 0.6 % / 5 114 | unchanged | production code untouched |
+**A real finding by the tool on our own code:** the first Phase 4/6 scan reported **1 bug** (`python:S5779`, CRITICAL, `tests/team/api/conftest.py`: an `assert` inside a `try/except Exception`, whose `except` would swallow the assertion). It was fixed (explicit status check) and the issue is now CLOSED/FIXED (`evidence/sonar/issues.json`). Analyzer rule set evidence: `evidence/sonar/python_quality_profile.json` (232 active rules, profile "Sonar way").
+Quality gate "OK" is evaluated on **new code** (Sonar way gate); on a first analysis it is not strong evidence, so our CI gate (Phase 12) adds explicit thresholds.
 
 ## 1a. Where the complexity and duplication are (per file, `evidence/sonar/per_file_metrics.txt`)
 | File | ncloc | Cyclomatic | Cognitive | Duplicated lines |

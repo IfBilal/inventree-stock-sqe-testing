@@ -38,7 +38,7 @@
             },
             {
                 "metric": "branch_coverage",
-                "value": "16.7",
+                "value": "18.2",
                 "bestValue": false
             },
             {
@@ -52,7 +52,7 @@
             },
             {
                 "metric": "line_coverage",
-                "value": "46.7",
+                "value": "47.1",
                 "bestValue": false
             },
             {
@@ -61,7 +61,7 @@
             },
             {
                 "metric": "coverage",
-                "value": "39.5",
+                "value": "40.2",
                 "bestValue": false
             },
             {

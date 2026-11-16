@@ -1,0 +1,26 @@
+# DEF-05 evidence: network trace of the first login attempts after a fresh server start (scripts/reset.sh + start.sh), 2026-11-16
+# Source: browser script (Playwright/Chromium), responses of /api and auth endpoints with seconds.millis
+11.951 200 GET /web/login
+12.627 200 GET /api/auth/v1/config
+12.631 200 GET /api/
+12.704 200 POST /api/system-internal/observability/end
+12.706 401 GET /api/auth/v1/auth/session
+--- click 1
+13.395 401 GET /api/auth/v1/auth/session
+13.692 200 POST /api/auth/v1/auth/login
+13.760 200 GET /auth/
+13.817 401 GET /api/user/me/?roles=true
+url after click 1: http://127.0.0.1:8000/web/login
+--- click 2
+19.402 401 GET /api/auth/v1/auth/session
+19.717 200 POST /api/auth/v1/auth/login
+19.775 200 GET /auth/
+19.858 200 GET /api/user/me/?roles=true
+19.952 200 GET /api/icons/
+19.959 200 GET /api/generic/status/
+19.993 200 GET /api/contenttype/?features=true
+20.009 200 GET /api/settings/global/
+20.010 200 GET /api/settings/user/
+20.122 200 POST /api/system-internal/observability/end
+20.127 200 GET /api/notifications/?read=false&limit=1
+url after click 2: http://127.0.0.1:8000/web/home

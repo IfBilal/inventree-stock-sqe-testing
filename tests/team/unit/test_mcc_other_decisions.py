@@ -84,7 +84,6 @@ def test_br1_take_stock_guard_decision(n, row, applied, make_item, user):
 
 # ============================================================ small decisions
 @pytest.mark.parametrize('n,row,reject', rows('VQ'))
-@pytest.mark.req('FR-03b')
 def test_validate_quantity_zero_decision(n, row, reject):
     from rest_framework.exceptions import ValidationError
     from stock.serializers import StockAdjustmentItemSerializer as S

@@ -1,4 +1,5 @@
 openapi: 3.0.3
+x-unsupported-methods-note: "Every path answers 405 to the methods it does not define; this is measured by the negative-method criterion (C8), not documented per operation."
 info:
   title: InvenTree stock adjustment API (test contract)
   version: "1.1"
@@ -33,7 +34,6 @@ paths:
         '400': { description: "Validation error: invalid input, non-adjustable item or unknown pk" }
         '401': { description: "Not authenticated" }
         '403': { description: "Role lacks the stock add right" }
-        '405': { description: "Method not allowed (only POST)" }
         '415': { description: "Unsupported media type (only application/json)" }
         '500': { description: "Unhandled server error (a defect when caused by client input: DEF-04)" }
   /api/stock/remove/:
@@ -56,7 +56,6 @@ paths:
         '400': { description: "Validation error, including removal larger than the available quantity" }
         '401': { description: "Not authenticated" }
         '403': { description: "Role lacks the stock add right" }
-        '405': { description: "Method not allowed (only POST)" }
         '415': { description: "Unsupported media type (only application/json)" }
         '500': { description: "Unhandled server error (a defect when caused by client input: DEF-04)" }
   /api/stock/{id}/:
@@ -75,6 +74,7 @@ paths:
             application/json:
               schema: { $ref: '#/components/schemas/StockItem' }
         '404': { description: "No such item (also after depletion with delete_on_deplete)" }
+        '500': { description: "Unhandled error: an item whose stored quantity is not representable cannot be serialised (DEF-03)" }
   /api/audit/:
     get:
       operationId: auditList
@@ -86,10 +86,11 @@ paths:
         - { name: offset, in: query, schema: { type: integer, minimum: 0 } }
       responses:
         '200':
-          description: "Paginated history entries (note: the object_pk filter is NOT supported, W-06)"
+          description: "Paginated history entries (the object_pk filter is NOT supported, W-06)"
           content:
             application/json:
               schema: { $ref: '#/components/schemas/AuditPage' }
+        '400': { description: "Invalid filter value of the wrong type (e.g. event_type=abc); out-of-range values are NOT rejected (W-09)" }
 components:
   securitySchemes:
     basicAuth: { type: http, scheme: basic }
@@ -129,16 +130,15 @@ components:
           maxLength: 50
         status:
           type: integer
-          nullable: true
           enum: [10, 50, 55, 60, 65, 70, 75, 85]
-          description: "Stock status code applied with the adjustment (null = no change)"
+          description: "Stock status code applied with the adjustment (omit the field for no change; null is rejected)"
         merge:
           type: boolean
     StockAdjustmentEcho:
       type: object
       required: [items]
       properties:
-        items: { type: array, items: { type: object, required: [pk, quantity], properties: { pk: { type: integer }, quantity: { type: string } } } }
+        items: { type: array, items: { type: object, required: [pk, quantity], properties: { pk: { type: integer, nullable: true, description: "null when the adjustment deleted the item (W-13)" }, quantity: { type: string } } } }
         notes: { type: string }
     StockItem:
       type: object

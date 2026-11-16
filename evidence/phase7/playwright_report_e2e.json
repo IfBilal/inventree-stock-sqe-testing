@@ -1,0 +1,1729 @@
+{
+  "config": {
+    "argv": [
+      "/home/bilaltahir/.nvm/versions/node/v24.11.1/bin/node",
+      "/home/bilaltahir/Desktop/sqe-proj/tests/team/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/bilaltahir/Desktop/sqe-proj/tests/team/playwright.config.ts",
+    "rootDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "setup",
+        "name": "setup",
+        "testDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/auth\\.setup\\.ts/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
+        "testIgnore": [
+          "/auth\\.setup\\.ts/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "setup",
+        "testDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
+        "snapshotDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:8000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "headless": true,
+          "viewport": {
+            "width": 1400,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "setup"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
+        "snapshotDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:8000",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "headless": true,
+          "viewport": {
+            "width": 1400,
+            "height": 1000
+          },
+          "browserName": "chromium"
+        },
+        "dependencies": [
+          "setup"
+        ],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "../../reports/playwright-html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../reports/playwright-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.setup.ts",
+      "file": "auth.setup.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "authenticate manager",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "DEF-05",
+                  "description": "first login attempt after server start did not complete; clicked Log In again"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10431,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:14.484Z",
+                  "annotations": [
+                    {
+                      "type": "DEF-05",
+                      "description": "first login attempt after server start did not complete; clicked Log In again"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "17e3fe6f4d9d8bd79c6b-37dabfa02fb82f4625c9",
+          "file": "auth.setup.ts",
+          "line": 7,
+          "column": 3
+        },
+        {
+          "title": "authenticate viewer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2338,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:24.981Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "17e3fe6f4d9d8bd79c6b-00f647e2987e35dd43bb",
+          "file": "auth.setup.ts",
+          "line": 7,
+          "column": 3
+        },
+        {
+          "title": "authenticate admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2336,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:27.334Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "17e3fe6f4d9d8bd79c6b-a04d83a028572a7e3261",
+          "file": "auth.setup.ts",
+          "line": 7,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "uc01_add_stock.spec.ts",
+      "file": "uc01_add_stock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "UC01-MAIN add 5 to an item holding 10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3539,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:29.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f62e072bdd9d525bcf-7e15fc459b5724187795",
+          "file": "uc01_add_stock.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "UC01-AF1 add a decimal quantity 0.5",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3277,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:33.605Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f62e072bdd9d525bcf-84532864d0f6235eae5d",
+          "file": "uc01_add_stock.spec.ts",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "UC01-AF2 add 5 with notes \"restock\"",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3022,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:36.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f62e072bdd9d525bcf-2314ee0ce7288e879a65",
+          "file": "uc01_add_stock.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "UC01-EF1 quantity 0 is rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                  "location": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12527,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc01_add_stock.spec.ts:40:3",
+                    "location": {
+                      "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                      "column": 133,
+                      "line": 86
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers.ts:86\n\n \u001b[90m 84 |\u001b[39m   \u001b[36mconst\u001b[39m dlg \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'dialog'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(\u001b[35m/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (message) \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(message)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast(page)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/^Success/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "column": 133,
+                        "line": 86
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n\n   at helpers.ts:86\n\n  84 |   const dlg = page.getByRole('dialog');\n  85 |   await expect(dlg).toBeVisible();\n> 86 |   await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();\n     |                                                                                                                                     ^\n  87 |   if (message) await expect(dlg.getByText(message).first()).toBeVisible();\n  88 |   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);\n  89 | }\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc01_add_stock.spec.ts:40:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:39.942Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results/uc01_add_stock-UC01-EF1-quantity-0-is-rejected-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "column": 133,
+                    "line": 86
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f62e072bdd9d525bcf-1eb3ca392d3074c41e35",
+          "file": "uc01_add_stock.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "UC01-EF2 typed quantity -3 is rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                  "location": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12581,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc01_add_stock.spec.ts:49:3",
+                    "location": {
+                      "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                      "column": 133,
+                      "line": 86
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers.ts:86\n\n \u001b[90m 84 |\u001b[39m   \u001b[36mconst\u001b[39m dlg \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'dialog'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(\u001b[35m/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (message) \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(message)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast(page)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/^Success/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "column": 133,
+                        "line": 86
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n\n   at helpers.ts:86\n\n  84 |   const dlg = page.getByRole('dialog');\n  85 |   await expect(dlg).toBeVisible();\n> 86 |   await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();\n     |                                                                                                                                     ^\n  87 |   if (message) await expect(dlg.getByText(message).first()).toBeVisible();\n  88 |   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);\n  89 | }\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc01_add_stock.spec.ts:49:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:47:52.490Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results/uc01_add_stock-UC01-EF2-typed-quantity--3-is-rejected-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "column": 133,
+                    "line": 86
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f62e072bdd9d525bcf-913edd7d777bd04f940e",
+          "file": "uc01_add_stock.spec.ts",
+          "line": 44,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "uc02_remove_stock.spec.ts",
+      "file": "uc02_remove_stock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "UC02-MAIN remove 4 from 10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3277,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:05.130Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8bebe28121ecb2dc0cd8-d4a0c0d67f4d989b77db",
+          "file": "uc02_remove_stock.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "UC02-AF1 remove 9 from 10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:08.423Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8bebe28121ecb2dc0cd8-946efa3e21df965a0299",
+          "file": "uc02_remove_stock.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "UC02-AF2 remove 4 with notes \"damaged\"",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3053,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:11.593Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8bebe28121ecb2dc0cd8-f327241bd37f0a83190d",
+          "file": "uc02_remove_stock.spec.ts",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "UC02-EF1 removing 11 from 10 is rejected and names the available quantity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Baseline defect DEF-01: expected behaviour is not met (see GitHub issues); remove after the fix",
+                  "location": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12459,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc02_remove_stock.spec.ts:38:3",
+                    "location": {
+                      "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                      "column": 133,
+                      "line": 86
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers.ts:86\n\n \u001b[90m 84 |\u001b[39m   \u001b[36mconst\u001b[39m dlg \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'dialog'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(\u001b[35m/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (message) \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(message)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast(page)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/^Success/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "column": 133,
+                        "line": 86
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n\n   at helpers.ts:86\n\n  84 |   const dlg = page.getByRole('dialog');\n  85 |   await expect(dlg).toBeVisible();\n> 86 |   await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();\n     |                                                                                                                                     ^\n  87 |   if (message) await expect(dlg.getByText(message).first()).toBeVisible();\n  88 |   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);\n  89 | }\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc02_remove_stock.spec.ts:38:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:14.661Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Baseline defect DEF-01: expected behaviour is not met (see GitHub issues); remove after the fix",
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results/uc02_remove_stock-UC02-EF1-a3c6b-ames-the-available-quantity-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "column": 133,
+                    "line": 86
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8bebe28121ecb2dc0cd8-0a31d9ef2a9ac05a0b7b",
+          "file": "uc02_remove_stock.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "UC02-EF2 quantity 0 is rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                  "location": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12403,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc02_remove_stock.spec.ts:47:3",
+                    "location": {
+                      "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                      "column": 133,
+                      "line": 86
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers.ts:86\n\n \u001b[90m 84 |\u001b[39m   \u001b[36mconst\u001b[39m dlg \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'dialog'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(\u001b[35m/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (message) \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(message)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast(page)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/^Success/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "column": 133,
+                        "line": 86
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n\n   at helpers.ts:86\n\n  84 |   const dlg = page.getByRole('dialog');\n  85 |   await expect(dlg).toBeVisible();\n> 86 |   await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();\n     |                                                                                                                                     ^\n  87 |   if (message) await expect(dlg.getByText(message).first()).toBeVisible();\n  88 |   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);\n  89 | }\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc02_remove_stock.spec.ts:47:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:27.138Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results/uc02_remove_stock-UC02-EF2-quantity-0-is-rejected-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "column": 133,
+                    "line": 86
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8bebe28121ecb2dc0cd8-e45ac564fc0c4f612b49",
+          "file": "uc02_remove_stock.spec.ts",
+          "line": 42,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "uc03_deplete_item.spec.ts",
+      "file": "uc03_deplete_item.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "UC03-MAIN removing all 25 retains the item at 0 (delete_on_deplete=false)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3263,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:39.568Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2fb74ec7258aa5bb84c-eccbd2bdde42f9008998",
+          "file": "uc03_deplete_item.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "UC03-AF1 with delete_on_deplete=true the item disappears",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3338,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:42.847Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2fb74ec7258aa5bb84c-f6cc0a8126fa51f5c197",
+          "file": "uc03_deplete_item.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "UC03-AF2 remove 24 then 1: depleted only after the second",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4806,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:46.200Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2fb74ec7258aa5bb84c-42828b7f7be909aba943",
+          "file": "uc03_deplete_item.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "UC03-EF1 an already depleted item offers nothing to remove and nothing changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3011,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:51.025Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2fb74ec7258aa5bb84c-e76e04b2f5599201c193",
+          "file": "uc03_deplete_item.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "UC03-EF2 removing 26 from 25 is rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Baseline defect DEF-01: expected behaviour is not met (see GitHub issues); remove after the fix",
+                  "location": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12565,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc03_deplete_item.spec.ts:51:3",
+                    "location": {
+                      "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                      "column": 133,
+                      "line": 86
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers.ts:86\n\n \u001b[90m 84 |\u001b[39m   \u001b[36mconst\u001b[39m dlg \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'dialog'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(\u001b[35m/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (message) \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(message)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast(page)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/^Success/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "column": 133,
+                        "line": 86
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n\n   at helpers.ts:86\n\n  84 |   const dlg = page.getByRole('dialog');\n  85 |   await expect(dlg).toBeVisible();\n> 86 |   await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();\n     |                                                                                                                                     ^\n  87 |   if (message) await expect(dlg.getByText(message).first()).toBeVisible();\n  88 |   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);\n  89 | }\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc03_deplete_item.spec.ts:51:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:48:54.053Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Baseline defect DEF-01: expected behaviour is not met (see GitHub issues); remove after the fix",
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results/uc03_deplete_item-UC03-EF2-removing-26-from-25-is-rejected-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "column": 133,
+                    "line": 86
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2fb74ec7258aa5bb84c-010f1e7814a2e39775eb",
+          "file": "uc03_deplete_item.spec.ts",
+          "line": 46,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "uc04_restock.spec.ts",
+      "file": "uc04_restock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "UC04-MAIN add 8 to a depleted item",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3049,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:06.642Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2f74076788eb1bd82edc-c27e66de569a766a5d74",
+          "file": "uc04_restock.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "UC04-AF1 add 8 then remove 3 (cross-workflow) reads back 5 and ordered history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4737,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:09.707Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2f74076788eb1bd82edc-1104743958b38fc8b504",
+          "file": "uc04_restock.spec.ts",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "UC04-AF2 add 8 then add 2 (repeated action) gives 10 with two add entries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3880,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:14.463Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2f74076788eb1bd82edc-bfc424a4da3ceaa3b36f",
+          "file": "uc04_restock.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "UC04-EF1 adding 10 000 000 000 (above the maximum) is rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3301,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:18.365Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2f74076788eb1bd82edc-32b3f391c8ea7ccd82a6",
+          "file": "uc04_restock.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "UC04-EF2 adding 0.000001 (6 decimals) is rejected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3240,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:21.688Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2f74076788eb1bd82edc-9d1d01019f026bec232b",
+          "file": "uc04_restock.spec.ts",
+          "line": 43,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "uc05_roles.spec.ts",
+      "file": "uc05_roles.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "UC05-EF1 the viewer calling the add API directly gets 403 and nothing changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1268,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:34.473Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f4a1a73bb83a9b91f0f-87e9d6686c5221e7d34b",
+          "file": "uc05_roles.spec.ts",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "UC05-EF2 an anonymous user gets 401 on the API and is redirected to the login page in the UI",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1938,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:35.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f4a1a73bb83a9b91f0f-7c695aa029ab8b619b30",
+          "file": "uc05_roles.spec.ts",
+          "line": 44,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "viewer",
+          "file": "uc05_roles.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UC05-MAIN the viewer sees the quantity but has no Stock Operations menu",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3260,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-16T15:49:24.957Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4f4a1a73bb83a9b91f0f-799801099a7e099ecce0",
+              "file": "uc05_roles.spec.ts",
+              "line": 7,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "manager",
+          "file": "uc05_roles.spec.ts",
+          "line": 16,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UC05-AF1 the manager adds 1 to the same kind of item",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3176,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-16T15:49:28.239Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4f4a1a73bb83a9b91f0f-92c9bedc22eabcdb2473",
+              "file": "uc05_roles.spec.ts",
+              "line": 18,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "admin",
+          "file": "uc05_roles.spec.ts",
+          "line": 26,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UC05-AF2 the admin (superuser) removes 1",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3020,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-16T15:49:31.434Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4f4a1a73bb83a9b91f0f-62c43d7c63a22e910dff",
+              "file": "uc05_roles.spec.ts",
+              "line": 28,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "uc06_correct_rejected.spec.ts",
+      "file": "uc06_correct_rejected.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "UC06-MAIN add 1.123456 -> error says what to correct -> 1.12345 -> success",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:37.731Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "96f261175dd7f9317b8e-e70220b99aeb49ecea6d",
+          "file": "uc06_correct_rejected.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "UC06-AF1 remove 15 from 10 -> rejected naming the available quantity -> 10 -> success",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Baseline defect DEF-01: expected behaviour is not met (see GitHub issues); remove after the fix",
+                  "location": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13052,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc06_correct_rejected.spec.ts:26:3",
+                    "location": {
+                      "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                      "column": 133,
+                      "line": 86
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers.ts:86\n\n \u001b[90m 84 |\u001b[39m   \u001b[36mconst\u001b[39m dlg \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'dialog'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(\u001b[35m/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (message) \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(message)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast(page)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/^Success/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "column": 133,
+                        "line": 86
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n\n   at helpers.ts:86\n\n  84 |   const dlg = page.getByRole('dialog');\n  85 |   await expect(dlg).toBeVisible();\n> 86 |   await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();\n     |                                                                                                                                     ^\n  87 |   if (message) await expect(dlg.getByText(message).first()).toBeVisible();\n  88 |   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);\n  89 | }\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc06_correct_rejected.spec.ts:26:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:42.035Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Baseline defect DEF-01: expected behaviour is not met (see GitHub issues); remove after the fix",
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results/uc06_correct_rejected-UC06-851dd-ble-quantity---10---success-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "column": 133,
+                    "line": 86
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "96f261175dd7f9317b8e-35f609d3d557624d99c9",
+          "file": "uc06_correct_rejected.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "UC06-AF2 keyboard only: focus order quantity -> notes -> Submit; the keyboard submits the form",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3217,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:55.110Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "96f261175dd7f9317b8e-a35c3c3f8f0f9a23b72c",
+          "file": "uc06_correct_rejected.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "UC06-EF1 after a rejection, correcting to 0 is rejected again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                  "location": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12560,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc06_correct_rejected.spec.ts:62:3",
+                    "location": {
+                      "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                      "column": 133,
+                      "line": 86
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers.ts:86\n\n \u001b[90m 84 |\u001b[39m   \u001b[36mconst\u001b[39m dlg \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'dialog'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(\u001b[35m/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (message) \u001b[36mawait\u001b[39m expect(dlg\u001b[33m.\u001b[39mgetByText(message)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast(page)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/^Success/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "column": 133,
+                        "line": 86
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first() with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()\u001b[22m\n\n\n   at helpers.ts:86\n\n  84 |   const dlg = page.getByRole('dialog');\n  85 |   await expect(dlg).toBeVisible();\n> 86 |   await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();\n     |                                                                                                                                     ^\n  87 |   if (message) await expect(dlg.getByText(message).first()).toBeVisible();\n  88 |   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);\n  89 | }\n    at expectRejected (/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts:86:133)\n    at /home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/uc06_correct_rejected.spec.ts:62:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:49:58.362Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Baseline defect DEF-02: expected behaviour is not met (see GitHub issues); remove after the fix",
+                      "location": {
+                        "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/bilaltahir/Desktop/sqe-proj/tests/team/test-results/uc06_correct_rejected-UC06-a3a66-ting-to-0-is-rejected-again-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e/helpers.ts",
+                    "column": 133,
+                    "line": 86
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "96f261175dd7f9317b8e-890154667782ffd20454",
+          "file": "uc06_correct_rejected.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "UC06-EF2 after a rejection, text is rejected with \"A valid number is required.\"",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3338,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:50:10.946Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "96f261175dd7f9317b8e-cc7499b52f81ce36808e",
+          "file": "uc06_correct_rejected.spec.ts",
+          "line": 66,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T15:47:14.097Z",
+    "duration": 180291.014,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

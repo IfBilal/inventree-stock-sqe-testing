@@ -21,7 +21,7 @@ _EXEC = []
 
 # Baseline mismatches: generated cases whose EXPECTED (contract) outcome the unmodified upstream does not meet.
 # strict xfail + raises=AssertionError: when a defect is fixed the xfail turns XPASS and fails, forcing the marker's removal.
-DEFECT = {'DEF-01': 'over-removal clamped', 'DEF-02': 'zero accepted', 'DEF-04': 'malformed items -> HTTP 500',
+DEFECT = {'W-12': 'boolean true accepted as pk 1 (loose typing)', 'DEF-01': 'over-removal clamped', 'DEF-02': 'zero accepted', 'DEF-04': 'malformed items -> HTTP 500',
           'W-08': 'boolean accepts integers 0/1 (loose typing)', 'W-09': 'audit query parameters are not validated'}
 KNOWN = {}
 for op in ('stockAdd', 'stockRemove'):
@@ -31,13 +31,16 @@ for op in ('stockAdd', 'stockRemove'):
     KNOWN[f'{op}:items:EP:object-instead-of-array'] = 'DEF-04'
     KNOWN[f'{op}:items[].merge:EP:type-integer-1'] = 'W-08'
     KNOWN[f'{op}:items[].merge:EP:type-integer-0'] = 'W-08'
-    KNOWN[f'{op}:items[].merge:EP:type-integer-2'] = 'W-08'
+    KNOWN[f'{op}:items[].pk:EP:type-bool-true'] = 'W-12'
 KNOWN['stockRemove:items[].quantity:BVA:limit-above'] = 'DEF-01'
+for _c in CASES:   # every INVALID query-parameter case of the audit endpoint: not validated (W-09)
+    if _c['location'] == 'query' and _c['expected'] == 'invalid' and _c['id'] != 'auditList:event_type:EP:null':   # type errors of event_type ARE validated (400)
+        KNOWN[_c['id']] = 'W-09'
 
 
 def _is_number(v):
     try:
-        Decimal(str(v)); return not isinstance(v, bool)
+        return (not isinstance(v, bool)) and Decimal(str(v)).is_finite()
     except Exception:
         return False
 
@@ -76,7 +79,7 @@ def _reqs(c):
     if c['location'] == 'body':
         ids = {'FR-01' if c['operation'] == 'stockAdd' else 'FR-05'} if c['expected'] == 'valid' else {'FR-03a'}
         if c['field'].endswith('quantity') and c['technique'] == 'BVA': ids.add('BR-1')
-        if c['class'].startswith('limit-'): ids.add('FR-07')
+        if c['class'].startswith('limit-') and c['expected'] == 'invalid': ids.add('FR-07')       # only the REJECTION verifies FR-07
         if c['class'] == 'min-at' and c['field'].endswith('quantity'): ids.add('FR-03b')
         if c['field'].endswith('.pk'): ids.add('FR-04')
     return ids or {'FR-02'}
@@ -94,7 +97,7 @@ def _params():
 def _dump_executed():
     yield
     os.makedirs(os.path.dirname(EXEC_LOG), exist_ok=True)
-    with open(EXEC_LOG, 'w') as f:
+    with open(EXEC_LOG, 'a' if os.environ.get('API_LOG_APPEND') == '1' else 'w') as f:
         for r in _EXEC:
             f.write(json.dumps(r, sort_keys=True) + '\n')
 
@@ -108,7 +111,7 @@ def _record(case, outcome):
 @pytest.mark.parametrize('case', list(_params()))
 def test_generated_case(case, manager, new_item):
     if case['location'] != 'body':
-        return _run_param_case(case, manager)
+        return _run_param_case(case, manager, new_item)
     pk = new_item(initial_quantity(case))
     before_q, before_h = qty(manager, pk), history(manager, pk)
     body = resolve(case['body'], pk, before_q)
@@ -116,9 +119,9 @@ def test_generated_case(case, manager, new_item):
     seeded = target != pk                                              # {"$pk": n} cases act on a seeded item
     if seeded:
         before_q, before_h = qty(manager, target), history(manager, target)
-    r = manager.post(case['path'], json=body)
-    after_q, after_h = qty(manager, target), history(manager, target)
     try:
+        r = manager.post(case['path'], json=body)
+        after_q, after_h = qty(manager, target), history(manager, target)
         if case['expected'] == 'valid':
             assert r.status_code == 201, (r.status_code, r.text[:200])
             d = delta_of(body)
@@ -145,15 +148,15 @@ def _read_back_optional_fields(client, pk, body, history_after):
         assert sorted(history_after, key=lambda e: e['pk'])[-1]['notes'] == body['notes']
 
 
-def _run_param_case(case, manager):
+def _run_param_case(case, manager, new_item):
     v = case['value']
-    v = v['$pk'] if isinstance(v, dict) and '$pk' in v else v
-    if case['location'] == 'path':
-        r = manager.get(case['path'].replace('{id}', str(v)))
-    else:
-        r = manager.get(f"{case['path']}?model_type=stock.stockitem&{case['field']}={v}&limit=5" if case['field'] != 'limit'
-                        else f"{case['path']}?model_type=stock.stockitem&limit={v}")
+    v = v['$pk'] if isinstance(v, dict) and '$pk' in v else (new_item(10) if v == '$ITEM' else v)
     try:
+        if case['location'] == 'path':
+            r = manager.get(case['path'].replace('{id}', str(v)))
+        else:
+            r = manager.get(f"{case['path']}?model_type=stock.stockitem&{case['field']}={v}&limit=5" if case['field'] != 'limit'
+                            else f"{case['path']}?model_type=stock.stockitem&limit={v}")
         assert r.status_code == case['expected_status'], (r.status_code, r.text[:160])
     except AssertionError:
         _record(case, 'mismatch'); raise

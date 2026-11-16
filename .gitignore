@@ -10,3 +10,6 @@ mutants/
 .pytest_cache/
 upstream/.git/
 .scannerwork/
+reports/playwright-html/
+test-results/
+tests/team/e2e/.auth/

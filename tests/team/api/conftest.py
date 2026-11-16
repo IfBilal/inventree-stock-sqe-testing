@@ -26,9 +26,10 @@ class Client:
             self.s.auth = USERS[role]
 
     def request(self, method, path, **kw):
+        validate = kw.pop('validate_schema', True)     # weakness probes opt out: their point is that the response violates the contract
         r = self.s.request(method, BASE + path, timeout=30, **kw)
         tpl = template(path)
-        checked = response_schema(method, tpl, r.status_code) is not None
+        checked = validate and response_schema(method, tpl, r.status_code) is not None
         if checked:
             try:
                 err = schema_validate(method, tpl, r.status_code, r.json())
@@ -46,12 +47,14 @@ class Client:
 @pytest.fixture(scope='session', autouse=True)
 def _server_and_log():
     try:
-        assert requests.get(BASE + '/api/', timeout=10).status_code == 200
-    except Exception as e:  # pragma: no cover
+        status = requests.get(BASE + '/api/', timeout=10).status_code
+    except requests.RequestException as e:  # pragma: no cover
         pytest.exit(f'server not reachable at {BASE}: run scripts/start.sh ({e})')
+    if status != 200:  # pragma: no cover
+        pytest.exit(f'server at {BASE} answered HTTP {status}: run scripts/start.sh')
     yield
     os.makedirs(os.path.dirname(LOG), exist_ok=True)
-    with open(LOG, 'w') as f:
+    with open(LOG, 'a' if os.environ.get('API_LOG_APPEND') == '1' else 'w') as f:
         for rec in _LOG:
             f.write(json.dumps(rec, sort_keys=True) + '\n')
 
@@ -105,3 +108,9 @@ def history(client, pk, code=None):
 
 def adjust(client, op, pk, quantity, **extra):
     return client.post(f'/api/stock/{op}/', json={'items': [{'pk': pk, 'quantity': str(quantity), **extra}]})
+
+
+def pytest_collection_modifyitems(items):
+    """Tests marked `corrupts_db` deliberately store an unrepresentable quantity (DEF-03) which breaks the stock LIST endpoint for every
+    later test; they run LAST. Every runner script (scripts/test_api.sh, test_e2e.sh) resets the DB first, so the damage never leaks."""
+    items.sort(key=lambda it: it.get_closest_marker('corrupts_db') is not None)

@@ -1,14 +1,95 @@
 {
-    "total": 0,
+    "total": 1,
     "p": 1,
     "ps": 500,
     "paging": {
         "pageIndex": 1,
         "pageSize": 500,
-        "total": 0
+        "total": 1
     },
-    "effortTotal": 0,
-    "issues": [],
-    "components": [],
+    "effortTotal": 5,
+    "issues": [
+        {
+            "key": "fe5a12e8-4b20-46d3-a9c9-8e58bf2e4f0f",
+            "rule": "python:S5779",
+            "severity": "CRITICAL",
+            "component": "inventree-stock:tests/team/api/conftest.py",
+            "project": "inventree-stock",
+            "hash": "7cbf119db5d27a14d7bc72bc865fedd1",
+            "textRange": {
+                "startLine": 50,
+                "endLine": 50,
+                "startOffset": 8,
+                "endOffset": 74
+            },
+            "flows": [
+                {
+                    "locations": [
+                        {
+                            "component": "inventree-stock:tests/team/api/conftest.py",
+                            "textRange": {
+                                "startLine": 51,
+                                "endLine": 51,
+                                "startOffset": 11,
+                                "endOffset": 20
+                            },
+                            "msg": "Exception is caught here.",
+                            "msgFormattings": []
+                        }
+                    ]
+                }
+            ],
+            "resolution": "FIXED",
+            "status": "CLOSED",
+            "message": "Don't use assert inside a try-except that catches AssertionError.",
+            "effort": "5min",
+            "debt": "5min",
+            "author": "",
+            "tags": [
+                "tests",
+                "pytest",
+                "unittest",
+                "assertpy"
+            ],
+            "creationDate": "2026-11-16T20:02:36+0500",
+            "updateDate": "2026-11-16T20:03:19+0500",
+            "closeDate": "2026-11-16T20:03:19+0500",
+            "type": "BUG",
+            "scope": "TEST",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "HIGH"
+                }
+            ],
+            "issueStatus": "FIXED",
+            "prioritizedRule": false,
+            "fromSonarQubeUpdate": false,
+            "internalTags": [],
+            "linkedTicketStatus": "NOT_LINKED"
+        }
+    ],
+    "components": [
+        {
+            "key": "inventree-stock",
+            "enabled": true,
+            "qualifier": "TRK",
+            "name": "InvenTree Stock",
+            "longName": "InvenTree Stock"
+        },
+        {
+            "key": "inventree-stock:tests/team/api/conftest.py",
+            "enabled": true,
+            "qualifier": "UTS",
+            "name": "conftest.py",
+            "longName": "tests/team/api/conftest.py",
+            "path": "tests/team/api/conftest.py"
+        }
+    ],
     "facets": []
 }

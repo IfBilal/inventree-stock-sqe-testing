@@ -60,8 +60,9 @@ def test_w05_500_error_body_hides_internal_details_but_reports_exception_class(m
     assert r.status_code == 500 and r.json()['error'] == 'TypeError'
 
 
-def test_session_is_not_required_stateless_basic_auth(manager):
-    assert requests.get(BASE + '/api/stock/', auth=('manager', 'manager12345'), timeout=30).status_code == 200
+def test_session_is_not_required_stateless_basic_auth(manager, new_item):
+    pk = new_item(10)
+    assert requests.get(BASE + f'/api/stock/{pk}/', auth=('manager', 'manager12345'), timeout=30).status_code == 200
 
 
 def test_w06_audit_endpoint_silently_ignores_the_object_pk_filter(manager, new_item):
@@ -81,8 +82,10 @@ def test_w08_boolean_field_accepts_integers(manager, new_item):
 
 def test_w09_audit_query_parameters_are_not_validated(manager):
     """W-09: invalid values for documented query parameters (event_type=999, limit=-1) are accepted, not rejected with 400."""
-    assert manager.get('/api/audit/?model_type=stock.stockitem&event_type=999').status_code == 200
-    assert manager.get('/api/audit/?model_type=stock.stockitem&limit=-1').status_code in (200, 400)
+    r0 = manager.get('/api/audit/?model_type=stock.stockitem&event_type=999', validate_schema=False)
+    assert r0.status_code == 200 and isinstance(r0.json(), list)       # an out-of-enum event_type is accepted and also yields a bare list
+    r = manager.get('/api/audit/?model_type=stock.stockitem&limit=-1', validate_schema=False)
+    assert r.status_code == 200 and isinstance(r.json(), list)          # ...and an invalid limit silently DISABLES pagination: a bare list instead of {count, results}
 
 
 def test_w10_get_returns_quantity_as_json_float_while_writes_use_decimal_strings(manager, new_item):
@@ -96,3 +99,16 @@ def test_w11_unknown_pk_in_a_write_returns_400_not_404(manager):
     """W-11: a missing referenced item yields 400 ("Invalid pk … does not exist") — acceptable for a body reference but inconsistent with GET (404)."""
     assert manager.post('/api/stock/add/', json={'items': [{'pk': 999999999, 'quantity': '1'}]}).status_code == 400
     assert manager.get('/api/stock/999999999/').status_code == 404
+
+
+def test_w12_boolean_true_is_accepted_as_pk_1(manager):
+    """W-12: JSON `true` is coerced to the integer 1 and addresses the seeded item with pk 1 (Python bool is an int)."""
+    r = manager.post('/api/stock/add/', json={'items': [{'pk': True, 'quantity': '1'}]})
+    assert r.status_code == 201
+
+
+def test_w13_echo_reports_pk_null_when_the_adjustment_deleted_the_item(manager, new_item):
+    """W-13: when a removal depletes and deletes the item the 201 echo contains `pk: null` — the client cannot tell which item was adjusted."""
+    pk = new_item(5, delete_on_deplete=True)
+    r = adjust(manager, 'remove', pk, 5)
+    assert r.status_code == 201 and r.json()['items'][0]['pk'] is None

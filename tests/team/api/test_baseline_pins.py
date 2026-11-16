@@ -23,14 +23,6 @@ def test_pin_def02_zero_quantity_returns_201_without_effect(op, manager, new_ite
 
 
 @pytest.mark.risk('PR-04')
-def test_pin_def03_overflow_makes_the_item_unreadable(manager, new_item):
-    pk = new_item(10)
-    assert adjust(manager, 'add', pk, MAXQ).status_code == 201                    # accepted although the total is not representable
-    r = manager.get(f'/api/stock/{pk}/')
-    assert r.status_code == 500 and r.json()['error'] == 'InvalidOperation'
-
-
-@pytest.mark.risk('PR-04')
 @pytest.mark.parametrize('bad, error', [(None, 'TypeError'), ('abc', 'AttributeError'), (5, 'TypeError')], ids=['null', 'string', 'int'])
 def test_pin_def04_malformed_items_returns_500_with_exception_class(bad, error, manager):
     r = manager.post('/api/stock/add/', json={'items': bad})

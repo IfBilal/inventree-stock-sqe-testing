@@ -126,7 +126,7 @@ def test_repeating_a_valid_request_applies_it_once_per_request_no_duplicate_hist
     assert qty(manager, pk) == 4 and len(history(manager, pk, REMOVE)) == 3      # one entry per request, none duplicated
 
 
-@pytest.mark.req('FR-03a', 'FR-07')
+@pytest.mark.req('FR-03a')
 @pytest.mark.risk('PR-06')
 @pytest.mark.seq('S5-reject-retry')
 def test_repeating_a_rejected_request_leaves_no_trace(new_item, manager):

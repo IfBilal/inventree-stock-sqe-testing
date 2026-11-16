@@ -1,5 +1,8 @@
-date,phase,area,member_or_agent,hours_actual,note
-2026-11-16,0,Setup,AI-assisted,1.5,Env + repo + seed + frontend build + reset determinism
-2026-11-16,1,Scope,AI-assisted,0.7,Test basis + use cases
-2026-11-16,3,Static analysis,AI-assisted,1.2,SonarQube install (no docker; JDK21+tmpfs workaround) + scan + CFG hand calc
-2026-11-16,2,Test mgmt,AI-assisted,0.8,Plan + risks + GQM
+date,estimate_row,owner_member,agent_hours,human_review_hours,basis,note
+2026-11-16,"Setup, environment, baseline",M1,0.75,,commit timestamps 17:13-17:58,"repo, venv, DB, seed/reset scripts, UI build, determinism check"
+2026-11-16,"Scope, basis, use cases",all,0.40,,commit timestamps 17:35-17:51,"test basis, workflows, rules, roles, 6 use cases"
+2026-11-16,"Test management docs",M1,0.50,,commit timestamps 17:58-18:32,"plan v0.1/v0.2, risk register, GQM, traceability skeleton, perf targets, tool versions"
+2026-11-16,"Static analysis + hand CFG",M1,0.80,,commit timestamps 18:06-18:28 plus rescan,"SonarQube without Docker (JDK21+tmpfs), metrics, CFG, Sonar-vs-hand experiment"
+2026-11-16,"Unit tests, MCC, MC/DC",M1,1.20,,commit timestamps 18:32-20:01 (interleaved with other work),"unit suite, MCC tooling, 2 strict review rounds"
+2026-11-16,"OpenAPI + generator",M2,0.60,,commit timestamps 18:38-18:42 plus 19:35-20:10 rewrite,"spec, generator, 29 generator tests, constraint-change demos"
+2026-11-16,"API/integration tests",M2,1.30,,commit timestamps 18:45-20:15,"fixtures, generated EP/BVA, business rules, weaknesses, coverage criteria, 3 full runs"
