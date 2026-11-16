@@ -14,9 +14,9 @@ async function client(role: string) {
   if (role === 'anonymous') return request.newContext({ baseURL: BASE });
   return api(role);
 }
-function record(r: Omit<Row, 'ok'>) { rows.push({ ...r, ok: r.expected === r.observed }); }
+function record(r: Omit<Row, 'ok'>) { rows.push({ ...r, ok: r.expected === r.observed, decision: (typeof r.expected === 'number' && r.expected < 400) || r.expected === 1 ? 'ALLOWED' : 'DENIED' } as any); }
 
-const MATRIX: { role: string; action: string; route: string; call: (c: any, pk: number) => Promise<any>; expected: number; verify?: (a: any, pk: number) => Promise<string> }[] = [];
+const MATRIX: { role: string; action: string; route: string; call: (c: any, pk: number) => Promise<any>; expected: number; verify?: (a: any, pk: number) => Promise<string> }[] = [];   // expected: 2xx = ALLOWED, 401/403 = DENIED
 for (const [role, view, add, remove, patch, del] of [['manager', 200, 201, 201, 200, 204], ['viewer', 200, 403, 403, 403, 403], ['anonymous', 401, 401, 401, 401, 401]] as const) {
   MATRIX.push({ role, action: 'view item', route: 'GET /api/stock/{id}/', call: (c, pk) => c.get(`/api/stock/${pk}/`), expected: view });
   MATRIX.push({ role, action: 'add stock (WF-A)', route: 'POST /api/stock/add/', call: (c, pk) => c.post('/api/stock/add/', { data: { items: [{ pk, quantity: '1' }] } }), expected: add,
@@ -25,6 +25,7 @@ for (const [role, view, add, remove, patch, del] of [['manager', 200, 201, 201, 
     verify: async (a, pk) => `quantity after = ${await quantity(a, pk)}` });
   MATRIX.push({ role, action: 'edit item (change right)', route: 'PATCH /api/stock/{id}/', call: (c, pk) => c.patch(`/api/stock/${pk}/`, { data: { batch: 'X' } }), expected: patch });
   MATRIX.push({ role, action: 'delete item (delete right)', route: 'DELETE /api/stock/{id}/', call: (c, pk) => c.delete(`/api/stock/${pk}/`), expected: del });
+  MATRIX.push({ role, action: 'read history (audit)', route: 'GET /api/audit/', call: (c) => c.get('/api/audit/?model_type=stock.stockitem&limit=1'), expected: view });
 }
 
 test.describe.configure({ mode: 'serial' });
@@ -37,7 +38,7 @@ for (const m of MATRIX) {
     const ev = m.verify ? await m.verify(a, pk) : '';
     record({ role: m.role, action: m.action, route: m.route, expected: m.expected, observed, evidence: `HTTP ${observed}${ev ? '; ' + ev : ''}; item pk ${pk}` });
     expect(observed).toBe(m.expected);
-    if (m.expected >= 400 && m.action.startsWith('add')) { expect(await quantity(a, pk)).toBe(10); expect(await history(a, pk)).toHaveLength(0); }   // denied => no side effect
+    if (m.expected >= 400 && /^(add|remove) stock/.test(m.action)) { expect(await quantity(a, pk)).toBe(10); expect(await history(a, pk)).toHaveLength(0); }   // denied => no side effect
   });
 }
 

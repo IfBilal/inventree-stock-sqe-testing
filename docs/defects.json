@@ -1,14 +1,255 @@
 [
- {"id":"DEF-01","issue":1,"title":"Over-removal silently clamped (data loss)","category":"Data integrity","severity":"Critical","priority":"P1","status":"Open","risk":"PR-01","found":"Phase 1/4/6","tests":"unit + API + E2E (strict xfail / expected failure)"},
- {"id":"DEF-02","issue":2,"title":"Quantity 0 accepted as silent no-op","category":"Validation","severity":"Medium","priority":"P2","status":"Open","risk":"PR-04","found":"Phase 1/6/7","tests":"unit + API + E2E"},
- {"id":"DEF-03","issue":3,"title":"Resulting quantity overflow: item unreadable, stock list returns 500","category":"Data integrity","severity":"Critical","priority":"P1","status":"Open","risk":"PR-04, PR-01","found":"Phase 1/6","tests":"unit + API pins"},
- {"id":"DEF-04","issue":4,"title":"Malformed items (null/string/int) -> HTTP 500","category":"Validation","severity":"Medium","priority":"P2","status":"Open","risk":"PR-04","found":"Phase 6 (generator)","tests":"unit + API generated"},
- {"id":"DEF-05","issue":5,"title":"First login after server start silently fails","category":"Usability","severity":"Medium","priority":"P3","status":"Open","risk":"PR-09","found":"Phase 7","tests":"setup test (annotated)"},
- {"id":"DEF-06","issue":6,"title":"Concurrent adjustments fail with HTTP 500 (SQLite lock), ~20% at 5 users","category":"Performance","severity":"High","priority":"P2","status":"Open","risk":"PR-08","found":"Phase 10","tests":"k6 runs"},
- {"id":"SEC-01","issue":7,"title":"No Content-Security-Policy header","category":"Security","severity":"Medium","priority":"P3","status":"Open","risk":"PR-02, PR-10","found":"Phase 9","tests":"ZAP passive"},
- {"id":"SEC-02","issue":8,"title":"Session cookie without SameSite (default config)","category":"Security","severity":"Low","priority":"P3","status":"Open","risk":"PR-02","found":"Phase 9","tests":"ZAP passive + source"},
- {"id":"SEC-03","issue":9,"title":"react-router 6.30.6 advisories in the shipped bundle","category":"Security","severity":"Medium","priority":"P3","status":"Open","risk":"PR-10","found":"Phase 9","tests":"yarn audit"},
- {"id":"A11Y-01","issue":10,"title":"Item page: images without alt, no main landmark","category":"Accessibility","severity":"Medium","priority":"P2","status":"Fix proposed (PR)","risk":"PR-09","found":"Phase 8","tests":"Lighthouse + axe"},
- {"id":"A11Y-02","issue":11,"title":"Remaining a11y issues (contrast, button names, ARIA)","category":"Accessibility","severity":"Medium","priority":"P3","status":"Open","risk":"PR-09","found":"Phase 8","tests":"Lighthouse + axe"},
- {"id":"UX-01","issue":12,"title":"Enter in quantity field does not submit the dialog","category":"Usability","severity":"Low","priority":"P3","status":"Open","risk":"PR-09","found":"Phase 7","tests":"E2E keyboard test"}
+ {
+  "id": "DEF-01",
+  "issue": 1,
+  "title": "Over-removal silently clamped (data loss)",
+  "category": "Data integrity",
+  "severity": "Critical",
+  "priority": "P1",
+  "status": "Open",
+  "risk": "PR-01",
+  "found": "Phase 1/4/6",
+  "tests": "unit + API + E2E (strict xfail / expected failure)",
+  "history": [
+   {
+    "when": "2026-11-16 17:50",
+    "status": "Opened",
+    "note": "found in Phase 1 (empirical audit), Critical/P1, triage: accepted"
+   },
+   {
+    "when": "2026-11-16 21:50",
+    "status": "Fix proposed",
+    "note": "PR #13 opened; tests-only commit \u2192 pipeline red (run 43916868389)"
+   },
+   {
+    "when": "2026-11-16 22:30",
+    "status": "Fix pushed",
+    "note": "commit 35683ef; pipeline red on a related test (depleted item) \u2192 commit 05a49ce"
+   },
+   {
+    "when": "2026-11-16 23:00",
+    "status": "In verification",
+    "note": "pipeline run 43920009616: unit, api, e2e, sonar green"
+   }
+  ]
+ },
+ {
+  "id": "DEF-02",
+  "issue": 2,
+  "title": "Quantity 0 accepted as silent no-op",
+  "category": "Validation",
+  "severity": "Medium",
+  "priority": "P2",
+  "status": "Open",
+  "risk": "PR-04",
+  "found": "Phase 1/6/7",
+  "tests": "unit + API + E2E",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "DEF-03",
+  "issue": 3,
+  "title": "Resulting quantity overflow: item unreadable, stock list returns 500",
+  "category": "Data integrity",
+  "severity": "Critical",
+  "priority": "P1",
+  "status": "Open",
+  "risk": "PR-04, PR-01",
+  "found": "Phase 1/6",
+  "tests": "unit + API pins",
+  "history": [
+   {
+    "when": "2026-11-16 17:50",
+    "status": "Opened",
+    "note": "Phase 1 audit, High/P2"
+   },
+   {
+    "when": "2026-11-16 20:15",
+    "status": "Re-triaged",
+    "note": "severity High\u2192Critical, P2\u2192P1: one corrupted item breaks the whole stock list (found in Phase 6)"
+   }
+  ]
+ },
+ {
+  "id": "DEF-04",
+  "issue": 4,
+  "title": "Malformed items (null/string/int) -> HTTP 500",
+  "category": "Validation",
+  "severity": "Medium",
+  "priority": "P2",
+  "status": "Open",
+  "risk": "PR-04",
+  "found": "Phase 6 (generator)",
+  "tests": "unit + API generated",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "DEF-05",
+  "issue": 5,
+  "title": "First login after server start silently fails",
+  "category": "Usability",
+  "severity": "Medium",
+  "priority": "P3",
+  "status": "Open",
+  "risk": "PR-09",
+  "found": "Phase 7",
+  "tests": "setup test (annotated)",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "DEF-06",
+  "issue": 6,
+  "title": "Concurrent adjustments fail with HTTP 500 (SQLite lock), ~20% at 5 users",
+  "category": "Performance",
+  "severity": "High",
+  "priority": "P2",
+  "status": "Open",
+  "risk": "PR-08",
+  "found": "Phase 10",
+  "tests": "k6 runs",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "SEC-01",
+  "issue": 7,
+  "title": "No Content-Security-Policy header",
+  "category": "Security",
+  "severity": "Medium",
+  "priority": "P3",
+  "status": "Open",
+  "risk": "PR-02, PR-10",
+  "found": "Phase 9",
+  "tests": "ZAP passive",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "SEC-02",
+  "issue": 8,
+  "title": "Session cookie without SameSite (default config)",
+  "category": "Security",
+  "severity": "Low",
+  "priority": "P3",
+  "status": "Open",
+  "risk": "PR-02",
+  "found": "Phase 9",
+  "tests": "ZAP passive + source",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "SEC-03",
+  "issue": 9,
+  "title": "react-router 6.30.6 advisories in the shipped bundle",
+  "category": "Security",
+  "severity": "Medium",
+  "priority": "P3",
+  "status": "Open",
+  "risk": "PR-10",
+  "found": "Phase 9",
+  "tests": "yarn audit",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "A11Y-01",
+  "issue": 10,
+  "title": "Item page: images without alt, no main landmark",
+  "category": "Accessibility",
+  "severity": "Medium",
+  "priority": "P2",
+  "status": "Fix proposed (PR)",
+  "risk": "PR-09",
+  "found": "Phase 8",
+  "tests": "Lighthouse + axe",
+  "history": [
+   {
+    "when": "2026-11-16 21:15",
+    "status": "Opened",
+    "note": "Phase 8, Medium/P2"
+   },
+   {
+    "when": "2026-11-16 21:20",
+    "status": "Fix proposed",
+    "note": "branch fix/a11y-stock-item-page; Lighthouse 78\u219285"
+   }
+  ]
+ },
+ {
+  "id": "A11Y-02",
+  "issue": 11,
+  "title": "Remaining a11y issues (contrast, button names, ARIA)",
+  "category": "Accessibility",
+  "severity": "Medium",
+  "priority": "P3",
+  "status": "Open",
+  "risk": "PR-09",
+  "found": "Phase 8",
+  "tests": "Lighthouse + axe",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ },
+ {
+  "id": "UX-01",
+  "issue": 12,
+  "title": "Enter in quantity field does not submit the dialog",
+  "category": "Usability",
+  "severity": "Low",
+  "priority": "P3",
+  "status": "Open",
+  "risk": "PR-09",
+  "found": "Phase 7",
+  "tests": "E2E keyboard test",
+  "history": [
+   {
+    "when": "2026-11-16",
+    "status": "Opened",
+    "note": "triage: accepted"
+   }
+  ]
+ }
 ]

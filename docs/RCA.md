@@ -36,12 +36,12 @@ Statements are marked **[verified]** (read in source / observed in a run) or **[
 
 ---
 ## RCA-2 — DEF-06 (Issue #6, High, risk PR-08): ~20 % of concurrent adjustments fail with HTTP 500
-**Problem statement.** With 5 simulated users the remove operation returns HTTP 500 `OperationalError` for 19.3 % / 19.7 % of requests (two runs); p95 518/522 ms against a 500 ms limit. Data stays consistent (final quantity = initial − successes). Evidence: `docs/PERFORMANCE.md`, `reports/performance/`.
+**Problem statement.** With 5 simulated users the remove operation returns HTTP 500 for 19.3 % / 19.7 % of requests (two k6 runs); p95 518/522 ms against a 500 ms limit. Data stays consistent (final quantity = initial − successes, `concurrency_probe.txt`). Evidence: `docs/PERFORMANCE.md`, `reports/performance/`.
 
 ### 5 Whys
 | # | Why? | Answer |
 |---|---|---|
-| 1 | Why do requests fail? | The server raises `django.db.utils.OperationalError: database is locked` (197 log entries). **[verified]** |
+| 1 | Why do requests fail? | The server raises `django.db.utils.OperationalError: database is locked` — in the probe 38 HTTP 500 correspond to exactly 38 log lines (`reports/performance/concurrency_probe.txt`). **[verified]** |
 | 2 | Why is the database locked? | SQLite allows a single writer; concurrent adjustments of one item queue on the write lock and exceed the busy timeout. **[verified symptom; mechanism is standard SQLite behaviour]** |
 | 3 | Why do writers hold the lock long enough to collide? | Each remove performs the quantity update **and** audit/history writes in one transaction; a single request takes ≈ 290 ms with one user (`reports/performance/summary_1vu_*.json`). **[verified timing; breakdown by step is a hypothesis]** |
 | 4 | Why is the failure surfaced as a 500 rather than handled? | The lock error is not caught/retried; the generic exception handler returns the exception class as an HTTP 500 body (`InvenTree.exceptions.exception_handler`); `select_for_update` gives no row lock on SQLite. **[verified]** |

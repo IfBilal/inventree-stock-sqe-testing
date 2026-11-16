@@ -5,8 +5,9 @@
   "route": "GET /api/stock/{id}/",
   "expected": 200,
   "observed": 200,
-  "evidence": "HTTP 200; item pk 4",
-  "ok": true
+  "evidence": "HTTP 200; item pk 19",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "manager",
@@ -14,8 +15,9 @@
   "route": "POST /api/stock/add/",
   "expected": 201,
   "observed": 201,
-  "evidence": "HTTP 201; quantity after = 11; item pk 5",
-  "ok": true
+  "evidence": "HTTP 201; quantity after = 11; item pk 20",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "manager",
@@ -23,8 +25,9 @@
   "route": "POST /api/stock/remove/",
   "expected": 201,
   "observed": 201,
-  "evidence": "HTTP 201; quantity after = 9; item pk 6",
-  "ok": true
+  "evidence": "HTTP 201; quantity after = 9; item pk 21",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "manager",
@@ -32,8 +35,9 @@
   "route": "PATCH /api/stock/{id}/",
   "expected": 200,
   "observed": 200,
-  "evidence": "HTTP 200; item pk 7",
-  "ok": true
+  "evidence": "HTTP 200; item pk 22",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "manager",
@@ -41,8 +45,19 @@
   "route": "DELETE /api/stock/{id}/",
   "expected": 204,
   "observed": 204,
-  "evidence": "HTTP 204; item pk 8",
-  "ok": true
+  "evidence": "HTTP 204; item pk 23",
+  "ok": true,
+  "decision": "ALLOWED"
+ },
+ {
+  "role": "manager",
+  "action": "read history (audit)",
+  "route": "GET /api/audit/",
+  "expected": 200,
+  "observed": 200,
+  "evidence": "HTTP 200; item pk 24",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "viewer",
@@ -50,8 +65,9 @@
   "route": "GET /api/stock/{id}/",
   "expected": 200,
   "observed": 200,
-  "evidence": "HTTP 200; item pk 9",
-  "ok": true
+  "evidence": "HTTP 200; item pk 25",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "viewer",
@@ -59,8 +75,9 @@
   "route": "POST /api/stock/add/",
   "expected": 403,
   "observed": 403,
-  "evidence": "HTTP 403; quantity after = 10; item pk 10",
-  "ok": true
+  "evidence": "HTTP 403; quantity after = 10; item pk 26",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "viewer",
@@ -68,8 +85,9 @@
   "route": "POST /api/stock/remove/",
   "expected": 403,
   "observed": 403,
-  "evidence": "HTTP 403; quantity after = 10; item pk 11",
-  "ok": true
+  "evidence": "HTTP 403; quantity after = 10; item pk 27",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "viewer",
@@ -77,8 +95,9 @@
   "route": "PATCH /api/stock/{id}/",
   "expected": 403,
   "observed": 403,
-  "evidence": "HTTP 403; item pk 12",
-  "ok": true
+  "evidence": "HTTP 403; item pk 28",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "viewer",
@@ -86,8 +105,19 @@
   "route": "DELETE /api/stock/{id}/",
   "expected": 403,
   "observed": 403,
-  "evidence": "HTTP 403; item pk 13",
-  "ok": true
+  "evidence": "HTTP 403; item pk 29",
+  "ok": true,
+  "decision": "DENIED"
+ },
+ {
+  "role": "viewer",
+  "action": "read history (audit)",
+  "route": "GET /api/audit/",
+  "expected": 200,
+  "observed": 200,
+  "evidence": "HTTP 200; item pk 30",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "anonymous",
@@ -95,8 +125,9 @@
   "route": "GET /api/stock/{id}/",
   "expected": 401,
   "observed": 401,
-  "evidence": "HTTP 401; item pk 14",
-  "ok": true
+  "evidence": "HTTP 401; item pk 31",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "anonymous",
@@ -104,8 +135,9 @@
   "route": "POST /api/stock/add/",
   "expected": 401,
   "observed": 401,
-  "evidence": "HTTP 401; quantity after = 10; item pk 15",
-  "ok": true
+  "evidence": "HTTP 401; quantity after = 10; item pk 32",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "anonymous",
@@ -113,8 +145,9 @@
   "route": "POST /api/stock/remove/",
   "expected": 401,
   "observed": 401,
-  "evidence": "HTTP 401; quantity after = 10; item pk 16",
-  "ok": true
+  "evidence": "HTTP 401; quantity after = 10; item pk 33",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "anonymous",
@@ -122,8 +155,9 @@
   "route": "PATCH /api/stock/{id}/",
   "expected": 401,
   "observed": 401,
-  "evidence": "HTTP 401; item pk 17",
-  "ok": true
+  "evidence": "HTTP 401; item pk 34",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "anonymous",
@@ -131,8 +165,19 @@
   "route": "DELETE /api/stock/{id}/",
   "expected": 401,
   "observed": 401,
-  "evidence": "HTTP 401; item pk 18",
-  "ok": true
+  "evidence": "HTTP 401; item pk 35",
+  "ok": true,
+  "decision": "DENIED"
+ },
+ {
+  "role": "anonymous",
+  "action": "read history (audit)",
+  "route": "GET /api/audit/",
+  "expected": 401,
+  "observed": 401,
+  "evidence": "HTTP 401; item pk 36",
+  "ok": true,
+  "decision": "DENIED"
  },
  {
   "role": "viewer",
@@ -140,8 +185,9 @@
   "route": "/web/stock/item/{id}/details",
   "expected": 0,
   "observed": 0,
-  "evidence": "menu elements = 0; item pk 19",
-  "ok": true
+  "evidence": "menu elements = 0; item pk 37",
+  "ok": true,
+  "decision": "ALLOWED"
  },
  {
   "role": "manager",
@@ -149,7 +195,8 @@
   "route": "/web/stock/item/{id}/details",
   "expected": 1,
   "observed": 1,
-  "evidence": "menu elements = 1; item pk 20",
-  "ok": true
+  "evidence": "menu elements = 1; item pk 38",
+  "ok": true,
+  "decision": "ALLOWED"
  }
 ]

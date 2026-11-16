@@ -1,0 +1,7 @@
+# Concurrency probe (separate from the k6 runs): 5 threads x 40 sequential POST /api/stock/remove/ (qty 1) on ONE item, manager, same server/DB reset as the k6 protocol
+# date: 2026-11-16T22:53:55+05:00  commit: 05a49ce  (note: this working tree contains the DEF-01 fix; it does not affect valid removals)
+item pk 4 start quantity 100000
+status codes: {201: 162, 500: 38}
+failure bodies: {'{"error":"OperationalError","error_class":"<class \'django.db.utils.OperationalError\'>","detail":"Error details can be found in the admin panel","path"': 38}
+final quantity: 99838.0 | start - successes (201): 99838 | consistent: True
+server log: occurrences of 'database is locked' = 38

@@ -1,12 +1,16 @@
 # USE CASE SPECIFICATION — Stock Add / Remove (6 use cases, 2 per member)
 
-Actors: **Manager** = `manager` (group `stock_manager`), **Viewer** = `viewer` (group `stock_viewer`), **Admin** = `admin` (superuser). All data synthetic.
-**Every flow starts from the seeded baseline** (`scripts/reset.sh`: Keyboard pk1 qty 10, Mouse pk2 qty 25, Monitor pk3 qty 0, all `delete_on_deplete=False`) — flows are independent and order-free; a flow that needs another value says so in its own precondition.
-Each flow = one automated Playwright test in `tests/team/e2e/` (planned, Phase 7). "Baseline" column = predicted result on the unmodified upstream build (assumptions A-1/A-2 in `docs/TEST_BASIS.md`): **FAIL** means the test is expected to expose a defect on the baseline and to pass after the documented fix.
+Actors: **Manager** = `manager` (group `stock_manager`), **Viewer** = `viewer` (group `stock_viewer`), **Admin** = `admin` (superuser).
+**Independence:** every flow is one Playwright test (`tests/team/e2e/`) that first creates its **own fresh item** of the seeded "Keyboard" part through the API with the quantity stated in the flow's precondition (so flows are order-free and need no reset); postconditions are read back **independently of the UI** through the API (`GET /api/stock/{id}/`, history via `/api/audit/`). The seeded values (Keyboard 10, Mouse 25, Monitor 0) only illustrate the starting states.
+"Baseline" = predicted result on the unmodified upstream build; **FAIL** = the flow exposes a defect there. After PR #13 (DEF-01 fixed) the over-removal flows pass; the DEF-02 flows remain expected failures (`test.fail`) with companion pin tests (`defect_pins.spec.ts`).
 Ownership: M1 = 24I-3166 (UC-01, UC-02), M2 = 24I-3015 (UC-03, UC-04), M3 = 24I-3106 (UC-05, UC-06).
+
+**Common structure per use case:** *Actor*, *Trigger*, *Precondition*, *Main flow*, *Alternative flows (≥ 2)*, *Exception flows (≥ 2)*, *Postcondition (success)*, *Postcondition (exception)*.
 
 ---
 ## UC-01 Add stock to an item (M1) — WF-A — FR-01, FR-02, FR-03, BR-1
+- **Actor / trigger:** Manager records received units. **Precondition:** logged in as manager; an adjustable item exists with quantity 10, no history.
+- **Postcondition (success):** quantity = old + N, exactly one `STOCK_ADD` history entry (added N, before/after, actor `manager`, notes if given), success toast shown. **Postcondition (exception):** quantity unchanged, no history entry, dialog stays open with the error.
 Actor: Manager. Trigger: wants to record received units. Pre (all flows): logged in as manager, Keyboard qty 10, no prior history entries for the item. Post (main): qty 15 and one new `Stock added` history entry (added 5, resulting 15, user `manager`).
 | ID | Flow | Steps | Expected | Baseline |
 |---|---|---|---|---|
@@ -17,6 +21,8 @@ Actor: Manager. Trigger: wants to record received units. Pre (all flows): logged
 | UC01-EF2 | Exception | typed quantity −3 | An error message is shown; qty stays 10; no history entry (baseline: the field accepts −3, the UI reports "Success — Stock added" and nothing changes) | FAIL (silent clamp to 0, DEF-02 family) |
 
 ## UC-02 Remove stock from an item (M1) — WF-B — FR-05, FR-06, FR-07, BR-1
+- **Actor / trigger:** Manager records consumed/removed units. **Precondition:** logged in as manager; an item with quantity 10, no history.
+- **Postcondition (success):** quantity = old − N, one `STOCK_REMOVE` entry (removed N, before/after, actor, notes). **Postcondition (exception):** quantity unchanged, no history entry, error names the rule (available quantity).
 Actor: Manager. Pre: logged in as manager, Keyboard qty 10.
 | ID | Flow | Steps | Expected | Baseline |
 |---|---|---|---|---|
@@ -28,6 +34,8 @@ Actor: Manager. Pre: logged in as manager, Keyboard qty 10.
 **Post (main):** qty 6, one `STOCK_REMOVE` history (audit) entry. **Post (EF):** qty and history unchanged.
 
 ## UC-03 Deplete an item (M2) — WF-B — FR-08, BR-3
+- **Actor / trigger:** Manager removes everything. **Precondition:** logged in as manager; an item with quantity 25 (`delete_on_deplete=false` unless stated).
+- **Postcondition (success):** quantity 0 and `in_stock=false` (or item deleted: GET 404, history survives); history entries as removed. **Postcondition (exception):** quantity/state unchanged, no history entry.
 Actor: Manager. Pre: logged in as manager, Mouse qty 25 and `delete_on_deplete=False` (seed).
 | ID | Flow | Steps | Expected | Baseline |
 |---|---|---|---|---|
@@ -39,6 +47,8 @@ Actor: Manager. Pre: logged in as manager, Mouse qty 25 and `delete_on_deplete=F
 **Post:** exactly as each flow's Expected column.
 
 ## UC-04 Restock a depleted item (M2) — WF-A and WF-B — BR-3, BR-1, FR-01
+- **Actor / trigger:** Manager restocks an empty item. **Precondition:** logged in as manager; item with quantity 0 (retained), no history.
+- **Postcondition (success):** `in_stock=true`, quantity as computed, history entries in order with the correct balances. **Postcondition (exception):** quantity 0, no history entry.
 Actor: Manager. Pre: logged in as manager, Monitor pk3 qty 0 (retained).
 | ID | Flow | Steps | Expected | Baseline |
 |---|---|---|---|---|
@@ -50,6 +60,8 @@ Actor: Manager. Pre: logged in as manager, Monitor pk3 qty 0 (retained).
 Boundary value of the field (9 999 999 999.99999) is covered by BVA at API level.
 
 ## UC-05 Role-restricted adjustment (M3) — BR-4, FR-09
+- **Actor / trigger:** a user of each role (viewer, manager, admin, anonymous) tries to see or change stock. **Precondition:** an item with quantity 10; the user is logged in with the role of the flow (anonymous: not logged in).
+- **Postcondition (success, allowed roles):** the change is applied and recorded with the actor. **Postcondition (exception, denied roles):** quantity 10, no history entry; API 403 (viewer) / 401 (anonymous); UI shows no operations menu / redirects to `/web/login`.
 Pre: Keyboard qty 10.
 | ID | Flow | Steps | Expected | Baseline |
 |---|---|---|---|---|
@@ -60,6 +72,8 @@ Pre: Keyboard qty 10.
 | UC05-EF2 | Exception | Unauthenticated `POST /api/stock/remove/`; and `/web/stock/item/1/details` without login | API 401; UI redirected to `/web/login`; qty 10 | PASS |
 
 ## UC-06 Correct a rejected adjustment (M3) — WF-A and WF-B — FR-03a, FR-07, BR-1 (usability)
+- **Actor / trigger:** Manager entered an invalid value and corrects it. **Precondition:** logged in as manager; an item with quantity 10; the Add/Remove dialog is open.
+- **Postcondition (success):** after the correction the change is applied exactly once (one history entry); **(exception):** every rejected attempt leaves quantity and history unchanged.
 Actor: Manager. Pre: logged in as manager, fresh item with qty 10.
 | ID | Flow | Steps | Expected | Baseline |
 |---|---|---|---|---|

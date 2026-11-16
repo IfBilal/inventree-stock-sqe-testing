@@ -1,0 +1,27 @@
+# CI mutation job, run 43911640347 (push to main, commit 6a6120c), sampled run: --workers 3 --max-per-function 7
+# gate threshold at that time: 85 % (raised to 90 % after the killing tests, commit a2c6e16)
+planned mutants: 159 (standard + custom), workers: 3
+baseline ok in worker 0 (40s)
+baseline ok in worker 1 (36s)
+baseline ok in worker 2 (36s)
+DONE total=159 killed=140 survived=19 score=88.1% in 1156s
+mutants 159, killed 140, survived 19 (equivalent: 0) -> adjusted score 88.1 % (threshold 85.0 %)
+  SURVIVOR M008 CRP StockAdjustmentItemSerializer.validate_pk L1839 False -> True
+  SURVIVOR M022 NEG StockAdjustmentSerializer.to_internal_value L1928 negate if-condition
+  SURVIVOR M023 SDL StockAdjustmentSerializer.to_internal_value L1929 delete statement: self.context['_stockitems'] = {obj.pk: obj for obj in StockI
+  SURVIVOR M024 SDL StockAdjustmentSerializer.validate L1940 delete statement: super().validate(data)
+  SURVIVOR M032 CBR-4 StockAddSerializer.save L2032 POSITIVE_GUARD quantity <= 0 boundary moved
+  SURVIVOR M033 ROR StockAddSerializer.save L2032 <= -> <
+  SURVIVOR M040 CBR-4 StockRemoveSerializer.save L2067 POSITIVE_GUARD quantity <= 0 boundary moved
+  SURVIVOR M041 ROR StockRemoveSerializer.save L2067 <= -> <
+  SURVIVOR M074 CBR-4 StockItem.take_stock L3466 POSITIVE_GUARD quantity <= 0 boundary moved
+  SURVIVOR M089 SDL StockItem._apply_status_change L3112 delete statement: deltas['status_logical'] = self.status
+  SURVIVOR M090 SDL StockItem._apply_status_change L3113 delete statement: deltas['old_status'] = old_custom_status if old_custom_statu
+  SURVIVOR M091 SDL StockItem._apply_status_change L3116 delete statement: deltas['old_status_logical'] = old_status_logical
+  SURVIVOR M095 SDL StockItem._apply_optional_transfer_fields L3125 delete statement: deltas[field] = kwargs[field]
+  SURVIVOR M103 SDL StockItem.save L529 delete statement: self.validate_unique()
+  SURVIVOR M104 SDL StockItem.save L530 delete statement: self.clean()
+  SURVIVOR M105 SDL StockItem.save L531 delete statement: self.update_serial_number()
+  SURVIVOR M108 LCR StockItem.save L552 and -> or
+  SURVIVOR M113 CRP StockItem.delete L578 False -> True
+  SURVIVOR M137 SDL StockAdjustView.get_serializer_context L240 delete statement: context['request'] = self.request

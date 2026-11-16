@@ -3,174 +3,203 @@
 "id": "generator/test_gen_testdata.py::test_boundary_values_are_snapped_to_the_multipleof_grid",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_changing_a_constraint_changes_the_output",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_cli_writes_json",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_decimals_are_parsed_exactly",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_each_case_mutates_exactly_one_field_of_a_valid_template",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_enum_members_and_non_member",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_ep_classes_present_for_numeric_input",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_exclusive_maximum_boolean_changes_max_at",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_inclusive_minimum_is_valid_at_boundary",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_integer_bva_values_stay_integers",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_min_length_bva",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_nested_object_inputs_are_walked",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_nullable_makes_null_valid",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_numeric_exclusive_bounds_openapi_31_style",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_operations_without_request_body_are_skipped",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_optional_array_with_minitems_does_not_crash",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_optional_field_has_no_missing_class",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_output_is_deterministic",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_path_and_query_parameters_get_cases",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_pattern_violation_case",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_reference_field_gets_unknown_and_negative_classes",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_reference_field_has_three_point_bva",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_remove_operation_gets_available_quantity_bva",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_required_missing_class_removes_the_field",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_string_length_bva",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_the_project_spec_is_valid_openapi",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_three_point_bva_for_exclusive_minimum",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_three_point_bva_for_maximum",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "generator/test_gen_testdata.py::test_type_confusion_classes_present",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 }
 ]

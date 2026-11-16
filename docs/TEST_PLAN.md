@@ -1,4 +1,4 @@
-# TEST PLAN — InvenTree Stock Module (Add Stock / Remove Stock)  · v0.2
+# TEST PLAN — InvenTree Stock Module (Add Stock / Remove Stock)  · v0.3
 Living document, updated at each phase gate (version history at the end).
 
 ## 1. Purpose and scope
@@ -37,14 +37,14 @@ Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (1
 | 1 scope, basis, use cases | 11-16 | 11-16 done | all |
 | 2 test management | 11-16 | 11-16 done (v0.2 after review) | M1 owner |
 | 3 static analysis | 11-17 → pulled forward | 11-16 done | M1 |
-| 4 unit/white-box | 11-17 – 11-18 | in progress | M1 |
-| 5–6 generator and API | 11-18 – 11-19 | — | M2 |
-| 7–8 E2E, usability, accessibility | 11-19 – 11-20 | — | M3 + each member's own use cases |
-| 9 security | 11-20 | — | M3 |
-| 10 performance/recovery | 11-21 | — | M3 |
-| 11–12 mutation and CI | 11-21 – 11-23 | — | M1 |
-| 13 defects, monitoring, completion | 11-23 – 11-24 | — | M2 (defects), M3 (reports) |
-| 14 final package | 11-24 – 11-26 | — | all |
+| 4 unit/white-box | 11-17 – 11-18 | 11-16 done (3 review rounds) | M1 |
+| 5–6 generator and API | 11-18 – 11-19 | 11-16 done | M2 |
+| 7–8 E2E, usability, accessibility | 11-19 – 11-20 | 11-16 done | M3 + each member's own use cases |
+| 9 security | 11-20 | 11-16 done | M3 |
+| 10 performance/recovery | 11-21 | 11-16 done | M3 |
+| 11–12 mutation and CI | 11-21 – 11-23 | 11-16 done | M1 |
+| 13 defects, monitoring, completion | 11-23 – 11-24 | 11-16 done | M2 (defects), M3 (reports) |
+| 14 final package | 11-24 – 11-26 | 11-16/17 in progress | all |
 
 ## 7. Entry, exit, suspension, resumption criteria
 **Entry criteria (all levels):** `scripts/reset.sh` reproducible; server answers `/api/`; seed counts match; previous phase gate passed.
@@ -73,30 +73,31 @@ Product and project risks with L×I, matrix, basis, owners and status: `docs/RIS
 Basis: author experience with the tools plus the observed effort for completed phases; assumptions: tools install without blockers (optimistic), one tooling blocker per area (pessimistic). Actual effort is logged in `docs/EFFORT_LOG.csv` and compared in the completion report.
 | Area | O | M | P | E | Actual (filled at end) |
 |---|---|---|---|---|---|
-| Setup, environment, baseline | 1 | 1.5 | 3 | 1.7 | see EFFORT_LOG.csv |
-| Scope, basis, use cases | 1 | 2 | 4 | 2.2 | |
-| Test management docs | 2 | 3 | 6 | 3.3 | |
-| Static analysis + hand CFG | 2 | 3 | 5 | 3.2 | |
-| Unit tests, MCC, MC/DC | 5 | 8 | 14 | 8.5 | |
-| OpenAPI + generator | 2 | 4 | 7 | 4.2 | |
-| API/integration tests | 4 | 6 | 10 | 6.3 | |
-| Use cases + E2E | 4 | 7 | 12 | 7.3 | |
-| Usability + accessibility | 2 | 4 | 7 | 4.2 | |
-| Security | 2 | 3 | 6 | 3.3 | |
-| Performance + recovery | 2 | 4 | 8 | 4.3 | |
-| Mutation + custom operators | 3 | 6 | 12 | 6.5 | |
-| CI quality gate + PRs | 2 | 4 | 8 | 4.3 | |
-| Defects, RCA, reports | 3 | 5 | 9 | 5.3 | |
-| Final PDF + package | 3 | 5 | 9 | 5.3 | |
-| **Total** | 38 | 65.5 | 120 | **70.0** = (38 + 4×65.5 + 120)/6 | |
+| Setup, environment, baseline | 1 | 1.5 | 3 | 1.7 | 0.75 h (agent) · variance E−actual = +0.9 h |
+| Scope, basis, use cases | 1 | 2 | 4 | 2.2 | 0.40 h (agent) · variance E−actual = +1.8 h |
+| Test management docs | 2 | 3 | 6 | 3.3 | 0.50 h (agent) · variance E−actual = +2.8 h |
+| Static analysis + hand CFG | 2 | 3 | 5 | 3.2 | 0.80 h (agent) · variance E−actual = +2.4 h |
+| Unit tests, MCC, MC/DC | 5 | 8 | 14 | 8.5 | 1.20 h (agent) · variance E−actual = +7.3 h |
+| OpenAPI + generator | 2 | 4 | 7 | 4.2 | 0.60 h (agent) · variance E−actual = +3.6 h |
+| API/integration tests | 4 | 6 | 10 | 6.3 | 1.30 h (agent) · variance E−actual = +5.0 h |
+| Use cases + E2E | 4 | 7 | 12 | 7.3 | 1.00 h (agent) · variance E−actual = +6.3 h |
+| Usability + accessibility | 2 | 4 | 7 | 4.2 | 0.80 h (agent) · variance E−actual = +3.4 h |
+| Security | 2 | 3 | 6 | 3.3 | 0.60 h (agent) · variance E−actual = +2.7 h |
+| Performance + recovery | 2 | 4 | 8 | 4.3 | 0.70 h (agent) · variance E−actual = +3.6 h |
+| Mutation + custom operators | 3 | 6 | 12 | 6.5 | 1.60 h (agent) · variance E−actual = +4.9 h |
+| CI quality gate + PRs | 2 | 4 | 8 | 4.3 | 1.00 h (agent) · variance E−actual = +3.3 h |
+| Defects, RCA, reports | 3 | 5 | 9 | 5.3 | 0.80 h (agent) · variance E−actual = +4.5 h |
+| Final PDF + package | 3 | 5 | 9 | 5.3 | 0.50 h (agent) · variance E−actual = +4.8 h |
+| **Total** | 38 | 65.5 | 120 | **70.0** = (38 + 4×65.5 + 120)/6 | **12.55 h** agent time (variance +57.5 h). Human review hours: to be filled by the members (`docs/EFFORT_NOTE.md`) |
 
 ## 10. Control, reporting and traceability
 - Weekly progress reports (`reports/weekly/`) against this plan with control actions and GQM metrics with targets (`docs/GQM.md`).
 - Defects live in GitHub Issues of **this** repository (never upstream).
-- **Traceability matrix:** `docs/TRACEABILITY.md` (requirement → risk → technique/level → test IDs → status). Requirements coverage = requirements with ≥ 1 passing test ÷ total (16 items: FR-01, FR-02, FR-03a, FR-03b, FR-04…FR-11, BR-1…BR-4 — i.e. 11 FR + FR-03 split + 4 BR). Current value: **0 / 16** (no test executed yet; Phase 4 starts); updated at every gate.
+- **Traceability matrix:** `docs/TRACEABILITY.md` (requirement → risk → technique/level → test IDs → status). Requirements coverage = requirements with ≥ 1 passing test ÷ total (16 items: FR-01, FR-02, FR-03a, FR-03b, FR-04…FR-11, BR-1…BR-4 — i.e. 11 FR + FR-03 split + 4 BR). Current value (generated, v0.3): **tested 16 / 16 (100 %)**, verified passing as in `docs/TRACEABILITY.md`; updated at every gate.
 
 ## 11. Version history
 | Version | Date | Change |
 |---|---|---|
 | 0.1 | 2026-11-16 | Initial plan after Phase 1 |
+| 0.3 | 2026-11-16 | After Phases 4–12: schedule actuals (all phases done on 11-16), estimate table completed with actual agent hours and variance per area, requirements coverage generated from test results, exit criteria evaluated in `docs/COMPLETION_REPORT.md` (EC-1 and EC-3 not met → HOLD), risk statuses re-assessed from evidence |
 | 0.2 | 2026-11-16 | After review of Phases 2–3: estimate total corrected (67.9 → 70.0 with a Setup row); Docker claim removed (SonarQube ran from zip on JDK 21); exit criteria re-tied to the highest risks and given numeric targets; per-level entry criteria; owners and responsibility columns; Low row; actual schedule dates; traceability skeleton and tool-version document added |
