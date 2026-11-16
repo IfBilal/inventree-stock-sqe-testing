@@ -18,7 +18,6 @@ test('UC06-MAIN add 1.123456 -> error says what to correct -> 1.12345 -> success
 });
 
 test('UC06-AF1 remove 15 from 10 -> rejected naming the available quantity -> 10 -> success', async ({ page }) => {
-  knownDefect(test, 'DEF-01');
   const a = await api(); const pk = await newItem(a, 10);
   await openItem(page, pk);
   await openOp(page, 'Remove Stock');

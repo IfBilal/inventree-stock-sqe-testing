@@ -154,7 +154,6 @@ def test_multi_item_request_applies_every_item(new_item, manager):
 
 @pytest.mark.req('FR-07', 'BR-1')
 @pytest.mark.risk('PR-01')
-@pytest.mark.xfail(strict=True, raises=AssertionError, reason='DEF-01 (variant): duplicate pk entries whose SUM exceeds the available quantity are clamped, not rejected')
 def test_duplicate_pk_entries_exceeding_available_are_rejected(new_item, manager):
     pk = new_item(10)
     r = manager.post('/api/stock/remove/', json={'items': [{'pk': pk, 'quantity': '6'}, {'pk': pk, 'quantity': '6'}]})

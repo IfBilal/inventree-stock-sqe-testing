@@ -31,7 +31,6 @@ test('UC02-AF2 remove 4 with notes "damaged"', async ({ page }) => {
 });
 
 test('UC02-EF1 removing 11 from 10 is rejected and names the available quantity', async ({ page }) => {
-  knownDefect(test, 'DEF-01');
   const a = await api(); const pk = await newItem(a, 10);
   await openItem(page, pk);
   await doOp(page, 'Remove Stock', '11');
