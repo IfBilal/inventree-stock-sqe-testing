@@ -14,15 +14,17 @@ def mk_user(name, password, group=None, superuser=False):
 
 def mk_group(name, stock_rights):
     g, _ = Group.objects.get_or_create(name=name)
-    for rs in RuleSet.objects.filter(group=g):
-        on = rs.name == 'stock'
-        rs.can_view = on; rs.can_add = on and stock_rights.get('add', False)
-        rs.can_change = on and stock_rights.get('change', False); rs.can_delete = on and stock_rights.get('delete', False)
+    Owner.create(obj=g)
+    # Explicit RuleSet rows (the 'shell' command skips the signals that normally create them)
+    for role in ('stock', 'part', 'stock_location', 'part_category'):
+        rs, _ = RuleSet.objects.get_or_create(group=g, name=role)
+        rs.can_view = True
+        is_stock = role == 'stock'
+        rs.can_add = is_stock and stock_rights.get('add', False)
+        rs.can_change = is_stock and stock_rights.get('change', False)
+        rs.can_delete = is_stock and stock_rights.get('delete', False)
         rs.save()
-        if on:  # view for stock always; parts/locations are needed to render UI
-            rs.can_view = True; rs.save()
-    for rs in RuleSet.objects.filter(group=g, name__in=['part', 'stock_location', 'part_category']):
-        rs.can_view = True; rs.save()
+    update_group_roles(g)
     return g
 
 mgr = mk_group('stock_manager', {'add': True, 'change': True, 'delete': True})
