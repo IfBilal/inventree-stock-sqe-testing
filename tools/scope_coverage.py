@@ -7,7 +7,8 @@ BASE = 'upstream/src/backend/InvenTree/'
 SCOPE = {
     'stock/serializers.py': ['StockAdjustmentItemSerializer.__init__', 'StockAdjustmentItemSerializer.validate_pk',
                              'StockAdjustmentItemSerializer.validate_quantity', 'StockAdjustmentSerializer.to_internal_value',
-                             'StockAdjustmentSerializer.validate', 'StockAddSerializer.save', 'StockRemoveSerializer.save'],
+                             'StockAdjustmentSerializer.validate', 'StockAddSerializer.save', 'StockRemoveSerializer.validate',
+                             'StockRemoveSerializer.save'],
     'stock/models.py': ['StockItem.is_in_stock', 'StockItem.lock_quantity', 'StockItem.updateQuantity', 'StockItem.add_stock',
                         'StockItem.take_stock', 'StockItem.optional_transfer_fields', 'StockItem.model_reference_fields',
                         'StockItem._apply_model_reference_fields', 'StockItem._resolve_status_kwarg',
