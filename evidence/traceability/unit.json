@@ -1724,6 +1724,13 @@
 "seq": []
 },
 {
+"id": "unit/test_mutation_killers.py::test_delete_does_not_use_a_cached_setting_value",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
 "id": "unit/test_mutation_killers.py::test_delete_reads_the_allow_delete_serialized_setting_fresh_each_time",
 "outcome": "passed",
 "req": [],
@@ -1731,7 +1738,28 @@
 "seq": []
 },
 {
+"id": "unit/test_mutation_killers.py::test_is_in_stock_defaults_check_status_quantity_and_production",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
 "id": "unit/test_mutation_killers.py::test_prefetch_loads_all_referenced_items_with_a_single_stock_query",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutation_killers.py::test_remove_rejects_an_empty_items_list",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutation_killers.py::test_remove_reports_the_error_index_of_the_pk_sorted_entry",
 "outcome": "passed",
 "req": [],
 "risk": [],
@@ -1767,6 +1795,13 @@
 },
 {
 "id": "unit/test_mutation_killers.py::test_update_save_inside_a_pending_event_adds_exactly_one_audit_entry",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutation_killers.py::test_validate_pk_does_not_use_a_cached_setting_value",
 "outcome": "passed",
 "req": [],
 "risk": [],
