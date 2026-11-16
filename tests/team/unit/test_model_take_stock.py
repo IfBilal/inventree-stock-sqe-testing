@@ -48,9 +48,8 @@ def test_remove_from_depleted_item_is_noop(make_item, user):
     assert z.take_stock(1, user) is False and history(z, REMOVE) == []
 
 
-@pytest.mark.req('FR-07')
 @pytest.mark.risk('PR-01')
-def test_remove_more_than_available_is_clamped_upstream_behaviour(item, user):
+def test_characterisation_remove_more_than_available_is_clamped_upstream_behaviour(item, user):
     """CHARACTERISATION of the baseline (defect DEF-01): excess is silently discarded.
     The expected behaviour (rejection) is asserted at serializer level in test_adjustment_serializers.py."""
     assert item.take_stock(100, user) is True
@@ -140,3 +139,10 @@ def test_lock_quantity_false_when_row_gone(item):
     from stock.models import StockItem
     StockItem.objects.filter(pk=item.pk).delete()
     assert item.lock_quantity() is False
+
+
+def test_remove_records_model_reference_and_optional_fields_in_history(item, user, markers):
+    item.take_stock(1, user, salesorder=markers.sales_order, batch='B8')
+    e = history(item, REMOVE)[0]
+    ref = e.additional_data['deltas']['salesorder']
+    assert ref['pk'] == markers.sales_order.pk and ref['model_type'] == 'order.salesorder' and e.changes['batch'] == ['', 'B8']

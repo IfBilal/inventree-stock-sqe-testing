@@ -34,7 +34,7 @@ Module: **Stock** (`src/backend/InvenTree/stock`). Two related workflows over th
 | FR-06 | B | A successful removal records a `STOCK_REMOVE` history entry (removed, resulting quantity) | **CODE**: `take_stock` deltas |
 | FR-07 | B | Removing N > available is **rejected (HTTP 400)** and quantity is unchanged | **Justified assumption A-1** (upstream clamps — see §6) |
 | FR-08 | B | Removing exactly all available quantity depletes the item (see BR-3) | **CODE**: `updateQuantity` |
-| FR-09 | A,B | Requests without the `stock` role's **add** right are rejected with 403 (both endpoints are POST → `add`; a role with only `change` cannot add or remove), unauthenticated with 401/403, no change | **CODE**: default model permission for POST on `StockItem` (`StockAdjustView` declares no `role_required`; the `stock` role's `add` right is derived from the queryset model) |
+| FR-09 | A,B | Requests without the `stock` role's **add** right are rejected with 403 (both endpoints are POST → `add`; a role with only `change` cannot add or remove), unauthenticated with 401/403, no change | **CODE**: DRF `ModelPermission` (`DjangoModelPermissions`) on the view queryset model `StockItem`: POST requires the Django permission `stock.add_stockitem`, which `update_group_roles` derives from the group's `stock` RuleSet `can_add`. `RolePermission` is a no-op for these views (the serializer has no `Meta.model`, so it returns True) — verified by `test_role_permission_stock_adjust_views_have_no_model_and_do_not_restrict` |
 | FR-10 | A,B | A multi-item request is atomic: if any item is invalid, no item changes | **CODE**: `transaction.atomic` + serializer validation |
 | FR-11 | A,B | Add/Remove on a serialized item changes nothing | **CODE**: `add_stock`/`take_stock` serialized guard; empirically: 201, no change, no history |
 
@@ -77,12 +77,15 @@ States of a StockItem w.r.t. adjustment: `IN_STOCK (q>0)`, `DEPLETED (q=0, retai
 
 - **DEF candidates found during basis analysis** (to be logged as GitHub Issues in our repo in Phase 13): DEF-01 over-removal clamped/silent data loss; DEF-02 zero quantity accepted as silent 201 no-op; DEF-03 resulting quantity overflow → 500 on read.
 
-## 7. Unit-test scope (server-side business logic, "100% statement + branch")
-Defined precisely (functions only, measured per function with coverage.py branch mode):
-1. `stock/serializers.py`: `StockAdjustmentItemSerializer.validate_pk`, `validate_quantity`, `StockAdjustmentSerializer.validate`, `.to_internal_value`, `StockAddSerializer.save`, `StockRemoveSerializer.save`
-2. `stock/models.py`: `StockItem.add_stock`, `take_stock`, `updateQuantity`, `is_in_stock`, `lock_quantity`
-3. `stock/api.py`: `StockAdjustView`, `StockAdd`, `StockRemove`
-**Critical module (MCC / MC/DC):** `StockItem.is_in_stock` + `validate_pk` (BR-2) and `take_stock` limit logic (BR-1).
+## 7. Unit-test scope (server-side business logic on the add/remove path; single source of truth = `SCOPE` in `tools/scope_coverage.py`)
+Measured per function with coverage.py (branch mode); every function is listed:
+1. `stock/serializers.py`: `StockAdjustmentItemSerializer.{__init__, validate_pk, validate_quantity}`, `StockAdjustmentSerializer.{to_internal_value, validate}`, `StockAddSerializer.save`, `StockRemoveSerializer.save`
+2. `stock/models.py`: `StockItem.{is_in_stock, lock_quantity, updateQuantity, add_stock, take_stock, optional_transfer_fields, model_reference_fields, _apply_model_reference_fields, _resolve_status_kwarg, _apply_status_change, _apply_optional_transfer_fields, can_delete, installed_item_count, tracking_event, _tracking_deltas, _audit_deltas, _is_empty_tracking_event}`
+3. `stock/api.py`: `StockAdjustView.get_serializer_context` (class bodies `StockAdd`/`StockRemove` hold declarations only)
+4. `InvenTree/fields.py`: `PrefetchedPrimaryKeyRelatedField.{__init__, to_internal_value}` (the pk lookup behind `validate_pk`)
+5. `InvenTree/permissions.py`: `ModelPermission._queryset`, `RolePermission.has_permission` (BR-4 enforcement path; see §4 note)
+**Not in scope (justified in `docs/COVERAGE_JUSTIFICATION.md`):** OAuth2-token scope wrapper (our workflows authenticate with Basic/session), `StockItem.save/delete` (generic persistence, exercised but not measured as business rules), status helpers in `generic/states` (called by `_apply_status_change`; third-level utility), merge/disassemble/serialization/transfer/count workflows.
+**Critical module (complete MCC, then MC/DC pairs):** every multi-condition decision on the path is enumerated by `tools/mcdc.py` and executed: BR-2 `validate_pk` (5 conditions, 32 rows), `is_in_stock` (status, location, quantity, production), BR-3 deletion `delete_on_deplete ∧ can_delete`, BR-1 `take_stock` guards (3 conditions), and `_is_empty_tracking_event` (3 conditions) — see `docs/MCC_MCDC.md`.
 
 ## 8. Test data and reset
 `scripts/reset.sh` rebuilds the SQLite DB and seeds: users `admin/manager/viewer`; category "Peripherals"; location "Main Warehouse"; parts Keyboard (10), Mouse (25), Monitor (0).

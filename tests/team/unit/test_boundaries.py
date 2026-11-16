@@ -20,7 +20,7 @@ def test_remove_below_and_at_limit_is_accepted(item, request_ctx, q, remaining):
 
 @pytest.mark.req('BR-1', 'FR-07')
 @pytest.mark.risk('PR-01')
-@pytest.mark.xfail(strict=True, reason='DEF-01: just-above-limit removal is clamped (baseline)')
+@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-01: just-above-limit removal is clamped (baseline)')
 def test_remove_just_above_limit_is_rejected(item, request_ctx):
     with pytest.raises(ValidationError):
         _remove(payload(item, '10.00001'), request_ctx)
@@ -74,3 +74,22 @@ def test_invalid_quantity_partitions_are_rejected(item, request_ctx, call, bad):
 def test_valid_quantity_partitions_are_accepted(item, request_ctx, good):
     _add(payload(item, good), request_ctx)
     assert reload(item).quantity == Decimal(AVAILABLE) + Decimal(str(good))
+
+
+# ---- BR-1 resulting-total bound on a NON-empty item (item = 10, max = 9 999 999 999.99999): just below / at / above
+@pytest.mark.req('BR-1')
+@pytest.mark.risk('PR-04')
+@pytest.mark.parametrize('q, total', [('9999999989.99998', '9999999999.99998'), ('9999999989.99999', '9999999999.99999')],
+                         ids=['total-just-below-max', 'total-at-max'])
+def test_add_with_total_below_and_at_max_is_accepted(item, request_ctx, q, total):
+    _add(payload(item, q), request_ctx)
+    assert reload(item).quantity == Decimal(total)
+
+
+@pytest.mark.req('BR-1')
+@pytest.mark.risk('PR-04')
+@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-03: total just above the maximum is accepted (baseline)')
+def test_add_with_total_just_above_max_is_rejected(item, request_ctx):
+    with pytest.raises(ValidationError):
+        _add(payload(item, '9999999990'), request_ctx)
+    assert reload(item).quantity == AVAILABLE

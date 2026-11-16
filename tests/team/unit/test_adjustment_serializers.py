@@ -45,28 +45,7 @@ def test_validate_quantity_accepts_zero_when_not_required():
     assert S().validate_quantity(Decimal('0')) == 0
 
 
-# ------------------------------------------------------------- validate_pk branches
-def test_validate_pk_require_in_stock_true_accepts_normal_item(item):
-    from stock.serializers import StockAdjustmentItemSerializer as S
-    assert S(require_in_stock=True).validate_pk(item) is item
-
-
-def test_validate_pk_require_in_stock_false_rejects_item_in_stock(item):
-    from stock.serializers import StockAdjustmentItemSerializer as S
-    with pytest.raises(ValidationError, match='already in stock'):
-        S(require_in_stock=False).validate_pk(item)
-
-
-def test_validate_pk_require_in_stock_false_accepts_depleted_item(make_item):
-    from stock.serializers import StockAdjustmentItemSerializer as S
-    z = make_item(0)
-    assert S(require_in_stock=False).validate_pk(z) is z
-
-
-def test_validate_pk_require_in_stock_none_skips_check(item):
-    from stock.serializers import StockAdjustmentItemSerializer as S
-    assert S(require_in_stock=None).validate_pk(item) is item
-
+# validate_pk branches (require_in_stock True/False/None) are covered once, as the six basis paths, in test_validate_pk_mcc.py
 
 # ------------------------------------------------------------- to_internal_value / validate
 def test_empty_items_list_rejected(request_ctx):
@@ -105,7 +84,8 @@ def test_add_serializer_applies_and_records(item, request_ctx):
     assert reload(item).quantity == 15 and len(history(item, ADD)) == 1
 
 
-def test_add_serializer_ignores_zero_quantity_item(item, request_ctx):
+def test_characterisation_add_save_skips_zero_quantity_item(item, request_ctx):
+    """Baseline characterisation of the defensive `quantity <= 0: continue` branch (exercised only to cover it; zero should be rejected earlier, DEF-02)."""
     _add(payload(item, 0), request_ctx)
     assert reload(item).quantity == 10 and history(item, ADD) == []
 
@@ -116,9 +96,11 @@ def test_add_serializer_passes_optional_fields(item, request_ctx):
     assert (got.batch, got.packaging) == ('B5', 'tray')
 
 
-def test_add_serializer_skips_blank_optional_fields(item, request_ctx):
-    _add(payload(item, 1, batch='', packaging=''), request_ctx)
-    assert reload(item).batch == ''
+def test_add_serializer_blank_optional_fields_keep_existing_values(make_item, request_ctx):
+    it = make_item(10, batch='KEEP', packaging='crate')
+    _add(payload(it, 1, batch='', packaging=''), request_ctx)
+    got = reload(it)
+    assert (got.batch, got.packaging) == ('KEEP', 'crate')
 
 
 @pytest.mark.req('FR-10')
@@ -135,7 +117,8 @@ def test_remove_serializer_applies_and_records(item, request_ctx):
     assert reload(item).quantity == 6 and len(history(item, REMOVE)) == 1
 
 
-def test_remove_serializer_ignores_zero_quantity_item(item, request_ctx):
+def test_characterisation_remove_save_skips_zero_quantity_item(item, request_ctx):
+    """Baseline characterisation of the defensive `quantity <= 0: continue` branch (DEF-02)."""
     _remove(payload(item, 0), request_ctx)
     assert reload(item).quantity == 10 and history(item, REMOVE) == []
 
@@ -146,15 +129,17 @@ def test_remove_serializer_passes_optional_fields(item, request_ctx):
     assert (got.batch, got.packaging) == ('B6', 'crate')
 
 
-def test_remove_serializer_skips_blank_optional_fields(item, request_ctx):
-    _remove(payload(item, 1, batch='', packaging=''), request_ctx)
-    assert reload(item).batch == ''
+def test_remove_serializer_blank_optional_fields_keep_existing_values(make_item, request_ctx):
+    it = make_item(10, batch='KEEP', packaging='crate')
+    _remove(payload(it, 1, batch='', packaging=''), request_ctx)
+    got = reload(it)
+    assert (got.batch, got.packaging) == ('KEEP', 'crate')
 
 
 # ------------------------------------------------------------- DEF-01/02/03: EXPECTED behaviour (fail on baseline)
 @pytest.mark.req('FR-07', 'BR-1')
 @pytest.mark.risk('PR-01')
-@pytest.mark.xfail(strict=True, reason='DEF-01: over-removal is clamped, not rejected (baseline)')
+@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-01: over-removal is clamped, not rejected (baseline)')
 def test_expected_over_removal_is_rejected_and_quantity_unchanged(item, request_ctx):
     with pytest.raises(ValidationError):
         _remove(payload(item, 11), request_ctx)
@@ -163,7 +148,7 @@ def test_expected_over_removal_is_rejected_and_quantity_unchanged(item, request_
 
 @pytest.mark.req('FR-03b')
 @pytest.mark.risk('PR-04')
-@pytest.mark.xfail(strict=True, reason='DEF-02: zero quantity accepted as silent no-op (baseline)')
+@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-02: zero quantity accepted as silent no-op (baseline)')
 @pytest.mark.parametrize('call', [_add, _remove], ids=['add', 'remove'])
 def test_expected_zero_quantity_is_rejected(item, request_ctx, call):
     with pytest.raises(ValidationError):
@@ -172,7 +157,7 @@ def test_expected_zero_quantity_is_rejected(item, request_ctx, call):
 
 @pytest.mark.req('BR-1')
 @pytest.mark.risk('PR-04')
-@pytest.mark.xfail(strict=True, reason='DEF-03: resulting quantity may exceed the representable maximum (baseline)')
+@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-03: resulting quantity may exceed the representable maximum (baseline)')
 def test_expected_add_exceeding_representable_total_is_rejected(item, request_ctx):
     with pytest.raises(ValidationError):
         _add(payload(item, '9999999999.99999'), request_ctx)

@@ -55,12 +55,22 @@ def test_deleted_item_cannot_be_adjusted(make_item, request_ctx):
 
 
 @pytest.mark.req('FR-04')
-@pytest.mark.parametrize('which', ['customer', 'sales_order', 'build', 'parent'])
 @pytest.mark.parametrize('call', [_add, _remove], ids=['add', 'remove'])
-def test_non_adjustable_item_is_rejected_and_unchanged(item, markers, request_ctx, call, which):
+def test_non_adjustable_item_disallowed_transition_unchanged(item, markers, request_ctx, call):
+    """IN_STOCK -> NON_ADJUSTABLE (installed in another item): adjustment is disallowed and nothing changes.
+    (Each single-reference condition is covered by the MCC rows; this is the state-level view.)"""
     from stock.models import StockItem
-    fields = {'customer': 'customer', 'sales_order': 'sales_order', 'build': 'consumed_by', 'parent': 'belongs_to'}
-    StockItem.objects.filter(pk=item.pk).update(**{fields[which] + '_id': getattr(markers, which).pk})
+    StockItem.objects.filter(pk=item.pk).update(belongs_to_id=markers.parent.pk)
     with pytest.raises(ValidationError, match='not in stock'):
         call(payload(item, 1), request_ctx)
-    assert reload(item).quantity == 10
+    assert reload(item).quantity == 10 and history(item, ADD) == [] and history(item, REMOVE) == []
+
+
+@pytest.mark.req('BR-3', 'FR-03a')
+@pytest.mark.parametrize('call', [_add, _remove], ids=['add', 'remove'])
+def test_in_stock_invalid_event_is_disallowed_and_state_unchanged(item, request_ctx, call):
+    """Disallowed transition from IN_STOCK: an invalid (negative) quantity is rejected and the item stays IN_STOCK at 10."""
+    with pytest.raises(ValidationError):
+        call(payload(item, '-1'), request_ctx)
+    got = reload(item)
+    assert got.quantity == 10 and got.in_stock

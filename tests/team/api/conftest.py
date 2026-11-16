@@ -1,0 +1,92 @@
+"""Fixtures for API/integration tests: a live InvenTree server (scripts/start.sh), seeded by scripts/reset.sh.
+Every request is logged to evidence/api/request_log.jsonl (used by tools/api_coverage.py)."""
+import json, os, re
+from decimal import Decimal
+import pytest
+import requests
+
+BASE = os.environ.get('API_BASE', 'http://127.0.0.1:8000')
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+LOG = os.path.join(ROOT, 'evidence', 'api', 'request_log.jsonl')
+USERS = {'admin': ('admin', 'admin12345'), 'manager': ('manager', 'manager12345'), 'viewer': ('viewer', 'viewer12345'), 'anon': None}
+ADD, REMOVE = 11, 12
+_LOG = []
+
+
+def template(path):
+    return re.sub(r'/\d+/', '/{id}/', path)
+
+
+class Client:
+    def __init__(self, role):
+        self.role = role
+        self.s = requests.Session()
+        if USERS[role]:
+            self.s.auth = USERS[role]
+
+    def request(self, method, path, **kw):
+        r = self.s.request(method, BASE + path, timeout=30, **kw)
+        _LOG.append({'role': self.role, 'method': method.upper(), 'path': template(path), 'status': r.status_code,
+                     'content_type': (kw.get('headers') or {}).get('Content-Type', 'application/json' if 'json' in kw else None)})
+        return r
+
+    def get(self, path, **kw): return self.request('GET', path, **kw)
+    def post(self, path, **kw): return self.request('POST', path, **kw)
+
+
+@pytest.fixture(scope='session', autouse=True)
+def _server_and_log():
+    try:
+        assert requests.get(BASE + '/api/', timeout=10).status_code == 200
+    except Exception as e:  # pragma: no cover
+        pytest.exit(f'server not reachable at {BASE}: run scripts/start.sh ({e})')
+    yield
+    os.makedirs(os.path.dirname(LOG), exist_ok=True)
+    with open(LOG, 'w') as f:
+        for rec in _LOG:
+            f.write(json.dumps(rec, sort_keys=True) + '\n')
+
+
+@pytest.fixture(scope='session')
+def admin(): return Client('admin')
+@pytest.fixture(scope='session')
+def manager(): return Client('manager')
+@pytest.fixture(scope='session')
+def viewer(): return Client('viewer')
+@pytest.fixture(scope='session')
+def anon(): return Client('anon')
+
+
+@pytest.fixture
+def new_item(admin):
+    """Create a fresh StockItem of the seeded 'Keyboard' part (pk 1) at location 1; returns its pk. Order-independent tests."""
+    def _make(quantity='10', **extra):
+        body = {'part': 1, 'location': 1, 'quantity': str(quantity), 'delete_on_deplete': False, **extra}
+        r = admin.post('/api/stock/', json=body)
+        assert r.status_code == 201, r.text
+        data = r.json()
+        return (data[0] if isinstance(data, list) else data)['pk']
+    return _make
+
+
+def qty(client, pk):
+    """Read back the shared record: StockItem.quantity (None when the item does not exist)."""
+    r = client.get(f'/api/stock/{pk}/')
+    if r.status_code == 404:
+        return None
+    assert r.status_code == 200, r.text
+    return Decimal(str(r.json()['quantity']))
+
+
+def history(client, pk, code=None):
+    """Read back history entries (audit log) for a stock item, optionally for one event type (11 add / 12 remove)."""
+    out = []
+    for c in ([code] if code else [ADD, REMOVE]):
+        r = client.get(f'/api/audit/?model_type=stock.stockitem&object_pk={pk}&event_type={c}&limit=500')
+        assert r.status_code == 200, r.text
+        out += r.json()['results']
+    return out
+
+
+def adjust(client, op, pk, quantity, **extra):
+    return client.post(f'/api/stock/{op}/', json={'items': [{'pk': pk, 'quantity': str(quantity), **extra}]})

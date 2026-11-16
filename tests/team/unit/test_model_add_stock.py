@@ -66,3 +66,22 @@ def test_add_same_status_is_not_recorded_as_change(item, user):
     from stock.status_codes import StockStatus
     item.add_stock(1, user, status=StockStatus.OK.value)
     assert 'status' not in (history(item, ADD)[0].changes or {})
+
+
+def test_add_records_optional_field_changes_in_history(item, user):
+    item.add_stock(1, user, batch='B7', packaging='bag')
+    ch = history(item, ADD)[0].changes
+    assert ch['batch'] == ['', 'B7'] and ch['packaging'] == [None, 'bag']
+
+
+def test_add_same_status_records_no_status_delta(item, user):
+    from stock.status_codes import StockStatus
+    item.add_stock(1, user, status=StockStatus.OK.value)
+    d = history(item, ADD)[0].additional_data['deltas']
+    assert 'status' not in d and 'old_status' not in d
+
+
+def test_add_records_model_reference_in_history(item, user, markers):
+    item.add_stock(1, user, salesorder=markers.sales_order)
+    ref = history(item, ADD)[0].additional_data['deltas']['salesorder']
+    assert ref['pk'] == markers.sales_order.pk and ref['model_type'] == 'order.salesorder'

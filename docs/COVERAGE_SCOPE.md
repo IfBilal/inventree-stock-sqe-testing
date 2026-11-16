@@ -2,24 +2,34 @@
 
 | File | Function | Lines | Statements | Missed | Stmt % | Branches | Missed | Branch % | Missing lines / branches |
 |---|---|---|---|---|---|---|---|---|---|
-| serializers.py | `StockAdjustmentItemSerializer.__init__` | 1816-1823 | 4 | 0 | 100 | 0 | 0 | 100 |   |
-| serializers.py | `StockAdjustmentItemSerializer.validate_pk` | 1835-1850 | 9 | 0 | 100 | 8 | 0 | 100 |   |
-| serializers.py | `StockAdjustmentItemSerializer.validate_quantity` | 1856-1864 | 6 | 0 | 100 | 4 | 0 | 100 |   |
-| serializers.py | `StockAdjustmentSerializer.to_internal_value` | 1914-1936 | 10 | 0 | 100 | 4 | 0 | 100 |   |
-| serializers.py | `StockAdjustmentSerializer.validate` | 1938-1951 | 7 | 0 | 100 | 2 | 0 | 100 |   |
-| serializers.py | `StockAddSerializer.save` | 2015-2043 | 15 | 0 | 100 | 8 | 0 | 100 |   |
-| serializers.py | `StockRemoveSerializer.save` | 2049-2077 | 15 | 0 | 100 | 8 | 0 | 100 |   |
-| models.py | `StockItem.is_in_stock` | 2313-2343 | 10 | 0 | 100 | 8 | 0 | 100 |   |
-| models.py | `StockItem.lock_quantity` | 3223-3252 | 8 | 0 | 100 | 4 | 0 | 100 |   |
-| models.py | `StockItem.updateQuantity` | 3255-3293 | 17 | 0 | 100 | 6 | 0 | 100 |   |
-| models.py | `StockItem.add_stock` | 3389-3439 | 21 | 0 | 100 | 6 | 0 | 100 |   |
-| models.py | `StockItem.take_stock` | 3442-3509 | 28 | 0 | 100 | 10 | 0 | 100 |   |
-| models.py | `StockItem.optional_transfer_fields` | 3057-3059 | 2 | 0 | 100 | 0 | 0 | 100 |   |
-| models.py | `StockItem.model_reference_fields` | 3062-3076 | 2 | 0 | 100 | 0 | 0 | 100 |   |
-| models.py | `StockItem._apply_model_reference_fields` | 3078-3087 | 5 | 0 | 100 | 4 | 0 | 100 |   |
-| models.py | `StockItem._resolve_status_kwarg` | 3089-3095 | 2 | 0 | 100 | 0 | 0 | 100 |   |
-| models.py | `StockItem._apply_status_change` | 3097-3116 | 10 | 0 | 100 | 2 | 0 | 100 |   |
-| models.py | `StockItem._apply_optional_transfer_fields` | 3118-3125 | 5 | 0 | 100 | 4 | 0 | 100 |   |
-| api.py | `StockAdjustView.get_serializer_context` | 237-242 | 4 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/serializers.py | `StockAdjustmentItemSerializer.__init__` | 1816-1823 | 4 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/serializers.py | `StockAdjustmentItemSerializer.validate_pk` | 1835-1850 | 9 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/serializers.py | `StockAdjustmentItemSerializer.validate_quantity` | 1856-1864 | 6 | 0 | 100 | 4 | 0 | 100 |   |
+| stock/serializers.py | `StockAdjustmentSerializer.to_internal_value` | 1914-1936 | 10 | 0 | 100 | 4 | 0 | 100 |   |
+| stock/serializers.py | `StockAdjustmentSerializer.validate` | 1938-1951 | 7 | 0 | 100 | 2 | 0 | 100 |   |
+| stock/serializers.py | `StockAddSerializer.save` | 2015-2043 | 15 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/serializers.py | `StockRemoveSerializer.save` | 2049-2077 | 15 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/models.py | `StockItem.is_in_stock` | 2313-2343 | 10 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/models.py | `StockItem.lock_quantity` | 3223-3252 | 8 | 0 | 100 | 4 | 0 | 100 |   |
+| stock/models.py | `StockItem.updateQuantity` | 3255-3293 | 17 | 0 | 100 | 6 | 0 | 100 |   |
+| stock/models.py | `StockItem.add_stock` | 3389-3439 | 21 | 0 | 100 | 6 | 0 | 100 |   |
+| stock/models.py | `StockItem.take_stock` | 3442-3509 | 28 | 0 | 100 | 10 | 0 | 100 |   |
+| stock/models.py | `StockItem.optional_transfer_fields` | 3057-3059 | 2 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/models.py | `StockItem.model_reference_fields` | 3062-3076 | 2 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/models.py | `StockItem._apply_model_reference_fields` | 3078-3087 | 5 | 0 | 100 | 4 | 0 | 100 |   |
+| stock/models.py | `StockItem._resolve_status_kwarg` | 3089-3095 | 2 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/models.py | `StockItem._apply_status_change` | 3097-3116 | 10 | 0 | 100 | 2 | 0 | 100 |   |
+| stock/models.py | `StockItem._apply_optional_transfer_fields` | 3118-3125 | 5 | 0 | 100 | 4 | 0 | 100 |   |
+| stock/models.py | `StockItem.can_delete` | 1861-1887 | 12 | 0 | 100 | 10 | 0 | 100 |   |
+| stock/models.py | `StockItem.installed_item_count` | 1923-1925 | 2 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/models.py | `StockItem.tracking_event` | 2405-2450 | 12 | 0 | 100 | 4 | 0 | 100 |   |
+| stock/models.py | `StockItem._tracking_deltas` | 2369-2385 | 8 | 0 | 100 | 6 | 0 | 100 |   |
+| stock/models.py | `StockItem._audit_deltas` | 2387-2393 | 2 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/models.py | `StockItem._is_empty_tracking_event` | 2396-2402 | 2 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/api.py | `StockAdjustView.get_serializer_context` | 237-242 | 4 | 0 | 100 | 0 | 0 | 100 |   |
+| InvenTree/fields.py | `PrefetchedPrimaryKeyRelatedField.__init__` | 68-71 | 3 | 0 | 100 | 0 | 0 | 100 |   |
+| InvenTree/fields.py | `PrefetchedPrimaryKeyRelatedField.to_internal_value` | 73-85 | 9 | 0 | 100 | 2 | 0 | 100 |   |
+| InvenTree/permissions.py | `ModelPermission._queryset` | 216-230 | 7 | 0 | 100 | 4 | 1 | 75 |  ['(227, 230) JUSTIFIED'] |
+| InvenTree/permissions.py | `RolePermission.has_permission` | 255-292 | 19 | 0 | 100 | 10 | 0 | 100 |   |
 
-**Total in scope:** statements 180/180 (100.0 %), branches 78/78 (100.0 %).
+**Total in scope:** statements 256/256 (100.0 %), branches 113/114 (99.1 %). Uncovered branches: 1, of which defended in `docs/COVERAGE_JUSTIFICATION.md`: 1; **unjustified: 0**.

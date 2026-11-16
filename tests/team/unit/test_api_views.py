@@ -43,9 +43,3 @@ def test_user_without_stock_add_right_gets_403_and_no_change(url, user, item):
 def test_unauthenticated_request_is_rejected(url, item):
     r = _client().post(url, {'items': [{'pk': item.pk, 'quantity': 3}]}, format='json')
     assert r.status_code in (401, 403) and reload(item).quantity == 10
-
-
-@pytest.mark.req('FR-03a')
-def test_invalid_quantity_returns_400(admin, item):
-    r = _client(admin).post(ADD_URL, {'items': [{'pk': item.pk, 'quantity': -1}]}, format='json')
-    assert r.status_code == 400 and reload(item).quantity == 10
