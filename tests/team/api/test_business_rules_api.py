@@ -61,6 +61,7 @@ def test_depletion_retains_item_at_zero_when_flag_false(new_item, manager):
 
 
 @pytest.mark.req('BR-3', 'FR-08')
+@pytest.mark.seq('S3-deplete-delete')
 def test_depletion_deletes_item_when_flag_true_and_history_survives(new_item, manager):
     pk = new_item(5, delete_on_deplete=True)
     assert adjust(manager, 'remove', pk, 5).status_code == 201
@@ -69,6 +70,7 @@ def test_depletion_deletes_item_when_flag_true_and_history_survives(new_item, ma
 
 
 @pytest.mark.req('BR-3')
+@pytest.mark.seq('S4-delete-then-adjust')
 def test_deleted_item_cannot_be_adjusted(new_item, manager):
     pk = new_item(5, delete_on_deplete=True)
     adjust(manager, 'remove', pk, 5)
@@ -78,6 +80,7 @@ def test_deleted_item_cannot_be_adjusted(new_item, manager):
 
 
 @pytest.mark.req('BR-3', 'FR-01')
+@pytest.mark.seq('S2-deplete-restock')
 def test_restock_of_depleted_item(new_item, manager):
     pk = new_item(0)
     assert adjust(manager, 'add', pk, 8).status_code == 201
@@ -94,6 +97,7 @@ def test_remove_from_depleted_item_is_ignored(new_item, manager):
 # =============================================================== cross-workflow sequences (shared record)
 @pytest.mark.req('FR-01', 'FR-05', 'FR-02', 'FR-06')
 @pytest.mark.risk('PR-07')
+@pytest.mark.seq('S1-add-remove-add')
 def test_add_remove_add_sequence_updates_balance_and_history_in_order(new_item, manager):
     pk = new_item(10)
     for op, q in (('add', 5), ('remove', 3), ('add', 2)):
@@ -114,6 +118,7 @@ def test_history_entry_matches_the_request(new_item, manager):
 # =============================================================== repeated requests / duplicates / atomicity (PR-05, PR-06)
 @pytest.mark.req('FR-05', 'FR-06')
 @pytest.mark.risk('PR-06')
+@pytest.mark.seq('S6-repeat-valid')
 def test_repeating_a_valid_request_applies_it_once_per_request_no_duplicate_history(new_item, manager):
     pk = new_item(10)
     for _ in range(3):
@@ -123,6 +128,7 @@ def test_repeating_a_valid_request_applies_it_once_per_request_no_duplicate_hist
 
 @pytest.mark.req('FR-03a', 'FR-07')
 @pytest.mark.risk('PR-06')
+@pytest.mark.seq('S5-reject-retry')
 def test_repeating_a_rejected_request_leaves_no_trace(new_item, manager):
     pk = new_item(10)
     for _ in range(3):
@@ -132,6 +138,7 @@ def test_repeating_a_rejected_request_leaves_no_trace(new_item, manager):
 
 @pytest.mark.req('FR-10')
 @pytest.mark.risk('PR-05')
+@pytest.mark.seq('S7-atomic-multi')
 def test_multi_item_request_is_atomic_when_one_item_is_invalid(new_item, manager):
     a = new_item(10)
     r = manager.post('/api/stock/add/', json={'items': [{'pk': a, 'quantity': '1'}, {'pk': 999999999, 'quantity': '1'}]})

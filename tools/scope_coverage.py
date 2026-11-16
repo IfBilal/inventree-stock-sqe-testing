@@ -12,7 +12,7 @@ SCOPE = {
                         'StockItem.take_stock', 'StockItem.optional_transfer_fields', 'StockItem.model_reference_fields',
                         'StockItem._apply_model_reference_fields', 'StockItem._resolve_status_kwarg',
                         'StockItem._apply_status_change', 'StockItem._apply_optional_transfer_fields',
-                        'StockItem.can_delete', 'StockItem.installed_item_count', 'StockItem.tracking_event',
+                        'StockItem.can_delete', 'StockItem.installed_item_count', 'StockItem.save', 'StockItem.delete', 'StockItem.tracking_event',
                         'StockItem._tracking_deltas', 'StockItem._audit_deltas', 'StockItem._is_empty_tracking_event'],
     'stock/api.py': ['StockAdjustView.get_serializer_context'],
     'InvenTree/fields.py': ['PrefetchedPrimaryKeyRelatedField.__init__', 'PrefetchedPrimaryKeyRelatedField.to_internal_value'],

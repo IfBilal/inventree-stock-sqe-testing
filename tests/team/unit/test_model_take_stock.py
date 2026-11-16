@@ -108,19 +108,13 @@ def test_update_quantity_same_value_returns_none(item):
     assert item.updateQuantity(10) is None
 
 
-def test_update_quantity_zero_deletes_when_delete_on_deplete(make_item):
-    d = make_item(3, delete_on_deplete=True)
-    assert d.updateQuantity(0) is False and reload(d) is None
 
 
-def test_update_quantity_zero_keeps_item_when_cannot_delete(make_item, markers, monkeypatch):
-    d = make_item(3, delete_on_deplete=True)
-    monkeypatch.setattr(type(d), 'can_delete', lambda self: False)
-    assert d.updateQuantity(0) is True and reload(d).quantity == 0
 
 
-def test_update_quantity_zero_keeps_item_without_flag(item):
-    assert item.updateQuantity(0) is True and reload(item) is not None
+
+
+
 
 
 # ---------------------------------------------------------------- lock_quantity

@@ -49,7 +49,7 @@ Conditions (5): ALLOW, SO, BT, CU, CB. Outcome: **reject** when the decision is 
 | CU | (1,3) | (1, 3) |
 | CB | (1,2) | (1, 2) |
 
-Minimal MC/DC set: rows [1, 2, 3, 5, 9, 18] (6 tests = n+1, n = 5).
+Minimal MC/DC set: rows [1, 2, 3, 5, 9, 18] (6 tests = n+1 for the 5 independently demonstrable conditions).
 
 ## IS-STATUS — is_in_stock: status not available
 
@@ -67,25 +67,30 @@ Conditions (2): check_status, status_unavailable. Outcome: **not in stock** when
 | check_status | (2,4) | (2, 4) |
 | status_unavailable | (3,4) | (3, 4) |
 
-Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1, n = 2).
+Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1 for the 2 independently demonstrable conditions).
 
 ## IS-LOCATION — is_in_stock: location excluded from stock
 
-Conditions (2): check_status, location_excluded. Outcome: **not in stock** when the decision is true. `location_excluded` is the coupled condition `location and location.exclude_from_stock` (the second operand is only evaluated when a location exists, so the two cannot be varied independently — masking). The tests exercise it with no location, a location that is not excluded, and an excluded location.
+Conditions (3): check_status, has_location, location_excluded. Outcome: **not in stock** when the decision is true. Real code: `check_status and self.location and self.location.exclude_from_stock`. `location_excluded` is only evaluated when the item has a location, so rows with has_location=F and location_excluded=T cannot occur (infeasible, listed but not executed; unique-cause pairs are formed among feasible rows).
 
-| # | check_status | location_excluded | expected | feasible | MC/DC set |
-|---|---|---|---|---|---|
-| 1 | F | F | in stock | yes |  |
-| 2 | F | T | in stock | yes | ✔ |
-| 3 | T | F | in stock | yes | ✔ |
-| 4 | T | T | not in stock | yes | ✔ |
+| # | check_status | has_location | location_excluded | expected | feasible | MC/DC set |
+|---|---|---|---|---|---|---|
+| 1 | F | F | F | in stock | yes |  |
+| 2 | F | F | T | in stock | no (infeasible) |  |
+| 3 | F | T | F | in stock | yes |  |
+| 4 | F | T | T | in stock | yes | ✔ |
+| 5 | T | F | F | in stock | yes |  |
+| 6 | T | F | T | in stock | no (infeasible) |  |
+| 7 | T | T | F | in stock | yes | ✔ |
+| 8 | T | T | T | not in stock | yes | ✔ |
 
 | Condition | All independence pairs | Pair chosen in the minimal set |
 |---|---|---|
-| check_status | (2,4) | (2, 4) |
-| location_excluded | (3,4) | (3, 4) |
+| check_status | (4,8) | (4, 8) |
+| has_location |  | masked (no unique-cause pair among feasible rows) |
+| location_excluded | (7,8) | (7, 8) |
 
-Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1, n = 2).
+Minimal MC/DC set: rows [4, 7, 8] (3 tests = n+1 for the 2 independently demonstrable conditions; masked: has_location).
 
 ## IS-QUANTITY — is_in_stock: quantity not positive
 
@@ -103,7 +108,7 @@ Conditions (2): check_quantity, quantity_le_0. Outcome: **not in stock** when th
 | check_quantity | (2,4) | (2, 4) |
 | quantity_le_0 | (3,4) | (3, 4) |
 
-Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1, n = 2).
+Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1 for the 2 independently demonstrable conditions).
 
 ## IS-PRODUCTION — is_in_stock: item in production
 
@@ -121,25 +126,30 @@ Conditions (2): check_in_production, is_building. Outcome: **not in stock** when
 | check_in_production | (2,4) | (2, 4) |
 | is_building | (3,4) | (3, 4) |
 
-Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1, n = 2).
+Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1 for the 2 independently demonstrable conditions).
 
 ## BR3 — updateQuantity: delete item when depleted (BR-3)
 
-Conditions (2): delete_on_deplete, can_delete. Outcome: **deleted** when the decision is true. `can_delete()` is only evaluated when `delete_on_deplete` is true (short-circuit): rows 1-2 need no `can_delete` call.
+Conditions (3): quantity_zero, delete_on_deplete, can_delete. Outcome: **deleted** when the decision is true. Short-circuit order quantity_zero, delete_on_deplete, can_delete(): `can_delete()` is only evaluated when the first two hold (its value is irrelevant otherwise; the test still sets it to a defined state).
 
-| # | delete_on_deplete | can_delete | expected | feasible | MC/DC set |
-|---|---|---|---|---|---|
-| 1 | F | F | retained at 0 | yes |  |
-| 2 | F | T | retained at 0 | yes | ✔ |
-| 3 | T | F | retained at 0 | yes | ✔ |
-| 4 | T | T | deleted | yes | ✔ |
+| # | quantity_zero | delete_on_deplete | can_delete | expected | feasible | MC/DC set |
+|---|---|---|---|---|---|---|
+| 1 | F | F | F | retained | yes |  |
+| 2 | F | F | T | retained | yes |  |
+| 3 | F | T | F | retained | yes |  |
+| 4 | F | T | T | retained | yes | ✔ |
+| 5 | T | F | F | retained | yes |  |
+| 6 | T | F | T | retained | yes | ✔ |
+| 7 | T | T | F | retained | yes | ✔ |
+| 8 | T | T | T | deleted | yes | ✔ |
 
 | Condition | All independence pairs | Pair chosen in the minimal set |
 |---|---|---|
-| delete_on_deplete | (2,4) | (2, 4) |
-| can_delete | (3,4) | (3, 4) |
+| quantity_zero | (4,8) | (4, 8) |
+| delete_on_deplete | (6,8) | (6, 8) |
+| can_delete | (7,8) | (7, 8) |
 
-Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1, n = 2).
+Minimal MC/DC set: rows [4, 6, 7, 8] (4 tests = n+1 for the 3 independently demonstrable conditions).
 
 ## TRACK-EMPTY — _is_empty_tracking_event: event carries no information
 
@@ -162,17 +172,89 @@ Conditions (3): is_update_event, no_deltas, no_notes. Outcome: **empty (not reco
 | no_deltas | (6,8) | (6, 8) |
 | no_notes | (7,8) | (7, 8) |
 
-Minimal MC/DC set: rows [4, 6, 7, 8] (4 tests = n+1, n = 3).
+Minimal MC/DC set: rows [4, 6, 7, 8] (4 tests = n+1 for the 3 independently demonstrable conditions).
+
+## VQ — validate_quantity: zero rejected when require_non_zero
+
+Conditions (2): require_non_zero, quantity_le_0. Outcome: **reject** when the decision is true. Called with a non-negative quantity (the `quantity < 0` operand is a separate dead branch, see COVERAGE_JUSTIFICATION).
+
+| # | require_non_zero | quantity_le_0 | expected | feasible | MC/DC set |
+|---|---|---|---|---|---|
+| 1 | F | F | accept | yes |  |
+| 2 | F | T | accept | yes | ✔ |
+| 3 | T | F | accept | yes | ✔ |
+| 4 | T | T | reject | yes | ✔ |
+
+| Condition | All independence pairs | Pair chosen in the minimal set |
+|---|---|---|
+| require_non_zero | (2,4) | (2, 4) |
+| quantity_le_0 | (3,4) | (3, 4) |
+
+Minimal MC/DC set: rows [2, 3, 4] (3 tests = n+1 for the 2 independently demonstrable conditions).
+
+## PF — prefetch field: fall back to database lookup
+
+Conditions (2): cache_empty, pk_not_cached. Outcome: **database lookup** when the decision is true. `cache_empty` (no/empty cache) implies the pk is not cached, so (cache_empty=T, pk_not_cached=F) cannot occur.
+
+| # | cache_empty | pk_not_cached | expected | feasible | MC/DC set |
+|---|---|---|---|---|---|
+| 1 | F | F | cache hit | yes | ✔ |
+| 2 | F | T | database lookup | yes | ✔ |
+| 3 | T | F | database lookup | no (infeasible) |  |
+| 4 | T | T | database lookup | yes |  |
+
+| Condition | All independence pairs | Pair chosen in the minimal set |
+|---|---|---|
+| cache_empty |  | masked (no unique-cause pair among feasible rows) |
+| pk_not_cached | (1,2) | (1, 2) |
+
+Minimal MC/DC set: rows [1, 2] (2 tests = n+1 for the 1 independently demonstrable conditions; masked: cache_empty).
+
+## STAT — _apply_status_change: no change recorded
+
+Conditions (2): no_status, same_status. Outcome: **no change** when the decision is true. `compare_status` is only evaluated when a status is given (short-circuit), so (no_status=T, same_status=T) cannot occur.
+
+| # | no_status | same_status | expected | feasible | MC/DC set |
+|---|---|---|---|---|---|
+| 1 | F | F | status changed | yes | ✔ |
+| 2 | F | T | no change | yes | ✔ |
+| 3 | T | F | no change | yes | ✔ |
+| 4 | T | T | no change | no (infeasible) |  |
+
+| Condition | All independence pairs | Pair chosen in the minimal set |
+|---|---|---|
+| no_status | (1,3) | (1, 3) |
+| same_status | (1,2) | (1, 2) |
+
+Minimal MC/DC set: rows [1, 2, 3] (3 tests = n+1 for the 2 independently demonstrable conditions).
+
+## RESOLVE — _resolve_status_kwarg: a status value is resolved
+
+Conditions (2): status_given, custom_key_given. Outcome: **resolved** when the decision is true. 
+
+| # | status_given | custom_key_given | expected | feasible | MC/DC set |
+|---|---|---|---|---|---|
+| 1 | F | F | None | yes | ✔ |
+| 2 | F | T | resolved | yes | ✔ |
+| 3 | T | F | resolved | yes | ✔ |
+| 4 | T | T | resolved | yes |  |
+
+| Condition | All independence pairs | Pair chosen in the minimal set |
+|---|---|---|
+| status_given | (1,3) | (1, 3) |
+| custom_key_given | (1,2) | (1, 2) |
+
+Minimal MC/DC set: rows [1, 2, 3] (3 tests = n+1 for the 2 independently demonstrable conditions).
 
 ## BR1 — take_stock: removal is applied (BR-1 guards)
 
-Conditions (3): not_serialized, requested_positive, available_positive. Outcome: **applied** when the decision is true. Guards are evaluated in this order and each returns False when violated. `requested_positive` = the argument converts to a Decimal that is > 0; `available_positive` = the row still exists (lock succeeds) and its quantity is > 0. When applied, the removed amount is clamped to the available quantity (DEF-01).
+Conditions (3): not_serialized, requested_positive, available_positive. Outcome: **applied** when the decision is true. When the item is serialized the first guard returns before the others are evaluated, so those rows are masked duplicates of one execution (only the representative row is feasible). Guards are evaluated in this order and each returns False when violated. `requested_positive` = the argument converts to a Decimal that is > 0; `available_positive` = the row still exists (lock succeeds) and its quantity is > 0. When applied, the removed amount is clamped to the available quantity (DEF-01).
 
 | # | not_serialized | requested_positive | available_positive | expected | feasible | MC/DC set |
 |---|---|---|---|---|---|---|
-| 1 | F | F | F | ignored (returns False) | yes |  |
-| 2 | F | F | T | ignored (returns False) | yes |  |
-| 3 | F | T | F | ignored (returns False) | yes |  |
+| 1 | F | F | F | ignored (returns False) | no (infeasible) |  |
+| 2 | F | F | T | ignored (returns False) | no (infeasible) |  |
+| 3 | F | T | F | ignored (returns False) | no (infeasible) |  |
 | 4 | F | T | T | ignored (returns False) | yes | ✔ |
 | 5 | T | F | F | ignored (returns False) | yes |  |
 | 6 | T | F | T | ignored (returns False) | yes | ✔ |
@@ -185,5 +267,5 @@ Conditions (3): not_serialized, requested_positive, available_positive. Outcome:
 | requested_positive | (6,8) | (6, 8) |
 | available_positive | (7,8) | (7, 8) |
 
-Minimal MC/DC set: rows [4, 6, 7, 8] (4 tests = n+1, n = 3).
+Minimal MC/DC set: rows [4, 6, 7, 8] (4 tests = n+1 for the 3 independently demonstrable conditions).
 

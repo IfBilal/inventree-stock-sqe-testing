@@ -6,3 +6,5 @@ mutmut
 pyyaml
 pip-audit
 pytest-django
+openapi-spec-validator
+jsonschema

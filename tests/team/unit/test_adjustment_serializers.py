@@ -84,10 +84,20 @@ def test_add_serializer_applies_and_records(item, request_ctx):
     assert reload(item).quantity == 15 and len(history(item, ADD)) == 1
 
 
-def test_characterisation_add_save_skips_zero_quantity_item(item, request_ctx):
-    """Baseline characterisation of the defensive `quantity <= 0: continue` branch (exercised only to cover it; zero should be rejected earlier, DEF-02)."""
-    _add(payload(item, 0), request_ctx)
-    assert reload(item).quantity == 10 and history(item, ADD) == []
+def _direct_save(cls, item, quantity, ctx):
+    """Call save() with a pre-validated payload (bypasses validation), independent of how validation treats the value."""
+    s = cls(data={}, context=ctx)
+    s._validated_data = {'items': [{'pk': item, 'quantity': quantity}], 'notes': ''}
+    s._errors = {}
+    return s.save()
+
+
+@pytest.mark.parametrize('cls_name', ['StockAddSerializer', 'StockRemoveSerializer'])
+def test_save_defensively_skips_non_positive_quantities(cls_name, item, request_ctx):
+    """Covers the defensive `quantity <= 0: continue` branch directly (baseline-independent: still valid after the DEF-02 fix)."""
+    import stock.serializers as ser
+    _direct_save(getattr(ser, cls_name), item, Decimal(0), request_ctx)
+    assert reload(item).quantity == 10 and history(item, ADD) == [] and history(item, REMOVE) == []
 
 
 def test_add_serializer_passes_optional_fields(item, request_ctx):

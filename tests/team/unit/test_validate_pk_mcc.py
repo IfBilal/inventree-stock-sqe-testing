@@ -46,14 +46,12 @@ def test_every_condition_has_an_independence_pair_in_the_mcdc_set():
         assert any(a in s and b in s for a, b in pairs[c]), c
 
 
-# --- six basis paths of V(G)=6 (docs/STATIC_ANALYSIS.md §2), one test each through the real function
+# --- six basis paths of V(G)=6 (docs/STATIC_ANALYSIS.md §2). Paths 4-6 (require_in_stock=True) are executed by the MCC rows (path4 = MCC02 ALLOW=T;
+# path5 = MCC01 all F; path6 = MCC05 BT=T) and are NOT repeated here; paths 1-3 (require_in_stock False/None) are the cases below.
 @pytest.mark.parametrize('name,req_in_stock,allow,set_belongs_to,expect', [
     ('path1 p1F,p4F -> return',            None,  False, False, 'ok'),
     ('path2 p1F,p4T,p5F -> return',        False, False, False, 'ok'),   # item not in stock (qty 0) set below
     ('path3 p1F,p4T,p5T -> raise B',       False, False, False, 'raiseB'),
-    ('path4 p1T,p2F -> return',            True,  True,  True,  'ok'),
-    ('path5 p1T,p2T,p3F -> return',        True,  False, False, 'ok'),
-    ('path6 p1T,p2T,p3T -> raise A',       True,  False, True,  'raiseA'),
 ])
 @pytest.mark.risk('PR-03')
 def test_basis_paths(name, req_in_stock, allow, set_belongs_to, expect, make_item, markers, monkeypatch):

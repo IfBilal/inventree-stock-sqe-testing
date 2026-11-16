@@ -5,7 +5,8 @@
 "req": [
 "FR-10"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_add_serializer_applies_and_records",
@@ -14,37 +15,43 @@
 "FR-01",
 "FR-02"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_add_serializer_blank_optional_fields_keep_existing_values",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_add_serializer_passes_optional_fields",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_characterisation_add_save_skips_zero_quantity_item",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_characterisation_remove_save_skips_zero_quantity_item",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_empty_items_list_rejected",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_add_exceeding_representable_total_is_rejected",
@@ -54,7 +61,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_malformed_items_is_a_validation_error_not_a_crash[dict]",
@@ -64,7 +72,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_malformed_items_is_a_validation_error_not_a_crash[int]",
@@ -74,7 +83,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_malformed_items_is_a_validation_error_not_a_crash[null]",
@@ -84,7 +94,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_malformed_items_is_a_validation_error_not_a_crash[string]",
@@ -94,7 +105,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_over_removal_is_rejected_and_quantity_unchanged",
@@ -105,7 +117,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_zero_quantity_is_rejected[add]",
@@ -115,7 +128,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_expected_zero_quantity_is_rejected[remove]",
@@ -125,19 +139,22 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_items_processed_in_pk_order",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_missing_items_key_rejected",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_non_integer_pk_is_a_validation_error_not_a_crash",
@@ -145,7 +162,8 @@
 "req": [
 "FR-04"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_remove_serializer_applies_and_records",
@@ -154,31 +172,50 @@
 "FR-05",
 "FR-06"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_remove_serializer_blank_optional_fields_keep_existing_values",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_remove_serializer_passes_optional_fields",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_adjustment_serializers.py::test_save_defensively_skips_non_positive_quantities[StockAddSerializer]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_adjustment_serializers.py::test_save_defensively_skips_non_positive_quantities[StockRemoveSerializer]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_unknown_pk_rejected",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_validate_quantity_accepts_zero_when_not_required",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_validate_quantity_negative_branch_directly",
@@ -186,19 +223,42 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_validate_quantity_require_non_zero_accepts_positive",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_adjustment_serializers.py::test_validate_quantity_require_non_zero_rejects_zero",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_non_superuser_with_stock_add_right_is_allowed[add]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_non_superuser_with_stock_add_right_is_allowed[remove]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_api_views.py::test_superuser_add_returns_201_and_changes_quantity",
@@ -207,7 +267,8 @@
 "FR-01",
 "FR-09"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_api_views.py::test_superuser_remove_returns_201_and_changes_quantity",
@@ -216,7 +277,8 @@
 "FR-05",
 "FR-09"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_api_views.py::test_unauthenticated_request_is_rejected[/api/stock/add/]",
@@ -224,7 +286,8 @@
 "req": [
 "FR-09"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_api_views.py::test_unauthenticated_request_is_rejected[/api/stock/remove/]",
@@ -232,7 +295,68 @@
 "req": [
 "FR-09"
 ],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_user_with_only_view_change_or_delete_right_is_denied_on_both_endpoints[add-change-only]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_user_with_only_view_change_or_delete_right_is_denied_on_both_endpoints[add-delete-only]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_user_with_only_view_change_or_delete_right_is_denied_on_both_endpoints[add-view-only]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_user_with_only_view_change_or_delete_right_is_denied_on_both_endpoints[remove-change-only]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_user_with_only_view_change_or_delete_right_is_denied_on_both_endpoints[remove-delete-only]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_api_views.py::test_user_with_only_view_change_or_delete_right_is_denied_on_both_endpoints[remove-view-only]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_api_views.py::test_user_without_stock_add_right_gets_403_and_no_change[/api/stock/add/]",
@@ -241,7 +365,8 @@
 "BR-4",
 "FR-09"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_api_views.py::test_user_without_stock_add_right_gets_403_and_no_change[/api/stock/remove/]",
@@ -250,7 +375,8 @@
 "BR-4",
 "FR-09"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_add_at_and_below_max_is_accepted_on_empty_item[at-max]",
@@ -260,7 +386,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_add_at_and_below_max_is_accepted_on_empty_item[just-below-max]",
@@ -270,7 +397,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_add_just_above_max_is_rejected",
@@ -280,7 +408,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_add_with_total_below_and_at_max_is_accepted[total-at-max]",
@@ -290,7 +419,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_add_with_total_below_and_at_max_is_accepted[total-just-below-max]",
@@ -300,7 +430,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_add_with_total_just_above_max_is_rejected",
@@ -310,7 +441,8 @@
 ],
 "risk": [
 "PR-04"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[add-6-decimals]",
@@ -318,7 +450,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[add-blank]",
@@ -326,7 +459,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[add-huge-exponent]",
@@ -334,7 +468,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[add-nan]",
@@ -342,7 +477,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[add-null]",
@@ -350,7 +486,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[add-text]",
@@ -358,7 +495,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[remove-6-decimals]",
@@ -366,7 +504,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[remove-blank]",
@@ -374,7 +513,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[remove-huge-exponent]",
@@ -382,7 +522,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[remove-nan]",
@@ -390,7 +531,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[remove-null]",
@@ -398,7 +540,8 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_invalid_quantity_partitions_are_rejected[remove-text]",
@@ -406,31 +549,36 @@
 "req": [
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_just_above_zero_is_accepted[add]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_just_above_zero_is_accepted[remove]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_just_below_zero_is_rejected[add]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_just_below_zero_is_rejected[remove]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_remove_below_and_at_limit_is_accepted[at-limit]",
@@ -441,7 +589,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_remove_below_and_at_limit_is_accepted[just-below-limit]",
@@ -452,7 +601,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_remove_just_above_limit_is_rejected",
@@ -463,133 +613,232 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_valid_quantity_partitions_are_accepted[five-decimals]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_valid_quantity_partitions_are_accepted[float]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_valid_quantity_partitions_are_accepted[fraction]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_valid_quantity_partitions_are_accepted[int-str]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_boundaries.py::test_valid_quantity_partitions_are_accepted[int]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_available_status_partition_counts_as_in_stock[OK]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_available_status_partition_counts_as_in_stock[attention]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_available_status_partition_counts_as_in_stock[damaged]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_available_status_partition_counts_as_in_stock[returned]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_available_statuses_count_as_in_stock[50]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_available_statuses_count_as_in_stock[55]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_available_statuses_count_as_in_stock[85]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_in_production_item_is_not_in_stock",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_in_stock_for_normal_item",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_location_excluded_from_stock",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_location_not_excluded",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_quantity_condition[-1-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_quantity_condition[0-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_quantity_condition[1-True]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_quantity_ignored_when_check_quantity_false",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_status_ignored_when_check_status_false",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_unavailable_status_partition_is_not_in_stock[destroyed]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_unavailable_status_partition_is_not_in_stock[lost]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_unavailable_status_partition_is_not_in_stock[quarantined]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_is_in_stock.py::test_unavailable_status_partition_is_not_in_stock[rejected]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[60]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[65]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[70]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[75]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_apply_status_change_decision[STAT-MCC01-FF]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_apply_status_change_decision[STAT-MCC02-FT]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_apply_status_change_decision[STAT-MCC03-TF]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC01-FFF]",
@@ -601,7 +850,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC02-FFT]",
@@ -613,7 +863,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC03-FTF]",
@@ -625,7 +876,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC04-FTT]",
@@ -637,7 +889,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC05-TFF]",
@@ -649,7 +902,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC06-TFT]",
@@ -661,7 +915,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC07-TTF]",
@@ -673,7 +928,8 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC08-TTT]",
@@ -685,7 +941,20 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC01-FFF]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC01-FF]",
@@ -696,7 +965,20 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC02-FFT]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC02-FT]",
@@ -707,7 +989,20 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC03-FTF]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC03-TF]",
@@ -718,7 +1013,20 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC04-FTT]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC04-TT]",
@@ -729,7 +1037,110 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC05-TFF]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC06-TFT]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC07-TTF]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC08-TTT]",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC01-FFF]",
+"outcome": "passed",
+"req": [
+"BR-2"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC03-FTF]",
+"outcome": "passed",
+"req": [
+"BR-2"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC04-FTT]",
+"outcome": "passed",
+"req": [
+"BR-2"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC05-TFF]",
+"outcome": "passed",
+"req": [
+"BR-2"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC07-TTF]",
+"outcome": "passed",
+"req": [
+"BR-2"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC08-TTT]",
+"outcome": "passed",
+"req": [
+"BR-2"
+],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC01-FF]",
@@ -737,7 +1148,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC02-FT]",
@@ -745,7 +1157,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC03-TF]",
@@ -753,7 +1166,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC04-TT]",
@@ -761,7 +1175,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC01-FF]",
@@ -769,7 +1184,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC02-FT]",
@@ -777,7 +1193,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC03-TF]",
@@ -785,7 +1202,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC04-TT]",
@@ -793,7 +1211,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_production_decision[IS-PRODUCTION-MCC01-FF]",
@@ -801,7 +1220,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_production_decision[IS-PRODUCTION-MCC02-FT]",
@@ -809,7 +1229,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_production_decision[IS-PRODUCTION-MCC03-TF]",
@@ -817,7 +1238,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_production_decision[IS-PRODUCTION-MCC04-TT]",
@@ -825,7 +1247,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_quantity_decision[IS-QUANTITY-MCC01-FF]",
@@ -833,7 +1256,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_quantity_decision[IS-QUANTITY-MCC02-FT]",
@@ -841,7 +1265,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_quantity_decision[IS-QUANTITY-MCC03-TF]",
@@ -849,7 +1274,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_quantity_decision[IS-QUANTITY-MCC04-TT]",
@@ -857,7 +1283,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_status_decision[IS-STATUS-MCC01-FF]",
@@ -865,7 +1292,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_status_decision[IS-STATUS-MCC02-FT]",
@@ -873,7 +1301,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_status_decision[IS-STATUS-MCC03-TF]",
@@ -881,7 +1310,8 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_status_decision[IS-STATUS-MCC04-TT]",
@@ -889,13 +1319,100 @@
 "req": [
 "BR-2"
 ],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_prefetch_field_fallback_decision[PF-MCC01-FF]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_prefetch_field_fallback_decision[PF-MCC02-FT]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_prefetch_field_fallback_decision[PF-MCC04-TT]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_resolve_status_kwarg_decision[RESOLVE-MCC01-FF]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_resolve_status_kwarg_decision[RESOLVE-MCC02-FT]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_resolve_status_kwarg_decision[RESOLVE-MCC03-TF]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_resolve_status_kwarg_decision[RESOLVE-MCC04-TT]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_validate_quantity_zero_decision[VQ-MCC01-FF]",
+"outcome": "passed",
+"req": [
+"FR-03b"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_validate_quantity_zero_decision[VQ-MCC02-FT]",
+"outcome": "passed",
+"req": [
+"FR-03b"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_validate_quantity_zero_decision[VQ-MCC03-TF]",
+"outcome": "passed",
+"req": [
+"FR-03b"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_validate_quantity_zero_decision[VQ-MCC04-TT]",
+"outcome": "passed",
+"req": [
+"FR-03b"
+],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_applies_optional_fields_and_status",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_increases_quantity_by_exact_amount",
@@ -905,13 +1422,15 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_non_decimal_quantity_returns_false",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_non_positive_quantity_returns_false[-1]",
@@ -919,7 +1438,8 @@
 "req": [
 "FR-03"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_non_positive_quantity_returns_false[0]",
@@ -927,7 +1447,8 @@
 "req": [
 "FR-03"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_non_positive_quantity_returns_false[q2]",
@@ -935,7 +1456,8 @@
 "req": [
 "FR-03"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_on_serialized_item_is_noop",
@@ -943,7 +1465,8 @@
 "req": [
 "FR-11"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_records_history_with_deltas_and_notes",
@@ -951,43 +1474,50 @@
 "req": [
 "FR-02"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_records_model_reference_in_history",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_records_optional_field_changes_in_history",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_returns_false_when_item_not_saved",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_returns_false_when_row_deleted_meanwhile",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_same_status_is_not_recorded_as_change",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_add_stock.py::test_add_same_status_records_no_status_delta",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_characterisation_remove_more_than_available_is_clamped_upstream_behaviour",
@@ -995,31 +1525,36 @@
 "req": [],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_lock_quantity_false_when_row_gone",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_lock_quantity_false_without_pk",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_lock_quantity_refreshes_stale_in_memory_value",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_accepts_status_custom_key_fallback",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_all_deletes_item_when_delete_on_deplete",
@@ -1028,7 +1563,8 @@
 "BR-3",
 "FR-08"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_all_retains_item_at_zero_when_not_delete_on_deplete",
@@ -1037,13 +1573,15 @@
 "BR-3",
 "FR-08"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_applies_status_batch_and_reference_fields",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_decreases_quantity_by_exact_amount",
@@ -1053,31 +1591,36 @@
 ],
 "risk": [
 "PR-01"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_from_depleted_item_is_noop",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_non_decimal_quantity_returns_false",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_non_positive_returns_false[-1]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_non_positive_returns_false[0]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_on_serialized_item_is_noop",
@@ -1085,7 +1628,8 @@
 "req": [
 "FR-11"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_records_history",
@@ -1093,103 +1637,120 @@
 "req": [
 "FR-06"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_records_model_reference_and_optional_fields_in_history",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_returns_false_for_unsaved_item",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_remove_without_tracking_when_requested",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_invalid_value_returns_none",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_negative_is_floored_at_zero",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_same_value_returns_none",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_serialized_returns_none",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_zero_deletes_when_delete_on_deplete",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_zero_keeps_item_when_cannot_delete",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_zero_keeps_item_without_flag",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_audit_deltas_drops_ignored_keys",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_can_delete_false_for_each_remaining_blocker[allocations]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_can_delete_false_for_each_remaining_blocker[return_order_lines]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_can_delete_false_for_each_remaining_blocker[sales_order_allocations]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_can_delete_false_for_each_remaining_blocker[transfer_order_allocations]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_can_delete_false_when_assigned_to_sales_order",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_can_delete_false_when_items_are_installed_inside",
@@ -1197,7 +1758,8 @@
 "req": [
 "BR-3"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_can_delete_true_when_no_blocking_relation",
@@ -1205,7 +1767,54 @@
 "req": [
 "BR-3"
 ],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_delete_of_a_non_serialized_item_when_serialized_deletion_is_disallowed",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_delete_of_a_root_item_orphans_its_children_cleanly",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_delete_of_serialized_item_is_refused_by_default",
+"outcome": "passed",
+"req": [
+"BR-3"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_delete_of_serialized_item_when_allowed[ignore-flag]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_delete_of_serialized_item_when_allowed[setting-allows]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_delete_relinks_children_to_the_deleted_items_parent",
+"outcome": "passed",
+"req": [
+"BR-3"
+],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_installed_item_count_zero_without_children",
@@ -1213,109 +1822,127 @@
 "req": [
 "BR-3"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[1-row0-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[2-row1-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[3-row2-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[4-row3-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[5-row4-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[6-row5-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[7-row6-False]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_is_empty_tracking_event_mcc[8-row7-True]",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_model_permission_queryset_is_cached_on_the_view",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_nested_tracking_event_records_only_the_outer_event",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_prefetch_field_falls_back_to_database_when_not_cached",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_prefetch_field_non_integer_pk_is_a_validation_error_not_a_crash",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_prefetch_field_uses_cache_hit",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_custom_rolemap",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_dotted_role_overrides_method_permission",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_model_based_check_denies_user_without_permission",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_model_none_is_not_restricted",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_role_required_with_add_right_is_allowed",
@@ -1323,7 +1950,8 @@
 "req": [
 "BR-4"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_role_required_without_add_right_is_denied",
@@ -1331,7 +1959,8 @@
 "req": [
 "BR-4"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_stock_adjust_views_have_no_model_and_do_not_restrict",
@@ -1339,61 +1968,115 @@
 "req": [
 "BR-4"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_superuser_always_allowed",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_role_permission_view_without_serializer_is_not_restricted",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_save_of_a_new_item_records_a_creation_event",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_save_of_a_new_item_without_note_records_no_creation_event",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_tracking_deltas_adds_references_and_quantity",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_tracking_deltas_existing_reference_wins_and_zero_quantity_is_ignored",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_tracking_deltas_without_kwargs_is_a_copy",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_tracking_event_records_a_normal_event",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_scope_extras.py::test_tracking_event_skips_empty_update_event",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_update_save_inside_a_pending_event_does_not_create_a_second_event",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_update_save_takes_the_user_from_the_instance_attribute",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_update_save_with_user_and_notes_is_recorded_against_the_audit_entry",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_scope_extras.py::test_update_save_without_user_or_notes_adds_no_actor",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_deleted_item_cannot_be_adjusted",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_depleted_add_returns_to_in_stock",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_depleted_remove_is_ignored_no_change_no_history",
@@ -1401,7 +2084,8 @@
 "req": [
 "BR-3"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_in_stock_add_stays_in_stock",
@@ -1409,7 +2093,8 @@
 "req": [
 "BR-3"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_in_stock_invalid_event_is_disallowed_and_state_unchanged[add]",
@@ -1418,7 +2103,8 @@
 "BR-3",
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_in_stock_invalid_event_is_disallowed_and_state_unchanged[remove]",
@@ -1427,25 +2113,29 @@
 "BR-3",
 "FR-03a"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_in_stock_partial_remove_stays_in_stock",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_in_stock_remove_all_becomes_deleted_when_delete_on_deplete",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_in_stock_remove_all_becomes_depleted_when_retained",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_non_adjustable_item_disallowed_transition_unchanged[add]",
@@ -1453,7 +2143,8 @@
 "req": [
 "FR-04"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_state_transitions.py::test_non_adjustable_item_disallowed_transition_unchanged[remove]",
@@ -1461,7 +2152,8 @@
 "req": [
 "FR-04"
 ],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path1 p1F,p4F -> return-None-False-False-ok]",
@@ -1469,7 +2161,8 @@
 "req": [],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path2 p1F,p4T,p5F -> return-False-False-False-ok]",
@@ -1477,7 +2170,8 @@
 "req": [],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path3 p1F,p4T,p5T -> raise B-False-False-False-raiseB]",
@@ -1485,37 +2179,42 @@
 "req": [],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path4 p1T,p2F -> return-True-True-True-ok]",
-"outcome": "passed",
+"outcome": "not-run",
 "req": [],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path5 p1T,p2T,p3F -> return-True-False-False-ok]",
-"outcome": "passed",
+"outcome": "not-run",
 "req": [],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path6 p1T,p2T,p3T -> raise A-True-False-True-raiseA]",
-"outcome": "passed",
+"outcome": "not-run",
 "req": [],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_every_condition_has_an_independence_pair_in_the_mcdc_set",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_flags_that_validate_pk_ignores_do_not_cause_rejection[in-production]",
@@ -1525,7 +2224,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_flags_that_validate_pk_ignores_do_not_cause_rejection[location-excluded]",
@@ -1535,7 +2235,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_flags_that_validate_pk_ignores_do_not_cause_rejection[quantity-zero]",
@@ -1545,7 +2246,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_flags_that_validate_pk_ignores_do_not_cause_rejection[status-lost]",
@@ -1555,7 +2257,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC01-FFFFF]",
@@ -1566,7 +2269,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC02-FFFFT]",
@@ -1577,7 +2281,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC03-FFFTF]",
@@ -1588,7 +2293,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC04-FFFTT]",
@@ -1599,7 +2305,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC05-FFTFF]",
@@ -1610,7 +2317,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC06-FFTFT]",
@@ -1621,7 +2329,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC07-FFTTF]",
@@ -1632,7 +2341,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC08-FFTTT]",
@@ -1643,7 +2353,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC09-FTFFF]",
@@ -1654,7 +2365,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC10-FTFFT]",
@@ -1665,7 +2377,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC11-FTFTF]",
@@ -1676,7 +2389,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC12-FTFTT]",
@@ -1687,7 +2401,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC13-FTTFF]",
@@ -1698,7 +2413,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC14-FTTFT]",
@@ -1709,7 +2425,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC15-FTTTF]",
@@ -1720,7 +2437,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC16-FTTTT]",
@@ -1731,7 +2449,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC17-TFFFF]",
@@ -1742,7 +2461,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC18-TFFFT]",
@@ -1753,7 +2473,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC19-TFFTF]",
@@ -1764,7 +2485,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC20-TFFTT]",
@@ -1775,7 +2497,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC21-TFTFF]",
@@ -1786,7 +2509,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC22-TFTFT]",
@@ -1797,7 +2521,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC23-TFTTF]",
@@ -1808,7 +2533,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC24-TFTTT]",
@@ -1819,7 +2545,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC25-TTFFF]",
@@ -1830,7 +2557,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC26-TTFFT]",
@@ -1841,7 +2569,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC27-TTFTF]",
@@ -1852,7 +2581,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC28-TTFTT]",
@@ -1863,7 +2593,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC29-TTTFF]",
@@ -1874,7 +2605,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC30-TTTFT]",
@@ -1885,7 +2617,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC31-TTTTF]",
@@ -1896,7 +2629,8 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcc_row[MCC32-TTTTT]",
@@ -1907,12 +2641,14 @@
 ],
 "risk": [
 "PR-03"
-]
+],
+"seq": []
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_mcdc_set_is_a_subset_of_mcc_and_minimal",
 "outcome": "passed",
 "req": [],
-"risk": []
+"risk": [],
+"seq": []
 }
 ]

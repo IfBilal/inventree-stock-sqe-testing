@@ -1,0 +1,288 @@
+openapi: 3.0.3
+info:
+  title: InvenTree stock adjustment API (test contract)
+  version: '1.1'
+  description: 'Contract-level specification of the two workflows under test (Add
+    stock, Remove stock) plus the read-back endpoints. It states the EXPECTED behaviour
+    from docs/TEST_BASIS.md (requirements FR-01..FR-11, BR-1..BR-4), which is stricter
+    than InvenTree''s generated schema (that schema allows negative quantities through
+    a regex, has no numeric bounds and no minItems on `items`). Baseline deviations
+    are recorded as DEF-01..04 and W-xx. Decimal quantities are sent on the wire as
+    JSON strings (x-wire-format); numeric keywords describe their value. `x-` extensions
+    are read by tools/gen_testdata.py.
+
+    '
+servers:
+- url: http://127.0.0.1:8000
+security:
+- basicAuth: []
+paths:
+  /api/stock/add/:
+    post:
+      operationId: stockAdd
+      summary: Add a quantity to existing stock items (WF-A)
+      x-requirements:
+      - FR-01
+      - FR-02
+      - FR-03a
+      - FR-03b
+      - FR-04
+      - FR-09
+      - FR-10
+      - BR-1
+      - BR-2
+      - BR-4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockAdjustment'
+      responses:
+        '201':
+          description: Stock added; the body echoes the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockAdjustmentEcho'
+        '400':
+          description: 'Validation error: invalid input, non-adjustable item or unknown
+            pk'
+        '401':
+          description: Not authenticated
+        '403':
+          description: Role lacks the stock add right
+        '405':
+          description: Method not allowed (only POST)
+        '415':
+          description: Unsupported media type (only application/json)
+        '500':
+          description: 'Unhandled server error (a defect when caused by client input:
+            DEF-04)'
+  /api/stock/remove/:
+    post:
+      operationId: stockRemove
+      summary: Remove a quantity from existing stock items (WF-B)
+      x-requirements:
+      - FR-05
+      - FR-06
+      - FR-07
+      - FR-08
+      - FR-03a
+      - FR-03b
+      - FR-04
+      - FR-09
+      - FR-10
+      - BR-1
+      - BR-2
+      - BR-3
+      - BR-4
+      x-quantity-limit-from: StockItem.quantity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockAdjustment'
+      responses:
+        '201':
+          description: Stock removed; the body echoes the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockAdjustmentEcho'
+        '400':
+          description: Validation error, including removal larger than the available
+            quantity
+        '401':
+          description: Not authenticated
+        '403':
+          description: Role lacks the stock add right
+        '405':
+          description: Method not allowed (only POST)
+        '415':
+          description: Unsupported media type (only application/json)
+        '500':
+          description: 'Unhandled server error (a defect when caused by client input:
+            DEF-04)'
+  /api/stock/{id}/:
+    get:
+      operationId: stockItemRead
+      summary: Read back a stock item (shared record StockItem.quantity)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          x-reference: StockItem
+      responses:
+        '200':
+          description: The stock item incl. its quantity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockItem'
+        '404':
+          description: No such item (also after depletion with delete_on_deplete)
+  /api/audit/:
+    get:
+      operationId: auditList
+      summary: Read back history entries (event_type 11 = stock added, 12 = stock
+        removed)
+      parameters:
+      - name: model_type
+        in: query
+        schema:
+          type: string
+      - name: event_type
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 11
+          - 12
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: 'Paginated history entries (note: the object_pk filter is NOT
+            supported, W-06)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditPage'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    StockAdjustment:
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/StockAdjustmentItem'
+        notes:
+          type: string
+          maxLength: 100
+    StockAdjustmentItem:
+      type: object
+      required:
+      - pk
+      - quantity
+      properties:
+        pk:
+          type: integer
+          minimum: 1
+          x-reference: StockItem
+        quantity:
+          type: number
+          format: decimal
+          x-wire-format: string
+          exclusiveMinimum: true
+          minimum: 0
+          maximum: 1000
+          multipleOf: 0.00001
+        batch:
+          type: string
+          maxLength: 100
+        packaging:
+          type: string
+          maxLength: 50
+        status:
+          type: integer
+          nullable: true
+          enum:
+          - 10
+          - 50
+          - 55
+          - 60
+          - 65
+          - 70
+          - 75
+          - 85
+          description: Stock status code applied with the adjustment (null = no change)
+        merge:
+          type: boolean
+    StockAdjustmentEcho:
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            required:
+            - pk
+            - quantity
+            properties:
+              pk:
+                type: integer
+              quantity:
+                type: string
+        notes:
+          type: string
+    StockItem:
+      type: object
+      required:
+      - pk
+      - quantity
+      - part
+      properties:
+        pk:
+          type: integer
+        part:
+          type: integer
+        quantity:
+          type: number
+        batch:
+          type: string
+          nullable: true
+        packaging:
+          type: string
+          nullable: true
+        status:
+          type: integer
+        serial:
+          type: string
+          nullable: true
+    AuditPage:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            type: object
+            required:
+            - pk
+            - event_type
+            - object_pk
+            properties:
+              pk:
+                type: integer
+              event_type:
+                type: integer
+                nullable: true
+              object_pk:
+                type: string

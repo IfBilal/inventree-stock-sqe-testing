@@ -23,7 +23,8 @@ def pytest_runtest_logreport(report):
 def pytest_collection_modifyitems(items):
     for it in items:
         it._trace = {'req': sorted({a for m in it.iter_markers('req') for a in m.args}),
-                     'risk': sorted({a for m in it.iter_markers('risk') for a in m.args})}
+                     'risk': sorted({a for m in it.iter_markers('risk') for a in m.args}),
+                    'seq': sorted({a for m in it.iter_markers('seq') for a in m.args})}
         _RESULTS.setdefault(it.nodeid, 'not-run')
     pytest._trace_items = {it.nodeid: it._trace for it in items} if not hasattr(pytest, '_trace_items') else {**pytest._trace_items, **{it.nodeid: it._trace for it in items}}
 
@@ -32,7 +33,7 @@ def pytest_sessionfinish(session):
     items = getattr(pytest, '_trace_items', {})
     levels = {}
     for nodeid, outcome in _RESULTS.items():
-        levels.setdefault(_level(nodeid), []).append({'id': nodeid, 'outcome': outcome, **items.get(nodeid, {'req': [], 'risk': []})})
+        levels.setdefault(_level(nodeid), []).append({'id': nodeid, 'outcome': outcome, **items.get(nodeid, {'req': [], 'risk': [], 'seq': []})})
     outdir = os.path.join(ROOT, 'evidence', 'traceability')
     os.makedirs(outdir, exist_ok=True)
     for lvl, rows in levels.items():

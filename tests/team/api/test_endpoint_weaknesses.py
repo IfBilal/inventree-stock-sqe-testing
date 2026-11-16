@@ -71,3 +71,28 @@ def test_w06_audit_endpoint_silently_ignores_the_object_pk_filter(manager, new_i
     adjust(manager, 'add', b, 1)
     r = manager.get(f'/api/audit/?model_type=stock.stockitem&event_type=11&object_pk={a}&limit=1000')
     assert r.status_code == 200 and {str(e['object_pk']) for e in r.json()['results']} >= {str(a), str(b)}
+
+
+def test_w08_boolean_field_accepts_integers(manager, new_item):
+    """W-08: `merge` is a boolean but integers 0/1 are accepted (loose typing; the contract says boolean)."""
+    pk = new_item(10)
+    assert manager.post('/api/stock/add/', json={'items': [{'pk': pk, 'quantity': '1', 'merge': 1}]}).status_code == 201
+
+
+def test_w09_audit_query_parameters_are_not_validated(manager):
+    """W-09: invalid values for documented query parameters (event_type=999, limit=-1) are accepted, not rejected with 400."""
+    assert manager.get('/api/audit/?model_type=stock.stockitem&event_type=999').status_code == 200
+    assert manager.get('/api/audit/?model_type=stock.stockitem&limit=-1').status_code in (200, 400)
+
+
+def test_w10_get_returns_quantity_as_json_float_while_writes_use_decimal_strings(manager, new_item):
+    """W-10: precision hazard — `GET /api/stock/{id}/` serialises quantity as a JSON float (10.0) although inputs are decimal strings."""
+    pk = new_item('10.12345')
+    raw = manager.get(f'/api/stock/{pk}/').json()['quantity']
+    assert isinstance(raw, float)
+
+
+def test_w11_unknown_pk_in_a_write_returns_400_not_404(manager):
+    """W-11: a missing referenced item yields 400 ("Invalid pk … does not exist") — acceptable for a body reference but inconsistent with GET (404)."""
+    assert manager.post('/api/stock/add/', json={'items': [{'pk': 999999999, 'quantity': '1'}]}).status_code == 400
+    assert manager.get('/api/stock/999999999/').status_code == 404

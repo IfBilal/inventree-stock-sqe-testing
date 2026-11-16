@@ -4,6 +4,7 @@ import json, os, re
 from decimal import Decimal
 import pytest
 import requests
+from schema_check import validate as schema_validate, response_schema
 
 BASE = os.environ.get('API_BASE', 'http://127.0.0.1:8000')
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
@@ -26,7 +27,15 @@ class Client:
 
     def request(self, method, path, **kw):
         r = self.s.request(method, BASE + path, timeout=30, **kw)
-        _LOG.append({'role': self.role, 'method': method.upper(), 'path': template(path), 'status': r.status_code,
+        tpl = template(path)
+        checked = response_schema(method, tpl, r.status_code) is not None
+        if checked:
+            try:
+                err = schema_validate(method, tpl, r.status_code, r.json())
+            except ValueError:
+                err = 'response is not JSON'
+            assert err is None, f'response of {method} {tpl} [{r.status_code}] violates the OpenAPI schema: {err}'
+        _LOG.append({'role': self.role, 'method': method.upper(), 'path': tpl, 'status': r.status_code, 'schema_checked': checked,
                      'content_type': (kw.get('headers') or {}).get('Content-Type', 'application/json' if 'json' in kw else None)})
         return r
 

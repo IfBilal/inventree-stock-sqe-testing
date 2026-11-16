@@ -151,16 +151,7 @@ def _req(user, method='POST'):
     return SimpleNamespace(user=user, method=method, successful_authenticator=None)
 
 
-def _grant(user, role, **rights):
-    from django.contrib.auth.models import Group
-    from users.models import RuleSet
-    g = Group.objects.create(name=f'g-{role}-{user.pk}-{sorted(rights)}')
-    rs, _ = RuleSet.objects.get_or_create(group=g, name=role)
-    rs.can_view = True
-    for k, v in rights.items(): setattr(rs, k, v)
-    rs.save()
-    user.groups.add(g)
-    return user
+from conftest import grant as _grant  # noqa: E402
 
 
 @pytest.fixture
@@ -222,3 +213,90 @@ def test_model_permission_queryset_is_cached_on_the_view():
     v = StockAdd()
     first = ModelPermission()._queryset(v)
     assert v._cached_queryset is first and ModelPermission()._queryset(v) is first
+
+
+# =============================================================== StockItem.save / delete (BR-3 DELETED transition, FR-02 history of updates)
+@pytest.mark.req('BR-3')
+def test_delete_of_serialized_item_is_refused_by_default(make_item, monkeypatch):
+    from rest_framework.exceptions import ValidationError as DRFValidationError  # noqa: F401
+    from django.core.exceptions import ValidationError
+    monkeypatch.setattr('stock.models.get_global_setting', lambda *a, **k: False)
+    s = make_item(1, serial='D1')
+    with pytest.raises(ValidationError, match='Serialized stock items cannot be deleted'):
+        s.delete()
+    assert reload(s) is not None
+
+
+@pytest.mark.parametrize('how', ['setting-allows', 'ignore-flag'])
+def test_delete_of_serialized_item_when_allowed(how, make_item, monkeypatch):
+    monkeypatch.setattr('stock.models.get_global_setting', lambda *a, **k: how == 'setting-allows')
+    s = make_item(1, serial='D2'); pk = s.pk
+    s.delete(ignore_serial_check=(how == 'ignore-flag'))
+    assert reload(SimpleNamespace(pk=pk)) is None
+
+
+@pytest.mark.req('BR-3')
+def test_delete_relinks_children_to_the_deleted_items_parent(make_item):
+    grand = make_item(1); middle = make_item(1, parent=grand); child = make_item(1, parent=middle)
+    middle.delete()
+    assert reload(child).parent_id == grand.pk
+
+
+def test_delete_of_a_root_item_orphans_its_children_cleanly(make_item):
+    root = make_item(1); child = make_item(1, parent=root)
+    root.delete()
+    assert reload(child).parent_id is None
+
+
+def test_save_of_a_new_item_records_a_creation_event(part):
+    from audit.models import AuditLogEntry
+    from stock.models import StockItem
+    it = StockItem.objects.create(part=part, quantity=1)
+    assert AuditLogEntry.objects.filter(object_pk=str(it.pk), event_type=1).count() == 1       # CREATED
+
+
+def test_save_of_a_new_item_without_note_records_no_creation_event(part):
+    from audit.models import AuditLogEntry
+    from stock.models import StockItem
+    it = StockItem(part=part, quantity=1)
+    it.save(add_note=False)
+    assert AuditLogEntry.objects.filter(object_pk=str(it.pk), event_type=1).count() == 0
+
+
+@pytest.mark.req('FR-02')
+def test_update_save_with_user_and_notes_is_recorded_against_the_audit_entry(item, user):
+    from audit.models import AuditLogEntry
+    item.quantity = 11
+    item.save(user=user, notes='manual edit')
+    e = AuditLogEntry.objects.filter(object_pk=str(item.pk)).order_by('-pk').first()
+    assert e.notes == 'manual edit' and e.actor_username == user.username
+
+
+def test_update_save_takes_the_user_from_the_instance_attribute(item, user):
+    from audit.models import AuditLogEntry
+    item._user = user
+    item.quantity = 12
+    item.save(notes='via _user')
+    assert AuditLogEntry.objects.filter(object_pk=str(item.pk)).order_by('-pk').first().actor_username == user.username
+
+
+def test_update_save_without_user_or_notes_adds_no_actor(item):
+    from audit.models import AuditLogEntry
+    item.quantity = 13
+    item.save()
+    assert AuditLogEntry.objects.filter(object_pk=str(item.pk)).order_by('-pk').first().actor_username in (None, '')
+
+
+def test_update_save_inside_a_pending_event_does_not_create_a_second_event(item, user):
+    from audit.models import AuditLogEntry
+    with item.tracking_event(ADD, user, deltas={'added': 1.0}):
+        item.quantity = 14
+        item.save(user=user, notes='inner')
+    assert AuditLogEntry.objects.filter(object_pk=str(item.pk), event_type=ADD).count() == 1
+
+
+def test_delete_of_a_non_serialized_item_when_serialized_deletion_is_disallowed(make_item, monkeypatch):
+    monkeypatch.setattr('stock.models.get_global_setting', lambda *a, **k: False)
+    d = make_item(5); pk = d.pk
+    d.delete()
+    assert reload(SimpleNamespace(pk=pk)) is None

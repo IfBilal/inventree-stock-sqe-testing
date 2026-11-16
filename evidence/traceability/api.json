@@ -337,6 +337,336 @@
 "risk": []
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:event_type:EP:enum-member-11]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:event_type:EP:enum-member-12]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:event_type:EP:enum-non-member]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:event_type:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:BVA:min-above]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:BVA:min-at]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:BVA:min-below]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:below-range]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:empty-string]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:fractional]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:not-a-number]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:null]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:type-bool-true]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:type-empty-list]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:type-empty-object]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:type-text]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:limit:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:BVA:min-above]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:BVA:min-at]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:BVA:min-below]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:below-range]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:empty-string]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:fractional]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:not-a-number]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:null]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:type-bool-true]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:type-empty-list]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:type-empty-object]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:type-text]",
+"outcome": "failed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[auditList:offset:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:BVA:minitems-above]",
 "outcome": "passed",
 "req": [
@@ -403,6 +733,17 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:EP:object-instead-of-array]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:BVA:maxlen-above]",
 "outcome": "passed",
 "req": [
@@ -440,6 +781,61 @@
 "outcome": "passed",
 "req": [
 "FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:multibyte-at-maxlen]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:type-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
 ],
 "risk": [
 "PR-01",
@@ -491,10 +887,76 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:true]",
 "outcome": "passed",
 "req": [
 "FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:type-empty-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:type-integer-0]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:type-integer-1]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:type-integer-2]",
+"outcome": "failed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:type-text]",
+"outcome": "passed",
+"req": [
+"FR-03a"
 ],
 "risk": [
 "PR-01",
@@ -546,6 +1008,61 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:multibyte-at-maxlen]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:type-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:valid-typical]",
 "outcome": "passed",
 "req": [
@@ -569,6 +1086,42 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:BVA:below-minimum]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:BVA:min-above]",
+"outcome": "passed",
+"req": [
+"FR-01",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:BVA:min-at]",
+"outcome": "passed",
+"req": [
+"FR-01",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:BVA:min-below]",
 "outcome": "passed",
 "req": [
 "FR-03a",
@@ -641,6 +1194,54 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:type-bool-true]",
+"outcome": "failed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:type-empty-list]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:type-text]",
 "outcome": "passed",
 "req": [
 "FR-03a",
@@ -826,8 +1427,173 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:type-empty-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:type-infinity]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:type-nan]",
+"outcome": "failed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:valid-typical]",
 "outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-10]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-50]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-55]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-60]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-65]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-70]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-75]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-member-85]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:enum-non-member]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].status:EP:null]",
+"outcome": "failed",
 "req": [
 "FR-01"
 ],
@@ -881,6 +1647,61 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:multibyte-at-maxlen]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:type-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:valid-typical]",
 "outcome": "passed",
 "req": [
@@ -896,6 +1717,138 @@
 "outcome": "passed",
 "req": [
 "FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:BVA:min-above]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:BVA:min-at]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:BVA:min-below]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:fractional]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:negative]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:not-a-number]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:type-empty-list]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:type-text]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:unknown-reference]",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockItemRead:id:EP:valid-typical]",
+"outcome": "failed",
+"req": [
+"FR-02"
 ],
 "risk": [
 "PR-01",
@@ -969,6 +1922,17 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:EP:object-instead-of-array]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:BVA:maxlen-above]",
 "outcome": "passed",
 "req": [
@@ -1006,6 +1970,61 @@
 "outcome": "passed",
 "req": [
 "FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:multibyte-at-maxlen]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:type-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
 ],
 "risk": [
 "PR-01",
@@ -1057,10 +2076,76 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:true]",
 "outcome": "passed",
 "req": [
 "FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:type-empty-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:type-integer-0]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:type-integer-1]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:type-integer-2]",
+"outcome": "failed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:type-text]",
+"outcome": "passed",
+"req": [
+"FR-03a"
 ],
 "risk": [
 "PR-01",
@@ -1112,6 +2197,61 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:multibyte-at-maxlen]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:type-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:valid-typical]",
 "outcome": "passed",
 "req": [
@@ -1135,6 +2275,42 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:BVA:below-minimum]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:BVA:min-above]",
+"outcome": "passed",
+"req": [
+"FR-04",
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:BVA:min-at]",
+"outcome": "passed",
+"req": [
+"FR-04",
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:BVA:min-below]",
 "outcome": "passed",
 "req": [
 "FR-03a",
@@ -1207,6 +2383,54 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:type-bool-true]",
+"outcome": "failed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:type-empty-list]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:type-text]",
 "outcome": "passed",
 "req": [
 "FR-03a",
@@ -1431,8 +2655,173 @@
 ]
 },
 {
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:type-empty-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:type-infinity]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:type-nan]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:valid-typical]",
 "outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-10]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-50]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-55]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-60]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-65]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-70]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-75]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-member-85]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:enum-non-member]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].status:EP:null]",
+"outcome": "failed",
 "req": [
 "FR-05"
 ],
@@ -1479,6 +2868,61 @@
 "outcome": "passed",
 "req": [
 "FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:multibyte-at-maxlen]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:type-bool-true]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:type-empty-object]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:type-list]",
+"outcome": "passed",
+"req": [
+"FR-03a"
 ],
 "risk": [
 "PR-01",

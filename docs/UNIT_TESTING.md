@@ -1,7 +1,7 @@
 # WHITE-BOX UNIT TESTING (Phase 4) — own tests in `tests/team/unit/`
 Run: `scripts/test_unit.sh` (tests) · `scripts/coverage_unit.sh` (branch coverage + per-function scope check; writes `evidence/coverage/` and `docs/COVERAGE_SCOPE.md`).
 Tools: pytest 9.2.0, pytest-django 4.14.0, coverage.py 7.17.3 (branch mode). Hermetic throw-away SQLite DB (`data/unit_test.sqlite3`), never the app DB. Upstream tests are not run or counted.
-**Result (2026-11-16, after review round 1):** 228 passed, 2 skipped (infeasible coupled MCC rows, see `tools/mcdc.py`), 6 strict-xfail (each documents a baseline defect, with `raises=` so they cannot pass vacuously); in-scope coverage **statements 256/256 = 100 %, branches 113/114 (the single missed branch is unreachable and defended)** over 29 functions in 5 files (`docs/COVERAGE_SCOPE.md`). Justification of anything not covered: `docs/COVERAGE_JUSTIFICATION.md`.
+**Result (2026-11-16, after review round 2):** 250 passed, 10 strict-xfail (each documents a baseline defect, with `raises=` so they cannot pass vacuously; DEF-01 ×2, DEF-02 ×2, DEF-03 ×2, DEF-04 ×4), 0 skipped; in-scope coverage **statements 285/285 = 100 %, branches 125/126 (the single missed branch is unreachable and defended)** over 31 functions in 5 files (`docs/COVERAGE_SCOPE.md`).
 
 ## Scope (business logic of WF-A/WF-B)
 See `docs/TEST_BASIS.md` §7 (identical to `SCOPE` in `tools/scope_coverage.py`): serializers, `StockItem` model logic incl. `can_delete` and the tracking/audit helpers, the pk-prefetch field, and the permission classes.
@@ -15,7 +15,7 @@ See `docs/TEST_BASIS.md` §7 (identical to `SCOPE` in `tools/scope_coverage.py`)
 | `test_adjustment_serializers.py` | branch coverage of validators and `save`, atomicity | FR-03, FR-04, FR-07, FR-10 |
 | `test_validate_pk_mcc.py` | **complete MCC (32 rows)**, **MC/DC set (6 rows)**, 6 basis paths, flags that `validate_pk` must ignore | BR-2, FR-04, PR-03 |
 | `test_mcc_other_decisions.py` | **complete MCC** of `is_in_stock` (status, location, quantity, production), BR-3 deletion (`delete_on_deplete ∧ can_delete`, with the real `can_delete`), BR-1 `take_stock` guards | BR-1, BR-2, BR-3 |
-| `test_scope_extras.py` | `can_delete` (every blocker), tracking/audit helpers (incl. MCC of `_is_empty_tracking_event`), pk-prefetch field, permission classes | BR-3, BR-4, FR-02, FR-06 |
+| `test_scope_extras.py` | `can_delete` (every blocker), `save`/`delete` (BR-3 DELETED transition, child re-linking, audit of updates), tracking/audit helpers (incl. MCC of `_is_empty_tracking_event`), pk-prefetch field, permission classes | BR-3, BR-4, FR-02, FR-06 |
 | `test_boundaries.py` | **3-point BVA** (below/at/above) for removal limit, lower bound 0, upper bound max; **EP** of `quantity` (valid/invalid partitions, one invalid value per test) | BR-1, FR-03, FR-05, FR-07 |
 | `test_state_transitions.py` | **state transition**: all allowed transitions; disallowed transitions from DEPLETED (remove ignored), DELETED (invalid pk), NON_ADJUSTABLE (rejected), IN_STOCK (invalid quantity rejected; over-removal is the strict xfail DEF-01) | BR-3, FR-04 |
 | `test_api_views.py` | view layer through DRF's test client (superuser 201 / no add right 403 / anonymous) — integration-flavoured but in-process (no live server); the same behaviours are re-tested over HTTP in `tests/team/api` and counted there | BR-4, FR-09 |
@@ -24,13 +24,25 @@ Decision tables: every multi-condition decision (BR-1 guards, BR-2, BR-3, `is_in
 ## Critical module: complete MCC → MC/DC
 `StockAdjustmentItemSerializer.validate_pk` implements BR-2: `REJECT = ¬ALLOW ∧ (SO ∨ BT ∨ CU ∨ CB)`, 5 conditions ⇒ 32 combinations, **all executed** against the real function (`MCC01…MCC32`). From the MCC table (`docs/MCC_MCDC.md`) the independence pairs are derived mechanically; the minimal MC/DC set is rows **{1, 2, 3, 5, 9, 18}** = n+1 = 6 tests. Pairs: CB (1,2), CU (1,3), BT (1,5), SO (1,9), ALLOW (2,18). Tests `test_mcdc_set_…` assert the set is minimal and contains a pair per condition.
 
-## Defects exposed (strict xfail = expected behaviour that the baseline fails)
-| Test | Defect | Why strict |
+## Defects exposed (10 strict-xfail tests; expected behaviour that the baseline fails)
+| Test(s) | Defect | Why strict |
 |---|---|---|
-| `test_expected_over_removal_is_rejected_and_quantity_unchanged`, `test_remove_just_above_limit_is_rejected` | DEF-01 (over-removal clamped) | After the fix the xfail turns into XPASS and **fails CI**, forcing the markers to be removed in the fix PR |
-| `test_expected_zero_quantity_is_rejected[add/remove]` | DEF-02 (zero accepted) | same |
-| `test_expected_add_exceeding_representable_total_is_rejected` | DEF-03 (overflow → 500 on read) | same |
-Characterisation test `test_remove_more_than_available_is_clamped_upstream_behaviour` documents the baseline model behaviour (the model-level clamp is a defensive design; the fix is at serializer level).
+| `test_expected_over_removal_is_rejected_and_quantity_unchanged`, `test_remove_just_above_limit_is_rejected` | DEF-01 (over-removal clamped) — Issue #1 | After the fix the xfail turns into XPASS and **fails CI**, forcing the markers to be removed in the fix PR |
+| `test_expected_zero_quantity_is_rejected[add/remove]` | DEF-02 (zero accepted) — Issue #2 | same |
+| `test_expected_add_exceeding_representable_total_is_rejected`, `test_add_with_total_just_above_max_is_rejected` | DEF-03 (overflow → 500 on read) — Issue #3 | same |
+| `test_expected_malformed_items_is_a_validation_error_not_a_crash[null/string/int/dict]` | DEF-04 (unhandled TypeError/AttributeError → HTTP 500) — Issue #4 | same; `raises=(TypeError, AttributeError)` pins the failure mode |
+Characterisation test `test_characterisation_remove_more_than_available_is_clamped_upstream_behaviour` documents the baseline model behaviour (no requirement credit; the model-level clamp is a defensive design, the fix is at serializer level).
+
+## Basis-path accounting (V(G) = 6 for `validate_pk`, `docs/STATIC_ANALYSIS.md` §2) — each path is executed exactly once
+| Path | Executed by |
+|---|---|
+| 1: p1F, p4F → return (`require_in_stock=None`) | `test_basis_paths[path1…]` |
+| 2: p1F, p4T, p5F → return (depleted item, `require_in_stock=False`) | `test_basis_paths[path2…]` |
+| 3: p1F, p4T, p5T → raise "already in stock" | `test_basis_paths[path3…]` |
+| 4: p1T, p2F → return (ALLOW setting true) | MCC row 17-32 family, e.g. `MCC18-TFFFF`-style row with ALLOW=T (also the MC/DC pair row 18) |
+| 5: p1T, p2T, p3F → return (adjustable item) | MCC row 1 (all F) |
+| 6: p1T, p2T, p3T → raise "not in stock" | MCC rows with ALLOW=F and a reference set, e.g. MCC row 5 (BT=T) |
+Other duplicate cases found by review were removed (the boolean `is_in_stock` cases and `updateQuantity` deletion cases are executed once, as MCC rows).
 
 ## Counting rule
 Each executable case is counted once within this level and under one primary technique (MCC rows under MCC, basis paths under path coverage, state tests under state transition, BVA/EP rows under their partition). Review round 1 removed the duplicated `validate_pk` cases, the duplicate invalid-quantity case in the view tests and six of eight near-duplicate non-adjustable state tests. The same behaviours are re-tested at API (Phase 6) and E2E (Phase 7) levels, where they are counted for those levels.

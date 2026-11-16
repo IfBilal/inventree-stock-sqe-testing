@@ -1,6 +1,7 @@
 """API tests driven ENTIRELY by the generator output (tools/gen_testdata.py reading openapi/stock.yaml):
-equivalence classes and 3-point BVA for every input of both endpoints (R-24, R-29). No boundary value is hard-coded here."""
-import os, sys
+equivalence classes and 3-point BVA for every input of every operation: body fields, path and query parameters (R-24, R-29).
+No boundary value is hard-coded here: the representable maximum used to prepare state is read from the spec."""
+import json, os, sys
 from decimal import Decimal
 import pytest
 from conftest import ROOT, qty, history
@@ -8,27 +9,46 @@ from conftest import ROOT, qty, history
 sys.path.insert(0, os.path.join(ROOT, 'tools'))
 import gen_testdata  # noqa: E402
 
-SPEC = os.path.join(ROOT, 'openapi', 'stock.yaml')
-CASES = gen_testdata.generate(SPEC)['cases']
-MAXQ = '9999999999.99999'
+SPEC = os.environ.get('API_SPEC', os.path.join(ROOT, 'openapi', 'stock.yaml'))
+GEN = gen_testdata.generate(SPEC)
+CASES = GEN['cases']
+_ROOT_SPEC, _ = gen_testdata.load_spec(SPEC)
+_QSCHEMA = _ROOT_SPEC['components']['schemas']['StockAdjustmentItem']['properties']['quantity']
+MAXQ = format(Decimal(str(_QSCHEMA['maximum'])), 'f')            # largest representable quantity, from the spec
+BIG = Decimal(MAXQ) / 10                                          # "near the maximum" threshold, derived
+EXEC_LOG = os.path.join(ROOT, 'evidence', 'api', 'cases_executed.jsonl')
+_EXEC = []
 
-# Baseline defects: generated cases whose EXPECTED (contract) outcome the unmodified upstream fails. strict xfail -> must be
-# removed together with the fix (DEF-01 over-removal, DEF-02 zero accepted).
-KNOWN = {
-    'stockAdd:items[].quantity:BVA:min-at': 'DEF-02', 'stockRemove:items[].quantity:BVA:min-at': 'DEF-02',
-    'stockRemove:items[].quantity:BVA:limit-above': 'DEF-01',
-    'stockAdd:items:EP:not-an-array': 'DEF-04', 'stockAdd:items:EP:null': 'DEF-04',
-    'stockRemove:items:EP:not-an-array': 'DEF-04', 'stockRemove:items:EP:null': 'DEF-04',
-}
+# Baseline mismatches: generated cases whose EXPECTED (contract) outcome the unmodified upstream does not meet.
+# strict xfail + raises=AssertionError: when a defect is fixed the xfail turns XPASS and fails, forcing the marker's removal.
+DEFECT = {'DEF-01': 'over-removal clamped', 'DEF-02': 'zero accepted', 'DEF-04': 'malformed items -> HTTP 500',
+          'W-08': 'boolean accepts integers 0/1 (loose typing)', 'W-09': 'audit query parameters are not validated'}
+KNOWN = {}
+for op in ('stockAdd', 'stockRemove'):
+    KNOWN[f'{op}:items[].quantity:BVA:min-at'] = 'DEF-02'
+    KNOWN[f'{op}:items:EP:null'] = 'DEF-04'
+    KNOWN[f'{op}:items:EP:not-an-array'] = 'DEF-04'
+    KNOWN[f'{op}:items:EP:object-instead-of-array'] = 'DEF-04'
+    KNOWN[f'{op}:items[].merge:EP:type-integer-1'] = 'W-08'
+    KNOWN[f'{op}:items[].merge:EP:type-integer-0'] = 'W-08'
+    KNOWN[f'{op}:items[].merge:EP:type-integer-2'] = 'W-08'
+KNOWN['stockRemove:items[].quantity:BVA:limit-above'] = 'DEF-01'
+
+
+def _is_number(v):
+    try:
+        Decimal(str(v)); return not isinstance(v, bool)
+    except Exception:
+        return False
 
 
 def initial_quantity(case):
-    cls, op = case['class'], case['operation']
+    cls, op, f = case['class'], case['operation'], case['field']
     if cls.startswith('limit-'):
         return '10'
-    if case['field'].endswith('quantity') and op == 'stockRemove':
+    if f.endswith('quantity') and op == 'stockRemove':
         return MAXQ                       # enough stock for every schema-valid removal
-    if case['field'].endswith('quantity') and op == 'stockAdd' and isinstance(case['value'], str) and case['value'].replace('.', '').lstrip('-').isdigit() and abs(Decimal(case['value'])) >= Decimal('1e9'):
+    if f.endswith('quantity') and op == 'stockAdd' and _is_number(case['value']) and abs(Decimal(str(case['value']))) >= BIG:
         return '0'                        # keep the RESULT representable (DEF-03 is tested separately)
     return '10'
 
@@ -38,7 +58,9 @@ def resolve(node, pk, available):
         return pk
     if isinstance(node, dict):
         if '$available' in node:
-            return str(Decimal(available) + Decimal(node['$available']))
+            return str(Decimal(str(available)) + Decimal(node['$available']))
+        if '$pk' in node:
+            return node['$pk']
         return {k: resolve(v, pk, available) for k, v in node.items()}
     if isinstance(node, list):
         return [resolve(v, pk, available) for v in node]
@@ -50,35 +72,89 @@ def delta_of(body):
 
 
 def _reqs(c):
-    ids = {'FR-01' if c['operation'] == 'stockAdd' else 'FR-05'} if c['expected'] == 'valid' else {'FR-03a'}
-    if c['field'].endswith('quantity') and c['technique'] == 'BVA': ids.add('BR-1')
-    if c['class'].startswith('limit-'): ids.add('FR-07')
-    if c['class'] == 'min-at': ids.add('FR-03b')
-    if c['field'].endswith('.pk'): ids.add('FR-04')
-    return ids
+    ids = set()
+    if c['location'] == 'body':
+        ids = {'FR-01' if c['operation'] == 'stockAdd' else 'FR-05'} if c['expected'] == 'valid' else {'FR-03a'}
+        if c['field'].endswith('quantity') and c['technique'] == 'BVA': ids.add('BR-1')
+        if c['class'].startswith('limit-'): ids.add('FR-07')
+        if c['class'] == 'min-at' and c['field'].endswith('quantity'): ids.add('FR-03b')
+        if c['field'].endswith('.pk'): ids.add('FR-04')
+    return ids or {'FR-02'}
 
 
 def _params():
     for c in CASES:
         marks = [pytest.mark.req(*sorted(_reqs(c)))]
         if c['id'] in KNOWN:
-            marks.append(pytest.mark.xfail(strict=True, raises=AssertionError, reason=KNOWN[c['id']]))
+            marks.append(pytest.mark.xfail(strict=True, raises=AssertionError, reason=f"{KNOWN[c['id']]}: {DEFECT[KNOWN[c['id']]]}"))
         yield pytest.param(c, id=c['id'], marks=marks)
+
+
+@pytest.fixture(scope='module', autouse=True)
+def _dump_executed():
+    yield
+    os.makedirs(os.path.dirname(EXEC_LOG), exist_ok=True)
+    with open(EXEC_LOG, 'w') as f:
+        for r in _EXEC:
+            f.write(json.dumps(r, sort_keys=True) + '\n')
+
+
+def _record(case, outcome):
+    _EXEC.append({'id': case['id'], 'operation': case['operation'], 'field': case['field'], 'location': case['location'],
+                  'technique': case['technique'], 'class': case['class'], 'expected': case['expected'], 'outcome': outcome})
 
 
 @pytest.mark.risk('PR-01', 'PR-04')
 @pytest.mark.parametrize('case', list(_params()))
 def test_generated_case(case, manager, new_item):
+    if case['location'] != 'body':
+        return _run_param_case(case, manager)
     pk = new_item(initial_quantity(case))
-    before_q, before_h = qty(manager, pk), len(history(manager, pk))
+    before_q, before_h = qty(manager, pk), history(manager, pk)
     body = resolve(case['body'], pk, before_q)
+    target = body['items'][0]['pk'] if isinstance(body.get('items'), list) and body['items'] and isinstance(body['items'][0], dict) and isinstance(body['items'][0].get('pk'), int) else pk
+    seeded = target != pk                                              # {"$pk": n} cases act on a seeded item
+    if seeded:
+        before_q, before_h = qty(manager, target), history(manager, target)
     r = manager.post(case['path'], json=body)
-    after_q, after_h = qty(manager, pk), len(history(manager, pk))
-    if case['expected'] == 'valid':
-        assert r.status_code == 201, (r.status_code, r.text[:200])
-        d = delta_of(body)
-        assert after_q == (before_q + d if case['operation'] == 'stockAdd' else before_q - d)      # read-back after success
-        assert after_h == before_h + len(body['items'])
+    after_q, after_h = qty(manager, target), history(manager, target)
+    try:
+        if case['expected'] == 'valid':
+            assert r.status_code == 201, (r.status_code, r.text[:200])
+            d = delta_of(body)
+            assert after_q == (before_q + d if case['operation'] == 'stockAdd' else before_q - d)      # read-back of the shared record
+            assert len(after_h) == len(before_h) + len(body['items'])
+            _read_back_optional_fields(manager, target, body, after_h)
+        else:
+            assert r.status_code == 400, (r.status_code, r.text[:200])
+            assert after_q == before_q and len(after_h) == len(before_h)                              # nothing changed after rejection
+    except AssertionError:
+        _record(case, 'mismatch'); raise
+    _record(case, 'match')
+
+
+def _read_back_optional_fields(client, pk, body, history_after):
+    item = client.get(f'/api/stock/{pk}/').json()
+    first = body['items'][0]
+    for f in ('batch', 'packaging'):
+        if first.get(f):
+            assert item[f] == first[f], f'{f} did not take effect'
+    if first.get('status') is not None:
+        assert item['status'] == first['status']
+    if body.get('notes'):
+        assert sorted(history_after, key=lambda e: e['pk'])[-1]['notes'] == body['notes']
+
+
+def _run_param_case(case, manager):
+    v = case['value']
+    v = v['$pk'] if isinstance(v, dict) and '$pk' in v else v
+    if case['location'] == 'path':
+        r = manager.get(case['path'].replace('{id}', str(v)))
     else:
-        assert r.status_code == 400, (r.status_code, r.text[:200])
-        assert after_q == before_q and after_h == before_h                                        # read-back after rejection
+        r = manager.get(f"{case['path']}?model_type=stock.stockitem&{case['field']}={v}&limit=5" if case['field'] != 'limit'
+                        else f"{case['path']}?model_type=stock.stockitem&limit={v}")
+    try:
+        assert r.status_code == case['expected_status'], (r.status_code, r.text[:160])
+    except AssertionError:
+        _record(case, 'mismatch'); raise
+    _record(case, 'match')

@@ -22,6 +22,8 @@
 | stock/models.py | `StockItem._apply_optional_transfer_fields` | 3118-3125 | 5 | 0 | 100 | 4 | 0 | 100 |   |
 | stock/models.py | `StockItem.can_delete` | 1861-1887 | 12 | 0 | 100 | 10 | 0 | 100 |   |
 | stock/models.py | `StockItem.installed_item_count` | 1923-1925 | 2 | 0 | 100 | 0 | 0 | 100 |   |
+| stock/models.py | `StockItem.save` | 521-566 | 19 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/models.py | `StockItem.delete` | 568-596 | 10 | 0 | 100 | 4 | 0 | 100 |   |
 | stock/models.py | `StockItem.tracking_event` | 2405-2450 | 12 | 0 | 100 | 4 | 0 | 100 |   |
 | stock/models.py | `StockItem._tracking_deltas` | 2369-2385 | 8 | 0 | 100 | 6 | 0 | 100 |   |
 | stock/models.py | `StockItem._audit_deltas` | 2387-2393 | 2 | 0 | 100 | 0 | 0 | 100 |   |
@@ -32,4 +34,4 @@
 | InvenTree/permissions.py | `ModelPermission._queryset` | 216-230 | 7 | 0 | 100 | 4 | 1 | 75 |  ['(227, 230) JUSTIFIED'] |
 | InvenTree/permissions.py | `RolePermission.has_permission` | 255-292 | 19 | 0 | 100 | 10 | 0 | 100 |   |
 
-**Total in scope:** statements 256/256 (100.0 %), branches 113/114 (99.1 %). Uncovered branches: 1, of which defended in `docs/COVERAGE_JUSTIFICATION.md`: 1; **unjustified: 0**.
+**Total in scope:** statements 285/285 (100.0 %), branches 125/126 (99.2 %). Uncovered branches: 1, of which defended in `docs/COVERAGE_JUSTIFICATION.md`: 1; **unjustified: 0**.

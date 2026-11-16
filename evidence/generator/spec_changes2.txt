@@ -1,0 +1,2 @@
+changed components.schemas.StockAdjustmentItem.properties.quantity.exclusiveMinimum -> false
+changed components.schemas.StockAdjustment.properties.items.minItems -> 2

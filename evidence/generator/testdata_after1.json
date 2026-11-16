@@ -1,0 +1,4952 @@
+{
+ "cases": [
+  {
+   "body": null,
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "event_type",
+   "id": "auditList:event_type:EP:null",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": null,
+   "class": "enum-member-11",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "event_type",
+   "id": "auditList:event_type:EP:enum-member-11",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": 11
+  },
+  {
+   "body": null,
+   "class": "enum-member-12",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "event_type",
+   "id": "auditList:event_type:EP:enum-member-12",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": 12
+  },
+  {
+   "body": null,
+   "class": "enum-non-member",
+   "constraint": "enum",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "event_type",
+   "id": "auditList:event_type:EP:enum-non-member",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": 13
+  },
+  {
+   "body": null,
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:null",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": null,
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "limit",
+   "id": "auditList:limit:EP:valid-typical",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": 1
+  },
+  {
+   "body": null,
+   "class": "not-a-number",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:not-a-number",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": null,
+   "class": "empty-string",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:empty-string",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": null,
+   "class": "type-bool-true",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:type-bool-true",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": null,
+   "class": "type-empty-list",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:type-empty-list",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": null,
+   "class": "type-empty-object",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:type-empty-object",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": null,
+   "class": "type-text",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:type-text",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": null,
+   "class": "fractional",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:fractional",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": "1.5"
+  },
+  {
+   "body": null,
+   "class": "below-range",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:EP:below-range",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": 0
+  },
+  {
+   "body": null,
+   "class": "min-below",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "limit",
+   "id": "auditList:limit:BVA:min-below",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "BVA",
+   "value": 0
+  },
+  {
+   "body": null,
+   "class": "min-at",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "limit",
+   "id": "auditList:limit:BVA:min-at",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "BVA",
+   "value": 1
+  },
+  {
+   "body": null,
+   "class": "min-above",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "limit",
+   "id": "auditList:limit:BVA:min-above",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "BVA",
+   "value": 2
+  },
+  {
+   "body": null,
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:null",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": null,
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "offset",
+   "id": "auditList:offset:EP:valid-typical",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": 1
+  },
+  {
+   "body": null,
+   "class": "not-a-number",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:not-a-number",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": null,
+   "class": "empty-string",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:empty-string",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": null,
+   "class": "type-bool-true",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:type-bool-true",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": null,
+   "class": "type-empty-list",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:type-empty-list",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": null,
+   "class": "type-empty-object",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:type-empty-object",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": null,
+   "class": "type-text",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:type-text",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": null,
+   "class": "fractional",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:fractional",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": "1.5"
+  },
+  {
+   "body": null,
+   "class": "below-range",
+   "constraint": "minimum 0",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:EP:below-range",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "EP",
+   "value": -1
+  },
+  {
+   "body": null,
+   "class": "min-below",
+   "constraint": "minimum 0",
+   "expected": "invalid",
+   "expected_status": 400,
+   "field": "offset",
+   "id": "auditList:offset:BVA:min-below",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "BVA",
+   "value": -1
+  },
+  {
+   "body": null,
+   "class": "min-at",
+   "constraint": "minimum 0",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "offset",
+   "id": "auditList:offset:BVA:min-at",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "BVA",
+   "value": 0
+  },
+  {
+   "body": null,
+   "class": "min-above",
+   "constraint": "minimum 0",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "offset",
+   "id": "auditList:offset:BVA:min-above",
+   "location": "query",
+   "method": "GET",
+   "operation": "auditList",
+   "path": "/api/audit/",
+   "required": false,
+   "technique": "BVA",
+   "value": 1
+  },
+  {
+   "body": {},
+   "class": "missing-required",
+   "constraint": "required",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockAdd:items:EP:missing-required",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "__missing__"
+  },
+  {
+   "body": {
+    "items": null
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockAdd:items:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": "abc"
+   },
+   "class": "not-an-array",
+   "constraint": "type=array",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockAdd:items:EP:not-an-array",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": {
+     "a": 1
+    }
+   },
+   "class": "object-instead-of-array",
+   "constraint": "type=array",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockAdd:items:EP:object-instead-of-array",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": {
+    "a": 1
+   }
+  },
+  {
+   "body": {
+    "items": []
+   },
+   "class": "minitems-below",
+   "constraint": "minItems 1",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockAdd:items:BVA:minitems-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "0 item(s)"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "minitems-at",
+   "constraint": "minItems 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockAdd:items:BVA:minitems-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "1 item(s)"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     },
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "minitems-above",
+   "constraint": "minItems 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockAdd:items:BVA:minitems-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "2 item(s)"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": null,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "sample",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": "sample"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": true,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": {},
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": [
+       "x"
+      ],
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-list",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:EP:type-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": [
+    "x"
+   ]
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "minLength 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-below",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:BVA:maxlen-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-at",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:BVA:maxlen-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-above",
+   "constraint": "maxLength 100",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:BVA:maxlen-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "multibyte-at-maxlen",
+   "constraint": "maxLength 100 counts characters, not bytes",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockAdd:items[].batch:EP:multibyte-at-maxlen",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": null,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": true,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "true",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": false,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "false",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:false",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": false
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": "maybe",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-text",
+   "constraint": "type=boolean",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:type-text",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": "maybe"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": 2,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-integer-2",
+   "constraint": "type=boolean",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:type-integer-2",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 2
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": [],
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-list",
+   "constraint": "type=boolean",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:type-empty-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": 1,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-integer-1",
+   "constraint": "type=boolean (strict JSON type)",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:type-integer-1",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 1
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": 0,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-integer-0",
+   "constraint": "type=boolean (strict JSON type)",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockAdd:items[].merge:EP:type-integer-0",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 0
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": null,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "sample",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": "sample"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": true,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": {},
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": [
+       "x"
+      ],
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-list",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:EP:type-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": [
+    "x"
+   ]
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "minLength 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-below",
+   "constraint": "maxLength 50",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:BVA:maxlen-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-at",
+   "constraint": "maxLength 50",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:BVA:maxlen-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-above",
+   "constraint": "maxLength 50",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:BVA:maxlen-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "multibyte-at-maxlen",
+   "constraint": "maxLength 50 counts characters, not bytes",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockAdd:items[].packaging:EP:multibyte-at-maxlen",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "missing-required",
+   "constraint": "required",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:missing-required",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "__missing__"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": null,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "$ITEM"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "abc",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "not-a-number",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:not-a-number",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": true,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": [],
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-list",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:type-empty-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": {},
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "abc",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-text",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:type-text",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "1.5",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "fractional",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:fractional",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "1.5"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": 999999999,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "unknown-reference",
+   "constraint": "x-reference StockItem",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:unknown-reference",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": 999999999
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": -1,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "negative",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:EP:negative",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": -1
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": 0,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "min-below",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:BVA:min-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": 0
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": {
+       "$pk": 1
+      },
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "min-at",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:BVA:min-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$pk": 1
+   }
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": {
+       "$pk": 2
+      },
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "min-above",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockAdd:items[].pk:BVA:min-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$pk": 2
+   }
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM"
+     }
+    ]
+   },
+   "class": "missing-required",
+   "constraint": "required",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:missing-required",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "__missing__"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": null
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "1"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "abc"
+     }
+    ]
+   },
+   "class": "not-a-number",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:not-a-number",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": ""
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": true
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": []
+     }
+    ]
+   },
+   "class": "type-empty-list",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:type-empty-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": {}
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "NaN"
+     }
+    ]
+   },
+   "class": "type-nan",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:type-nan",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "NaN"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "Infinity"
+     }
+    ]
+   },
+   "class": "type-infinity",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:type-infinity",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "Infinity"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1.111111"
+     }
+    ]
+   },
+   "class": "too-many-decimals",
+   "constraint": "multipleOf 0.00001",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:too-many-decimals",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "1.111111"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "-1"
+     }
+    ]
+   },
+   "class": "below-range",
+   "constraint": "minimum 0",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:below-range",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "-1"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "-0.00001"
+     }
+    ]
+   },
+   "class": "min-below",
+   "constraint": "minimum 0",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:BVA:min-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "-0.00001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "0"
+     }
+    ]
+   },
+   "class": "min-at",
+   "constraint": "minimum 0 (exclusive)",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:BVA:min-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "0"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "0.00001"
+     }
+    ]
+   },
+   "class": "min-above",
+   "constraint": "minimum 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:BVA:min-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "0.00001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1001"
+     }
+    ]
+   },
+   "class": "above-range",
+   "constraint": "maximum 1000",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:EP:above-range",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "EP",
+   "value": "1001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "999.99999"
+     }
+    ]
+   },
+   "class": "max-below",
+   "constraint": "maximum 1000",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:BVA:max-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "999.99999"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1000"
+     }
+    ]
+   },
+   "class": "max-at",
+   "constraint": "maximum 1000",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:BVA:max-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "1000"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1000.00001"
+     }
+    ]
+   },
+   "class": "max-above",
+   "constraint": "maximum 1000",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockAdd:items[].quantity:BVA:max-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": true,
+   "technique": "BVA",
+   "value": "1000.00001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": null
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=true",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 10
+     }
+    ]
+   },
+   "class": "enum-member-10",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-10",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 10
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 50
+     }
+    ]
+   },
+   "class": "enum-member-50",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-50",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 50
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 55
+     }
+    ]
+   },
+   "class": "enum-member-55",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-55",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 55
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 60
+     }
+    ]
+   },
+   "class": "enum-member-60",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-60",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 60
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 65
+     }
+    ]
+   },
+   "class": "enum-member-65",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-65",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 65
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 70
+     }
+    ]
+   },
+   "class": "enum-member-70",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-70",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 70
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 75
+     }
+    ]
+   },
+   "class": "enum-member-75",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-75",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 75
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 85
+     }
+    ]
+   },
+   "class": "enum-member-85",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-member-85",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 85
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 86
+     }
+    ]
+   },
+   "class": "enum-non-member",
+   "constraint": "enum",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockAdd:items[].status:EP:enum-non-member",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": 86
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": null
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "sample"
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": "sample"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": true
+   },
+   "class": "type-bool-true",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": {}
+   },
+   "class": "type-empty-object",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": [
+     "x"
+    ]
+   },
+   "class": "type-list",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:EP:type-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": [
+    "x"
+   ]
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": ""
+   },
+   "class": "empty-string",
+   "constraint": "minLength 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   },
+   "class": "maxlen-below",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:BVA:maxlen-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   },
+   "class": "maxlen-at",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:BVA:maxlen-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   },
+   "class": "maxlen-above",
+   "constraint": "maxLength 100",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:BVA:maxlen-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+   },
+   "class": "multibyte-at-maxlen",
+   "constraint": "maxLength 100 counts characters, not bytes",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockAdd:notes:EP:multibyte-at-maxlen",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockAdd",
+   "path": "/api/stock/add/",
+   "required": false,
+   "technique": "EP",
+   "value": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+  },
+  {
+   "body": {},
+   "class": "missing-required",
+   "constraint": "required",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockRemove:items:EP:missing-required",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "__missing__"
+  },
+  {
+   "body": {
+    "items": null
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockRemove:items:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": "abc"
+   },
+   "class": "not-an-array",
+   "constraint": "type=array",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockRemove:items:EP:not-an-array",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": {
+     "a": 1
+    }
+   },
+   "class": "object-instead-of-array",
+   "constraint": "type=array",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockRemove:items:EP:object-instead-of-array",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": {
+    "a": 1
+   }
+  },
+  {
+   "body": {
+    "items": []
+   },
+   "class": "minitems-below",
+   "constraint": "minItems 1",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockRemove:items:BVA:minitems-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "0 item(s)"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "minitems-at",
+   "constraint": "minItems 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockRemove:items:BVA:minitems-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "1 item(s)"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     },
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "minitems-above",
+   "constraint": "minItems 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items",
+   "id": "stockRemove:items:BVA:minitems-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "2 item(s)"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": null,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "sample",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": "sample"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": true,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": {},
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": [
+       "x"
+      ],
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-list",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:EP:type-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": [
+    "x"
+   ]
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "minLength 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-below",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:BVA:maxlen-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-at",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:BVA:maxlen-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-above",
+   "constraint": "maxLength 100",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:BVA:maxlen-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "batch": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "multibyte-at-maxlen",
+   "constraint": "maxLength 100 counts characters, not bytes",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].batch",
+   "id": "stockRemove:items[].batch:EP:multibyte-at-maxlen",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": null,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": true,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "true",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": false,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "false",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:false",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": false
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": "maybe",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-text",
+   "constraint": "type=boolean",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:type-text",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": "maybe"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": 2,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-integer-2",
+   "constraint": "type=boolean",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:type-integer-2",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 2
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": [],
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-list",
+   "constraint": "type=boolean",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:type-empty-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": 1,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-integer-1",
+   "constraint": "type=boolean (strict JSON type)",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:type-integer-1",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 1
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "merge": 0,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-integer-0",
+   "constraint": "type=boolean (strict JSON type)",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].merge",
+   "id": "stockRemove:items[].merge:EP:type-integer-0",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 0
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": null,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "sample",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": "sample"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": true,
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": {},
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": [
+       "x"
+      ],
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-list",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:EP:type-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": [
+    "x"
+   ]
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "minLength 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-below",
+   "constraint": "maxLength 50",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:BVA:maxlen-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-at",
+   "constraint": "maxLength 50",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:BVA:maxlen-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "maxlen-above",
+   "constraint": "maxLength 50",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:BVA:maxlen-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "packaging": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9",
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "multibyte-at-maxlen",
+   "constraint": "maxLength 50 counts characters, not bytes",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].packaging",
+   "id": "stockRemove:items[].packaging:EP:multibyte-at-maxlen",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "missing-required",
+   "constraint": "required",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:missing-required",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "__missing__"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": null,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "$ITEM"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "abc",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "not-a-number",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:not-a-number",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": true,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": [],
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-list",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:type-empty-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": {},
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "abc",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "type-text",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:type-text",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "1.5",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "fractional",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:fractional",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "1.5"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": 999999999,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "unknown-reference",
+   "constraint": "x-reference StockItem",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:unknown-reference",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": 999999999
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": -1,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "negative",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:EP:negative",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": -1
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": 0,
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "min-below",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:BVA:min-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": 0
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": {
+       "$pk": 1
+      },
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "min-at",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:BVA:min-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$pk": 1
+   }
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": {
+       "$pk": 2
+      },
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "min-above",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].pk",
+   "id": "stockRemove:items[].pk:BVA:min-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$pk": 2
+   }
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM"
+     }
+    ]
+   },
+   "class": "missing-required",
+   "constraint": "required",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:missing-required",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "__missing__"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": null
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ]
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "1"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "abc"
+     }
+    ]
+   },
+   "class": "not-a-number",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:not-a-number",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": ""
+     }
+    ]
+   },
+   "class": "empty-string",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": true
+     }
+    ]
+   },
+   "class": "type-bool-true",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": []
+     }
+    ]
+   },
+   "class": "type-empty-list",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:type-empty-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": {}
+     }
+    ]
+   },
+   "class": "type-empty-object",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "NaN"
+     }
+    ]
+   },
+   "class": "type-nan",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:type-nan",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "NaN"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "Infinity"
+     }
+    ]
+   },
+   "class": "type-infinity",
+   "constraint": "type=number",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:type-infinity",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "Infinity"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1.111111"
+     }
+    ]
+   },
+   "class": "too-many-decimals",
+   "constraint": "multipleOf 0.00001",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:too-many-decimals",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "1.111111"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "-1"
+     }
+    ]
+   },
+   "class": "below-range",
+   "constraint": "minimum 0",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:below-range",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "-1"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "-0.00001"
+     }
+    ]
+   },
+   "class": "min-below",
+   "constraint": "minimum 0",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:min-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "-0.00001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "0"
+     }
+    ]
+   },
+   "class": "min-at",
+   "constraint": "minimum 0 (exclusive)",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:min-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "0"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "0.00001"
+     }
+    ]
+   },
+   "class": "min-above",
+   "constraint": "minimum 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:min-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "0.00001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1001"
+     }
+    ]
+   },
+   "class": "above-range",
+   "constraint": "maximum 1000",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:EP:above-range",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "EP",
+   "value": "1001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "999.99999"
+     }
+    ]
+   },
+   "class": "max-below",
+   "constraint": "maximum 1000",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:max-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "999.99999"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1000"
+     }
+    ]
+   },
+   "class": "max-at",
+   "constraint": "maximum 1000",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:max-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "1000"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1000.00001"
+     }
+    ]
+   },
+   "class": "max-above",
+   "constraint": "maximum 1000",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:max-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": "1000.00001"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": {
+       "$available": "-0.00001"
+      }
+     }
+    ]
+   },
+   "class": "limit-below",
+   "constraint": "quantity <= StockItem.quantity",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:limit-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$available": "-0.00001"
+   }
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": {
+       "$available": "0"
+      }
+     }
+    ]
+   },
+   "class": "limit-at",
+   "constraint": "quantity <= StockItem.quantity",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:limit-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$available": "0"
+   }
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": {
+       "$available": "+0.00001"
+      }
+     }
+    ]
+   },
+   "class": "limit-above",
+   "constraint": "quantity <= StockItem.quantity",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].quantity",
+   "id": "stockRemove:items[].quantity:BVA:limit-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$available": "+0.00001"
+   }
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": null
+     }
+    ]
+   },
+   "class": "null",
+   "constraint": "nullable=true",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 10
+     }
+    ]
+   },
+   "class": "enum-member-10",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-10",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 10
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 50
+     }
+    ]
+   },
+   "class": "enum-member-50",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-50",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 50
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 55
+     }
+    ]
+   },
+   "class": "enum-member-55",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-55",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 55
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 60
+     }
+    ]
+   },
+   "class": "enum-member-60",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-60",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 60
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 65
+     }
+    ]
+   },
+   "class": "enum-member-65",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-65",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 65
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 70
+     }
+    ]
+   },
+   "class": "enum-member-70",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-70",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 70
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 75
+     }
+    ]
+   },
+   "class": "enum-member-75",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-75",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 75
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 85
+     }
+    ]
+   },
+   "class": "enum-member-85",
+   "constraint": "enum",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-member-85",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 85
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1",
+      "status": 86
+     }
+    ]
+   },
+   "class": "enum-non-member",
+   "constraint": "enum",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "items[].status",
+   "id": "stockRemove:items[].status:EP:enum-non-member",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": 86
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": null
+   },
+   "class": "null",
+   "constraint": "nullable=false",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:EP:null",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": null
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "sample"
+   },
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:EP:valid-typical",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": "sample"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": true
+   },
+   "class": "type-bool-true",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:EP:type-bool-true",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": {}
+   },
+   "class": "type-empty-object",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:EP:type-empty-object",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": [
+     "x"
+    ]
+   },
+   "class": "type-list",
+   "constraint": "type=string",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:EP:type-list",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": [
+    "x"
+   ]
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": ""
+   },
+   "class": "empty-string",
+   "constraint": "minLength 0",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:EP:empty-string",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": ""
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   },
+   "class": "maxlen-below",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:BVA:maxlen-below",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   },
+   "class": "maxlen-at",
+   "constraint": "maxLength 100",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:BVA:maxlen-at",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   },
+   "class": "maxlen-above",
+   "constraint": "maxLength 100",
+   "expected": "invalid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:BVA:maxlen-above",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "BVA",
+   "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "body": {
+    "items": [
+     {
+      "pk": "$ITEM",
+      "quantity": "1"
+     }
+    ],
+    "notes": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+   },
+   "class": "multibyte-at-maxlen",
+   "constraint": "maxLength 100 counts characters, not bytes",
+   "expected": "valid",
+   "expected_status": null,
+   "field": "notes",
+   "id": "stockRemove:notes:EP:multibyte-at-maxlen",
+   "location": "body",
+   "method": "POST",
+   "operation": "stockRemove",
+   "path": "/api/stock/remove/",
+   "required": false,
+   "technique": "EP",
+   "value": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+  },
+  {
+   "body": null,
+   "class": "valid-typical",
+   "constraint": "type",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "id",
+   "id": "stockItemRead:id:EP:valid-typical",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": "$ITEM"
+  },
+  {
+   "body": null,
+   "class": "not-a-number",
+   "constraint": "type",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:not-a-number",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": null,
+   "class": "type-bool-true",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:type-bool-true",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": true
+  },
+  {
+   "body": null,
+   "class": "type-empty-list",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:type-empty-list",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": []
+  },
+  {
+   "body": null,
+   "class": "type-empty-object",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:type-empty-object",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": {}
+  },
+  {
+   "body": null,
+   "class": "type-text",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:type-text",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": "abc"
+  },
+  {
+   "body": null,
+   "class": "fractional",
+   "constraint": "type=integer",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:fractional",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": "1.5"
+  },
+  {
+   "body": null,
+   "class": "unknown-reference",
+   "constraint": "x-reference StockItem",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:unknown-reference",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": 999999999
+  },
+  {
+   "body": null,
+   "class": "negative",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:EP:negative",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "EP",
+   "value": -1
+  },
+  {
+   "body": null,
+   "class": "min-below",
+   "constraint": "minimum 1",
+   "expected": "invalid",
+   "expected_status": 404,
+   "field": "id",
+   "id": "stockItemRead:id:BVA:min-below",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "BVA",
+   "value": 0
+  },
+  {
+   "body": null,
+   "class": "min-at",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "id",
+   "id": "stockItemRead:id:BVA:min-at",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$pk": 1
+   }
+  },
+  {
+   "body": null,
+   "class": "min-above",
+   "constraint": "minimum 1",
+   "expected": "valid",
+   "expected_status": 200,
+   "field": "id",
+   "id": "stockItemRead:id:BVA:min-above",
+   "location": "path",
+   "method": "GET",
+   "operation": "stockItemRead",
+   "path": "/api/stock/{id}/",
+   "required": true,
+   "technique": "BVA",
+   "value": {
+    "$pk": 2
+   }
+  }
+ ],
+ "count": 223,
+ "spec": "evidence/generator/stock_changed1.yaml",
+ "spec_sha256": "431965f9517f4a270daf10163da064dbf09a355eaa428fddf9b751376ea7b22d"
+}

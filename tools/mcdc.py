@@ -33,25 +33,44 @@ DECISIONS = {
     # is_in_stock sub-decisions (each returns False => item NOT in stock). Others neutralised in the test.
     'IS-STATUS': Decision('IS-STATUS', 'is_in_stock: status not available', ['check_status', 'status_unavailable'],
                           lambda r: r[0] and r[1], ('not in stock', 'in stock')),
-    'IS-LOCATION': Decision('IS-LOCATION', 'is_in_stock: location excluded from stock', ['check_status', 'location_excluded'],
-                            lambda r: r[0] and r[1], ('not in stock', 'in stock'),
-                            note='`location_excluded` is the coupled condition `location and location.exclude_from_stock` (the second operand is only evaluated when a location exists, so the two cannot be varied independently — masking). The tests exercise it with no location, a location that is not excluded, and an excluded location.'),
+    'IS-LOCATION': Decision('IS-LOCATION', 'is_in_stock: location excluded from stock', ['check_status', 'has_location', 'location_excluded'],
+                            lambda r: r[0] and r[1] and r[2], ('not in stock', 'in stock'),
+                            feasible=lambda r: r[1] or not r[2],
+                            note='Real code: `check_status and self.location and self.location.exclude_from_stock`. `location_excluded` is only evaluated when the item has a location, so rows with has_location=F and location_excluded=T cannot occur (infeasible, listed but not executed; unique-cause pairs are formed among feasible rows).'),
     'IS-QUANTITY': Decision('IS-QUANTITY', 'is_in_stock: quantity not positive', ['check_quantity', 'quantity_le_0'],
                             lambda r: r[0] and r[1], ('not in stock', 'in stock')),
     'IS-PRODUCTION': Decision('IS-PRODUCTION', 'is_in_stock: item in production', ['check_in_production', 'is_building'],
                               lambda r: r[0] and r[1], ('not in stock', 'in stock')),
-    # BR-3 deletion on depletion: delete iff delete_on_deplete and can_delete (quantity reached 0 assumed)
-    'BR3': Decision('BR3', 'updateQuantity: delete item when depleted (BR-3)', ['delete_on_deplete', 'can_delete'],
-                    lambda r: r[0] and r[1], ('deleted', 'retained at 0'),
-                    note='`can_delete()` is only evaluated when `delete_on_deplete` is true (short-circuit): rows 1-2 need no `can_delete` call.'),
+    # BR-3 deletion in updateQuantity: `quantity == 0 and self.delete_on_deplete and self.can_delete()`
+    'BR3': Decision('BR3', 'updateQuantity: delete item when depleted (BR-3)', ['quantity_zero', 'delete_on_deplete', 'can_delete'],
+                    lambda r: all(r), ('deleted', 'retained'),
+                    note='Short-circuit order quantity_zero, delete_on_deplete, can_delete(): `can_delete()` is only evaluated when the first two hold (its value is irrelevant otherwise; the test still sets it to a defined state).'),
     # tracking: an audit event is skipped iff it is an update event with no deltas and no notes (history must not record empty noise)
     'TRACK-EMPTY': Decision('TRACK-EMPTY', '_is_empty_tracking_event: event carries no information', ['is_update_event', 'no_deltas', 'no_notes'],
                             lambda r: all(r), ('empty (not recorded)', 'recorded')),
+    # validate_quantity: `require_non_zero and quantity <= 0`
+    'VQ': Decision('VQ', 'validate_quantity: zero rejected when require_non_zero', ['require_non_zero', 'quantity_le_0'],
+                   lambda r: r[0] and r[1], ('reject', 'accept'),
+                   note='Called with a non-negative quantity (the `quantity < 0` operand is a separate dead branch, see COVERAGE_JUSTIFICATION).'),
+    # PrefetchedPrimaryKeyRelatedField.to_internal_value: fall back to a DB lookup when `not cache or pk not in cache`
+    'PF': Decision('PF', 'prefetch field: fall back to database lookup', ['cache_empty', 'pk_not_cached'],
+                   lambda r: r[0] or r[1], ('database lookup', 'cache hit'),
+                   feasible=lambda r: not (r[0] and not r[1]),
+                   note='`cache_empty` (no/empty cache) implies the pk is not cached, so (cache_empty=T, pk_not_cached=F) cannot occur.'),
+    # _apply_status_change: return early when `not status or self.compare_status(status)`
+    'STAT': Decision('STAT', '_apply_status_change: no change recorded', ['no_status', 'same_status'],
+                     lambda r: r[0] or r[1], ('no change', 'status changed'),
+                     feasible=lambda r: not (r[0] and r[1]),
+                     note='`compare_status` is only evaluated when a status is given (short-circuit), so (no_status=T, same_status=T) cannot occur.'),
+    # _resolve_status_kwarg: `status or status_custom_key`
+    'RESOLVE': Decision('RESOLVE', '_resolve_status_kwarg: a status value is resolved', ['status_given', 'custom_key_given'],
+                        lambda r: r[0] or r[1], ('resolved', 'None')),
     # BR-1 removal guards in take_stock: the removal is applied iff the item is not serialized, the requested quantity is a positive number
     # and the item (still) exists with a positive available quantity
     'BR1': Decision('BR1', 'take_stock: removal is applied (BR-1 guards)', ['not_serialized', 'requested_positive', 'available_positive'],
                     lambda r: all(r), ('applied', 'ignored (returns False)'),
-                    note='Guards are evaluated in this order and each returns False when violated. `requested_positive` = the argument converts to a Decimal that is > 0; `available_positive` = the row still exists (lock succeeds) and its quantity is > 0. When applied, the removed amount is clamped to the available quantity (DEF-01).'),
+                    feasible=lambda r: r[0] or (r[1] and r[2]),
+                    note='When the item is serialized the first guard returns before the others are evaluated, so those rows are masked duplicates of one execution (only the representative row is feasible). Guards are evaluated in this order and each returns False when violated. `requested_positive` = the argument converts to a Decimal that is > 0; `available_positive` = the row still exists (lock succeeds) and its quantity is > 0. When applied, the removed amount is clamped to the available quantity (DEF-01).'),
 }
 
 
@@ -77,14 +96,19 @@ def independence_pairs(table, decision=None):
 
 
 def minimal_mcdc_set(table, decision=None):
+    """Smallest set of FEASIBLE rows containing an independence pair for every condition that has one.
+    Conditions with no unique-cause pair among feasible rows are MASKED (short-circuit coupling) and reported as such."""
     d = decision or DECISIONS['BR2']
     pairs = independence_pairs(table, d)
+    live = [c for c in d.conditions if pairs[c]]
     ids = [i for i, _, _, feas in table if feas]
-    for size in range(len(d.conditions) + 1, len(ids) + 1):
+    for size in range(len(live) + 1, len(ids) + 1):
         for subset in combinations(ids, size):
             s = set(subset)
-            if all(any(a in s and b in s for a, b in pairs[c]) for c in d.conditions):
-                return sorted(subset), {c: next((a, b) for a, b in pairs[c] if a in s and b in s) for c in d.conditions}
+            if all(any(a in s and b in s for a, b in pairs[c]) for c in live):
+                chosen = {c: next((a, b) for a, b in pairs[c] if a in s and b in s) for c in live}
+                chosen.update({c: 'masked (no unique-cause pair among feasible rows)' for c in d.conditions if c not in live})
+                return sorted(subset), chosen
     raise RuntimeError('no MC/DC set for ' + d.key)
 
 
@@ -117,7 +141,8 @@ def main():
         print('\n| Condition | All independence pairs | Pair chosen in the minimal set |\n|---|---|---|')
         for c in d.conditions:
             print(f"| {c} | {', '.join(f'({a},{b})' for a, b in pairs[c])} | {chosen[c]} |")
-        print(f"\nMinimal MC/DC set: rows {mset} ({len(mset)} tests = n+1, n = {len(d.conditions)}).\n")
+        live = [c for c in d.conditions if pairs[c]]
+        print(f"\nMinimal MC/DC set: rows {mset} ({len(mset)} tests = n+1 for the {len(live)} independently demonstrable conditions" + ('' if len(live) == len(d.conditions) else f"; masked: {', '.join(c for c in d.conditions if c not in live)}") + ").\n")
 
 
 if __name__ == '__main__':

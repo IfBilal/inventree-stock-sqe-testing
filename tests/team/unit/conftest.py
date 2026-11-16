@@ -90,3 +90,20 @@ def reload(item):
     from stock.models import StockItem
 
     return StockItem.objects.filter(pk=item.pk).first()
+
+
+def grant(user, role, **rights):
+    """Give `user` a group whose RuleSet for `role` has the given can_* rights, and sync Django permissions (as the seed does)."""
+    from django.contrib.auth.models import Group
+    from users.models import RuleSet
+    from users.tasks import update_group_roles
+    g = Group.objects.create(name=f'g-{role}-{user.pk}-{"-".join(sorted(rights))}')
+    for r in ('stock', 'part', 'stock_location', 'part_category'):
+        rs, _ = RuleSet.objects.get_or_create(group=g, name=r)
+        rs.can_view = True
+        if r == role:
+            for k, v in rights.items(): setattr(rs, k, v)
+        rs.save()
+    update_group_roles(g)
+    user.groups.add(g)
+    return user

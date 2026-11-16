@@ -1,0 +1,2 @@
+changed components.schemas.StockAdjustmentItem.properties.quantity.maximum -> 1000
+changed components.schemas.StockAdjustment.properties.notes.maxLength -> 100
