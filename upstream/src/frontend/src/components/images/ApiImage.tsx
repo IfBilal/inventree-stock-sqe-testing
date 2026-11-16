@@ -12,6 +12,7 @@ import { useLocalState } from '../../states/LocalState';
 interface ApiImageProps extends ImageProps {
   onClick?: (event: any) => void;
   thumbnail?: string;
+  alt?: string;
 }
 
 /**
@@ -53,6 +54,7 @@ export function ApiImage(props: Readonly<ApiImageProps>) {
       {thumbnailUrl && !isLoaded && (
         <Image
           {...props}
+          alt={props.alt ?? ''}
           src={thumbnailUrl}
           fit='contain'
           style={{
@@ -68,6 +70,7 @@ export function ApiImage(props: Readonly<ApiImageProps>) {
         <Image
           ref={highResRef}
           {...props}
+          alt={props.alt ?? ''}
           src={imageUrl}
           fit='contain'
           style={{

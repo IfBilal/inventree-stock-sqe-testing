@@ -128,7 +128,7 @@ export default function LayoutComponent() {
         <FirstUseTour />
         <Flex direction='column' mih='100vh'>
           <Header />
-          <Container className={classes.layoutContent} size='100%'>
+          <Container className={classes.layoutContent} size='100%' component='main'>
             <Boundary label={'layout'}>
               <Outlet />
             </Boundary>
