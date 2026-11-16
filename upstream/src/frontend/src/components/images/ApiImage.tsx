@@ -13,6 +13,7 @@ interface ApiImageProps extends ImageProps {
   onClick?: (event: any) => void;
   thumbnail?: string;
   alt?: string;
+  'aria-label'?: string;
 }
 
 /**
@@ -54,7 +55,7 @@ export function ApiImage(props: Readonly<ApiImageProps>) {
       {thumbnailUrl && !isLoaded && (
         <Image
           {...props}
-          alt={props.alt ?? ''}
+          alt={props.alt ?? props['aria-label'] ?? ''}
           src={thumbnailUrl}
           fit='contain'
           style={{
@@ -70,7 +71,7 @@ export function ApiImage(props: Readonly<ApiImageProps>) {
         <Image
           ref={highResRef}
           {...props}
-          alt={props.alt ?? ''}
+          alt={props.alt ?? props['aria-label'] ?? ''}
           src={imageUrl}
           fit='contain'
           style={{
