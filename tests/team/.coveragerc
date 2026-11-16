@@ -1,0 +1,7 @@
+[run]
+source = ../../upstream/src/backend/InvenTree/stock
+branch = True
+relative_files = False
+omit = */migrations/*, */tests*.py, */test_*.py, */fixtures/*
+[report]
+show_missing = True

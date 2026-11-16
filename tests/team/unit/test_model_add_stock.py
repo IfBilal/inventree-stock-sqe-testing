@@ -18,9 +18,9 @@ def test_add_records_history_with_deltas_and_notes(item, user):
     item.add_stock(Decimal('2.5'), user, notes='restock')
     entries = history(item, ADD)
     assert len(entries) == 1
-    deltas = entries[0].additional_data['deltas']
-    assert deltas['added'] == 2.5 and deltas['quantity'] == 12.5
-    assert entries[0].additional_data.get('notes', 'restock') == 'restock'
+    assert entries[0].additional_data['deltas']['added'] == 2.5
+    assert entries[0].changes['quantity'] == ['10.00000', '12.50000']
+    assert entries[0].notes == 'restock' and entries[0].actor_username == user.username
 
 
 @pytest.mark.req('FR-11')
@@ -59,11 +59,10 @@ def test_add_applies_optional_fields_and_status(item, user):
     assert item.add_stock(1, user, batch='B1', packaging='box', status=StockStatus.DAMAGED.value) is True
     got = reload(item)
     assert got.batch == 'B1' and got.packaging == 'box' and got.status == StockStatus.DAMAGED.value
-    d = history(item, ADD)[0].additional_data['deltas']
-    assert d['status_logical'] == StockStatus.DAMAGED.value and d['old_status'] == StockStatus.OK.value
+    assert history(item, ADD)[0].changes['status'] == [StockStatus.OK.value, StockStatus.DAMAGED.value]
 
 
 def test_add_same_status_is_not_recorded_as_change(item, user):
     from stock.status_codes import StockStatus
     item.add_stock(1, user, status=StockStatus.OK.value)
-    assert 'status' not in history(item, ADD)[0].additional_data['deltas']
+    assert 'status' not in (history(item, ADD)[0].changes or {})

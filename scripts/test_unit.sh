@@ -5,4 +5,5 @@ set -euo pipefail
 export INVENTREE_DB_NAME="$ROOT/data/unit_test.sqlite3"   # never touch the app DB
 export TESTING=1
 cd "$ROOT/tests/team"
-exec "$ROOT/.venv/bin/python" -m pytest unit "$@"
+if [ "$#" -eq 0 ]; then set -- unit; fi
+exec "$ROOT/.venv/bin/python" -m pytest "$@"

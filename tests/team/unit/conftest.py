@@ -82,7 +82,8 @@ def history(item, code):
     """Audit-log entries (STOCK_ADD=11 / STOCK_REMOVE=12) for an item."""
     from audit.models import AuditLogEntry
 
-    return list(AuditLogEntry.objects.filter(object_pk=str(item.pk), event_type=code).order_by('pk'))
+    pk = getattr(item, 'pk', item)
+    return list(AuditLogEntry.objects.filter(object_pk=str(pk), event_type=code).order_by('pk'))
 
 
 def reload(item):
