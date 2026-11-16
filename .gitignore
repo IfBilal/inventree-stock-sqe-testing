@@ -1,0 +1,11 @@
+.venv/
+data/
+node_modules/
+__pycache__/
+*.pyc
+.coverage
+htmlcov/
+.mutmut-cache
+mutants/
+.pytest_cache/
+upstream/.git/
