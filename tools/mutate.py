@@ -169,12 +169,18 @@ def main():
     ap.add_argument('--workers', type=int, default=4)
     ap.add_argument('--max-per-function', type=int, default=14)
     ap.add_argument('--only')
+    ap.add_argument('--rerun-survivors', help='results.json of an earlier run: re-run exactly its surviving mutants (same generation, no sampling)')
     ap.add_argument('--seed', type=int, default=20261116)
     ap.add_argument('--timeout', type=int, default=240)
     ap.add_argument('--out', default=os.path.join(ROOT, 'evidence', 'mutation', 'results.json'))
     a = ap.parse_args()
     rnd = random.Random(a.seed)
     # --- plan the mutants
+    survivors_key = set()
+    if a.rerun_survivors:
+        for r in json.load(open(a.rerun_survivors))['results']:
+            if r['status'] == 'survived':
+                survivors_key.add((r['file'], r['function'], r['op'], r['line'], r['desc']))
     plan = []
     for rel, funcs in SCOPE.items():
         src = open(os.path.join(ROOT, BASE, rel)).read()
@@ -184,6 +190,12 @@ def main():
                 continue
             lo, hi = ranges[f]
             ms = generate(src, lo, hi)
+            if a.rerun_survivors:
+                prior = survivors_key
+                chosen = [m for m in ms if (rel, f, m.op, m.line, m.desc) in prior]
+                for m in sorted(chosen, key=lambda m: m.start):
+                    plan.append({'file': rel, 'function': f, 'op': m.op, 'line': m.line, 'desc': m.desc, 'start': m.start, 'end': m.end, 'repl': m.repl})
+                continue
             custom = [m for m in ms if m.op.startswith('CBR')]
             std = [m for m in ms if not m.op.startswith('CBR')]
             rnd.shuffle(std)
