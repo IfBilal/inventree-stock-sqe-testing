@@ -1,0 +1,11 @@
+models.py              {'cognitive_complexity': '505', 'complexity': '479', 'ncloc': '2172'}
+serializers.py         {'cognitive_complexity': '174', 'complexity': '157', 'duplicated_lines': '50', 'ncloc': '1567'}
+api.py                 {'cognitive_complexity': '101', 'complexity': '119', 'ncloc': '1047'}
+generators.py          {'cognitive_complexity': '22', 'complexity': '12', 'ncloc': '66'}
+filters.py             {'cognitive_complexity': '1', 'complexity': '3', 'ncloc': '44'}
+admin.py               {'complexity': '2', 'ncloc': '52'}
+system_settings.py     {'complexity': '1', 'ncloc': '102'}
+__init__.py            {'complexity': '0', 'ncloc': '0'}
+apps.py                {'complexity': '0', 'ncloc': '3'}
+events.py              {'complexity': '0', 'ncloc': '12'}
+status_codes.py        {'complexity': '0', 'ncloc': '49'}

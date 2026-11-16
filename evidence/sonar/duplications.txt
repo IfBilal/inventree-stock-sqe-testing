@@ -1,0 +1,1 @@
+block: [(2017, 25, 'upstream/src/backend/InvenTree/stock/serializers.py'), (2051, 25, 'upstream/src/backend/InvenTree/stock/serializers.py')]

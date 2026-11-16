@@ -1,0 +1,18 @@
+models.py
+    M 1055:4 StockItem.clean - D (29)
+    M 2113:4 StockItem.disassemble - D (26)
+    M 2781:4 StockItem.merge_stock_items - D (25)
+    M 3296:4 StockItem.stocktake - C (18)
+    M 1610:4 StockItem.return_to_stock - C (17)
+    M 2038:4 StockItem.allocate_disassembly_pricing - C (16)
+    M 2671:4 StockItem.can_merge - C (16)
+    M 2491:4 StockItem.serializeStock - C (15)
+    M 2731:4 StockItem.find_merge_target - C (14)
+    M 2921:4 StockItem.splitStock - C (14)
+    M 742:4 StockItem._create_serial_numbers - C (12)
+    M 3128:4 StockItem.move - C (11)
+serializers.py
+    M 2108:4 StockTransferSerializer.save - C (12)
+api.py
+    C 1129:0 StockList - E (31)
+    M 1146:4 StockList.create - D (30)
