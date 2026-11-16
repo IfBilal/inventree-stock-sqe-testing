@@ -1,0 +1,86 @@
+{
+ "StockAdjustmentItemSerializer.validate_pk|False -> True": {
+  "justification": "`get_global_setting(..., backup_value=False, cache=False)`: `backup_value` only applies when the setting row is missing (never) and `cache` only changes caching of a setting read; no observable difference.",
+  "line": 1839,
+  "operator": "CRP",
+  "id_round2": "M002"
+ },
+ "StockAdjustmentSerializer.validate|delete statement: super().validate(data)": {
+  "justification": "The base `Serializer.validate` returns its argument unchanged: deleting the call has no effect.",
+  "line": 1940,
+  "operator": "SDL",
+  "id_round2": "M005"
+ },
+ "StockAddSerializer.save|or -> and": {
+  "justification": "Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable.",
+  "line": 2032,
+  "operator": "LCR",
+  "id_round2": "M006"
+ },
+ "StockAddSerializer.save|<= -> <": {
+  "justification": "Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable.",
+  "line": 2032,
+  "operator": "ROR",
+  "id_round2": "M007"
+ },
+ "StockAddSerializer.save|POSITIVE_GUARD quantity <= 0 boundary moved": {
+  "justification": "Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable.",
+  "line": 2032,
+  "operator": "CBR-4",
+  "id_round2": "M008"
+ },
+ "StockRemoveSerializer.save|or -> and": {
+  "justification": "Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable.",
+  "line": 2067,
+  "operator": "LCR",
+  "id_round2": "M009"
+ },
+ "StockRemoveSerializer.save|<= -> <": {
+  "justification": "Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable.",
+  "line": 2067,
+  "operator": "ROR",
+  "id_round2": "M010"
+ },
+ "StockRemoveSerializer.save|POSITIVE_GUARD quantity <= 0 boundary moved": {
+  "justification": "Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable.",
+  "line": 2067,
+  "operator": "CBR-4",
+  "id_round2": "M011"
+ },
+ "StockItem.add_stock|delete statement: tracking_info['quantity'] = float(self.quantity + quantity)": {
+  "justification": "The quantity delta is dropped from `additional_data` (it is recorded as a field change, `changes['quantity']`, which the tests assert), so the value is inert.",
+  "line": 3429,
+  "operator": "SDL",
+  "id_round2": "M013"
+ },
+ "StockItem.take_stock|<= -> <": {
+  "justification": "First `quantity <= 0` guard: the second guard after the `min()` clamp rejects the same input, so moving this boundary has no effect.",
+  "line": 3466,
+  "operator": "ROR",
+  "id_round2": "M014"
+ },
+ "StockItem.take_stock|POSITIVE_GUARD quantity <= 0 boundary moved": {
+  "justification": "First `quantity <= 0` guard: the second guard after the `min()` clamp rejects the same input, so moving this boundary has no effect.",
+  "line": 3466,
+  "operator": "CBR-4",
+  "id_round2": "M015"
+ },
+ "StockItem.save|and -> or": {
+  "justification": "`(user or notes) and not has_pending_event`: with `or`, an extra `audit_event(...)` context is opened; the audit layer attaches it to the same entry, so the number and content of audit entries are identical (checked by `test_update_save_inside_a_pending_event_adds_exactly_one_audit_entry`).",
+  "line": 552,
+  "operator": "LCR",
+  "id_round2": "M025"
+ },
+ "StockItem.delete|False -> True": {
+  "justification": "`cache=False` argument of `get_global_setting` (caching of a setting read): no observable difference.",
+  "line": 578,
+  "operator": "CRP",
+  "id_round2": "M026"
+ },
+ "StockAdjustView.get_serializer_context|delete statement: context['request'] = self.request": {
+  "justification": "DRF `GenericAPIView.get_serializer_context` already supplies `request`; the explicit assignment is redundant.",
+  "line": 240,
+  "operator": "SDL",
+  "id_round2": "M027"
+ }
+}

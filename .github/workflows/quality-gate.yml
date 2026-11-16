@@ -197,7 +197,7 @@ jobs:
           scripts/mutation_setup.sh
           python tools/mutate.py --workers 3 --max-per-function 7 --out evidence/mutation/ci_results.json
       - name: Mutation-score gate
-        run: python tools/mutation_gate.py evidence/mutation/ci_results.json 85
+        run: python tools/mutation_gate.py evidence/mutation/ci_results.json 90
       - uses: actions/upload-artifact@v4
         with:
           name: mutation-results
