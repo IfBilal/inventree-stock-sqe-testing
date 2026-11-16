@@ -9,3 +9,4 @@ htmlcov/
 mutants/
 .pytest_cache/
 upstream/.git/
+.scannerwork/

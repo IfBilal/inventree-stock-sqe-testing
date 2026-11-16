@@ -1,0 +1,1 @@
+{"evidence/sonar/function_extract/validate_pk_extract.py": [{"type": "function", "rank": "B", "col_offset": 0, "endline": 17, "name": "validate_pk", "lineno": 2, "complexity": 6, "closures": []}]}

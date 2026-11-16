@@ -1,0 +1,6 @@
+a_empty      {'complexity': '1', 'cognitive_complexity': '0'}
+b_if         {'complexity': '2', 'cognitive_complexity': '1'}
+c_if_elif    {'complexity': '2', 'cognitive_complexity': '2'}
+d_and        {'complexity': '3', 'cognitive_complexity': '2'}
+e_raise      {'complexity': '2', 'cognitive_complexity': '1'}
+f_not_and    {'complexity': '3', 'cognitive_complexity': '2'}

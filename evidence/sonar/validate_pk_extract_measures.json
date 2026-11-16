@@ -1,0 +1,26 @@
+{
+    "component": {
+        "key": "validate-pk-extract",
+        "name": "validate_pk extract",
+        "qualifier": "TRK",
+        "measures": [
+            {
+                "metric": "complexity",
+                "value": "5"
+            },
+            {
+                "metric": "functions",
+                "value": "1"
+            },
+            {
+                "metric": "cognitive_complexity",
+                "value": "7",
+                "bestValue": false
+            },
+            {
+                "metric": "ncloc",
+                "value": "13"
+            }
+        ]
+    }
+}
