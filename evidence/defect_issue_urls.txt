@@ -1,4 +1,5 @@
-https://github.com/IfBilal/sqe--proj/issues/1
-https://github.com/IfBilal/sqe--proj/issues/2
-https://github.com/IfBilal/sqe--proj/issues/3
-https://github.com/IfBilal/sqe--proj/issues/4
+https://github.com/IfBilal/inventree-stock-sqe-testing/issues/1
+https://github.com/IfBilal/inventree-stock-sqe-testing/issues/2
+https://github.com/IfBilal/inventree-stock-sqe-testing/issues/3
+https://github.com/IfBilal/inventree-stock-sqe-testing/issues/4
+https://github.com/IfBilal/inventree-stock-sqe-testing/issues/5

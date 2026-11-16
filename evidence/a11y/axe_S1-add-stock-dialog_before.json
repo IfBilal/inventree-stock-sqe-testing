@@ -1,0 +1,819 @@
+{
+ "url": "http://127.0.0.1:8000/web/stock/item/1/details",
+ "violations": [
+  {
+   "id": "aria-allowed-attr",
+   "impact": "critical",
+   "tags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ],
+   "description": "Ensure an element's role supports its ARIA attributes",
+   "help": "Elements must only use supported ARIA attributes",
+   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-allowed-attr?application=playwright",
+   "nodes": [
+    {
+     "any": [],
+     "all": [
+      {
+       "id": "aria-allowed-attr",
+       "data": {
+        "messageKey": "singular",
+        "values": [
+         "aria-expanded=\"false\""
+        ]
+       },
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "ARIA attribute is not allowed: aria-expanded=\"false\""
+      }
+     ],
+     "none": [],
+     "impact": "critical",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-0tngl2vw2\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-start; --group-wrap: nowrap;\">",
+     "target": [
+      "#mantine-0tngl2vw2"
+     ],
+     "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
+    },
+    {
+     "any": [],
+     "all": [
+      {
+       "id": "aria-allowed-attr",
+       "data": {
+        "messageKey": "singular",
+        "values": [
+         "aria-expanded=\"false\""
+        ]
+       },
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "ARIA attribute is not allowed: aria-expanded=\"false\""
+      }
+     ],
+     "none": [],
+     "impact": "critical",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-09o6975g8\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: space-between; --group-wrap: nowrap;\">",
+     "target": [
+      "#mantine-09o6975g8"
+     ],
+     "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
+    }
+   ]
+  },
+  {
+   "id": "aria-required-children",
+   "impact": "critical",
+   "tags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.3.1"
+   ],
+   "description": "Ensure elements with an ARIA role that require child roles contain them",
+   "help": "Certain ARIA roles must contain particular children",
+   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-required-children?application=playwright",
+   "nodes": [
+    {
+     "any": [
+      {
+       "id": "aria-required-children",
+       "data": {
+        "messageKey": "unallowed",
+        "values": "[role=separator], button"
+       },
+       "relatedNodes": [
+        {
+         "html": "<div class=\"m_3eebeb36 mantine-Divider-root\" data-orientation=\"horizontal\" role=\"separator\" aria-orientation=\"horizontal\"></div>",
+         "target": [
+          "div[aria-orientation=\"vertical\"] > .m_3eebeb36.mantine-Divider-root[role=\"separator\"]"
+         ]
+        },
+        {
+         "html": "<button class=\"mantine-focus-auto m...\" data-variant=\"transparent\" data-size=\"lg\" type=\"button\" style=\"--ai-size: var(--ai-...\">",
+         "target": [
+          ".m_8d3f4000.mantine-ActionIcon-root[data-size=\"lg\"]"
+         ]
+        }
+       ],
+       "impact": "critical",
+       "message": "Element has children which are not allowed: [role=separator], button"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "critical",
+     "html": "<div class=\"m_576c9d4 m_89d33d6d mantine-Tabs-list\" data-variant=\"default\" data-orientation=\"vertical\" data-placement=\"left\" role=\"tablist\" aria-orientation=\"vertical\" aria-label=\"panel-tabs-stockitem\" style=\"--tabs-justify: left;\">",
+     "target": [
+      "div[aria-orientation=\"vertical\"]"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has children which are not allowed: [role=separator], button"
+    }
+   ]
+  },
+  {
+   "id": "button-name",
+   "impact": "critical",
+   "tags": [
+    "cat.name-role-value",
+    "wcag2a",
+    "wcag412",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.9.1"
+   ],
+   "description": "Ensure buttons have discernible text",
+   "help": "Buttons must have discernible text",
+   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/button-name?application=playwright",
+   "nodes": [
+    {
+     "any": [
+      {
+       "id": "button-has-visible-text",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have inner text that is visible to screen readers"
+      },
+      {
+       "id": "aria-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-label attribute does not exist or is empty"
+      },
+      {
+       "id": "aria-labelledby",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+      },
+      {
+       "id": "non-empty-title",
+       "data": {
+        "messageKey": "noAttr"
+       },
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element has no title attribute"
+      },
+      {
+       "id": "implicit-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an implicit (wrapped) <label>"
+      },
+      {
+       "id": "explicit-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an explicit <label>"
+      },
+      {
+       "id": "presentational-role",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "critical",
+     "html": "<button class=\"mantine-focus-auto m...\" data-variant=\"transparent\" data-size=\"lg\" type=\"button\" style=\"--ai-size: var(--ai-...\">",
+     "target": [
+      ".m_8d3f4000.mantine-ActionIcon-root[data-size=\"lg\"]"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+    },
+    {
+     "any": [
+      {
+       "id": "button-has-visible-text",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have inner text that is visible to screen readers"
+      },
+      {
+       "id": "aria-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-label attribute does not exist or is empty"
+      },
+      {
+       "id": "aria-labelledby",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+      },
+      {
+       "id": "non-empty-title",
+       "data": {
+        "messageKey": "noAttr"
+       },
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element has no title attribute"
+      },
+      {
+       "id": "implicit-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an implicit (wrapped) <label>"
+      },
+      {
+       "id": "explicit-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an explicit <label>"
+      },
+      {
+       "id": "presentational-role",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "critical",
+     "html": "<button class=\"mantine-focus-auto mantine-active m_220c80f2 m_919a4d88 mantine-Notification-closeButton m_86a44da5 mantine-CloseButton-root m_87cf2631 mantine-UnstyledButton-root\" data-variant=\"subtle\" type=\"button\" color=\"gray\" style=\"--cb-icon-size: calc(1rem * var(--mantine-scale));\">",
+     "target": [
+      ".m_919a4d88"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+    },
+    {
+     "any": [
+      {
+       "id": "button-has-visible-text",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have inner text that is visible to screen readers"
+      },
+      {
+       "id": "aria-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-label attribute does not exist or is empty"
+      },
+      {
+       "id": "aria-labelledby",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+      },
+      {
+       "id": "non-empty-title",
+       "data": {
+        "messageKey": "noAttr"
+       },
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element has no title attribute"
+      },
+      {
+       "id": "implicit-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an implicit (wrapped) <label>"
+      },
+      {
+       "id": "explicit-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an explicit <label>"
+      },
+      {
+       "id": "presentational-role",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "critical",
+     "html": "<button class=\"mantine-focus-auto mantine-active m_220c80f2 m_606cb269 mantine-Modal-close m_86a44da5 mantine-CloseButton-root m_87cf2631 mantine-UnstyledButton-root\" data-variant=\"subtle\" type=\"button\">",
+     "target": [
+      ".m_606cb269"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+    }
+   ]
+  },
+  {
+   "id": "color-contrast",
+   "impact": "serious",
+   "tags": [
+    "cat.color",
+    "wcag2aa",
+    "wcag143",
+    "TTv5",
+    "TT13.c",
+    "EN-301-549",
+    "EN-9.1.4.3",
+    "ACT",
+    "RGAAv4",
+    "RGAA-3.2.1"
+   ],
+   "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+   "help": "Elements must meet minimum color contrast ratio thresholds",
+   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+   "nodes": [
+    {
+     "any": [
+      {
+       "id": "color-contrast",
+       "data": {
+        "fgColor": "#4c6ef5",
+        "bgColor": "#ffffff",
+        "contrastRatio": 4.32,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+       },
+       "relatedNodes": [
+        {
+         "html": "<div class=\"m_1b7284a3 mantine-Paper-root\" data-testid=\"breadcrumb-list\" style=\"--paper-radius: var(--mantine-radius-xs); --paper-shadow: var(--mantine-shadow-xs); padding: calc(0.4375rem * var(--mantine-scale));\">",
+         "target": [
+          "div[data-testid=\"breadcrumb-list\"]"
+         ]
+        }
+       ],
+       "impact": "serious",
+       "message": "Element has insufficient color contrast of 4.32 (foreground color: #4c6ef5, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "serious",
+     "html": "<p class=\"mantine-focus-auto m_b6d8b162 mantine-Text-root\" data-size=\"sm\" style=\"--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm);\">Stock</p>",
+     "target": [
+      "a[aria-label=\"breadcrumb-0-stock\"] > .m_4081bf90.mantine-Group-root > p[data-size=\"sm\"]"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.32 (foreground color: #4c6ef5, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+    },
+    {
+     "any": [
+      {
+       "id": "color-contrast",
+       "data": {
+        "fgColor": "#4c6ef5",
+        "bgColor": "#ffffff",
+        "contrastRatio": 4.32,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+       },
+       "relatedNodes": [
+        {
+         "html": "<div class=\"m_1b7284a3 mantine-Paper-root\" data-testid=\"breadcrumb-list\" style=\"--paper-radius: var(--mantine-radius-xs); --paper-shadow: var(--mantine-shadow-xs); padding: calc(0.4375rem * var(--mantine-scale));\">",
+         "target": [
+          "div[data-testid=\"breadcrumb-list\"]"
+         ]
+        }
+       ],
+       "impact": "serious",
+       "message": "Element has insufficient color contrast of 4.32 (foreground color: #4c6ef5, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "serious",
+     "html": "<p class=\"mantine-focus-auto m_b6d8b162 mantine-Text-root\" data-size=\"sm\" style=\"--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm);\">Main Warehouse</p>",
+     "target": [
+      "a[aria-label=\"breadcrumb-1-main-warehouse\"] > .m_4081bf90.mantine-Group-root > p[data-size=\"sm\"]"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.32 (foreground color: #4c6ef5, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+    },
+    {
+     "any": [
+      {
+       "id": "color-contrast",
+       "data": {
+        "fgColor": "#ffffff",
+        "bgColor": "#228be6",
+        "contrastRatio": 3.55,
+        "fontSize": "9.8pt (13px)",
+        "fontWeight": "bold",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+       },
+       "relatedNodes": [
+        {
+         "html": "<div class=\"m_347db0ec mantine-B...\" data-variant=\"filled\" data-size=\"lg\" style=\"--badge-height: var(...\">",
+         "target": [
+          ".m_4081bf90.mantine-Group-root:nth-child(2) > .m_347db0ec.mantine-Badge-root[data-variant=\"filled\"]:nth-child(1)"
+         ]
+        }
+       ],
+       "impact": "serious",
+       "message": "Element has insufficient color contrast of 3.55 (foreground color: #ffffff, background color: #228be6, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "serious",
+     "html": "<span class=\"m_5add502a mantine-Badge-label\">Quantity: 10</span>",
+     "target": [
+      ".m_4081bf90.mantine-Group-root:nth-child(2) > .m_347db0ec.mantine-Badge-root[data-variant=\"filled\"]:nth-child(1) > .m_5add502a.mantine-Badge-label"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.55 (foreground color: #ffffff, background color: #228be6, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1"
+    },
+    {
+     "any": [
+      {
+       "id": "color-contrast",
+       "data": {
+        "fgColor": "#ffffff",
+        "bgColor": "#40c057",
+        "contrastRatio": 2.36,
+        "fontSize": "9.8pt (13px)",
+        "fontWeight": "bold",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+       },
+       "relatedNodes": [
+        {
+         "html": "<div class=\"m_347db0ec mantine-B...\" data-variant=\"filled\" data-size=\"lg\" style=\"--badge-height: var(...\">",
+         "target": [
+          ".m_4081bf90.mantine-Group-root:nth-child(2) > .m_347db0ec.mantine-Badge-root[data-variant=\"filled\"]:nth-child(2)"
+         ]
+        }
+       ],
+       "impact": "serious",
+       "message": "Element has insufficient color contrast of 2.36 (foreground color: #ffffff, background color: #40c057, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "serious",
+     "html": "<span class=\"m_5add502a mantine-Badge-label\">OK</span>",
+     "target": [
+      ".m_4081bf90.mantine-Group-root:nth-child(2) > .m_347db0ec.mantine-Badge-root[data-variant=\"filled\"]:nth-child(2) > .m_5add502a.mantine-Badge-label"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.36 (foreground color: #ffffff, background color: #40c057, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1"
+    },
+    {
+     "any": [
+      {
+       "id": "color-contrast",
+       "data": {
+        "fgColor": "#4c6ef5",
+        "bgColor": "#f8f9fa",
+        "contrastRatio": 4.1,
+        "fontSize": "12.0pt (16px)",
+        "fontWeight": "normal",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+       },
+       "relatedNodes": [
+        {
+         "html": "<tr class=\"m_4e7aa4fd mantine-Table-tr\" data-with-row-border=\"true\" data-striped=\"odd\" style=\"vertical-align: top;\">",
+         "target": [
+          ".__m__-_r_8d_ > .m_1b7284a3.mantine-Paper-root[data-with-border=\"true\"] > .m_6d731127.mantine-Stack-root > table > tbody > tr:nth-child(1)"
+         ]
+        }
+       ],
+       "impact": "serious",
+       "message": "Element has insufficient color contrast of 4.1 (foreground color: #4c6ef5, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "serious",
+     "html": "<p class=\"mantine-focus-auto m_b6d8b162 mantine-Text-root\">Keyboard</p>",
+     "target": [
+      "a[href=\"/web/part/1/\"] > p"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.1 (foreground color: #4c6ef5, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+    },
+    {
+     "any": [
+      {
+       "id": "color-contrast",
+       "data": {
+        "fgColor": "#ffffff",
+        "bgColor": "#40c057",
+        "contrastRatio": 2.36,
+        "fontSize": "6.8pt (9px)",
+        "fontWeight": "bold",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+       },
+       "relatedNodes": [
+        {
+         "html": "<div class=\"m_347db0ec mantine-B...\" data-variant=\"filled\" data-size=\"xs\" style=\"--badge-height: var(...\">",
+         "target": [
+          "td:nth-child(2) > .m_347db0ec.mantine-Badge-root[data-size=\"xs\"]"
+         ]
+        }
+       ],
+       "impact": "serious",
+       "message": "Element has insufficient color contrast of 2.36 (foreground color: #ffffff, background color: #40c057, font size: 6.8pt (9px), font weight: bold). Expected contrast ratio of 4.5:1"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "serious",
+     "html": "<span class=\"m_5add502a mantine-Badge-label\">OK</span>",
+     "target": [
+      "td:nth-child(2) > .m_347db0ec.mantine-Badge-root[data-size=\"xs\"] > .m_5add502a.mantine-Badge-label"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.36 (foreground color: #ffffff, background color: #40c057, font size: 6.8pt (9px), font weight: bold). Expected contrast ratio of 4.5:1"
+    },
+    {
+     "any": [
+      {
+       "id": "color-contrast",
+       "data": {
+        "fgColor": "#4c6ef5",
+        "bgColor": "#f8f9fa",
+        "contrastRatio": 4.1,
+        "fontSize": "12.0pt (16px)",
+        "fontWeight": "normal",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+       },
+       "relatedNodes": [
+        {
+         "html": "<tr class=\"m_4e7aa4fd mantine-Table-tr\" data-with-row-border=\"true\" data-striped=\"odd\" style=\"vertical-align: top;\">",
+         "target": [
+          ".m_1b7284a3.mantine-Paper-root[data-with-border=\"true\"]:nth-child(3) > .m_6d731127.mantine-Stack-root > table > tbody > tr"
+         ]
+        }
+       ],
+       "impact": "serious",
+       "message": "Element has insufficient color contrast of 4.1 (foreground color: #4c6ef5, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "serious",
+     "html": "<p class=\"mantine-focus-auto m_b6d8b162 mantine-Text-root\">Main Warehouse</p>",
+     "target": [
+      ".m_849cf0da.mantine-Anchor-root[href=\"/web/stock/location/1/\"] > p"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.1 (foreground color: #4c6ef5, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+    }
+   ]
+  },
+  {
+   "id": "image-alt",
+   "impact": "critical",
+   "tags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag111",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT7.a",
+    "TT7.b",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "ACT",
+    "RGAAv4",
+    "RGAA-1.1.1"
+   ],
+   "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+   "help": "Images must have alternative text",
+   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/image-alt?application=playwright",
+   "nodes": [
+    {
+     "any": [
+      {
+       "id": "has-alt",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an alt attribute"
+      },
+      {
+       "id": "aria-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-label attribute does not exist or is empty"
+      },
+      {
+       "id": "aria-labelledby",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+      },
+      {
+       "id": "non-empty-title",
+       "data": {
+        "messageKey": "noAttr"
+       },
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element has no title attribute"
+      },
+      {
+       "id": "presentational-role",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "critical",
+     "html": "<img class=\"m_9e117634 mantine-I...\" src=\"http://127.0.0.1:800...\" style=\"--image-radius: var(...\">",
+     "target": [
+      ".mantine-visible-from-sm"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+    },
+    {
+     "any": [
+      {
+       "id": "has-alt",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element does not have an alt attribute"
+      },
+      {
+       "id": "aria-label",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-label attribute does not exist or is empty"
+      },
+      {
+       "id": "aria-labelledby",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+      },
+      {
+       "id": "non-empty-title",
+       "data": {
+        "messageKey": "noAttr"
+       },
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element has no title attribute"
+      },
+      {
+       "id": "presentational-role",
+       "data": null,
+       "relatedNodes": [],
+       "impact": "critical",
+       "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "critical",
+     "html": "<img class=\"m_9e117634 mantine-Image-root\" src=\"http://127.0.0.1:8000/static/img/blank_image.thumbnail.png\" style=\"--image-object-fit: contain; opacity: 1; transition: opacity 0.2s; max-width: calc(16rem * var(--mantine-scale)); max-height: calc(16rem * var(--mantine-scale));\">",
+     "target": [
+      ".m_71ac47fc > .m_6d731127.mantine-Stack-root > .m_9e117634.mantine-Image-root"
+     ],
+     "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+    }
+   ]
+  },
+  {
+   "id": "region",
+   "impact": "moderate",
+   "tags": [
+    "cat.keyboard",
+    "best-practice",
+    "RGAAv4",
+    "RGAA-9.2.1"
+   ],
+   "description": "Ensure all page content is contained by landmarks",
+   "help": "All page content should be contained by landmarks",
+   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=playwright",
+   "nodes": [
+    {
+     "any": [
+      {
+       "id": "region",
+       "data": {
+        "isIframe": false
+       },
+       "relatedNodes": [],
+       "impact": "moderate",
+       "message": "Some page content is not contained by landmarks"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "moderate",
+     "html": "<div class=\"_1jb1pko8 m_89d60db1 mantine-Tabs-root\" data-variant=\"default\" data-orientation=\"horizontal\" id=\"tip-ftu-nav3\" style=\"--tabs-radius: var(--mantine-radius-default); --tabs-color: var(--mantine-color-indigo-filled);\">",
+     "target": [
+      "#tip-ftu-nav3"
+     ],
+     "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+    },
+    {
+     "any": [
+      {
+       "id": "region",
+       "data": {
+        "isIframe": false
+       },
+       "relatedNodes": [],
+       "impact": "moderate",
+       "message": "Some page content is not contained by landmarks"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "moderate",
+     "html": "<div class=\"m_8b3717df mantine-Breadcrumbs-root\">",
+     "target": [
+      ".m_8b3717df"
+     ],
+     "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+    },
+    {
+     "any": [
+      {
+       "id": "region",
+       "data": {
+        "isIframe": false
+       },
+       "relatedNodes": [],
+       "impact": "moderate",
+       "message": "Some page content is not contained by landmarks"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "moderate",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" style=\"--group-gap: var(--mantine-spacing-md); --group-align: flex-start; --group-justify: space-between; --group-wrap: nowrap; flex-grow: 1;\">",
+     "target": [
+      ".m_1b7284a3.mantine-Paper-root:nth-child(2) > .m_4081bf90.mantine-Group-root > .m_4081bf90.mantine-Group-root:nth-child(1)"
+     ],
+     "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+    },
+    {
+     "any": [
+      {
+       "id": "region",
+       "data": {
+        "isIframe": false
+       },
+       "relatedNodes": [],
+       "impact": "moderate",
+       "message": "Some page content is not contained by landmarks"
+      }
+     ],
+     "all": [],
+     "none": [],
+     "impact": "moderate",
+     "html": "<div class=\"m_1b7284a3 mantine-Paper-root\" aria-label=\"stockitem\" style=\"--paper-radius: var(--mantine-radius-xs); --paper-shadow: var(--mantine-shadow-xs); padding: var(--mantine-spacing-sm);\">",
+     "target": [
+      "div[aria-label=\"stockitem\"]"
+     ],
+     "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+    }
+   ]
+  }
+ ],
+ "passes": 44,
+ "incomplete": 2,
+ "inapplicable": 46
+}
