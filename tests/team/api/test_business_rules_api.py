@@ -88,9 +88,11 @@ def test_restock_of_depleted_item(new_item, manager):
 
 
 @pytest.mark.req('BR-3')
-def test_remove_from_depleted_item_is_ignored(new_item, manager):
+def test_remove_from_depleted_item_is_rejected(new_item, manager):
+    """DEPLETED --remove--> disallowed: nothing is available, so any removal exceeds the available quantity (after the DEF-01 fix; baseline: 201 no-op)."""
     pk = new_item(0)
-    assert adjust(manager, 'remove', pk, 1).status_code == 201         # documented upstream behaviour: silent no-op
+    r = adjust(manager, 'remove', pk, 1)
+    assert r.status_code == 400 and 'available quantity (0)' in r.text
     assert qty(manager, pk) == 0 and history(manager, pk) == []
 
 

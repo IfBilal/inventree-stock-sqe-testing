@@ -34,7 +34,7 @@ Actor: Manager. Pre: logged in as manager, Mouse qty 25 and `delete_on_deplete=F
 | UC03-MAIN | Main | Remove 25 | Item page still exists with qty 0 and shown as out of stock; history has remove (25, 0) | PASS |
 | UC03-AF1 | Alternative | Pre: set `delete_on_deplete=True` through the API (PATCH by manager) → remove 25 | Item no longer exists: item page 404, `GET /api/stock/2/` = 404 | PASS |
 | UC03-AF2 | Alternative | Remove 24, then remove 1 | After 1st: qty 1 (still in stock); after 2nd: qty 0 | PASS |
-| UC03-EF1 | Exception | Pre: item with qty 0 → open Remove Stock | The dialog lists **no entries** ("No entries available", no quantity field); qty 0, no history entry (the API alone would accept the call as a silent no-op) | PASS |
+| UC03-EF1 | Exception | Pre: item with qty 0 → open Remove Stock | The dialog lists **no entries** ("No entries available", no quantity field); qty 0, no history entry (the baseline API alone would accept the call as a silent 201 no-op; after the DEF-01 fix it answers 400) | PASS |
 | UC03-EF2 | Exception | remove 26 (> 25) | Rejected; qty stays 25; no history entry | FAIL (A-1) |
 **Post:** exactly as each flow's Expected column.
 
