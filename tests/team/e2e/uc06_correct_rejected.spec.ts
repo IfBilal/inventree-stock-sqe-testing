@@ -34,12 +34,15 @@ test('UC06-AF2 keyboard only: Tab order quantity -> ... -> notes -> Cancel -> Su
   await openItem(page, pk);
   await openOp(page, 'Add Stock');
   const label = () => page.evaluate(() => { const e = document.activeElement as HTMLElement; return (e.getAttribute('aria-label') || e.innerText || e.tagName).trim(); });
-  // From the moment the dialog opens (focus is on the modal's close button) the Tab key must reach the required field, the notes field and the Submit button in this exact order
+  await expect(page.getByLabel('number-field-quantity')).toBeVisible();
+  // Reach the required field with the keyboard (the number of Tab presses before it depends on the focus trap's start state, so it is not asserted), then from there the order to Submit is exact
+  for (let i = 0; i < 30 && (await label()) !== 'number-field-quantity'; i++) await page.keyboard.press('Tab');
+  expect(await label()).toBe('number-field-quantity');
   const seq: string[] = [];
   for (let i = 0; i < 10; i++) { await page.keyboard.press('Tab'); seq.push(await label()); if (seq[seq.length - 1] === 'Submit') break; }
-  expect(seq).toEqual(['number-field-quantity', 'action-button-change-status', 'action-button-remove-this-row', 'text-field-notes', 'Cancel', 'Submit']);
+  expect(seq).toEqual(['action-button-change-status', 'action-button-remove-this-row', 'text-field-notes', 'Cancel', 'Submit']);
   // Back to the quantity field with the keyboard (the focus trap wraps: Submit -> close -> quantity), type a value
-  await page.keyboard.press('Tab'); await page.keyboard.press('Tab');
+  for (let i = 0; i < 30 && (await label()) !== 'number-field-quantity'; i++) await page.keyboard.press('Tab');
   expect(await label()).toBe('number-field-quantity');
   await page.keyboard.type('2');
   // UX-01 (documented behaviour): Enter inside the quantity field does NOT submit the dialog

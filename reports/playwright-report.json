@@ -4,7 +4,9 @@
       "/home/bilaltahir/.nvm/versions/node/v24.11.1/bin/node",
       "/home/bilaltahir/Desktop/sqe-proj/tests/team/node_modules/.bin/playwright",
       "test",
-      "e2e/a11y.spec.ts"
+      "e2e/uc06_correct_rejected.spec.ts",
+      "-g",
+      "AF2"
     ],
     "configFile": "/home/bilaltahir/Desktop/sqe-proj/tests/team/playwright.config.ts",
     "rootDir": "/home/bilaltahir/Desktop/sqe-proj/tests/team/e2e",
@@ -166,7 +168,12 @@
           "tests": [
             {
               "timeout": 60000,
-              "annotations": [],
+              "annotations": [
+                {
+                  "type": "DEF-05",
+                  "description": "first login attempt after server start did not complete; clicked Log In again"
+                }
+              ],
               "expectedStatus": "passed",
               "projectId": "setup",
               "projectName": "setup",
@@ -175,13 +182,18 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2335,
+                  "duration": 10568,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T18:16:46.756Z",
-                  "annotations": [],
+                  "startTime": "2026-11-16T19:18:03.002Z",
+                  "annotations": [
+                    {
+                      "type": "DEF-05",
+                      "description": "first login attempt after server start did not complete; clicked Log In again"
+                    }
+                  ],
                   "attachments": []
                 }
               ],
@@ -209,12 +221,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2267,
+                  "duration": 2469,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T18:16:49.167Z",
+                  "startTime": "2026-11-16T19:18:13.654Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -243,12 +255,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2375,
+                  "duration": 2421,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-16T18:16:51.446Z",
+                  "startTime": "2026-11-16T19:18:16.137Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -264,172 +276,53 @@
       ]
     },
     {
-      "title": "a11y.spec.ts",
-      "file": "a11y.spec.ts",
+      "title": "uc06_correct_rejected.spec.ts",
+      "file": "uc06_correct_rejected.spec.ts",
       "column": 0,
       "line": 0,
-      "specs": [],
-      "suites": [
+      "specs": [
         {
-          "title": "manager screens",
-          "file": "a11y.spec.ts",
-          "line": 19,
-          "column": 6,
-          "specs": [
+          "title": "UC06-AF2 keyboard only: Tab order quantity -> ... -> notes -> Cancel -> Submit; the keyboard submits the form",
+          "ok": true,
+          "tags": [],
+          "tests": [
             {
-              "title": "axe S1 item details page (manager)",
-              "ok": true,
-              "tags": [],
-              "tests": [
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
                 {
-                  "timeout": 60000,
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T19:18:18.902Z",
                   "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 4167,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-11-16T18:16:54.185Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "attachments": []
                 }
               ],
-              "id": "aa3ad05f8c0e05077efb-15491170d28a5ec7703a",
-              "file": "a11y.spec.ts",
-              "line": 21,
-              "column": 3
-            },
-            {
-              "title": "axe S1 with the Add Stock dialog open",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 3787,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-11-16T18:16:58.425Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "aa3ad05f8c0e05077efb-620691f2f73577d55a1f",
-              "file": "a11y.spec.ts",
-              "line": 26,
-              "column": 3
-            },
-            {
-              "title": "axe S1 with the Remove Stock dialog open",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 3625,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-11-16T18:17:02.223Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "aa3ad05f8c0e05077efb-540a47f061f6f429f684",
-              "file": "a11y.spec.ts",
-              "line": 31,
-              "column": 3
+              "status": "expected"
             }
-          ]
-        },
-        {
-          "title": "viewer screens",
-          "file": "a11y.spec.ts",
-          "line": 38,
-          "column": 6,
-          "specs": [
-            {
-              "title": "axe S2 item details page (viewer)",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 3975,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-11-16T18:17:05.860Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "aa3ad05f8c0e05077efb-68b2a24357aca5caed0e",
-              "file": "a11y.spec.ts",
-              "line": 40,
-              "column": 3
-            }
-          ]
+          ],
+          "id": "96f261175dd7f9317b8e-c8207e7f4c8e46a25828",
+          "file": "uc06_correct_rejected.spec.ts",
+          "line": 32,
+          "column": 1
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-16T18:16:46.419Z",
-    "duration": 23486.761000000002,
-    "expected": 7,
+    "startTime": "2026-11-16T19:18:02.594Z",
+    "duration": 20201.905,
+    "expected": 4,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
