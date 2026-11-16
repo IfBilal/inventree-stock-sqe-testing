@@ -5,8 +5,8 @@ set -euo pipefail
 export INVENTREE_DB_NAME="$ROOT/data/unit_test.sqlite3" TESTING=1
 mkdir -p "$ROOT/evidence/coverage"
 cd "$ROOT/tests/team"
-"$ROOT/.venv/bin/python" -m coverage run --branch --rcfile="$ROOT/tests/team/.coveragerc" -m pytest unit "$@"
-"$ROOT/.venv/bin/python" -m coverage xml --rcfile="$ROOT/tests/team/.coveragerc" -o "$ROOT/evidence/coverage/coverage.xml"
-"$ROOT/.venv/bin/python" -m coverage json --rcfile="$ROOT/tests/team/.coveragerc" -o "$ROOT/evidence/coverage/coverage.json"
-"$ROOT/.venv/bin/python" -m coverage report --rcfile="$ROOT/tests/team/.coveragerc" > "$ROOT/evidence/coverage/coverage_report.txt" || true
-cd "$ROOT" && "$ROOT/.venv/bin/python" tools/scope_coverage.py evidence/coverage/coverage.json --md docs/COVERAGE_SCOPE.md
+"$PY" -m coverage run --branch --rcfile="$ROOT/tests/team/.coveragerc" -m pytest unit "$@"
+"$PY" -m coverage xml --rcfile="$ROOT/tests/team/.coveragerc" -o "$ROOT/evidence/coverage/coverage.xml"
+"$PY" -m coverage json --rcfile="$ROOT/tests/team/.coveragerc" -o "$ROOT/evidence/coverage/coverage.json"
+"$PY" -m coverage report --rcfile="$ROOT/tests/team/.coveragerc" > "$ROOT/evidence/coverage/coverage_report.txt"
+cd "$ROOT" && "$PY" tools/scope_coverage.py evidence/coverage/coverage.json --md docs/COVERAGE_SCOPE.md

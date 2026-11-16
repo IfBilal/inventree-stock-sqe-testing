@@ -13,3 +13,4 @@ upstream/.git/
 reports/playwright-html/
 test-results/
 tests/team/e2e/.auth/
+/mutation/

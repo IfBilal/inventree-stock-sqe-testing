@@ -2046,6 +2046,39 @@ class StockAddSerializer(StockAdjustmentSerializer):
 class StockRemoveSerializer(StockAdjustmentSerializer):
     """Serializer for removing stock from stock item(s)."""
 
+    def validate(self, data):
+        """Reject a removal which is larger than the available quantity.
+
+        Entries which refer to the same stock item are summed, so that splitting a
+        too-large removal over several entries cannot bypass the limit.
+        """
+        data = super().validate(data)
+
+        requested: dict[int, Decimal] = {}
+
+        for entry in data['items']:
+            stock_item = entry['pk']
+            requested[stock_item.pk] = requested.get(stock_item.pk, Decimal(0)) + entry['quantity']
+
+        for index, entry in enumerate(data['items']):
+            stock_item = entry['pk']
+
+            if requested[stock_item.pk] > stock_item.quantity:
+                available = format(stock_item.quantity.normalize(), 'f')
+                raise ValidationError({
+                    'items': {
+                        str(index): {
+                            'quantity': [
+                                _('Cannot remove more than the available quantity ({available})').format(
+                                    available=available
+                                )
+                            ]
+                        }
+                    }
+                })
+
+        return data
+
     def save(self):
         """Remove stock."""
         request = self.context['request']

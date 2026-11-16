@@ -88,9 +88,11 @@ def test_restock_of_depleted_item(new_item, manager):
 
 
 @pytest.mark.req('BR-3')
-def test_remove_from_depleted_item_is_ignored(new_item, manager):
+def test_remove_from_depleted_item_is_rejected(new_item, manager):
+    """DEPLETED --remove--> disallowed: nothing is available, so any removal exceeds the available quantity (after the DEF-01 fix; baseline: 201 no-op)."""
     pk = new_item(0)
-    assert adjust(manager, 'remove', pk, 1).status_code == 201         # documented upstream behaviour: silent no-op
+    r = adjust(manager, 'remove', pk, 1)
+    assert r.status_code == 400 and 'available quantity (0)' in r.text
     assert qty(manager, pk) == 0 and history(manager, pk) == []
 
 
@@ -154,7 +156,6 @@ def test_multi_item_request_applies_every_item(new_item, manager):
 
 @pytest.mark.req('FR-07', 'BR-1')
 @pytest.mark.risk('PR-01')
-@pytest.mark.xfail(strict=True, raises=AssertionError, reason='DEF-01 (variant): duplicate pk entries whose SUM exceeds the available quantity are clamped, not rejected')
 def test_duplicate_pk_entries_exceeding_available_are_rejected(new_item, manager):
     pk = new_item(10)
     r = manager.post('/api/stock/remove/', json={'items': [{'pk': pk, 'quantity': '6'}, {'pk': pk, 'quantity': '6'}]})

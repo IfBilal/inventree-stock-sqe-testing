@@ -63,7 +63,7 @@ States of a StockItem w.r.t. adjustment: `IN_STOCK (q>0)`, `DEPLETED (q=0, retai
 | IN_STOCK | remove q (delete_on_deplete=false) | DEPLETED |
 | IN_STOCK | remove q (delete_on_deplete=true) | DELETED |
 | DEPLETED | add N | IN_STOCK |
-| DEPLETED | remove N | **ignored** (upstream: 201, no change, no history entry — treated as a no-op; no rejection expected) |
+| DEPLETED | remove N | **disallowed**: nothing is available, so any removal exceeds the available quantity → 400 "Cannot remove more than the available quantity (0)" (baseline upstream: 201, silent no-op — the same defect as DEF-01; fixed together with it in PR #13) |
 | DELETED | add / remove | **disallowed** (400 `Invalid pk … object does not exist`) |
 | NON_ADJUSTABLE | add / remove | **disallowed** (400) |
 | IN_STOCK | remove N>q | **disallowed** (400, assumption A-1) — state-level evidence for the IN_STOCK disallowed case: `test_non_adjustable_item_disallowed_transition_unchanged` (IN_STOCK → NON_ADJUSTABLE) and the strict-xfail DEF-01 tests |

@@ -149,7 +149,6 @@ def test_remove_serializer_blank_optional_fields_keep_existing_values(make_item,
 # ------------------------------------------------------------- DEF-01/02/03: EXPECTED behaviour (fail on baseline)
 @pytest.mark.req('FR-07', 'BR-1')
 @pytest.mark.risk('PR-01')
-@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-01: over-removal is clamped, not rejected (baseline)')
 def test_expected_over_removal_is_rejected_and_quantity_unchanged(item, request_ctx):
     with pytest.raises(ValidationError):
         _remove(payload(item, 11), request_ctx)

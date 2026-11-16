@@ -1,0 +1,227 @@
+name: quality-gate
+
+# Every pull request (and every push to main) must pass ALL gates; merge and deployment are blocked otherwise.
+# No escape hatches: no `continue-on-error`, no `|| true`, no `if: always()` (enforced by tools/check_no_escape_hatches.py in the `hygiene` job).
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON: python
+
+jobs:
+  hygiene:
+    name: hygiene
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: No escape hatches in the pipeline
+        run: python tools/check_no_escape_hatches.py
+
+  unit:
+    name: unit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            upstream/src/backend/requirements.txt
+            tests/team/requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r upstream/src/backend/requirements.txt
+          pip install -r tests/team/requirements.txt
+          mkdir -p data/media data/static data/backup
+          touch data/plugins.txt
+      - name: Unit tests with branch coverage and per-function scope check (100 % statements, 0 unjustified branches)
+        run: scripts/coverage_unit.sh
+      - name: Generator tests
+        run: scripts/test_unit.sh generator
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: |
+            evidence/coverage/coverage.xml
+            evidence/coverage/coverage.json
+            docs/COVERAGE_SCOPE.md
+
+  api:
+    name: api
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            upstream/src/backend/requirements.txt
+            tests/team/requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r upstream/src/backend/requirements.txt
+          pip install -r tests/team/requirements.txt
+          mkdir -p data/media data/static data/backup
+          touch data/plugins.txt
+      - name: API and integration tests (generated EP/BVA, business rules, weaknesses) against a live server
+        run: scripts/test_api.sh api
+      - uses: actions/upload-artifact@v4
+        with:
+          name: api-evidence
+          path: |
+            evidence/api
+            evidence/traceability
+
+  e2e:
+    name: e2e
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            upstream/src/backend/requirements.txt
+            tests/team/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies and build the web UI
+        run: |
+          pip install -r upstream/src/backend/requirements.txt
+          pip install -r tests/team/requirements.txt
+          mkdir -p data/media data/static data/backup
+          touch data/plugins.txt
+          scripts/build_frontend.sh
+          . scripts/env.sh
+          $MANAGE collectstatic --noinput
+          cd tests/team
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Playwright end-to-end, usability and access tests
+        run: scripts/test_e2e.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            reports/playwright-report.json
+            reports/playwright-html
+
+  sonar:
+    name: sonar
+    needs: [unit]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage
+          path: ci-coverage
+      - name: Place the coverage report where sonar-project.properties expects it
+        run: |
+          mkdir -p evidence/coverage
+          cp ci-coverage/evidence/coverage/coverage.xml evidence/coverage/coverage.xml
+      - name: Start SonarQube Community Build (service container)
+        run: |
+          sudo sysctl -w vm.max_map_count=524288
+          docker run -d --name sonarqube -p 9000:9000 -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true sonarqube:community
+      - name: Wait for SonarQube, create token and project
+        run: |
+          for i in $(seq 1 90); do
+            if curl -s http://localhost:9000/api/system/status | grep -q '"status":"UP"'; then break; fi
+            sleep 5
+          done
+          curl -s http://localhost:9000/api/system/status | grep -q '"status":"UP"'
+          curl -sf -u admin:admin -X POST http://localhost:9000/api/users/change_password -d "login=admin&previousPassword=admin&password=SqeCiAdmin#2026x"
+          TOKEN=$(curl -sf -u 'admin:SqeCiAdmin#2026x' -X POST http://localhost:9000/api/user_tokens/generate -d "name=ci" | python -c "import sys,json;print(json.load(sys.stdin)['token'])")
+          echo "SONAR_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          curl -sf -u "$TOKEN:" -X POST http://localhost:9000/api/projects/create -d "name=InvenTree Stock&project=inventree-stock"
+      - name: SonarScanner
+        run: |
+          curl -sfL -o scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip
+          unzip -q scanner.zip
+          SONAR_SCANNER_JAVA_OPTS="-Xmx1g" ./sonar-scanner-6.2.1.4610-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.token="$SONAR_TOKEN"
+      - name: Wait for the background task, then evaluate the quality gate
+        run: |
+          for i in $(seq 1 60); do
+            S=$(curl -s -u "$SONAR_TOKEN:" "http://localhost:9000/api/ce/component?component=inventree-stock" | python -c "import sys,json;d=json.load(sys.stdin);print(d.get('current',{}).get('status'),len(d.get('queue',[])))")
+            if [ "$S" = "SUCCESS 0" ]; then break; fi
+            sleep 3
+          done
+          test "$S" = "SUCCESS 0"
+          python tools/sonar_gate.py http://localhost:9000 "$SONAR_TOKEN" inventree-stock
+
+  mutation:
+    name: mutation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            upstream/src/backend/requirements.txt
+            tests/team/requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r upstream/src/backend/requirements.txt
+          pip install -r tests/team/requirements.txt
+          mkdir -p data/media data/static data/backup
+          touch data/plugins.txt
+      - name: Prepare isolated worker copies and run the mutation analysis (standard + custom business-rule operators)
+        run: |
+          . scripts/env.sh
+          scripts/mutation_setup.sh
+          python tools/mutate.py --workers 3 --max-per-function 7 --out evidence/mutation/ci_results.json
+      - name: Mutation-score gate
+        run: python tools/mutation_gate.py evidence/mutation/ci_results.json 90
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mutation-results
+          path: evidence/mutation/ci_results.json
+
+  gate:
+    name: gate
+    needs: [hygiene, unit, api, e2e, sonar, mutation]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: All quality gates passed
+        run: echo "hygiene, unit, api, e2e, sonar and mutation gates passed"
+
+  deploy:
+    name: deploy
+    needs: [gate]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    environment: release
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the release-candidate bundle (docs, evidence, reports)
+        run: zip -r release-candidate.zip docs reports evidence openapi tools scripts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-candidate
+          path: release-candidate.zip

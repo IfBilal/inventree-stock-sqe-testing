@@ -5,4 +5,4 @@ set -euo pipefail
 "$ROOT/scripts/stop.sh"; sleep 1; "$ROOT/scripts/reset.sh" >/dev/null; "$ROOT/scripts/start.sh" >/dev/null
 cd "$ROOT/tests/team"
 if [ "$#" -eq 0 ]; then set -- api; fi
-exec "$ROOT/.venv/bin/python" -m pytest "$@"
+exec "$PY" -m pytest "$@"

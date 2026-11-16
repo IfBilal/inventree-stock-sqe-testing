@@ -6,4 +6,4 @@ export INVENTREE_DB_NAME="$ROOT/data/unit_test.sqlite3"   # never touch the app 
 export TESTING=1
 cd "$ROOT/tests/team"
 if [ "$#" -eq 0 ]; then set -- unit; fi
-exec "$ROOT/.venv/bin/python" -m pytest "$@"
+exec "$PY" -m pytest "$@"

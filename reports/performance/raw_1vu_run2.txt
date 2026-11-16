@@ -1,0 +1,43 @@
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{phase:hold}
+    ✓ 'p(95)<500' p(95)=297.58ms
+
+    http_req_failed{phase:hold}
+    ✓ 'rate<0.01' rate=0.00%
+
+    http_reqs{phase:hold}
+    ✓ 'count>0' count=208
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 243     3.444738/s
+    checks_succeeded...: 100.00% 243 out of 243
+    checks_failed......: 0.00%   0 out of 243
+
+    ✓ status is 201
+
+    HTTP
+    http_req_duration..............: avg=288.87ms min=239.18ms med=288.54ms max=318.62ms p(90)=294.91ms p(95)=297.56ms p(99)=314.3ms 
+      { expected_response:true }...: avg=288.87ms min=239.18ms med=288.54ms max=318.62ms p(90)=294.91ms p(95)=297.56ms p(99)=314.3ms 
+      { phase:hold }...............: avg=289.3ms  min=239.18ms med=288.82ms max=318.62ms p(90)=295.17ms p(95)=297.58ms p(99)=312.53ms
+    http_req_failed................: 0.00%  0 out of 244
+      { phase:hold }...............: 0.00%  0 out of 208
+    http_reqs......................: 244    3.458914/s
+      { phase:hold }...............: 208    2.948582/s
+
+    EXECUTION
+    iteration_duration.............: avg=289.34ms min=239.65ms med=288.97ms max=319.02ms p(90)=295.51ms p(95)=297.99ms p(99)=314.74ms
+    iterations.....................: 243    3.444738/s
+    vus............................: 1      min=1        max=1
+    vus_max........................: 2      min=2        max=2
+
+    NETWORK
+    data_received..................: 148 kB 2.1 kB/s
+    data_sent......................: 55 kB  782 B/s
+
+
+

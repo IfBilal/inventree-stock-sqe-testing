@@ -20,7 +20,6 @@ def test_remove_below_and_at_limit_is_accepted(item, request_ctx, q, remaining):
 
 @pytest.mark.req('BR-1', 'FR-07')
 @pytest.mark.risk('PR-01')
-@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-01: just-above-limit removal is clamped (baseline)')
 def test_remove_just_above_limit_is_rejected(item, request_ctx):
     with pytest.raises(ValidationError):
         _remove(payload(item, '10.00001'), request_ctx)

@@ -1711,6 +1711,47 @@
 "seq": []
 },
 {
+"id": "unit/test_recovery.py::test_multi_item_request_failure_leaves_every_item_untouched_then_retry_applies_each_once",
+"outcome": "passed",
+"req": [
+"FR-10"
+],
+"risk": [
+"PR-05"
+],
+"seq": []
+},
+{
+"id": "unit/test_recovery.py::test_remove_fails_then_recovers_without_duplicates[enter]",
+"outcome": "passed",
+"req": [
+"FR-05",
+"FR-06",
+"FR-10"
+],
+"risk": [
+"PR-05",
+"PR-06",
+"PR-07"
+],
+"seq": []
+},
+{
+"id": "unit/test_recovery.py::test_remove_fails_then_recovers_without_duplicates[exit]",
+"outcome": "passed",
+"req": [
+"FR-05",
+"FR-06",
+"FR-10"
+],
+"risk": [
+"PR-05",
+"PR-06",
+"PR-07"
+],
+"seq": []
+},
+{
 "id": "unit/test_scope_extras.py::test_audit_deltas_drops_ignored_keys",
 "outcome": "passed",
 "req": [],

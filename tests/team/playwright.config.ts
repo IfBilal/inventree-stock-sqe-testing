@@ -15,6 +15,8 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     headless: true,
     viewport: { width: 1400, height: 1000 },
+    // Optional passive-security scan: route the browser through OWASP ZAP (E2E_PROXY=http://127.0.0.1:8090). Loopback must be explicitly proxied in Chromium.
+    ...(process.env.E2E_PROXY ? { launchOptions: { proxy: { server: process.env.E2E_PROXY }, args: ['--proxy-bypass-list=<-loopback>'] } } : {}),
   },
   projects: [
     { name: 'setup', testMatch: /auth\.setup\.ts/ },

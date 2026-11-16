@@ -16,4 +16,5 @@ export INVENTREE_PLUGIN_FILE="$ROOT/data/plugins.txt"
 export INVENTREE_ADMIN_USER=admin
 export INVENTREE_ADMIN_PASSWORD=admin12345
 export INVENTREE_ADMIN_EMAIL=admin@example.test
-export MANAGE="$ROOT/.venv/bin/python $ROOT/upstream/src/backend/InvenTree/manage.py"
+export PY="${PYTHON:-$ROOT/.venv/bin/python}"
+export MANAGE="$PY $ROOT/upstream/src/backend/InvenTree/manage.py"

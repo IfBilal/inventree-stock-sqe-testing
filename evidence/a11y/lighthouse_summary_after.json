@@ -1,0 +1,34 @@
+[
+ {
+  "screen": "S1-item-details-manager",
+  "finalUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
+  "scores": {
+   "accessibility": 85,
+   "best-practices": 100,
+   "seo": 83
+  },
+  "failedAudits": [
+   "aria-required-children",
+   "button-name",
+   "color-contrast",
+   "meta-description",
+   "robots-txt"
+  ]
+ },
+ {
+  "screen": "S2-item-details-viewer",
+  "finalUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
+  "scores": {
+   "accessibility": 85,
+   "best-practices": 100,
+   "seo": 83
+  },
+  "failedAudits": [
+   "aria-required-children",
+   "button-name",
+   "color-contrast",
+   "meta-description",
+   "robots-txt"
+  ]
+ }
+]
