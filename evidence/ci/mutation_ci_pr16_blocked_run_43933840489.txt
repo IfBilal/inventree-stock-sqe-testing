@@ -1,0 +1,11 @@
+planned mutants: 166 (standard + custom), workers: 3
+mutants 166, killed 150, survived 16 (equivalent: 7) -> adjusted score 94.3 % (threshold 95.0 %)
+  SURVIVOR M022 NEG StockAdjustmentSerializer.to_internal_value L1928 negate if-condition
+  SURVIVOR M023 SDL StockAdjustmentSerializer.to_internal_value L1929 delete statement: self.context['_stockitems'] = {obj.pk: obj for obj in StockI
+  SURVIVOR M037 SDL StockRemoveSerializer.validate L2055 delete statement: data = super().validate(data)
+  SURVIVOR M052 CRP StockItem.is_in_stock L2317 True -> False
+  SURVIVOR M097 SDL StockItem._apply_status_change L3112 delete statement: deltas['status_logical'] = self.status
+  SURVIVOR M098 SDL StockItem._apply_status_change L3116 delete statement: deltas['old_status_logical'] = old_status_logical
+  SURVIVOR M102 SDL StockItem._apply_optional_transfer_fields L3125 delete statement: deltas[field] = kwargs[field]
+  SURVIVOR M110 SDL StockItem.save L529 delete statement: self.validate_unique()
+  SURVIVOR M111 SDL StockItem.save L530 delete statement: self.clean()
