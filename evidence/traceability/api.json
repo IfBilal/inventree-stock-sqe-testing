@@ -1,0 +1,1510 @@
+[
+{
+"id": "api/test_business_rules_api.py::test_add_remove_add_sequence_updates_balance_and_history_in_order",
+"outcome": "passed",
+"req": [
+"FR-01",
+"FR-02",
+"FR-05",
+"FR-06"
+],
+"risk": [
+"PR-07"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_deleted_item_cannot_be_adjusted",
+"outcome": "passed",
+"req": [
+"BR-3"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_depletion_deletes_item_when_flag_true_and_history_survives",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_depletion_retains_item_at_zero_when_flag_false",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-08"
+],
+"risk": [
+"PR-01"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_duplicate_pk_entries_exceeding_available_are_rejected",
+"outcome": "xfailed",
+"req": [
+"BR-1",
+"FR-07"
+],
+"risk": [
+"PR-01"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_history_entry_matches_the_request",
+"outcome": "passed",
+"req": [
+"FR-02"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_installed_item_is_rejected_unchanged[add]",
+"outcome": "passed",
+"req": [
+"BR-2",
+"FR-04"
+],
+"risk": [
+"PR-03"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_installed_item_is_rejected_unchanged[remove]",
+"outcome": "passed",
+"req": [
+"BR-2",
+"FR-04"
+],
+"risk": [
+"PR-03"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_invalid_credentials_are_rejected",
+"outcome": "passed",
+"req": [
+"BR-4"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_multi_item_request_applies_every_item",
+"outcome": "passed",
+"req": [
+"FR-10"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_multi_item_request_is_atomic_when_one_item_is_invalid",
+"outcome": "passed",
+"req": [
+"FR-10"
+],
+"risk": [
+"PR-05"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_remove_from_depleted_item_is_ignored",
+"outcome": "passed",
+"req": [
+"BR-3"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_repeating_a_rejected_request_leaves_no_trace",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-07"
+],
+"risk": [
+"PR-06"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_repeating_a_valid_request_applies_it_once_per_request_no_duplicate_history",
+"outcome": "passed",
+"req": [
+"FR-05",
+"FR-06"
+],
+"risk": [
+"PR-06"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_restock_of_depleted_item",
+"outcome": "passed",
+"req": [
+"BR-3",
+"FR-01"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_role_decision_and_read_back[add-anon-401]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_role_decision_and_read_back[add-manager-201]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_role_decision_and_read_back[add-viewer-403]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_role_decision_and_read_back[remove-anon-401]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_role_decision_and_read_back[remove-manager-201]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_role_decision_and_read_back[remove-viewer-403]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+]
+},
+{
+"id": "api/test_business_rules_api.py::test_serialized_item_is_unchanged_by_add_and_remove",
+"outcome": "passed",
+"req": [
+"FR-11"
+],
+"risk": []
+},
+{
+"id": "api/test_business_rules_api.py::test_viewer_can_read_but_not_write",
+"outcome": "passed",
+"req": [
+"BR-4"
+],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_error_body_identifies_the_failing_field",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_session_is_not_required_stateless_basic_auth",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_content_type_is_rejected_with_415[add]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_content_type_is_rejected_with_415[remove]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[add-DELETE]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[add-GET]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[add-PATCH]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[add-PUT]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[remove-DELETE]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[remove-GET]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[remove-PATCH]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_unsupported_methods_return_405[remove-PUT]",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_w01_success_response_does_not_report_the_new_balance",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_w02_unknown_top_level_fields_are_silently_ignored",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_w03_no_idempotency_key_a_retried_request_is_applied_again",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_w04_pk_given_as_numeric_string_is_accepted",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_w05_500_error_body_hides_internal_details_but_reports_exception_class",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_w06_audit_endpoint_silently_ignores_the_object_pk_filter",
+"outcome": "passed",
+"req": [],
+"risk": []
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:BVA:minitems-above]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:BVA:minitems-at]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:BVA:minitems-below]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:EP:missing-required]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:EP:not-an-array]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:EP:null]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:BVA:maxlen-above]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:BVA:maxlen-at]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:BVA:maxlen-below]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].batch:EP:wrong-type]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:false]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:not-a-boolean]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].merge:EP:true]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:BVA:maxlen-above]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:BVA:maxlen-at]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:BVA:maxlen-below]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].packaging:EP:wrong-type]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:BVA:below-minimum]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:fractional]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:missing-required]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:negative]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:not-a-number]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:unknown-reference]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].pk:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-01",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:BVA:max-above]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:BVA:max-at]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:BVA:max-below]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:BVA:min-above]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:BVA:min-at]",
+"outcome": "xfailed",
+"req": [
+"BR-1",
+"FR-03a",
+"FR-03b"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:BVA:min-below]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:above-range]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:below-range]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:missing-required]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:not-a-number]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:too-many-decimals]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:BVA:maxlen-above]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:BVA:maxlen-at]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:BVA:maxlen-below]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-01"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:notes:EP:wrong-type]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:BVA:minitems-above]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:BVA:minitems-at]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:BVA:minitems-below]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:EP:missing-required]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:EP:not-an-array]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:EP:null]",
+"outcome": "xfailed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:BVA:maxlen-above]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:BVA:maxlen-at]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:BVA:maxlen-below]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].batch:EP:wrong-type]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:false]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:not-a-boolean]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].merge:EP:true]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:BVA:maxlen-above]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:BVA:maxlen-at]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:BVA:maxlen-below]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].packaging:EP:wrong-type]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:BVA:below-minimum]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:fractional]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:missing-required]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:negative]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:not-a-number]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:unknown-reference]",
+"outcome": "passed",
+"req": [
+"FR-03a",
+"FR-04"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].pk:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-04",
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:limit-above]",
+"outcome": "xfailed",
+"req": [
+"BR-1",
+"FR-03a",
+"FR-07"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:limit-at]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-05",
+"FR-07"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:limit-below]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-05",
+"FR-07"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:max-above]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:max-at]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:max-below]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:min-above]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:min-at]",
+"outcome": "xfailed",
+"req": [
+"BR-1",
+"FR-03a",
+"FR-03b"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:min-below]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:above-range]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:below-range]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:missing-required]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:not-a-number]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:null]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:too-many-decimals]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:BVA:maxlen-above]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:BVA:maxlen-at]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:BVA:maxlen-below]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:empty-string]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:valid-typical]",
+"outcome": "passed",
+"req": [
+"FR-05"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+},
+{
+"id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:notes:EP:wrong-type]",
+"outcome": "passed",
+"req": [
+"FR-03a"
+],
+"risk": [
+"PR-01",
+"PR-04"
+]
+}
+]

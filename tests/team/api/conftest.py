@@ -14,7 +14,7 @@ _LOG = []
 
 
 def template(path):
-    return re.sub(r'/\d+/', '/{id}/', path)
+    return re.sub(r'/\d+/', '/{id}/', path.split('?')[0])
 
 
 class Client:
@@ -79,12 +79,18 @@ def qty(client, pk):
 
 
 def history(client, pk, code=None):
-    """Read back history entries (audit log) for a stock item, optionally for one event type (11 add / 12 remove)."""
+    """Read back history entries (audit log) for ONE stock item, optionally for one event type (11 add / 12 remove).
+    NOTE: the audit endpoint silently ignores the `object_pk` query filter (weakness W-06), so entries are filtered client-side."""
     out = []
     for c in ([code] if code else [ADD, REMOVE]):
-        r = client.get(f'/api/audit/?model_type=stock.stockitem&object_pk={pk}&event_type={c}&limit=500')
-        assert r.status_code == 200, r.text
-        out += r.json()['results']
+        url = f'/api/audit/?model_type=stock.stockitem&event_type={c}&limit=1000'
+        while url:
+            r = client.get(url)
+            assert r.status_code == 200, r.text
+            data = r.json()
+            out += [e for e in data['results'] if str(e['object_pk']) == str(pk)]
+            nxt = data.get('next')
+            url = nxt.replace(BASE, '') if nxt else None
     return out
 
 

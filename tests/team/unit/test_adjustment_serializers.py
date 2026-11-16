@@ -161,3 +161,12 @@ def test_expected_zero_quantity_is_rejected(item, request_ctx, call):
 def test_expected_add_exceeding_representable_total_is_rejected(item, request_ctx):
     with pytest.raises(ValidationError):
         _add(payload(item, '9999999999.99999'), request_ctx)
+
+
+@pytest.mark.req('FR-03a')
+@pytest.mark.risk('PR-04')
+@pytest.mark.xfail(strict=True, raises=(TypeError, AttributeError), reason='DEF-04: malformed `items` raises an unhandled exception (HTTP 500) instead of a validation error (baseline)')
+@pytest.mark.parametrize('bad', [None, 'abc', 5, {'a': 1}], ids=['null', 'string', 'int', 'dict'])
+def test_expected_malformed_items_is_a_validation_error_not_a_crash(request_ctx, bad):
+    with pytest.raises(ValidationError):
+        _add({'items': bad}, request_ctx)

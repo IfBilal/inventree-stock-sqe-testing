@@ -17,6 +17,8 @@ MAXQ = '9999999999.99999'
 KNOWN = {
     'stockAdd:items[].quantity:BVA:min-at': 'DEF-02', 'stockRemove:items[].quantity:BVA:min-at': 'DEF-02',
     'stockRemove:items[].quantity:BVA:limit-above': 'DEF-01',
+    'stockAdd:items:EP:not-an-array': 'DEF-04', 'stockAdd:items:EP:null': 'DEF-04',
+    'stockRemove:items:EP:not-an-array': 'DEF-04', 'stockRemove:items:EP:null': 'DEF-04',
 }
 
 
@@ -47,11 +49,20 @@ def delta_of(body):
     return sum(Decimal(str(i['quantity'])) for i in body['items'])
 
 
+def _reqs(c):
+    ids = {'FR-01' if c['operation'] == 'stockAdd' else 'FR-05'} if c['expected'] == 'valid' else {'FR-03a'}
+    if c['field'].endswith('quantity') and c['technique'] == 'BVA': ids.add('BR-1')
+    if c['class'].startswith('limit-'): ids.add('FR-07')
+    if c['class'] == 'min-at': ids.add('FR-03b')
+    if c['field'].endswith('.pk'): ids.add('FR-04')
+    return ids
+
+
 def _params():
     for c in CASES:
-        marks = []
+        marks = [pytest.mark.req(*sorted(_reqs(c)))]
         if c['id'] in KNOWN:
-            marks.append(pytest.mark.xfail(strict=True, reason=KNOWN[c['id']]))
+            marks.append(pytest.mark.xfail(strict=True, raises=AssertionError, reason=KNOWN[c['id']]))
         yield pytest.param(c, id=c['id'], marks=marks)
 
 
