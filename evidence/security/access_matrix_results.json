@@ -1,0 +1,155 @@
+[
+ {
+  "role": "manager",
+  "action": "view item",
+  "route": "GET /api/stock/{id}/",
+  "expected": 200,
+  "observed": 200,
+  "evidence": "HTTP 200; item pk 4",
+  "ok": true
+ },
+ {
+  "role": "manager",
+  "action": "add stock (WF-A)",
+  "route": "POST /api/stock/add/",
+  "expected": 201,
+  "observed": 201,
+  "evidence": "HTTP 201; quantity after = 11; item pk 5",
+  "ok": true
+ },
+ {
+  "role": "manager",
+  "action": "remove stock (WF-B)",
+  "route": "POST /api/stock/remove/",
+  "expected": 201,
+  "observed": 201,
+  "evidence": "HTTP 201; quantity after = 9; item pk 6",
+  "ok": true
+ },
+ {
+  "role": "manager",
+  "action": "edit item (change right)",
+  "route": "PATCH /api/stock/{id}/",
+  "expected": 200,
+  "observed": 200,
+  "evidence": "HTTP 200; item pk 7",
+  "ok": true
+ },
+ {
+  "role": "manager",
+  "action": "delete item (delete right)",
+  "route": "DELETE /api/stock/{id}/",
+  "expected": 204,
+  "observed": 204,
+  "evidence": "HTTP 204; item pk 8",
+  "ok": true
+ },
+ {
+  "role": "viewer",
+  "action": "view item",
+  "route": "GET /api/stock/{id}/",
+  "expected": 200,
+  "observed": 200,
+  "evidence": "HTTP 200; item pk 9",
+  "ok": true
+ },
+ {
+  "role": "viewer",
+  "action": "add stock (WF-A)",
+  "route": "POST /api/stock/add/",
+  "expected": 403,
+  "observed": 403,
+  "evidence": "HTTP 403; quantity after = 10; item pk 10",
+  "ok": true
+ },
+ {
+  "role": "viewer",
+  "action": "remove stock (WF-B)",
+  "route": "POST /api/stock/remove/",
+  "expected": 403,
+  "observed": 403,
+  "evidence": "HTTP 403; quantity after = 10; item pk 11",
+  "ok": true
+ },
+ {
+  "role": "viewer",
+  "action": "edit item (change right)",
+  "route": "PATCH /api/stock/{id}/",
+  "expected": 403,
+  "observed": 403,
+  "evidence": "HTTP 403; item pk 12",
+  "ok": true
+ },
+ {
+  "role": "viewer",
+  "action": "delete item (delete right)",
+  "route": "DELETE /api/stock/{id}/",
+  "expected": 403,
+  "observed": 403,
+  "evidence": "HTTP 403; item pk 13",
+  "ok": true
+ },
+ {
+  "role": "anonymous",
+  "action": "view item",
+  "route": "GET /api/stock/{id}/",
+  "expected": 401,
+  "observed": 401,
+  "evidence": "HTTP 401; item pk 14",
+  "ok": true
+ },
+ {
+  "role": "anonymous",
+  "action": "add stock (WF-A)",
+  "route": "POST /api/stock/add/",
+  "expected": 401,
+  "observed": 401,
+  "evidence": "HTTP 401; quantity after = 10; item pk 15",
+  "ok": true
+ },
+ {
+  "role": "anonymous",
+  "action": "remove stock (WF-B)",
+  "route": "POST /api/stock/remove/",
+  "expected": 401,
+  "observed": 401,
+  "evidence": "HTTP 401; quantity after = 10; item pk 16",
+  "ok": true
+ },
+ {
+  "role": "anonymous",
+  "action": "edit item (change right)",
+  "route": "PATCH /api/stock/{id}/",
+  "expected": 401,
+  "observed": 401,
+  "evidence": "HTTP 401; item pk 17",
+  "ok": true
+ },
+ {
+  "role": "anonymous",
+  "action": "delete item (delete right)",
+  "route": "DELETE /api/stock/{id}/",
+  "expected": 401,
+  "observed": 401,
+  "evidence": "HTTP 401; item pk 18",
+  "ok": true
+ },
+ {
+  "role": "viewer",
+  "action": "stock operations menu in the UI",
+  "route": "/web/stock/item/{id}/details",
+  "expected": 0,
+  "observed": 0,
+  "evidence": "menu elements = 0; item pk 19",
+  "ok": true
+ },
+ {
+  "role": "manager",
+  "action": "stock operations menu in the UI",
+  "route": "/web/stock/item/{id}/details",
+  "expected": 1,
+  "observed": 1,
+  "evidence": "menu elements = 1; item pk 20",
+  "ok": true
+ }
+]
