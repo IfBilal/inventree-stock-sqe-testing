@@ -1,0 +1,1 @@
+./zap.sh -daemon -host 127.0.0.1 -port 8090 -config api.disablekey=true -config api.addrs.addr.name=127.0.0.1 -config api.addrs.addr.regex=false

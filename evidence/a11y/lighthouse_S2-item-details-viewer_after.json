@@ -4,14 +4,14 @@
  "mainDocumentUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
  "finalDisplayedUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
  "finalUrl": "http://127.0.0.1:8000/web/stock/item/1/details",
- "fetchTime": "2026-11-16T15:58:42.628Z",
+ "fetchTime": "2026-11-16T18:16:27.016Z",
  "gatherMode": "navigation",
  "runWarnings": [],
  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
  "environment": {
   "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.0.0 Mobile Safari/537.36",
   "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
-  "benchmarkIndex": 3290,
+  "benchmarkIndex": 3402,
   "credits": {
    "axe-core": "4.14.0"
   }
@@ -212,344 +212,344 @@
     ],
     "items": [
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-DU13tscW.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-DU13tscW.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-BbIA61XA.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/YesNoButton-BbIA61XA.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-C3aadO_j.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-C3aadO_j.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-BHGytsdU.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/with-selector-BHGytsdU.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-DfYBsOXx.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-DfYBsOXx.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-BMbPSnGI.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseTable-BMbPSnGI.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CEQC_vcN.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CEQC_vcN.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CI5C4RYE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseStockAdjustActions-CI5C4RYE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-Ddn8BVMk.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-Ddn8BVMk.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-B2JGANqv.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UsePlugins-B2JGANqv.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-BuPYsIAC.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-BuPYsIAC.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-CcYugkhz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseInstanceName-CcYugkhz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-D0DHzycM.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-D0DHzycM.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-Bu1r6iLI.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseFilter-Bu1r6iLI.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-DoN58-zx.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-DoN58-zx.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-B5I407x8.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseDataOutput-B5I407x8.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-CQj2pV9X.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-CQj2pV9X.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-C1_vh8D1.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/UseBackgroundTask-C1_vh8D1.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-C70oapZP.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-C70oapZP.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-wP9XT8fe.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-local-storage-wP9XT8fe.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-DuR8w-i1.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-DuR8w-i1.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-BVZKmIZx.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-hover-BVZKmIZx.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-CiMdNwNF.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-CiMdNwNF.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-68qnzoFI.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/use-document-visibility-68qnzoFI.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CLUJd17Z.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CLUJd17Z.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CmL10cBa.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderForms-CmL10cBa.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-C4EKR8sD.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-C4EKR8sD.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-DhrrIIaH.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderDetailsPanel-DhrrIIaH.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-BmBJyewv.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-BmBJyewv.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-CMpWSRmh.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TransferOrderAllocationTable-CMpWSRmh.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-CtmUPbD8.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-CtmUPbD8.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-Dcu8BphZ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ThemeContext-Dcu8BphZ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-BlV3PZvh.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-BlV3PZvh.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-Dr0Dq1sp.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/TagsList-Dr0Dq1sp.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-CmG_TtTS.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-CmG_TtTS.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-BSR9iBVo.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SupplierPartDetailsPanel-BSR9iBVo.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-fffMEkjF.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-fffMEkjF.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-Cx8DgdIO.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockLocationDetailsPanel-Cx8DgdIO.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-D9LT2Qn2.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-D9LT2Qn2.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-BzZvr8IB.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockItemTable-BzZvr8IB.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-CYs_Sr4D.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-CYs_Sr4D.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-fK1JTp4Z.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetailsPanel-fK1JTp4Z.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-DMor6bYd.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-DMor6bYd.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-CNJh2RBU.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/StockDetail-CNJh2RBU.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-BYR3b7yF.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-BYR3b7yF.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-DrCyhIjv.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderShipmentDetailsPanel-DrCyhIjv.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-hRXKHjB3.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-hRXKHjB3.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-C4Ud0D40.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderForms-C4Ud0D40.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DYmSCq87.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DYmSCq87.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DN0mkdss.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderDetailsPanel-DN0mkdss.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-CUamMDNg.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-CUamMDNg.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-BqMOVAYF.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/SalesOrderAllocationTable-BqMOVAYF.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-C24NEbQj.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-C24NEbQj.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-CtgG73BV.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ReturnOrderDetailsPanel-CtgG73BV.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-CZqrri1s.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-CZqrri1s.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-ydpOu1iH.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/QRCode-ydpOu1iH.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-DiaIyuFt.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-DiaIyuFt.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-Bz1hfTb7.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PurchaseOrderDetailsPanel-Bz1hfTb7.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-OwVklEO8.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-OwVklEO8.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-2mVD-S1o.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ProgressBar-2mVD-S1o.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-CIsZn0wu.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-CIsZn0wu.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-8vJRYw6-.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PluginUIFeature-8vJRYw6-.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-BTV1bfrB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-BTV1bfrB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-CgkO0nYB.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PermissionDenied-CgkO0nYB.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-DCgoG0uS.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-DCgoG0uS.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-UZC3TYsj.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartDetailsPanel-UZC3TYsj.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-C_QVslrw.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-C_QVslrw.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-Cz3Aa7TD.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PartCategoryDetailsPanel-Cz3Aa7TD.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-XBMsAcgc.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-XBMsAcgc.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-Drvf681g.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ParameterDetailsGrid-Drvf681g.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-D3Iz_1Dp.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-D3Iz_1Dp.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-BrJnpx9Y.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PanelGroup-BrJnpx9Y.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-Cp5HhJng.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-Cp5HhJng.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-BGnQTJtF.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageTitle-BGnQTJtF.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BwxJGMso.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BwxJGMso.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BaGR1BOL.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/PageDetail-BaGR1BOL.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-DB60XW_C.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-DB60XW_C.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-BLd3_2pJ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/OrderPartsWizard-BLd3_2pJ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-Dmm56o3v.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-Dmm56o3v.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-B-iwMKYl.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesPanel-B-iwMKYl.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-NCciGo9Y.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-NCciGo9Y.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-C10tPzfa.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NotesEditor-C10tPzfa.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-Xfh9neAo.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-Xfh9neAo.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-DlsMaVEt.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/NavigationTree-DlsMaVEt.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-B7i6e8XX.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-B7i6e8XX.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-3rxpjYrQ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/MobileAppView-3rxpjYrQ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
@@ -564,80 +564,80 @@
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-BAPDmRnk.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-BAPDmRnk.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-7kbFcfEk.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ManufacturerPartDetailsPanel-7kbFcfEk.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-Bj4UPO7F.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-Bj4UPO7F.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-S0ZBMsKv.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LoggedIn-S0ZBMsKv.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-erqXovmY.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-erqXovmY.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-B7Wu9jff.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LocateItemButton-B7Wu9jff.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-BPVKeNuM.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-BPVKeNuM.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-_tX8IMOE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/LineItemOverviewTable-_tX8IMOE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-CZVclgh0.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-CZVclgh0.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-tDf6oQLL.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-tDf6oQLL.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-6yRBBXkk.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-6yRBBXkk.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Layout-Bv1bIg9g.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Layout-Bv1bIg9g.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-Dk0NljLb.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-Dk0NljLb.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-C6wS8T9i.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ItemDetails-C6wS8T9i.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-CyyKaKA6.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-CyyKaKA6.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-BCuIrp_F.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InvenTreeTable-BCuIrp_F.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-kJIHcCSE.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-kJIHcCSE.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-BqsVNiWW.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/InstanceDetail-BqsVNiWW.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-DtEQ18Rj.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-DtEQ18Rj.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-Cvv7TAFQ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-Cvv7TAFQ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
@@ -652,352 +652,352 @@
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-BTmMB3dc.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-BTmMB3dc.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/index-4i57eHuq.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/index-4i57eHuq.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-D2C87V0U.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-D2C87V0U.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-xxB9mwJh.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconUsers-xxB9mwJh.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-BimV5Wba.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-BimV5Wba.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-DkvC9r_7.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconTags-DkvC9r_7.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconSun-DPnEG6cQ.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconSun-DPnEG6cQ.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconSun--k5wa58h.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconSun--k5wa58h.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-CntoO6HD.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-CntoO6HD.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-Bcu69-Sz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconReload-Bcu69-Sz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-CE4aTRr-.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-CE4aTRr-.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-Ds5gPF5A.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDotsVertical-Ds5gPF5A.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-Cv0yixNB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-Cv0yixNB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-CBjNt1C3.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDevicesPc-CBjNt1C3.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-Cqoco5w9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-Cqoco5w9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-C3I13JDw.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconDeviceFloppy-C3I13JDw.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-DOgPmO0c.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-DOgPmO0c.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-Bc5ou7-_.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChevronLeft-Bc5ou7-_.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-C-efCT_9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-C-efCT_9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-e8FKRlvl.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconChecklist-e8FKRlvl.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-C7TQYoKP.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-C7TQYoKP.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-CYGDNIS1.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBookmark-CYGDNIS1.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-CRqtpiLA.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-CRqtpiLA.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-DXV3OTMN.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconBellCheck-DXV3OTMN.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-CcFOBz7r.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-CcFOBz7r.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-BOTpXFqM.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAt-BOTpXFqM.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-CwifKZ9d.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-CwifKZ9d.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-04HvJX71.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowRight-04HvJX71.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-BDOFV4RX.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-BDOFV4RX.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-CvWvU_d0.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconArrowLeft-CvWvU_d0.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-CewyB_Fv.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-CewyB_Fv.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-D6F0NbIz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertTriangle-D6F0NbIz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-BRsZgjvB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-BRsZgjvB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-Cd63PJI1.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAlertCircle-Cd63PJI1.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-DabFwpqB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-DabFwpqB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-CUAdjZa6.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/IconAddressBook-CUAdjZa6.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-rd_oL4JC.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-rd_oL4JC.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-CKDBWzZF.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/html5-qrcode-scanner-CKDBWzZF.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-aMkSygKV.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-aMkSygKV.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-DFPEEvab.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/HistoryPanel-DFPEEvab.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/formatters-DCcQ1LUb.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/formatters-DCcQ1LUb.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/formatters-buh4_jTs.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/formatters-buh4_jTs.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Expand-KQdTACRO.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Expand-KQdTACRO.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Expand-Dgs-YSr_.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Expand-Dgs-YSr_.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-DosUJjmV.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-DosUJjmV.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-BJiFVcnc.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsImage-BJiFVcnc.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-7F5OVHqB.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-7F5OVHqB.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-DkEdVR8s.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailsBadge-DkEdVR8s.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-obUltEqA.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-obUltEqA.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-nbpFoPo4.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DetailNavigation-nbpFoPo4.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BnI891a8.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BnI891a8.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BzN6dXbE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BzN6dXbE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-B1b8oCJe.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-B1b8oCJe.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-BjRU8WmN.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyForms-BjRU8WmN.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-6wwc-UcA.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-6wwc-UcA.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-DOK-DYza.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CompanyDetailsPanel-DOK-DYza.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-C31N_W-h.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-C31N_W-h.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-CQM2NZYw.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/CommonForms-CQM2NZYw.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-BAhjynMT.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-BAhjynMT.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-gzhn07Nr.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ColumnRenderers-gzhn07Nr.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-Bz6olL0_.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-Bz6olL0_.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-C3Z6-AmR.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildOrderDetailsPanel-C3Z6-AmR.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-BszuK77B.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-BszuK77B.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-ByTLzniz.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildForms-ByTLzniz.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-VvradoRf.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-VvradoRf.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-BKutyYCN.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BuildAllocatedStockTable-BKutyYCN.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/browser-B2WCG2G-.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/browser-B2WCG2G-.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/browser-BhLyo8zp.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/browser-BhLyo8zp.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-Bw7hjPIj.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-Bw7hjPIj.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-BjFx0R3x.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeScanDialog-BjFx0R3x.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-CifT1Xe9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-CifT1Xe9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-BseJfu46.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/BarcodeInput-BseJfu46.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-BrEKQdrY.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-BrEKQdrY.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-MgKoKq3o.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AuditLogTable-MgKoKq3o.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-BmH-AZYK.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-BmH-AZYK.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-CgSwGITZ.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentPanel-CgSwGITZ.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-e3w4Sui9.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-e3w4Sui9.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-68mUnrhO.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AttachmentLink-68mUnrhO.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-B49HiqBY.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-B49HiqBY.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-DotMtXAj.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AppRowActions-DotMtXAj.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-qT3eaXmz.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-qT3eaXmz.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-c-EJ75sL.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/Alerts-c-EJ75sL.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-DqMpY-n5.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-DqMpY-n5.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-B6kopBl-.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/AdminButton-B6kopBl-.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
       }
      },
      {
-      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-vCC2wNrq.js",
-      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-vCC2wNrq.js.map",
+      "scriptUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-DsRPnhvE.js",
+      "sourceMapUrl": "http://127.0.0.1:8000/static/web/assets/ActionDropdown-DsRPnhvE.js.map",
       "subItems": {
        "type": "subitems",
        "items": []
@@ -1403,7 +1403,7 @@
        "type": "node",
        "lhId": "1-0-DIV",
        "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV",
-       "selector": "div.m_6d731127 > div.m_1b7284a3 > div#mantine-nbtt8dryl > div.m_576c9d4",
+       "selector": "div.m_6d731127 > div.m_1b7284a3 > div#mantine-q582nh56m > div.m_576c9d4",
        "boundingRect": {
         "top": 232,
         "bottom": 626,
@@ -1424,7 +1424,7 @@
           "type": "node",
           "lhId": "1-1-DIV",
           "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV,1,DIV",
-          "selector": "div.m_1b7284a3 > div#mantine-nbtt8dryl > div.m_576c9d4 > div.m_3eebeb36",
+          "selector": "div.m_1b7284a3 > div#mantine-q582nh56m > div.m_576c9d4 > div.m_3eebeb36",
           "boundingRect": {
            "top": 416,
            "bottom": 417,
@@ -1434,7 +1434,7 @@
            "height": 1
           },
           "snippet": "<div class=\"m_3eebeb36 mantine-Divider-root\" data-orientation=\"horizontal\" role=\"separator\" aria-orientation=\"horizontal\">",
-          "nodeLabel": "div.m_1b7284a3 > div#mantine-nbtt8dryl > div.m_576c9d4 > div.m_3eebeb36"
+          "nodeLabel": "div.m_1b7284a3 > div#mantine-q582nh56m > div.m_576c9d4 > div.m_3eebeb36"
          }
         },
         {
@@ -1442,7 +1442,7 @@
           "type": "node",
           "lhId": "1-2-BUTTON",
           "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV,2,DIV,0,BUTTON",
-          "selector": "div#mantine-nbtt8dryl > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
+          "selector": "div#mantine-q582nh56m > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
           "boundingRect": {
            "top": 417,
            "bottom": 451,
@@ -1452,7 +1452,7 @@
            "height": 34
           },
           "snippet": "<button class=\"mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87c…\" data-variant=\"transparent\" data-size=\"lg\" type=\"button\" style=\"--ai-size: var(--ai-size-lg); --ai-bg: transparent; --ai-hover: transparen…;\">",
-          "nodeLabel": "div#mantine-nbtt8dryl > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto"
+          "nodeLabel": "div#mantine-q582nh56m > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto"
          }
         }
        ]
@@ -1615,7 +1615,7 @@
        "type": "node",
        "lhId": "1-2-BUTTON",
        "path": "1,HTML,1,BODY,0,DIV,2,DIV,1,MAIN,0,DIV,0,DIV,1,DIV,0,DIV,0,DIV,2,DIV,0,BUTTON",
-       "selector": "div#mantine-nbtt8dryl > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
+       "selector": "div#mantine-q582nh56m > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
        "boundingRect": {
         "top": 417,
         "bottom": 451,
@@ -1625,7 +1625,7 @@
         "height": 34
        },
        "snippet": "<button class=\"mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87c…\" data-variant=\"transparent\" data-size=\"lg\" type=\"button\" style=\"--ai-size: var(--ai-size-lg); --ai-bg: transparent; --ai-hover: transparen…;\">",
-       "nodeLabel": "div#mantine-nbtt8dryl > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
+       "nodeLabel": "div#mantine-q582nh56m > div.m_576c9d4 > div.m_4081bf90 > button.mantine-focus-auto",
        "explanation": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
       }
      }
@@ -1976,7 +1976,7 @@
        "type": "node",
        "lhId": "1-16-P",
        "path": "1,HTML,1,BODY,3,DIV,4,DIV,0,DIV,0,DIV,0,DIV,0,DIV,1,P",
-       "selector": "div#mantine-kb1yhidpx > div > div > p.mantine-focus-auto",
+       "selector": "div#mantine-qr7dneeum > div > div > p.mantine-focus-auto",
        "boundingRect": {
         "top": 920,
         "bottom": 937,
@@ -1997,7 +1997,7 @@
           "type": "node",
           "lhId": "1-17-DIV",
           "path": "1,HTML,1,BODY,3,DIV,4,DIV,0,DIV,0,DIV,0,DIV",
-          "selector": "div.m_b37d9ac7 > div > div#mantine-kb1yhidpx > div",
+          "selector": "div.m_b37d9ac7 > div > div#mantine-qr7dneeum > div",
           "boundingRect": {
            "top": 883,
            "bottom": 984,
@@ -2851,7 +2851,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 98,
        "column": 5
@@ -2870,7 +2870,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 81,
        "column": 205071
@@ -2889,7 +2889,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 23,
        "column": 15667
@@ -2908,7 +2908,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 88,
        "column": 142443
@@ -2928,25 +2928,6 @@
       "source": {
        "type": "source-location",
        "url": "http://127.0.0.1:8000/web/logged-in",
-       "urlProvider": "network",
-       "line": -2,
-       "column": -2
-      }
-     },
-     {
-      "featureId": {
-       "type": "link",
-       "text": "backdrop-filter",
-       "url": "https://webstatus.dev/features/backdrop-filter"
-      },
-      "displayStatus": {
-       "type": "baseline-status",
-       "status": "low",
-       "displayString": "Newly Available (2024-09-16)"
-      },
-      "source": {
-       "type": "source-location",
-       "url": "http://127.0.0.1:8000/web/stock/item/1/details",
        "urlProvider": "network",
        "line": -2,
        "column": -2
@@ -3129,7 +3110,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 81,
        "column": 205071
@@ -3167,7 +3148,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BnI891a8.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/DesktopAppView-BzN6dXbE.js",
        "urlProvider": "network",
        "line": 3,
        "column": 9473
@@ -3224,7 +3205,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/ThemeContext-CtmUPbD8.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/ThemeContext-Dcu8BphZ.js",
        "urlProvider": "network",
        "line": 12,
        "column": 7446
@@ -3243,7 +3224,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/index-9Rn9KJRf.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/index-ChFL23nO.js",
        "urlProvider": "network",
        "line": 88,
        "column": 36706
@@ -3300,7 +3281,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/static/web/assets/NotesEditor-NCciGo9Y.js",
+       "url": "http://127.0.0.1:8000/static/web/assets/NotesEditor-C10tPzfa.js",
        "urlProvider": "network",
        "line": 156,
        "column": 12452
@@ -3319,7 +3300,7 @@
       },
       "source": {
        "type": "source-location",
-       "url": "http://127.0.0.1:8000/web/stock/item/1/details",
+       "url": "http://127.0.0.1:8000/web/logged-in",
        "urlProvider": "network",
        "line": -2,
        "column": -2
@@ -3686,7 +3667,7 @@
      },
      {
       "index": "66",
-      "line": "  <div id=\"spa_bundle\"><script type=\"module\" src=\"/static/web/assets/index-9Rn9KJRf.js\"></script><script type=\"module\" src=\"/static/web/assets/DesktopAppView-BnI891a8.js\"></script><script type=\"module\" src=\"/static/web/assets/MobileAppView-B7i6e8XX.js\"></script></div>",
+      "line": "  <div id=\"spa_bundle\"><script type=\"module\" src=\"/static/web/assets/index-ChFL23nO.js\"></script><script type=\"module\" src=\"/static/web/assets/DesktopAppView-BzN6dXbE.js\"></script><script type=\"module\" src=\"/static/web/assets/MobileAppView-3rxpjYrQ.js\"></script></div>",
       "message": "Syntax not understood"
      },
      {
@@ -4742,7 +4723,7 @@
     "height": 20
    },
    "1-29-A": {
-    "id": "mantine-nbtt8dryl-tab-details",
+    "id": "mantine-q582nh56m-tab-details",
     "top": 232,
     "bottom": 278,
     "left": 28,
@@ -4751,7 +4732,7 @@
     "height": 46
    },
    "1-30-A": {
-    "id": "mantine-nbtt8dryl-tab-allocations",
+    "id": "mantine-q582nh56m-tab-allocations",
     "top": 278,
     "bottom": 324,
     "left": 28,
@@ -4760,7 +4741,7 @@
     "height": 46
    },
    "1-31-A": {
-    "id": "mantine-nbtt8dryl-tab-attachments",
+    "id": "mantine-q582nh56m-tab-attachments",
     "top": 324,
     "bottom": 370,
     "left": 28,
@@ -4769,7 +4750,7 @@
     "height": 46
    },
    "1-32-A": {
-    "id": "mantine-nbtt8dryl-tab-notes",
+    "id": "mantine-q582nh56m-tab-notes",
     "top": 370,
     "bottom": 416,
     "left": 28,
@@ -5925,883 +5906,883 @@
  "timing": {
   "entries": [
    {
-    "startTime": 38432.97,
+    "startTime": 38268.49,
     "name": "lh:config",
-    "duration": 159.29,
+    "duration": 160.5,
     "entryType": "measure"
    },
    {
-    "startTime": 38434.73,
+    "startTime": 38270.05,
     "name": "lh:config:resolveArtifactsToDefns",
-    "duration": 2.92,
+    "duration": 1.81,
     "entryType": "measure"
    },
    {
-    "startTime": 38592.33,
+    "startTime": 38429.06,
     "name": "lh:runner:gather",
-    "duration": 16067.51,
+    "duration": 15997.83,
     "entryType": "measure"
    },
    {
-    "startTime": 38621.59,
+    "startTime": 38463.64,
     "name": "lh:driver:connect",
-    "duration": 3.47,
+    "duration": 3.81,
     "entryType": "measure"
    },
    {
-    "startTime": 38625.09,
+    "startTime": 38467.49,
     "name": "lh:driver:navigate",
-    "duration": 4.13,
+    "duration": 5.92,
     "entryType": "measure"
    },
    {
-    "startTime": 38629.31,
+    "startTime": 38473.49,
     "name": "lh:gather:getBenchmarkIndex",
-    "duration": 1003.2,
+    "duration": 1005.17,
     "entryType": "measure"
    },
    {
-    "startTime": 39632.53,
+    "startTime": 39478.69,
     "name": "lh:gather:getVersion",
-    "duration": 0.74,
+    "duration": 0.79,
     "entryType": "measure"
    },
    {
-    "startTime": 39633.31,
+    "startTime": 39479.53,
     "name": "lh:gather:getDevicePixelRatio",
-    "duration": 1.59,
+    "duration": 1.24,
     "entryType": "measure"
    },
    {
-    "startTime": 39635,
+    "startTime": 39480.85,
     "name": "lh:prepare:navigationMode",
-    "duration": 14.82,
+    "duration": 15.51,
     "entryType": "measure"
    },
    {
-    "startTime": 39635.74,
+    "startTime": 39481.54,
     "name": "lh:gather:getVersion",
-    "duration": 0.57,
+    "duration": 0.49,
     "entryType": "measure"
    },
    {
-    "startTime": 39648.32,
+    "startTime": 39495.05,
     "name": "lh:gather:prepareThrottlingAndNetwork",
-    "duration": 1.47,
+    "duration": 1.29,
     "entryType": "measure"
    },
    {
-    "startTime": 39670.96,
+    "startTime": 39510.01,
     "name": "lh:driver:navigate",
-    "duration": 11913.22,
+    "duration": 11833.3,
     "entryType": "measure"
    },
    {
-    "startTime": 52375.37,
+    "startTime": 52120.49,
     "name": "lh:computed:NetworkRecords",
-    "duration": 3,
+    "duration": 3.38,
     "entryType": "measure"
    },
    {
-    "startTime": 52378.49,
+    "startTime": 52124.02,
     "name": "lh:gather:getArtifact:DevtoolsLog",
     "duration": 0.02,
     "entryType": "measure"
    },
    {
-    "startTime": 52378.52,
+    "startTime": 52124.05,
     "name": "lh:gather:getArtifact:Trace",
-    "duration": 0.01,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52378.54,
-    "name": "lh:gather:getArtifact:Accessibility",
-    "duration": 204.03,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52582.6,
-    "name": "lh:gather:getArtifact:AnchorElements",
-    "duration": 13.05,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52595.67,
-    "name": "lh:gather:getArtifact:ConsoleMessages",
-    "duration": 0.01,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52595.68,
-    "name": "lh:gather:getArtifact:Doctype",
-    "duration": 0.76,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52596.47,
-    "name": "lh:gather:getArtifact:Inputs",
-    "duration": 2.48,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52598.98,
-    "name": "lh:gather:getArtifact:ImageElements",
-    "duration": 84.62,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52683.66,
-    "name": "lh:gather:getArtifact:InspectorIssues",
-    "duration": 0.11,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52683.8,
-    "name": "lh:gather:getArtifact:LinkElements",
-    "duration": 8.83,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52692.5,
-    "name": "lh:computed:MainResource",
-    "duration": 0.09,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52692.67,
-    "name": "lh:gather:getArtifact:MainDocumentContent",
-    "duration": 1.11,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52693.81,
-    "name": "lh:gather:getArtifact:MetaElements",
-    "duration": 3.01,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 52697.01,
-    "name": "lh:gather:getArtifact:NetworkUserAgent",
     "duration": 0.02,
     "entryType": "measure"
    },
    {
-    "startTime": 52697.03,
+    "startTime": 52124.08,
+    "name": "lh:gather:getArtifact:Accessibility",
+    "duration": 224.03,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52348.15,
+    "name": "lh:gather:getArtifact:AnchorElements",
+    "duration": 14.68,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52362.86,
+    "name": "lh:gather:getArtifact:ConsoleMessages",
+    "duration": 0.02,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52362.89,
+    "name": "lh:gather:getArtifact:Doctype",
+    "duration": 1.05,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52363.98,
+    "name": "lh:gather:getArtifact:Inputs",
+    "duration": 3,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52367.01,
+    "name": "lh:gather:getArtifact:ImageElements",
+    "duration": 87.79,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52454.86,
+    "name": "lh:gather:getArtifact:InspectorIssues",
+    "duration": 0.07,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52454.95,
+    "name": "lh:gather:getArtifact:LinkElements",
+    "duration": 7.9,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52462.69,
+    "name": "lh:computed:MainResource",
+    "duration": 0.12,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52462.9,
+    "name": "lh:gather:getArtifact:MainDocumentContent",
+    "duration": 1.3,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52464.22,
+    "name": "lh:gather:getArtifact:MetaElements",
+    "duration": 3.15,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52467.43,
+    "name": "lh:gather:getArtifact:NetworkUserAgent",
+    "duration": 0.03,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 52467.48,
     "name": "lh:gather:getArtifact:RobotsTxt",
-    "duration": 66.05,
+    "duration": 65.45,
     "entryType": "measure"
    },
    {
-    "startTime": 52763.19,
+    "startTime": 52533,
     "name": "lh:gather:getArtifact:Scripts",
-    "duration": 10.73,
+    "duration": 7.2,
     "entryType": "measure"
    },
    {
-    "startTime": 52774,
+    "startTime": 52540.25,
     "name": "lh:gather:getArtifact:SourceMaps",
-    "duration": 737.87,
+    "duration": 733.66,
     "entryType": "measure"
    },
    {
-    "startTime": 53511.92,
+    "startTime": 53273.98,
     "name": "lh:gather:getArtifact:Stacks",
-    "duration": 19.44,
+    "duration": 16.54,
     "entryType": "measure"
    },
    {
-    "startTime": 53511.96,
+    "startTime": 53274.02,
     "name": "lh:gather:collectStacks",
-    "duration": 19.35,
+    "duration": 16.47,
     "entryType": "measure"
    },
    {
-    "startTime": 53531.4,
+    "startTime": 53290.54,
     "name": "lh:gather:getArtifact:ViewportDimensions",
-    "duration": 1.62,
+    "duration": 1.79,
     "entryType": "measure"
    },
    {
-    "startTime": 53533.06,
+    "startTime": 53292.38,
     "name": "lh:gather:getArtifact:FullPageScreenshot",
-    "duration": 1122.64,
+    "duration": 1130.04,
     "entryType": "measure"
    },
    {
-    "startTime": 54659.89,
+    "startTime": 54426.95,
     "name": "lh:runner:audit",
-    "duration": 264.03,
+    "duration": 264.92,
     "entryType": "measure"
    },
    {
-    "startTime": 54659.9,
+    "startTime": 54426.96,
     "name": "lh:runner:auditing",
-    "duration": 263.58,
+    "duration": 264.75,
     "entryType": "measure"
    },
    {
-    "startTime": 54660.22,
+    "startTime": 54427.51,
     "name": "lh:audit:is-on-https",
-    "duration": 0.57,
+    "duration": 0.98,
     "entryType": "measure"
    },
    {
-    "startTime": 54660.93,
+    "startTime": 54428.75,
     "name": "lh:audit:redirects-http",
-    "duration": 0.35,
+    "duration": 0.72,
     "entryType": "measure"
    },
    {
-    "startTime": 54661.4,
+    "startTime": 54429.73,
     "name": "lh:audit:errors-in-console",
-    "duration": 132.83,
+    "duration": 136.26,
     "entryType": "measure"
    },
    {
-    "startTime": 54661.53,
+    "startTime": 54430,
     "name": "lh:computed:JSBundles",
-    "duration": 132.27,
+    "duration": 135.56,
     "entryType": "measure"
    },
    {
-    "startTime": 54794.36,
+    "startTime": 54566.12,
     "name": "lh:audit:image-aspect-ratio",
     "duration": 0.56,
     "entryType": "measure"
    },
    {
-    "startTime": 54795.04,
+    "startTime": 54566.8,
     "name": "lh:audit:image-size-responsive",
     "duration": 0.54,
     "entryType": "measure"
    },
    {
-    "startTime": 54795.17,
+    "startTime": 54566.93,
     "name": "lh:computed:ImageRecords",
-    "duration": 0.06,
+    "duration": 0.05,
     "entryType": "measure"
    },
    {
-    "startTime": 54795.71,
+    "startTime": 54567.45,
     "name": "lh:audit:deprecations",
-    "duration": 0.36,
+    "duration": 0.37,
     "entryType": "measure"
    },
    {
-    "startTime": 54796.18,
+    "startTime": 54567.93,
     "name": "lh:audit:third-party-cookies",
-    "duration": 0.34,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54796.63,
-    "name": "lh:audit:valid-source-maps",
-    "duration": 2.16,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54796.77,
-    "name": "lh:computed:EntityClassification",
-    "duration": 1.04,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54798.9,
-    "name": "lh:audit:csp-xss",
-    "duration": 0.36,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54799.35,
-    "name": "lh:audit:has-hsts",
     "duration": 0.32,
     "entryType": "measure"
    },
    {
-    "startTime": 54799.76,
-    "name": "lh:audit:origin-isolation",
+    "startTime": 54568.37,
+    "name": "lh:audit:valid-source-maps",
+    "duration": 1.67,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54568.5,
+    "name": "lh:computed:EntityClassification",
+    "duration": 0.73,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54570.15,
+    "name": "lh:audit:csp-xss",
+    "duration": 0.34,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54570.59,
+    "name": "lh:audit:has-hsts",
     "duration": 0.31,
     "entryType": "measure"
    },
    {
-    "startTime": 54800.17,
+    "startTime": 54570.98,
+    "name": "lh:audit:origin-isolation",
+    "duration": 0.3,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54571.37,
     "name": "lh:audit:clickjacking-mitigation",
     "duration": 0.29,
     "entryType": "measure"
    },
    {
-    "startTime": 54800.54,
+    "startTime": 54571.75,
     "name": "lh:audit:trusted-types-xss",
-    "duration": 0.35,
+    "duration": 0.31,
     "entryType": "measure"
    },
    {
-    "startTime": 54801,
+    "startTime": 54572.17,
     "name": "lh:audit:accesskeys",
-    "duration": 0.34,
+    "duration": 0.33,
     "entryType": "measure"
    },
    {
-    "startTime": 54801.44,
+    "startTime": 54572.6,
     "name": "lh:audit:aria-allowed-attr",
     "duration": 1.49,
     "entryType": "measure"
    },
    {
-    "startTime": 54803.03,
+    "startTime": 54574.2,
     "name": "lh:audit:aria-allowed-role",
     "duration": 1.51,
     "entryType": "measure"
    },
    {
-    "startTime": 54804.66,
+    "startTime": 54575.83,
     "name": "lh:audit:aria-command-name",
-    "duration": 0.38,
+    "duration": 0.39,
     "entryType": "measure"
    },
    {
-    "startTime": 54805.15,
+    "startTime": 54576.33,
     "name": "lh:audit:aria-conditional-attr",
-    "duration": 1.47,
+    "duration": 1.48,
     "entryType": "measure"
    },
    {
-    "startTime": 54806.72,
+    "startTime": 54577.92,
     "name": "lh:audit:aria-deprecated-role",
     "duration": 1.39,
     "entryType": "measure"
    },
    {
-    "startTime": 54808.22,
+    "startTime": 54579.43,
     "name": "lh:audit:aria-dialog-name",
-    "duration": 0.4,
+    "duration": 0.41,
     "entryType": "measure"
    },
    {
-    "startTime": 54808.75,
+    "startTime": 54579.95,
     "name": "lh:audit:aria-hidden-body",
-    "duration": 1.47,
+    "duration": 1.48,
     "entryType": "measure"
    },
    {
-    "startTime": 54810.36,
+    "startTime": 54581.66,
     "name": "lh:audit:aria-hidden-focus",
-    "duration": 0.45,
+    "duration": 0.46,
     "entryType": "measure"
    },
    {
-    "startTime": 54810.92,
+    "startTime": 54582.23,
     "name": "lh:audit:aria-input-field-name",
-    "duration": 0.45,
+    "duration": 0.46,
     "entryType": "measure"
    },
    {
-    "startTime": 54811.48,
+    "startTime": 54582.8,
     "name": "lh:audit:aria-meter-name",
     "duration": 0.49,
     "entryType": "measure"
    },
    {
-    "startTime": 54812.07,
+    "startTime": 54583.39,
     "name": "lh:audit:aria-progressbar-name",
     "duration": 0.53,
     "entryType": "measure"
    },
    {
-    "startTime": 54812.71,
+    "startTime": 54584.03,
     "name": "lh:audit:aria-prohibited-attr",
-    "duration": 1.43,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54814.25,
-    "name": "lh:audit:aria-required-attr",
     "duration": 1.45,
     "entryType": "measure"
    },
    {
-    "startTime": 54815.81,
+    "startTime": 54585.59,
+    "name": "lh:audit:aria-required-attr",
+    "duration": 1.56,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54587.27,
     "name": "lh:audit:aria-required-children",
-    "duration": 1.52,
+    "duration": 1.84,
     "entryType": "measure"
    },
    {
-    "startTime": 54817.44,
+    "startTime": 54589.25,
     "name": "lh:audit:aria-required-parent",
-    "duration": 1.49,
+    "duration": 1.51,
     "entryType": "measure"
    },
    {
-    "startTime": 54819.02,
+    "startTime": 54590.87,
     "name": "lh:audit:aria-roles",
     "duration": 1.38,
     "entryType": "measure"
    },
    {
-    "startTime": 54820.51,
+    "startTime": 54592.37,
     "name": "lh:audit:aria-text",
     "duration": 0.56,
     "entryType": "measure"
    },
    {
-    "startTime": 54821.18,
+    "startTime": 54593.04,
     "name": "lh:audit:aria-toggle-field-name",
-    "duration": 0.58,
+    "duration": 13.15,
     "entryType": "measure"
    },
    {
-    "startTime": 54821.86,
+    "startTime": 54606.34,
     "name": "lh:audit:aria-tooltip-name",
-    "duration": 0.6,
+    "duration": 0.69,
     "entryType": "measure"
    },
    {
-    "startTime": 54822.57,
+    "startTime": 54607.16,
     "name": "lh:audit:aria-treeitem-name",
-    "duration": 0.64,
+    "duration": 0.69,
     "entryType": "measure"
    },
    {
-    "startTime": 54823.31,
+    "startTime": 54607.96,
     "name": "lh:audit:aria-valid-attr-value",
-    "duration": 1.45,
+    "duration": 1.52,
     "entryType": "measure"
    },
    {
-    "startTime": 54824.86,
+    "startTime": 54609.6,
     "name": "lh:audit:aria-valid-attr",
-    "duration": 1.44,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54826.41,
-    "name": "lh:audit:button-name",
-    "duration": 1.48,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54828,
-    "name": "lh:audit:bypass",
-    "duration": 1.47,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54829.57,
-    "name": "lh:audit:color-contrast",
-    "duration": 12.99,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54842.73,
-    "name": "lh:audit:definition-list",
-    "duration": 0.78,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54843.63,
-    "name": "lh:audit:dlitem",
-    "duration": 0.74,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54844.48,
-    "name": "lh:audit:document-title",
-    "duration": 1.47,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54846.06,
-    "name": "lh:audit:duplicate-id-aria",
-    "duration": 1.44,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54847.61,
-    "name": "lh:audit:empty-heading",
-    "duration": 0.74,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54848.45,
-    "name": "lh:audit:form-field-multiple-labels",
-    "duration": 0.8,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54849.35,
-    "name": "lh:audit:frame-title",
-    "duration": 0.8,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54850.26,
-    "name": "lh:audit:heading-order",
-    "duration": 0.85,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54851.22,
-    "name": "lh:audit:html-has-lang",
-    "duration": 1.59,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54852.91,
-    "name": "lh:audit:html-lang-valid",
-    "duration": 1.48,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54854.5,
-    "name": "lh:audit:html-xml-lang-mismatch",
-    "duration": 0.91,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54855.52,
-    "name": "lh:audit:identical-links-same-purpose",
     "duration": 1.51,
     "entryType": "measure"
    },
    {
-    "startTime": 54857.13,
-    "name": "lh:audit:image-alt",
+    "startTime": 54611.22,
+    "name": "lh:audit:button-name",
+    "duration": 1.51,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54612.84,
+    "name": "lh:audit:bypass",
+    "duration": 1.48,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54614.42,
+    "name": "lh:audit:color-contrast",
+    "duration": 1.47,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54616.01,
+    "name": "lh:audit:definition-list",
+    "duration": 0.73,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54616.85,
+    "name": "lh:audit:dlitem",
+    "duration": 0.71,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54617.67,
+    "name": "lh:audit:document-title",
+    "duration": 1.46,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54619.23,
+    "name": "lh:audit:duplicate-id-aria",
     "duration": 1.42,
     "entryType": "measure"
    },
    {
-    "startTime": 54858.66,
+    "startTime": 54620.76,
+    "name": "lh:audit:empty-heading",
+    "duration": 0.73,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54621.59,
+    "name": "lh:audit:form-field-multiple-labels",
+    "duration": 0.76,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54622.45,
+    "name": "lh:audit:frame-title",
+    "duration": 0.76,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54623.32,
+    "name": "lh:audit:heading-order",
+    "duration": 0.83,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54624.27,
+    "name": "lh:audit:html-has-lang",
+    "duration": 1.57,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54625.95,
+    "name": "lh:audit:html-lang-valid",
+    "duration": 1.49,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54627.55,
+    "name": "lh:audit:html-xml-lang-mismatch",
+    "duration": 0.92,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54628.58,
+    "name": "lh:audit:identical-links-same-purpose",
+    "duration": 1.53,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54630.22,
+    "name": "lh:audit:image-alt",
+    "duration": 1.44,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54631.77,
     "name": "lh:audit:image-redundant-alt",
     "duration": 1.6,
     "entryType": "measure"
    },
    {
-    "startTime": 54860.37,
+    "startTime": 54633.47,
     "name": "lh:audit:input-button-name",
-    "duration": 0.86,
+    "duration": 0.87,
     "entryType": "measure"
    },
    {
-    "startTime": 54861.33,
+    "startTime": 54634.44,
     "name": "lh:audit:input-image-alt",
-    "duration": 0.94,
+    "duration": 0.92,
     "entryType": "measure"
    },
    {
-    "startTime": 54862.38,
+    "startTime": 54635.47,
     "name": "lh:audit:label-content-name-mismatch",
-    "duration": 1.48,
+    "duration": 1.47,
     "entryType": "measure"
    },
    {
-    "startTime": 54863.96,
+    "startTime": 54637.04,
     "name": "lh:audit:label",
     "duration": 0.91,
     "entryType": "measure"
    },
    {
-    "startTime": 54864.97,
+    "startTime": 54638.05,
     "name": "lh:audit:landmark-one-main",
     "duration": 1.37,
     "entryType": "measure"
    },
    {
-    "startTime": 54866.44,
+    "startTime": 54639.52,
     "name": "lh:audit:link-name",
     "duration": 1.44,
     "entryType": "measure"
    },
    {
-    "startTime": 54867.99,
+    "startTime": 54641.06,
     "name": "lh:audit:link-in-text-block",
     "duration": 0.97,
     "entryType": "measure"
    },
    {
-    "startTime": 54869.07,
+    "startTime": 54642.14,
     "name": "lh:audit:list",
-    "duration": 1.05,
+    "duration": 14.14,
     "entryType": "measure"
    },
    {
-    "startTime": 54870.23,
+    "startTime": 54656.43,
     "name": "lh:audit:listitem",
-    "duration": 1.08,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54871.42,
-    "name": "lh:audit:meta-refresh",
-    "duration": 1.11,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54872.64,
-    "name": "lh:audit:meta-viewport",
-    "duration": 1.65,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54874.41,
-    "name": "lh:audit:object-alt",
-    "duration": 1.13,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54875.65,
-    "name": "lh:audit:select-name",
     "duration": 1.16,
     "entryType": "measure"
    },
    {
-    "startTime": 54876.91,
+    "startTime": 54657.71,
+    "name": "lh:audit:meta-refresh",
+    "duration": 1.12,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54658.94,
+    "name": "lh:audit:meta-viewport",
+    "duration": 1.62,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54660.68,
+    "name": "lh:audit:object-alt",
+    "duration": 1.09,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54661.87,
+    "name": "lh:audit:select-name",
+    "duration": 1.11,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54663.09,
     "name": "lh:audit:skip-link",
-    "duration": 1.15,
+    "duration": 1.09,
     "entryType": "measure"
    },
    {
-    "startTime": 54878.17,
+    "startTime": 54664.28,
     "name": "lh:audit:tabindex",
-    "duration": 1.54,
+    "duration": 1.5,
     "entryType": "measure"
    },
    {
-    "startTime": 54879.84,
+    "startTime": 54665.89,
     "name": "lh:audit:table-duplicate-name",
-    "duration": 1.55,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54881.51,
-    "name": "lh:audit:table-fake-caption",
-    "duration": 1.63,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54883.25,
-    "name": "lh:audit:target-size",
-    "duration": 1.52,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54884.94,
-    "name": "lh:audit:td-has-header",
     "duration": 1.56,
     "entryType": "measure"
    },
    {
-    "startTime": 54886.67,
+    "startTime": 54667.57,
+    "name": "lh:audit:table-fake-caption",
+    "duration": 1.59,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54669.27,
+    "name": "lh:audit:target-size",
+    "duration": 1.45,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54670.86,
+    "name": "lh:audit:td-has-header",
+    "duration": 1.42,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54672.41,
     "name": "lh:audit:td-headers-attr",
-    "duration": 1.77,
+    "duration": 1.61,
     "entryType": "measure"
    },
    {
-    "startTime": 54888.61,
+    "startTime": 54674.21,
     "name": "lh:audit:th-has-data-cells",
-    "duration": 1.72,
+    "duration": 1.61,
     "entryType": "measure"
    },
    {
-    "startTime": 54890.46,
+    "startTime": 54675.93,
     "name": "lh:audit:valid-lang",
-    "duration": 1.31,
+    "duration": 1.26,
     "entryType": "measure"
    },
    {
-    "startTime": 54891.89,
+    "startTime": 54677.29,
     "name": "lh:audit:video-caption",
-    "duration": 1.3,
+    "duration": 1.27,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.22,
+    "startTime": 54678.58,
     "name": "lh:audit:custom-controls-labels",
-    "duration": 0.02,
+    "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.24,
+    "startTime": 54678.6,
     "name": "lh:audit:custom-controls-roles",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.25,
+    "startTime": 54678.61,
     "name": "lh:audit:focus-traps",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.26,
+    "startTime": 54678.61,
     "name": "lh:audit:focusable-controls",
-    "duration": 0.01,
+    "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.27,
+    "startTime": 54678.62,
     "name": "lh:audit:interactive-element-affordance",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.28,
+    "startTime": 54678.63,
     "name": "lh:audit:logical-tab-order",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.29,
+    "startTime": 54678.64,
     "name": "lh:audit:managed-focus",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.29,
+    "startTime": 54678.64,
     "name": "lh:audit:offscreen-content-hidden",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.3,
+    "startTime": 54678.65,
     "name": "lh:audit:use-landmarks",
     "duration": 0.01,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.31,
+    "startTime": 54678.66,
     "name": "lh:audit:visual-order-follows-dom",
     "duration": 0,
     "entryType": "measure"
    },
    {
-    "startTime": 54893.43,
+    "startTime": 54678.77,
     "name": "lh:audit:autocomplete-valid",
-    "duration": 0.67,
+    "duration": 0.65,
     "entryType": "measure"
    },
    {
-    "startTime": 54894.22,
+    "startTime": 54679.53,
     "name": "lh:audit:presentation-role-conflict",
-    "duration": 1.66,
+    "duration": 1.6,
     "entryType": "measure"
    },
    {
-    "startTime": 54896,
+    "startTime": 54681.24,
     "name": "lh:audit:svg-img-alt",
-    "duration": 1.19,
+    "duration": 1.18,
     "entryType": "measure"
    },
    {
-    "startTime": 54897.31,
+    "startTime": 54682.54,
     "name": "lh:audit:doctype",
-    "duration": 0.34,
+    "duration": 0.32,
     "entryType": "measure"
    },
    {
-    "startTime": 54897.77,
+    "startTime": 54682.96,
     "name": "lh:audit:charset",
-    "duration": 0.48,
+    "duration": 0.42,
     "entryType": "measure"
    },
    {
-    "startTime": 54898.37,
+    "startTime": 54683.51,
     "name": "lh:audit:geolocation-on-start",
-    "duration": 0.4,
+    "duration": 0.38,
     "entryType": "measure"
    },
    {
-    "startTime": 54898.89,
+    "startTime": 54684.01,
     "name": "lh:audit:inspector-issues",
     "duration": 0.33,
     "entryType": "measure"
    },
    {
-    "startTime": 54899.3,
+    "startTime": 54684.41,
     "name": "lh:audit:js-libraries",
-    "duration": 0.27,
+    "duration": 0.26,
     "entryType": "measure"
    },
    {
-    "startTime": 54899.67,
+    "startTime": 54684.78,
     "name": "lh:audit:notification-on-start",
-    "duration": 0.37,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54900.16,
-    "name": "lh:audit:paste-preventing-inputs",
     "duration": 0.34,
     "entryType": "measure"
    },
    {
-    "startTime": 54900.63,
-    "name": "lh:audit:baseline",
-    "duration": 2.36,
+    "startTime": 54685.22,
+    "name": "lh:audit:paste-preventing-inputs",
+    "duration": 0.32,
     "entryType": "measure"
    },
    {
-    "startTime": 54903.14,
+    "startTime": 54685.66,
+    "name": "lh:audit:baseline",
+    "duration": 1.4,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54687.16,
     "name": "lh:audit:meta-description",
+    "duration": 0.36,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54687.62,
+    "name": "lh:audit:http-status-code",
+    "duration": 0.31,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54688.04,
+    "name": "lh:audit:link-text",
+    "duration": 0.35,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54688.49,
+    "name": "lh:audit:crawlable-anchors",
+    "duration": 0.44,
+    "entryType": "measure"
+   },
+   {
+    "startTime": 54689.05,
+    "name": "lh:audit:is-crawlable",
     "duration": 0.48,
     "entryType": "measure"
    },
    {
-    "startTime": 54903.78,
-    "name": "lh:audit:http-status-code",
-    "duration": 0.4,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54904.3,
-    "name": "lh:audit:link-text",
-    "duration": 0.43,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54904.92,
-    "name": "lh:audit:crawlable-anchors",
-    "duration": 0.74,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54905.83,
-    "name": "lh:audit:is-crawlable",
-    "duration": 0.62,
-    "entryType": "measure"
-   },
-   {
-    "startTime": 54906.57,
+    "startTime": 54689.65,
     "name": "lh:audit:robots-txt",
-    "duration": 1.02,
+    "duration": 0.87,
     "entryType": "measure"
    },
    {
-    "startTime": 54907.73,
+    "startTime": 54690.63,
     "name": "lh:audit:hreflang",
-    "duration": 0.34,
+    "duration": 0.33,
     "entryType": "measure"
    },
    {
-    "startTime": 54908.18,
+    "startTime": 54691.07,
     "name": "lh:audit:canonical",
-    "duration": 14.54,
+    "duration": 0.33,
     "entryType": "measure"
    },
    {
-    "startTime": 54922.94,
+    "startTime": 54691.49,
     "name": "lh:audit:structured-data",
-    "duration": 0.51,
+    "duration": 0.21,
     "entryType": "measure"
    },
    {
-    "startTime": 54923.49,
+    "startTime": 54691.72,
     "name": "lh:runner:generate",
-    "duration": 0.4,
+    "duration": 0.15,
     "entryType": "measure"
    }
   ],
-  "total": 16331.54
+  "total": 16262.75
  },
  "i18n": {
   "rendererFormattedStrings": {

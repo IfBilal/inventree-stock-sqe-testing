@@ -17,6 +17,27 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, button names, ARIA) | Accessibility | Medium | P3 | Open | accepted | PR-09 | Phase 8 |
 | UX-01 | [#12](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/12) | Enter in quantity field does not submit the dialog | Usability | Low | P3 | Open | accepted | PR-09 | Phase 7 |
 
+## Lifecycle (status changes over time)
+| Defect | When | Status | Note |
+|---|---|---|---|
+| DEF-01 | 2026-11-16 17:50 | Opened | found in Phase 1 (empirical audit), Critical/P1, triage: accepted |
+| DEF-01 | 2026-11-16 21:50 | Fix proposed | PR #13 opened; tests-only commit → pipeline red (run 43916868389) |
+| DEF-01 | 2026-11-16 22:30 | Fix pushed | commit 35683ef; pipeline red on a related test (depleted item) → commit 05a49ce |
+| DEF-01 | 2026-11-16 23:00 | In verification | pipeline run 43920009616: unit, api, e2e, sonar green |
+| DEF-02 | 2026-11-16 | Opened | triage: accepted |
+| DEF-03 | 2026-11-16 17:50 | Opened | Phase 1 audit, High/P2 |
+| DEF-03 | 2026-11-16 20:15 | Re-triaged | severity High→Critical, P2→P1: one corrupted item breaks the whole stock list (found in Phase 6) |
+| DEF-04 | 2026-11-16 | Opened | triage: accepted |
+| DEF-05 | 2026-11-16 | Opened | triage: accepted |
+| DEF-06 | 2026-11-16 | Opened | triage: accepted |
+| SEC-01 | 2026-11-16 | Opened | triage: accepted |
+| SEC-02 | 2026-11-16 | Opened | triage: accepted |
+| SEC-03 | 2026-11-16 | Opened | triage: accepted |
+| A11Y-01 | 2026-11-16 21:15 | Opened | Phase 8, Medium/P2 |
+| A11Y-01 | 2026-11-16 21:20 | Fix proposed | branch fix/a11y-stock-item-page; Lighthouse 78→85 |
+| A11Y-02 | 2026-11-16 | Opened | triage: accepted |
+| UX-01 | 2026-11-16 | Opened | triage: accepted |
+
 ## Pareto by category
 | Category | Defects | Severity-weighted points | Share | Cumulative |
 |---|---|---|---|---|

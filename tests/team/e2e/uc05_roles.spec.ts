@@ -1,6 +1,6 @@
 // UC-05 Role-restricted adjustment (owner M3, 24I-3106) — BR-4, FR-09. Access matrix: see also access.spec.ts (Phase 9).
 import { test, expect, request } from '@playwright/test';
-import { api, newItem, quantity, history, openItem, doOp, expectSuccess, expectBadge } from './helpers';
+import { api, newItem, quantity, history, lastEntry, openItem, doOp, expectSuccess, expectBadge } from './helpers';
 
 test.describe('viewer', () => {
   test.use({ storageState: 'e2e/.auth/viewer.json' });
@@ -20,6 +20,7 @@ test.describe('manager', () => {
     await openItem(page, pk);
     await doOp(page, 'Add Stock', '1'); await expectSuccess(page, 'Stock added'); await expectBadge(page, 11);
     expect(await quantity(a, pk)).toBe(11);
+    expect(await lastEntry(a, pk, 11)).toMatchObject({ delta: 1, from: 10, to: 11, actor: 'manager', count: 1 });
   });
 });
 
@@ -30,6 +31,7 @@ test.describe('admin', () => {
     await openItem(page, pk);
     await doOp(page, 'Remove Stock', '1'); await expectSuccess(page, 'Stock removed'); await expectBadge(page, 9);
     expect(await quantity(a, pk)).toBe(9);
+    expect(await lastEntry(a, pk, 12)).toMatchObject({ delta: 1, from: 10, to: 9, actor: 'admin', count: 1 });
   });
 });
 

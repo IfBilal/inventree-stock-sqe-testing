@@ -35,9 +35,9 @@
      ],
      "none": [],
      "impact": "critical",
-     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-0tngl2vw2\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-start; --group-wrap: nowrap;\">",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-ohqwefaux\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-start; --group-wrap: nowrap;\">",
      "target": [
-      "#mantine-0tngl2vw2"
+      "#mantine-ohqwefaux"
      ],
      "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
     },
@@ -59,9 +59,9 @@
      ],
      "none": [],
      "impact": "critical",
-     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-09o6975g8\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: space-between; --group-wrap: nowrap;\">",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-s904nq9o0\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: space-between; --group-wrap: nowrap;\">",
      "target": [
-      "#mantine-09o6975g8"
+      "#mantine-s904nq9o0"
      ],
      "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
     }
@@ -592,124 +592,37 @@
    ]
   },
   {
-   "id": "image-alt",
-   "impact": "critical",
+   "id": "presentation-role-conflict",
+   "impact": "minor",
    "tags": [
-    "cat.text-alternatives",
-    "wcag2a",
-    "wcag111",
-    "section508",
-    "section508.22.a",
-    "TTv5",
-    "TT7.a",
-    "TT7.b",
-    "EN-301-549",
-    "EN-9.1.1.1",
-    "ACT",
-    "RGAAv4",
-    "RGAA-1.1.1"
+    "cat.aria",
+    "best-practice",
+    "ACT"
    ],
-   "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-   "help": "Images must have alternative text",
-   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/image-alt?application=playwright",
+   "description": "Ensure elements marked as presentational do not have global ARIA or tabindex so that all screen readers ignore them",
+   "help": "Elements marked as presentational should be consistently ignored",
+   "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/presentation-role-conflict?application=playwright",
    "nodes": [
     {
-     "any": [
+     "any": [],
+     "all": [],
+     "none": [
       {
-       "id": "has-alt",
-       "data": null,
+       "id": "has-global-aria-attribute",
+       "data": [
+        "aria-label"
+       ],
        "relatedNodes": [],
-       "impact": "critical",
-       "message": "Element does not have an alt attribute"
-      },
-      {
-       "id": "aria-label",
-       "data": null,
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "aria-label attribute does not exist or is empty"
-      },
-      {
-       "id": "aria-labelledby",
-       "data": null,
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
-      },
-      {
-       "id": "non-empty-title",
-       "data": {
-        "messageKey": "noAttr"
-       },
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "Element has no title attribute"
-      },
-      {
-       "id": "presentational-role",
-       "data": null,
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+       "impact": "minor",
+       "message": "Element does not have global ARIA attribute"
       }
      ],
-     "all": [],
-     "none": [],
-     "impact": "critical",
-     "html": "<img class=\"m_9e117634 mantine-I...\" src=\"http://127.0.0.1:800...\" style=\"--image-radius: var(...\">",
+     "impact": "minor",
+     "html": "<img class=\"m_9e117634 mantine-I...\" aria-label=\"Thumbnail\" alt=\"\" src=\"http://127.0.0.1:800...\" style=\"--image-radius: var(...\">",
      "target": [
-      ".mantine-visible-from-sm"
+      "img[aria-label=\"Thumbnail\"]"
      ],
-     "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
-    },
-    {
-     "any": [
-      {
-       "id": "has-alt",
-       "data": null,
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "Element does not have an alt attribute"
-      },
-      {
-       "id": "aria-label",
-       "data": null,
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "aria-label attribute does not exist or is empty"
-      },
-      {
-       "id": "aria-labelledby",
-       "data": null,
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
-      },
-      {
-       "id": "non-empty-title",
-       "data": {
-        "messageKey": "noAttr"
-       },
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "Element has no title attribute"
-      },
-      {
-       "id": "presentational-role",
-       "data": null,
-       "relatedNodes": [],
-       "impact": "critical",
-       "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
-      }
-     ],
-     "all": [],
-     "none": [],
-     "impact": "critical",
-     "html": "<img class=\"m_9e117634 mantine-Image-root\" src=\"http://127.0.0.1:8000/static/img/blank_image.thumbnail.png\" style=\"--image-object-fit: contain; opacity: 1; transition: opacity 0.2s; max-width: calc(16rem * var(--mantine-scale)); max-height: calc(16rem * var(--mantine-scale));\">",
-     "target": [
-      ".m_71ac47fc > .m_6d731127.mantine-Stack-root > .m_9e117634.mantine-Image-root"
-     ],
-     "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+     "failureSummary": "Fix all of the following:\n  Element does not have global ARIA attribute"
     }
    ]
   },
@@ -746,74 +659,11 @@
       "#tip-ftu-nav3"
      ],
      "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-    },
-    {
-     "any": [
-      {
-       "id": "region",
-       "data": {
-        "isIframe": false
-       },
-       "relatedNodes": [],
-       "impact": "moderate",
-       "message": "Some page content is not contained by landmarks"
-      }
-     ],
-     "all": [],
-     "none": [],
-     "impact": "moderate",
-     "html": "<div class=\"m_8b3717df mantine-Breadcrumbs-root\">",
-     "target": [
-      ".m_8b3717df"
-     ],
-     "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-    },
-    {
-     "any": [
-      {
-       "id": "region",
-       "data": {
-        "isIframe": false
-       },
-       "relatedNodes": [],
-       "impact": "moderate",
-       "message": "Some page content is not contained by landmarks"
-      }
-     ],
-     "all": [],
-     "none": [],
-     "impact": "moderate",
-     "html": "<div class=\"m_4081bf90 mantine-Group-root\" style=\"--group-gap: var(--mantine-spacing-md); --group-align: flex-start; --group-justify: space-between; --group-wrap: nowrap; flex-grow: 1;\">",
-     "target": [
-      ".m_1b7284a3.mantine-Paper-root:nth-child(2) > .m_4081bf90.mantine-Group-root > .m_4081bf90.mantine-Group-root:nth-child(1)"
-     ],
-     "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-    },
-    {
-     "any": [
-      {
-       "id": "region",
-       "data": {
-        "isIframe": false
-       },
-       "relatedNodes": [],
-       "impact": "moderate",
-       "message": "Some page content is not contained by landmarks"
-      }
-     ],
-     "all": [],
-     "none": [],
-     "impact": "moderate",
-     "html": "<div class=\"m_1b7284a3 mantine-Paper-root\" aria-label=\"stockitem\" style=\"--paper-radius: var(--mantine-radius-xs); --paper-shadow: var(--mantine-shadow-xs); padding: var(--mantine-spacing-sm);\">",
-     "target": [
-      "div[aria-label=\"stockitem\"]"
-     ],
-     "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
     }
    ]
   }
  ],
- "passes": 44,
+ "passes": 47,
  "incomplete": 2,
- "inapplicable": 46
+ "inapplicable": 43
 }

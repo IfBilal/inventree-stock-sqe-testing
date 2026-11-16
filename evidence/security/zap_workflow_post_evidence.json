@@ -1,0 +1,39 @@
+{
+ "messages_total": 1599,
+ "post_requests_to_workflow_endpoints": {
+  "http://127.0.0.1:8000/api/stock/add/": 5,
+  "http://127.0.0.1:8000/api/stock/remove/": 5
+ },
+ "samples": [
+  {
+   "id": "419",
+   "request": "POST http://127.0.0.1:8000/api/stock/add/ HTTP/1.1",
+   "status": "HTTP/1.1 201 Created"
+  },
+  {
+   "id": "554",
+   "request": "POST http://127.0.0.1:8000/api/stock/add/ HTTP/1.1",
+   "status": "HTTP/1.1 201 Created"
+  },
+  {
+   "id": "689",
+   "request": "POST http://127.0.0.1:8000/api/stock/add/ HTTP/1.1",
+   "status": "HTTP/1.1 201 Created"
+  },
+  {
+   "id": "824",
+   "request": "POST http://127.0.0.1:8000/api/stock/add/ HTTP/1.1",
+   "status": "HTTP/1.1 201 Created"
+  },
+  {
+   "id": "959",
+   "request": "POST http://127.0.0.1:8000/api/stock/add/ HTTP/1.1",
+   "status": "HTTP/1.1 201 Created"
+  },
+  {
+   "id": "1095",
+   "request": "POST http://127.0.0.1:8000/api/stock/remove/ HTTP/1.1",
+   "status": "HTTP/1.1 201 Created"
+  }
+ ]
+}

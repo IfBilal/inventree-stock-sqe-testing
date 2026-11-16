@@ -79,12 +79,14 @@ export function toast(page: Page) {
   return page.locator('.mantine-Notification-root');
 }
 
-/** Assert the dialog stayed open and shows a validation error (rejection) — the form must NOT report success. */
+/** Assert the dialog stayed open and shows the validation error ON THE QUANTITY FIELD (the real error element, not any text); no success toast appears. */
 export async function expectRejected(page: Page, message?: RegExp | string) {
   const dlg = page.getByRole('dialog');
   await expect(dlg).toBeVisible();
-  await expect(dlg.getByText(/Ensure|valid number|must|greater|available|exceed|cannot|not allowed|at most|no more than/i).first()).toBeVisible();
-  if (message) await expect(dlg.getByText(message).first()).toBeVisible();
+  const err = dlg.locator('.mantine-InputWrapper-error').first();
+  await expect(err).toBeVisible();
+  if (message) await expect(err).toContainText(message);
+  await page.waitForTimeout(600);                                            // give a (wrong) success toast time to appear before asserting it did not
   await expect(toast(page).filter({ hasText: /^Success/ })).toHaveCount(0);
 }
 
@@ -102,4 +104,19 @@ export async function expectBadge(page: Page, n: number | string) {
 /** Mark a test as an EXPECTED failure on the unmodified baseline (the defect it exposes); it flips to failed when the defect is fixed. */
 export function knownDefect(test: any, id: string) {
   test.fail(true, `Baseline defect ${id}: expected behaviour is not met (see GitHub issues); remove after the fix`);
+}
+
+
+/** Newest history entry of one event type with its decoded facts: delta, quantity before/after, notes, actor. */
+export async function lastEntry(a: APIRequestContext, pk: number, type: 11 | 12) {
+  const h = (await history(a, pk, type)).sort((x: any, y: any) => y.pk - x.pk);
+  expect(h.length).toBeGreaterThan(0);
+  const e = h[0];
+  const q = e.changes?.quantity ?? [null, null];
+  return { delta: e.deltas?.added ?? e.deltas?.removed, from: Number(q[0]), to: Number(q[1]), notes: e.notes, actor: e.actor_username, count: h.length };
+}
+
+export async function inStock(a: APIRequestContext, pk: number): Promise<boolean | null> {
+  const r = await a.get(`/api/stock/${pk}/`);
+  return r.status() === 200 ? Boolean((await r.json()).in_stock) : null;
 }

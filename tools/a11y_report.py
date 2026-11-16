@@ -4,12 +4,15 @@ accessibility audits are axe-core rules, so the key is the axe rule id). Usage: 
 import glob, json, os
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 E = os.path.join(ROOT, 'evidence/a11y')
+PRIO = {'button-name':'P1','aria-required-children':'P1','image-alt':'P1','color-contrast':'P2','aria-allowed-attr':'P2','landmark-one-main':'P2','page-has-heading-one':'P3','region':'P3','presentation-role-conflict':'P3','meta-description':'P4 (SEO only)','robots-txt':'P4 (SEO only)'}
+ELEM = {'meta-description':'`<head>` — missing `<meta name="description">`','robots-txt':'`/robots.txt` (not valid / not served)'}
 KB = {  # rule -> (user impact, proposed fix)
  'aria-required-children': ('Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong.', 'Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it).'),
  'aria-allowed-attr': ('An ARIA attribute that is not allowed on the dialog elements is ignored or misreported by assistive technology.', 'Remove the unsupported `aria-*` attribute from the modal elements.'),
  'button-name': ('Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do.', 'Add an accessible name (`aria-label`, e.g. "Close notification").'),
  'color-contrast': ('Low-vision users cannot read breadcrumb links (4.32:1) and the white-on-blue quantity badge (3.55:1) — below the 4.5:1 minimum for normal text.', 'Use a darker foreground/background pair (≥ 4.5:1), e.g. blue shade 7 for links and badge background.'),
- 'image-alt': ('Screen readers read the image URL/file name or skip it: the item picture has no text alternative.', 'Add `alt` (descriptive text, or `alt=""` for decorative images).'),
+ 'image-alt': ('Screen readers read the image URL/file name or skip it: the item picture has no text alternative (the fix adds `alt`, empty for decorative thumbnails, descriptive when a label exists).', 'Add `alt` (descriptive text, or `alt=""` for decorative images — but never `alt=""` together with an `aria-label`, see `presentation-role-conflict`).'),
+ 'presentation-role-conflict': ('An image marked decorative (`alt=""`) that also has an accessible name is announced inconsistently.', 'Do not combine `alt=""` with `aria-label`; give a real `alt` when a label exists.'),
  'landmark-one-main': ('Keyboard and screen-reader users cannot jump to the main content (no `main` landmark).', 'Render the routed page content inside a `<main>` element.'),
  'region': ('Content outside landmarks is skipped by landmark navigation.', 'Put page content inside landmark regions (`main`, `nav`, `header`, `footer`).'),
  'page-has-heading-one': ('There is no level-one heading, so the page has no top-level title for screen-reader navigation.', 'Render the page title (item name) as an `<h1>`.'),
@@ -41,6 +44,7 @@ out = ['# ACCESSIBILITY AND USABILITY EVALUATION (Phase 8) — Lighthouse 13.6.0
 sections, totals = [], {'before': set(), 'after': set()}
 for phase in ('before', 'after'):
     pass
+out.append('## 0. Interpretation and prioritisation\nThe item-details page (S1 manager, S2 viewer — the **same page**; the viewer only lacks the operations menu) is the key screen of all six use cases, because every flow starts there and the Add/Remove dialogs open on top of it. Priorities: **P1** = blocks assistive-technology users from the core task (unnamed icon buttons and wrong tab-list structure affect the controls used to reach Add/Remove stock; missing image text); **P2** = affects perception or navigation (contrast of the breadcrumbs and the quantity badge that carries the key result, missing main landmark, invalid ARIA on dialogs); **P3** = structure hygiene; **P4** = SEO audits that do not matter for a private application behind a login. Lighthouse was run on S1 and S2 only (a Lighthouse run attaches to a page navigation, so the open dialogs cannot be audited by it); the dialogs are covered by axe-core, which is why the dialog tables list axe findings only.\n')
 out.append('## 1. Scores (Lighthouse, desktop, authenticated)\n| Screen | Phase | Accessibility | Best practices | SEO |\n|---|---|---|---|---|')
 for sid, _ in SCREENS[:2]:
     for phase in ('before', 'after'):
@@ -49,7 +53,7 @@ for sid, _ in SCREENS[:2]:
             c = d['categories']; out.append(f"| {sid} | {phase} | {round(c['accessibility']['score']*100)} | {round(c['best-practices']['score']*100)} | {round(c['seo']['score']*100)} |")
 for sid, title in SCREENS:
     out.append(f'\n## {title}')
-    out.append('| Rule | Impact (axe) | Found by | Element (first) | Nodes | User impact | Proposed fix | After fix |\n|---|---|---|---|---|---|---|---|')
+    out.append('| Rule | Priority | Impact (axe) | Found by | Element (first) | Nodes | User impact | Proposed fix | After fix |\n|---|---|---|---|---|---|---|---|---|')
     ab, aa = axe(sid, 'before'), axe(sid, 'after')
     lb, la = lh_failed(lh(sid, 'before')), lh_failed(lh(sid, 'after'))
     rules = {}
@@ -61,10 +65,14 @@ for sid, title in SCREENS:
     for r, d in sorted(rules.items(), key=lambda x: ({'critical': 0, 'serious': 1, 'moderate': 2, 'minor': 3}.get(x[1]['impact'], 4), x[0])):
         impact, fix = KB.get(r, ('—', '—'))
         found = ' + '.join(sorted(d['tools'])) if len(d['tools']) > 1 else list(d['tools'])[0] + ' only'
-        el = f"`{short(d['nodes'][0])}`" if d['nodes'] else '(page level)'
+        el = f"`{short(d['nodes'][0])}`" if d['nodes'] else ELEM.get(r, '(page level)')
         nodes = len(d['nodes']) or d.get('lh_nodes', 0)
         status = 'not re-measured' if (aa is None and not la) else ('**fixed**' if (r not in after_axe and r not in after_lh) else 'still present')
-        out.append(f"| `{r}` | {d['impact']} | {found} | {el} | {nodes} | {impact} | {fix} | {status} |")
-    nb = len(rules); na = len([r for r in rules if r in after_axe or r in after_lh]) if (aa is not None or la) else None
+        out.append(f"| `{r}` | {PRIO.get(r, 'P3')} | {d['impact']} | {found} | {el} | {nodes} | {impact} | {fix} | {status} |")
+    new_after = sorted((after_axe | after_lh) - set(rules))
+    for r in new_after:
+        impact, fix = KB.get(r, ('—', '—'))
+        out.append(f"| `{r}` | {PRIO.get(r, 'P3')} | minor | axe only | **NEW after the fix** | — | {impact} | {fix} | **introduced by the fix** |")
+    nb = len(rules); na = (len([r for r in rules if r in after_axe or r in after_lh]) + len(new_after)) if (aa is not None or la) else None
     out.append(f"\nDistinct issues (deduplicated across tools): **before {nb}**" + (f", **after {na}**." if na is not None else '.'))
 print('\n'.join(out))

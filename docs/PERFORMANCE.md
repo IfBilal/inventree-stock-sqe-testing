@@ -9,23 +9,23 @@ Operation: `POST /api/stock/remove/` (WF-B, state-changing), quantity 1 per requ
 - Environment: `reports/performance/environment.txt` (commit 66a9d10, Linux 7.0, 12th-gen Core i5-1235U ×12, 15 GB, Python 3.12.3, Django `runserver` single process threaded, SQLite, DEBUG False). Raw k6 output: `reports/performance/raw_*.txt`; summaries: `summary_*.json`.
 
 ## 3. Results (measured phase, 60 s each)
-| Run | Requests | Requests/s | avg ms | p90 ms | **p95 ms** | p99 ms | max ms | **Unexpected failures** |
+| Run | Requests (60 s hold) | Requests/s (= count ÷ 60 s) | avg ms | p90 ms | **p95 ms** | p99 ms | max ms | **Unexpected failures** |
 |---|---|---|---|---|---|---|---|---|
-| 1 user, run 1 | 207 | 2.9 | 289.6 | 295.3 | **298.8** | 320.8 | 331.1 | **0.00 %** |
-| 1 user, run 2 | 208 | 2.9 | 289.3 | 295.2 | **297.6** | 312.5 | 318.6 | **0.00 %** |
-| 5 users, run 1 | 658 | 9.3 | 458.1 | 502.7 | **517.7** | 565.5 | 737.8 | **19.30 %** |
-| 5 users, run 2 | 656 | 9.3 | 457.7 | 509.9 | **521.8** | 548.2 | 595.8 | **19.66 %** |
+| 1 user, run 1 | 207 | 3.45 | 289.6 | 295.3 | **298.8** | 320.8 | 331.1 | **0.00 %** |
+| 1 user, run 2 | 208 | 3.47 | 289.3 | 295.2 | **297.6** | 312.5 | 318.6 | **0.00 %** |
+| 5 users, run 1 | 658 | 10.97 | 458.1 | 502.7 | **517.7** | 565.5 | 737.8 | **19.30 %** |
+| 5 users, run 2 | 656 | 10.93 | 457.7 | 509.9 | **521.8** | 548.2 | 595.8 | **19.66 %** |
 
 ## 4. Comparison with the declared limits
 | Workload | p95 limit | Observed p95 | Failure limit | Observed failures | Verdict |
 |---|---|---|---|---|---|
 | 1 user | ≤ 500 ms | 298.8 / 297.6 ms | < 1 % | 0 % / 0 % | **met** (both runs) |
 | 5 users | ≤ 500 ms | 517.7 / 521.8 ms | < 1 % | 19.3 % / 19.7 % | **NOT met** (both runs, both criteria) |
-Run-to-run variation is small (1 user: 1.2 ms in p95; 5 users: 4.1 ms; failures 0.4 pt), so the verdict is stable. Throughput scales 3.2× from 1 to 5 users (2.9 → 9.3 req/s) rather than 5×, and latency per request rises 58 % (290 → 458 ms avg).
+Run-to-run variation is small (1 user: 1.2 ms in p95; 5 users: 4.1 ms; failures 0.4 pt), so the verdict is stable. Throughput scales 3.2× from 1 to 5 users (3.45 → 10.95 req/s, count ÷ 60 s of the measured phase; k6 itself reports the rate over the whole 70 s test, which understates it by ~14 %) rather than 5×, and latency per request rises 58 % (290 → 458 ms avg).
 
 ## 5. Interpretation and root cause (feeds RCA-2 in Phase 13)
-- **What fails:** the failures are HTTP **500** `OperationalError`; the server log contains `database is locked` (197 occurrences). A separate 5-thread client reproduced it (46 of 200 requests). SQLite permits a single writer; concurrent adjustments of the same item queue on the write lock, and the busy timeout is exceeded (`select_for_update` is not a row lock on SQLite — assumption A-4).
-- **What does not fail:** data integrity. The final quantity equals initial minus the number of 201 responses (checked: 99 846 = 100 000 − 154). The loss is availability (client sees 500 and must retry), not correctness.
+- **What fails:** the failures are HTTP **500** `OperationalError`. Evidence preserved in `reports/performance/concurrency_probe.txt`: a separate 5-thread client (200 requests, same server and reset protocol) got **38 HTTP 500** and the server log holds **exactly 38 `database is locked` lines** (1:1). (The k6 run summaries do not break failures down by status; the attribution therefore rests on this probe plus the identical failure rate.) SQLite permits a single writer; concurrent adjustments of the same item queue on the write lock, and the busy timeout is exceeded (`select_for_update` is not a row lock on SQLite — assumption A-4).
+- **What does not fail:** data integrity. In the probe the final quantity equals initial minus the number of 201 responses (99 838 = 100 000 − 162, `concurrency_probe.txt`). The loss is availability (client sees 500 and must retry), not correctness.
 - **Baseline latency is already high:** ~290 ms for a single-row decrement with one user (`runserver`, history/audit write, SQLite fsync). The p95 margin to the 500 ms limit disappears at 5 users.
 - Defect **DEF-06** (Issue #6, High/P2). Risk **PR-08** materialised (Medium → raised to High in the register). Recommended corrections: PostgreSQL in production (row locks; out of scope on this machine), a longer SQLite busy timeout plus a retriable `503`/`409` instead of `500`, gunicorn with several workers behind a proxy. These were **not** tested here and are stated as recommendations only.
 - **Exit criterion EC-3 is not met on the baseline** (5 users: p95 and failure rate both over the limits) → the release recommendation (Phase 13) must be **HOLD** for the performance criterion unless the risk is accepted for single-user use.
@@ -38,4 +38,4 @@ State-changing operation: Remove stock through the real API view. **Test double:
 | 2 persisted state after the failure | quantity still 10, **0** history entries (atomic rollback; nothing half-written) | passed |
 | 3 dependency restored, **same request retried** | HTTP 201 | passed |
 | 4 final state | quantity 6 (removed exactly once), **exactly 1** history entry (no duplicates) | passed |
-A multi-item variant (`test_multi_item_request_failure_leaves_every_item_untouched_then_retry_applies_each_once`) shows all-or-nothing behaviour and a clean retry. Related risks: PR-05, PR-06, PR-07. **Weakness (W-03, API tests):** the API has no idempotency key, so a client retry *after a lost successful response* would apply twice — the recovery here is safe only because the failed attempt was rolled back.
+Raw output of the test run: `reports/performance/recovery_run.txt` (3 passed). A multi-item variant (`test_multi_item_request_failure_leaves_every_item_untouched_then_retry_applies_each_once`) shows all-or-nothing behaviour and a clean retry. Related risks: PR-05, PR-06, PR-07. **Weakness (W-03, API tests):** the API has no idempotency key, so a client retry *after a lost successful response* would apply twice — the recovery here is safe only because the failed attempt was rolled back.

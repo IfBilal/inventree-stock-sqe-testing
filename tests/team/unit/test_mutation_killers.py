@@ -89,3 +89,35 @@ def test_update_save_inside_a_pending_event_adds_exactly_one_audit_entry(item, u
         item.quantity = 14
         item.save(user=user, notes='inner')
     assert AuditLogEntry.objects.filter(object_pk=str(item.pk)).count() == before + 1
+
+
+# ---- M009/M010 (validate_pk) and M189 (delete): `get_global_setting(..., cache=False)` — the setting is read FRESH on every call
+def test_validate_pk_reads_the_allow_out_of_stock_setting_fresh_each_time(item, markers):
+    from common.models import InvenTreeSetting
+    from rest_framework.exceptions import ValidationError
+    from stock.serializers import StockAdjustmentItemSerializer as S
+    item.customer = markers.customer                      # a non-adjustable item (BR-2)
+    key = 'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER'
+    for value, rejected in ((False, True), (True, False), (False, True)):
+        InvenTreeSetting.set_setting(key, value, None)
+        if rejected:
+            with pytest.raises(ValidationError):
+                S(require_in_stock=True).validate_pk(item)
+        else:
+            assert S(require_in_stock=True).validate_pk(item) is item
+
+
+def test_delete_reads_the_allow_delete_serialized_setting_fresh_each_time(make_item):
+    from common.models import InvenTreeSetting
+    from django.core.exceptions import ValidationError
+    key = 'STOCK_ALLOW_DELETE_SERIALIZED'
+    InvenTreeSetting.set_setting(key, False, None)
+    s = make_item(1, serial='SET-1')
+    with pytest.raises(ValidationError):
+        s.delete()
+    InvenTreeSetting.set_setting(key, True, None)
+    s.delete()                                            # now allowed: a stale cached False would still refuse
+    InvenTreeSetting.set_setting(key, False, None)
+    t = make_item(1, serial='SET-2')
+    with pytest.raises(ValidationError):
+        t.delete()
