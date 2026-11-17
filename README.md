@@ -1,6 +1,6 @@
 # InvenTree Stock module — Software Quality Engineering final project (SE3002, Fall 2026)
 
-Team: **24I-3166** (M1), **24I-3015** (M2), **24I-3106** (M3). Section: **A** (placeholder — to be confirmed by the team).
+Team: **24I-3166** (M1), **24I-3015** (M2), **24I-3106** (M3). Section: **B**.
 
 **System under test:** InvenTree 1.8.0 dev (MIT), Stock module, workflows **WF-A Add stock** and **WF-B Remove stock**, shared record `StockItem.quantity`. Upstream commit pinned: `1f51dfe64bf4717fd95df51f1055ffb7a991a01d` (`upstream/`). Defects are reported only in **this** repository's issues, never upstream.
 

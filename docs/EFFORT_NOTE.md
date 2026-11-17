@@ -5,3 +5,11 @@
 
 ## Reading the estimate-versus-actual comparison (important caveat)
 The three-point estimate in `docs/TEST_PLAN.md` §9 (70 h) is **human effort** for a team of three. The "actual" column is the **AI-agent wall-clock time** measured from commit timestamps (12.55 h), because the work was executed by an AI assistant under the instructor's AI-use permission. The two are therefore **not comparable as a variance**; the table shows them side by side only so that the members can add their own review/verification hours (`human_review_hours` in `docs/EFFORT_LOG.csv`, currently blank) and then compute the true variance per area. Mutation rows in the log were counted for the first analysis (244 mutants); the final analysis has 248 mutants (`docs/MUTATION.md`).
+
+## Human review hours — to be completed by each member (cannot be filled by the assistant)
+"Human review hours" = the hours **you personally** spent reading, re-running, verifying and understanding the AI-produced work (the viva requires you to explain it). Fill the `human_review_hours` column of `docs/EFFORT_LOG.csv` per area from your own time, then compute the variance E − (agent + human) per area in `docs/TEST_PLAN.md` §9. Suggested split to account for: M1 areas 1 (static, unit, mutation, CI), M2 area 2 (API, generator, defects), M3 area 3 (use cases, usability, accessibility, security, performance).
+| Member | Area reviewed | Hours reviewing (own time) | What was re-run by this member |
+|---|---|---|---|
+| 24I-3166 | | | |
+| 24I-3015 | | | |
+| 24I-3106 | | | |

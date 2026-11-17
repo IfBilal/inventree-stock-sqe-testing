@@ -108,7 +108,7 @@ Gate: real Actions run links.
 
 ## PHASE 14 — Final package (R-48..R-54)
 1. PDF report (all required sections + AI-use record + evidence links); findings each with root cause, fix, risk link.
-2. Zip with `.git`; names `Project_24I-3166_24I-3015_24I-3106_<Section>.zip/.pdf` (Section needed from team — default `A` placeholder flagged).
+2. Zip with `.git`; names `Project_24I-3166_24I-3015_24I-3106_<Section>.zip/.pdf` (Section **B**, confirmed by the team).
 3. Viva preparation sheet per member area; rerun scripts documented.
 4. Final audit: 5–6 strict rubric subagents (varying strictness); loop until all PASS with max marks.
 

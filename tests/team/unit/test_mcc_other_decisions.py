@@ -126,3 +126,22 @@ def test_resolve_status_kwarg_decision(n, row, resolved, item):
     if custom_given: kwargs['status_custom_key'] = 50
     out = item._resolve_status_kwarg(kwargs)
     assert out == (55 if status_given else (50 if custom_given else None)) and (out is not None) is resolved
+
+
+# ============================================================ BR-4: `is_superuser or role "stock" grants add` (RolePermission, view with role_required='stock')
+@pytest.mark.parametrize('n,row,allowed', rows('BR4'))
+@pytest.mark.req('BR-4', 'FR-09')
+@pytest.mark.risk('PR-02')
+def test_br4_role_permission_decision(n, row, allowed, django_user_model):
+    from types import SimpleNamespace
+    from InvenTree.permissions import RolePermission
+    from conftest import grant
+    is_su, grants_add = row
+    u = django_user_model.objects.create_user(f'br4_{n}', f'b{n}@e.test', 'pw')
+    if is_su:
+        u.is_superuser = True
+        u.save()
+    if grants_add:
+        grant(u, 'stock', can_add=True)
+    req = SimpleNamespace(user=u, method='POST', successful_authenticator=None)
+    assert RolePermission().has_permission(req, SimpleNamespace(role_required='stock')) is allowed

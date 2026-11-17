@@ -151,6 +151,24 @@ Conditions (3): quantity_zero, delete_on_deplete, can_delete. Outcome: **deleted
 
 Minimal MC/DC set: rows [4, 6, 7, 8] (4 tests = n+1 for the 3 independently demonstrable conditions).
 
+## BR4 — RolePermission: add right on the stock role (BR-4)
+
+Conditions (2): is_superuser, group_grants_add. Outcome: **allowed** when the decision is true. Short-circuit: the superuser branch returns before the role lookup, so `group_grants_add` is only evaluated for non-superusers; the superuser rows still set it to a defined state.
+
+| # | is_superuser | group_grants_add | expected | feasible | MC/DC set |
+|---|---|---|---|---|---|
+| 1 | F | F | denied | yes | ✔ |
+| 2 | F | T | allowed | yes | ✔ |
+| 3 | T | F | allowed | yes | ✔ |
+| 4 | T | T | allowed | yes |  |
+
+| Condition | All independence pairs | Pair chosen in the minimal set |
+|---|---|---|
+| is_superuser | (1,3) | (1, 3) |
+| group_grants_add | (1,2) | (1, 2) |
+
+Minimal MC/DC set: rows [1, 2, 3] (3 tests = n+1 for the 2 independently demonstrable conditions).
+
 ## TRACK-EMPTY — _is_empty_tracking_event: event carries no information
 
 Conditions (3): is_update_event, no_deltas, no_notes. Outcome: **empty (not recorded)** when the decision is true. 

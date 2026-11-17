@@ -20,7 +20,7 @@ Reasons (evidence-based): exit criteria **EC-1 (functional) and EC-3 (performanc
 | Activity | Result | Evidence |
 |---|---|---|
 | Static analysis (SonarQube) | bugs 0, smells 0, vulnerabilities 0, ratings A, duplication 0.6 %, coverage 40.2 % (whole module); V(G) of `validate_pk` hand = 6 (radon 6, Sonar 5: `elif` not counted) | `docs/STATIC_ANALYSIS.md` |
-| White-box unit tests | 309 passed, 8 strict-xfail (defects); in-scope coverage statements 100.0 % / branches 99.2 % over 31 functions; complete MCC for 12 decisions, MC/DC sets, BR-2 32 rows | `docs/UNIT_TESTING.md`, `docs/MCC_MCDC.md`, `docs/COVERAGE_SCOPE.md` |
+| White-box unit tests | 279 passed, 8 strict-xfail (defects); in-scope coverage statements 100.0 % / branches 99.2 % over 31 functions; complete MCC for 12 decisions, MC/DC sets, BR-2 32 rows | `docs/UNIT_TESTING.md`, `docs/MCC_MCDC.md`, `docs/COVERAGE_SCOPE.md` |
 | Test-data generation | OpenAPI 3.0.3 contract (validated), generator with 29 tests, 223 cases, two constraint-change demos | `docs/TEST_DATA_GENERATION.md` |
 | API / integration | 244 passed, 35 strict-xfail; API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
 | Browser E2E (6 use cases, 30 flows) + usability | Playwright: 33 as expected, 0 unexpected, 0 flaky (flows annotated as expected failures expose the still-open defects) | `docs/USE_CASES.md`, `docs/USABILITY.md` |
@@ -81,7 +81,8 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
-| 43951957664 | push | `main` | in_progress | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43951957664 |
+| 43952435670 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43952435670 |
+| 43951957664 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43951957664 |
 | 43949292832 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43949292832 |
 | 43943448899 | pull_request | `fix/a11y-stock-item-page` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43943448899 |
 | 43939159652 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43939159652 |
@@ -92,7 +93,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 43933770510 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43933770510 |
 | 43933669553 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43933669553 |
 | 43931016096 | pull_request | `fix/a11y-stock-item-page` | failure | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43931016096 |
-| 43927967237 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43927967237 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.
@@ -100,4 +100,3 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 - Database: SQLite (no PostgreSQL available): concurrency results are specific to it (assumption A-4).
 - Open defects other than DEF-01 were **logged and analysed but not fixed** (the statement requires one documented fix); this is the reason for HOLD.
 - Effort: agent hours are logged; **human review hours must be filled in by the members** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account — each member must commit their own work before submission (statement §6).
-- The section letter for the file names is not known to the assistant and is set to `A` (placeholder).

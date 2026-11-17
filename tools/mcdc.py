@@ -45,6 +45,10 @@ DECISIONS = {
     'BR3': Decision('BR3', 'updateQuantity: delete item when depleted (BR-3)', ['quantity_zero', 'delete_on_deplete', 'can_delete'],
                     lambda r: all(r), ('deleted', 'retained'),
                     note='Short-circuit order quantity_zero, delete_on_deplete, can_delete(): `can_delete()` is only evaluated when the first two hold (its value is irrelevant otherwise; the test still sets it to a defined state).'),
+    # BR-4 role permission (RolePermission.has_permission for a view that requires the stock role): `user.is_superuser or check_user_role(user, 'stock', 'add')`
+    'BR4': Decision('BR4', 'RolePermission: add right on the stock role (BR-4)', ['is_superuser', 'group_grants_add'],
+                    lambda r: r[0] or r[1], ('allowed', 'denied'),
+                    note='Short-circuit: the superuser branch returns before the role lookup, so `group_grants_add` is only evaluated for non-superusers; the superuser rows still set it to a defined state.'),
     # tracking: an audit event is skipped iff it is an update event with no deltas and no notes (history must not record empty noise)
     'TRACK-EMPTY': Decision('TRACK-EMPTY', '_is_empty_tracking_event: event carries no information', ['is_update_event', 'no_deltas', 'no_notes'],
                             lambda r: all(r), ('empty (not recorded)', 'recorded')),

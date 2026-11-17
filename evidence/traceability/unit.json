@@ -33,13 +33,6 @@
 "seq": []
 },
 {
-"id": "unit/test_adjustment_serializers.py::test_characterisation_add_save_skips_zero_quantity_item",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
 "id": "unit/test_adjustment_serializers.py::test_characterisation_remove_save_skips_zero_quantity_item",
 "outcome": "passed",
 "req": [],
@@ -680,90 +673,6 @@
 "seq": []
 },
 {
-"id": "unit/test_is_in_stock.py::test_available_statuses_count_as_in_stock[50]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_available_statuses_count_as_in_stock[55]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_available_statuses_count_as_in_stock[85]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_in_production_item_is_not_in_stock",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_in_stock_for_normal_item",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_location_excluded_from_stock",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_location_not_excluded",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_quantity_condition[-1-False]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_quantity_condition[0-False]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_quantity_condition[1-True]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_quantity_ignored_when_check_quantity_false",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_status_ignored_when_check_status_false",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
 "id": "unit/test_is_in_stock.py::test_unavailable_status_partition_is_not_in_stock[destroyed]",
 "outcome": "passed",
 "req": [],
@@ -792,34 +701,6 @@
 "seq": []
 },
 {
-"id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[60]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[65]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[70]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_is_in_stock.py::test_unavailable_statuses_are_not_in_stock[75]",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
 "id": "unit/test_mcc_other_decisions.py::test_apply_status_change_decision[STAT-MCC01-FF]",
 "outcome": "passed",
 "req": [],
@@ -838,45 +719,6 @@
 "outcome": "passed",
 "req": [],
 "risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC01-FFF]",
-"outcome": "passed",
-"req": [
-"BR-1",
-"FR-05",
-"FR-11"
-],
-"risk": [
-"PR-01"
-],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC02-FFT]",
-"outcome": "passed",
-"req": [
-"BR-1",
-"FR-05",
-"FR-11"
-],
-"risk": [
-"PR-01"
-],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_br1_take_stock_guard_decision[BR1-MCC03-FTF]",
-"outcome": "passed",
-"req": [
-"BR-1",
-"FR-05",
-"FR-11"
-],
-"risk": [
-"PR-01"
-],
 "seq": []
 },
 {
@@ -957,31 +799,7 @@
 "seq": []
 },
 {
-"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC01-FF]",
-"outcome": "passed",
-"req": [
-"BR-3",
-"FR-08"
-],
-"risk": [
-"PR-01"
-],
-"seq": []
-},
-{
 "id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC02-FFT]",
-"outcome": "passed",
-"req": [
-"BR-3",
-"FR-08"
-],
-"risk": [
-"PR-01"
-],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC02-FT]",
 "outcome": "passed",
 "req": [
 "BR-3",
@@ -1005,31 +823,7 @@
 "seq": []
 },
 {
-"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC03-TF]",
-"outcome": "passed",
-"req": [
-"BR-3",
-"FR-08"
-],
-"risk": [
-"PR-01"
-],
-"seq": []
-},
-{
 "id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC04-FTT]",
-"outcome": "passed",
-"req": [
-"BR-3",
-"FR-08"
-],
-"risk": [
-"PR-01"
-],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_br3_delete_decision_with_real_can_delete[BR3-MCC04-TT]",
 "outcome": "passed",
 "req": [
 "BR-3",
@@ -1089,6 +883,54 @@
 "seq": []
 },
 {
+"id": "unit/test_mcc_other_decisions.py::test_br4_role_permission_decision[BR4-MCC01-FF]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br4_role_permission_decision[BR4-MCC02-FT]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br4_role_permission_decision[BR4-MCC03-TF]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+],
+"seq": []
+},
+{
+"id": "unit/test_mcc_other_decisions.py::test_br4_role_permission_decision[BR4-MCC04-TT]",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+],
+"seq": []
+},
+{
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC01-FFF]",
 "outcome": "passed",
 "req": [
@@ -1135,78 +977,6 @@
 },
 {
 "id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[IS-LOCATION-MCC08-TTT]",
-"outcome": "passed",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC01-FF]",
-"outcome": "passed",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC02-FT]",
-"outcome": "skipped",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC03-TF]",
-"outcome": "passed",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[no-location-IS-LOCATION-MCC04-TT]",
-"outcome": "skipped",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC01-FF]",
-"outcome": "passed",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC02-FT]",
-"outcome": "passed",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC03-TF]",
-"outcome": "passed",
-"req": [
-"BR-2"
-],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mcc_other_decisions.py::test_is_in_stock_location_decision[with-location-IS-LOCATION-MCC04-TT]",
 "outcome": "passed",
 "req": [
 "BR-2"
@@ -1676,27 +1446,6 @@
 },
 {
 "id": "unit/test_model_take_stock.py::test_update_quantity_serialized_returns_none",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_model_take_stock.py::test_update_quantity_zero_deletes_when_delete_on_deplete",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_model_take_stock.py::test_update_quantity_zero_keeps_item_when_cannot_delete",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_model_take_stock.py::test_update_quantity_zero_keeps_item_without_flag",
 "outcome": "passed",
 "req": [],
 "risk": [],
@@ -2268,15 +2017,6 @@
 "seq": []
 },
 {
-"id": "unit/test_state_transitions.py::test_depleted_remove_is_ignored_no_change_no_history",
-"outcome": "passed",
-"req": [
-"BR-3"
-],
-"risk": [],
-"seq": []
-},
-{
 "id": "unit/test_state_transitions.py::test_depleted_remove_is_rejected_no_change_no_history",
 "outcome": "passed",
 "req": [
@@ -2374,33 +2114,6 @@
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path3 p1F,p4T,p5T -> raise B-False-False-False-raiseB]",
 "outcome": "passed",
-"req": [],
-"risk": [
-"PR-03"
-],
-"seq": []
-},
-{
-"id": "unit/test_validate_pk_mcc.py::test_basis_paths[path4 p1T,p2F -> return-True-True-True-ok]",
-"outcome": "not-run",
-"req": [],
-"risk": [
-"PR-03"
-],
-"seq": []
-},
-{
-"id": "unit/test_validate_pk_mcc.py::test_basis_paths[path5 p1T,p2T,p3F -> return-True-False-False-ok]",
-"outcome": "not-run",
-"req": [],
-"risk": [
-"PR-03"
-],
-"seq": []
-},
-{
-"id": "unit/test_validate_pk_mcc.py::test_basis_paths[path6 p1T,p2T,p3T -> raise A-True-False-True-raiseA]",
-"outcome": "not-run",
 "req": [],
 "risk": [
 "PR-03"
