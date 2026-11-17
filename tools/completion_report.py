@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate docs/COMPLETION_REPORT.md (test completion report, release/hold decision with actual vs target) and reports/weekly/week-1.md
+"""Generate docs/COMPLETION_REPORT.md (test completion report, release/hold decision with actual vs target) and reports/weekly/week-2.md
 from the evidence files and the GitHub API. Usage: completion_report.py"""
 import collections, csv, glob, json, os, re, subprocess
 
@@ -105,27 +105,25 @@ open(os.path.join(R, 'docs/COMPLETION_REPORT.md'), 'w').write('\n'.join(o))
 # ---------------------------------------------------------------- weekly progress report
 rows = list(csv.DictReader(open(os.path.join(R, 'docs/EFFORT_LOG.csv'))))
 tot_agent = sum(float(r['agent_hours']) for r in rows)
-w = ['# WEEKLY PROGRESS REPORT — week 1 (2026-11-16 … 2026-11-22) against the plan (`docs/TEST_PLAN.md` v0.2)\n',
-     '## 1. Progress against the plan\n| Phase | Planned | Actual | Status | Control action |\n|---|---|---|---|---|',
-     '| 0 environment/baseline | 11-16 | 11-16 | done | reset determinism verified (mutate→reset→compare) |',
-     '| 1 scope/basis/use cases | 11-16 | 11-16 | done (2 review rounds) | docs corrected after empirical audit |',
-     '| 2 test management | 11-16 | 11-16 | done (v0.2) | exit criteria re-tied to highest risks after review |',
-     '| 3 static analysis | 11-17 | 11-16 (ahead) | done | Sonar-vs-hand discrepancy investigated experimentally |',
-     '| 4 unit/white-box | 11-17…18 | 11-16 | done (3 review rounds) | scope widened after review (can_delete, tracking, permissions) |',
-     '| 5–6 generator and API | 11-18…19 | 11-16 | done | generator rewritten after review (valid spec, all keywords) |',
-     '| 7–8 E2E, usability, accessibility | 11-19…20 | 11-16 | done | DEF-05 found and handled visibly |',
-     '| 9 security | 11-20 | 11-16 | done | passive only |',
-     '| 10 performance/recovery | 11-21 | 11-16 | done | EC-3 missed → DEF-06, HOLD |',
-     '| 11–12 mutation and CI | 11-21…23 | 11-16 | done | mutmut abandoned (documented), own runner; threshold set from evidence |',
-     '| 13 defects/RCA/reports | 11-23…24 | 11-16 | done | — |',
-     '| 14 final package | 11-24…26 | 11-16/17 | in progress | — |',
-     '\n## 2. GQM metrics (definitions and targets: `docs/GQM.md`)\n| Goal | Metric | Value | Target | Reading |\n|---|---|---|---|---|',
-     f"| G1 Find defects effectively | Defect density = confirmed functional defects ÷ KLOC (module ncloc {sonar.get('ncloc')}) | {len([d for d in defects if d['id'].startswith('DEF')])} ÷ 5.114 = **{len([d for d in defects if d['id'].startswith('DEF')]) / 5.114:.2f}/KLOC** (all 12 findings: {len(defects) / 5.114:.2f}) | reported; > 1.0 triggers extra exploratory testing | above 1.0 → exploratory weakness probes executed (W-01…W-13) |",
-     f"| G2 Cover requirements | Requirements coverage | tested **{req_tested}/{req_total}**, verified passing {req_ver}/{req_total} | 100 % by Phase 13 | target met (tested) |",
-     '| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 2 = **0 %** | ≤ 10 % | met |',
-     f"| G4 Effective tests | Mutation score (adjusted) | **{mut_adj:.1f} %** (raw {mut['score_raw']} %) | ≥ 85 % | met |",
-     '\n## 3. Control actions taken\n- After every phase two or more independent reviewer agents graded the work against the rubric; all findings were fixed and re-reviewed (`reviews/`).\n- The first mutation run was invalidated and repeated from scratch on a clean export after a working-tree mistake invalidated its results (no false results are reported).\n- Performance risk PR-08 re-scored from Medium to High after measurement.\n',
-     f"## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)\nAgent hours logged so far: **{tot_agent:.2f} h** against a three-point estimate of 70.0 h for the whole project (the estimate assumed human effort; human review hours are to be added by the members).\n"]
+w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-11-16 22:17 … 2026-11-17) against the plan (`docs/TEST_PLAN.md` v0.3)\n',
+     'Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: the two reports are the two checkpoints of the real commit timeline.\n',
+     '## 1. Progress against the plan\n| Planned item (from report 1 §5) | Actual (commit/PR time) | Status | Control action |\n|---|---|---|---|',
+     '| Fix DEF-01 with a red → green pipeline | PR #13: tests-only 22:17 (red), fix 22:28 (red on a depleted-item test), corrected 22:35 (green), merged 22:57 | **done** | the pipeline caught my own over-reach (removal from a depleted item); fixed before merge |',
+     '| One blocked pull request | PR #14 (BR-2 violation, run 43916978299) and PR #16 (killing tests removed, run 43933840489) | **done** | PR #16 passed a 90 % mutation gate at 90.4 % → gate raised to 95 % and the PR re-blocked (94.3 %) |',
+     '| Fix the accessibility finding | PR #15, merged 11-17 01:23 after a green run | **done** | first version (`alt=""`) introduced an axe rule; corrected to use the aria-label; Lighthouse 78 → 85 |',
+     '| Re-run mutation on the final code | 11-16 23:54: 248 mutants, 238 killed, 10 equivalents | **done** | 7 more killing tests; equivalents keyed by function + mutation + original code |',
+     '| E2E in traceability | 11-17 01:38 (`tools/gen_traceability.py` reads the Playwright report) | **done** | — |',
+     '| Final review round | 4 independent graders 11-17 | **done** | contradictions between documents reconciled (test counts, access matrix 20/20, mutation figures) |',
+     '| Complete MCC for all four business rules | BR-4 added 11-17 08:04 | **done** | 13 decisions now covered |',
+     '| Final PDF and zip | 11-17 08:04 | **done** | section B; human review hours left for the members |',
+     '\n## 2. GQM metrics now (definitions and targets: `docs/GQM.md`)\n| Goal | Metric | Value | Target | Reading |\n|---|---|---|---|---|',
+     f"| G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc {sonar.get('ncloc')}) | {len([d for d in defects if d['id'].startswith('DEF')])} ÷ 5.114 = **{len([d for d in defects if d['id'].startswith('DEF')]) / 5.114:.2f}/KLOC** (all 12 findings: {len(defects) / 5.114:.2f}) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |",
+     f"| G2 Cover requirements | Requirements coverage | tested **{req_tested}/{req_total}**, verified passing {req_ver}/{req_total} | 100 % tested | FR-07's over-removal rule is now passing (DEF-01 fixed); FR-03b stays unverified until DEF-02 is fixed |",
+     '| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 2 = **0 %** (DEF-01, A11Y-01 closed) | ≤ 10 % | met, on a small sample |',
+     f"| G4 Effective tests | Mutation score (adjusted) | **{mut_adj:.1f} %** (raw {mut['score_raw']} %) | ≥ 85 % (CI gate 95 %) | met; the gate itself was tightened after PR #16 |",
+     '\n## 3. Control actions taken in this period\n- Mutation gate 85 → 90 → **95 %** (evidence: PR #16 run 43927877708 passed at 90.4 %, run 43933840489 blocked at 94.3 %).\n- Merge of PR #15 by admin bypass was not used; the branch was updated and the pipeline re-run to green instead (strict branch protection).\n- Keyboard test made independent of the focus-trap start state after it failed in CI only (run 43931016096).\n- Open Critical/High at the end: DEF-03, DEF-06 → release decision stays **HOLD** (`docs/COMPLETION_REPORT.md`).\n',
+     f"## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)\nAgent hours logged for the whole project: **{tot_agent:.2f} h** against a three-point estimate of 70.0 h (the estimate assumed human effort; human review hours are to be added by the members, `docs/EFFORT_NOTE.md`). The corrective work of this period (review rounds, PR fixes, final package) is part of the rows \"CI quality gate + PRs\", \"Defects, RCA, reports\" and \"Final PDF + package\".\n",
+     '## 5. Plan for the next period (after submission)\nFix DEF-02 and DEF-04 (small validation changes), then DEF-03 (representable total) and DEF-06 (move to a database with row locks); rerun the k6 test against EC-3.\n']
 os.makedirs(os.path.join(R, 'reports/weekly'), exist_ok=True)
-open(os.path.join(R, 'reports/weekly/week-1.md'), 'w').write('\n'.join(w))
-print('wrote docs/COMPLETION_REPORT.md and reports/weekly/week-1.md')
+open(os.path.join(R, 'reports/weekly/week-2.md'), 'w').write('\n'.join(w))
+print('wrote docs/COMPLETION_REPORT.md and reports/weekly/week-2.md')
