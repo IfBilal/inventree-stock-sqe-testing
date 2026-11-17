@@ -6,18 +6,18 @@ Requirement coverage (tested) = requirements with ≥ 1 executed test ÷ 16. Req
 | Req | Workflow | Description | Source | Risk | unit (pass/xfail) | api (pass/xfail) | e2e (pass/xfail) | Example test ids | Status |
 |---|---|---|---|---|---|---|---|---|---|
 | FR-01 | A | add N → quantity +N | DOC+CODE | PR-01 | 3/0 | 36/0 | 8/2 | `test_add_remove_add_sequence_updates_balance`; `test_restock_of_depleted_item` | verified + defect found |
-| FR-02 | A | add records history | CODE | PR-07 | 3/0 | 23/21 | 3/2 | `test_add_remove_add_sequence_updates_balance`; `test_history_entry_matches_the_request` | verified + defect found |
+| FR-02 | A | add records history | CODE | PR-07 | 5/0 | 23/21 | 3/2 | `test_add_remove_add_sequence_updates_balance`; `test_history_entry_matches_the_request` | verified + defect found |
 | FR-03a | A | negative/non-numeric/over-precision rejected | CODE | PR-04 | 15/4 | 98/14 | 7/3 | `test_repeating_a_rejected_request_leaves_no_`; `test_generated_case[stockAdd:items:BVA:minit` | verified + defect found |
 | FR-03b | A | zero rejected (A-2, DEF-02) | ASSUMPTION | PR-04 | 0/2 | 0/2 | 0/0 |  | defect found (expected behaviour fails on baseline) |
 | FR-04 | A | non-adjustable item rejected | CODE | PR-03 | 35/0 | 30/2 | 0/0 | `test_installed_item_is_rejected_unchanged[ad`; `test_installed_item_is_rejected_unchanged[re` | verified + defect found |
 | FR-05 | B | remove N ≤ available → −N | DOC+CODE | PR-01 | 12/0 | 38/0 | 4/1 | `test_add_remove_add_sequence_updates_balance`; `test_repeating_a_valid_request_applies_it_on` | verified + defect found |
-| FR-06 | B | remove records history | CODE | PR-07 | 4/0 | 2/0 | 4/1 | `test_add_remove_add_sequence_updates_balance`; `test_repeating_a_valid_request_applies_it_on` | verified + defect found |
-| FR-07 | B | remove > available rejected (A-1, DEF-01) | ASSUMPTION | PR-01 | 6/0 | 2/0 | 8/2 | `test_duplicate_pk_entries_exceeding_availabl`; `test_generated_case[stockRemove:items[].quan` | verified + defect found |
+| FR-06 | B | remove records history | CODE | PR-07 | 6/0 | 2/0 | 4/1 | `test_add_remove_add_sequence_updates_balance`; `test_repeating_a_valid_request_applies_it_on` | verified + defect found |
+| FR-07 | B | remove > available rejected (A-1, DEF-01) | ASSUMPTION | PR-01 | 11/0 | 2/0 | 8/2 | `test_duplicate_pk_entries_exceeding_availabl`; `test_generated_case[stockRemove:items[].quan` | verified + defect found |
 | FR-08 | B | removing all depletes the item | CODE | PR-01 | 10/0 | 2/0 | 5/0 | `test_depletion_deletes_item_when_flag_true_a`; `test_depletion_retains_item_at_zero_when_fla` | verified |
 | FR-09 | A,B | role without add right → 403 | CODE | PR-02 | 18/0 | 6/0 | 5/0 | `test_role_decision_and_read_back[add-anon-40`; `test_role_decision_and_read_back[add-manager` | verified |
 | FR-10 | A,B | multi-item request atomic | CODE | PR-05 | 6/0 | 2/0 | 0/0 | `test_multi_item_request_applies_every_item`; `test_multi_item_request_is_atomic_when_one_i` | verified |
 | FR-11 | A,B | serialized item unchanged | CODE | PR-05 | 7/0 | 1/0 | 0/0 | `test_serialized_item_is_unchanged_by_add_and`; `test_br1_take_stock_guard_decision[BR1-MCC04` | verified |
-| BR-1 | A,B | boundary: 0 < N ≤ limit / ≤ available / result representable | CODE+A-1 | PR-01, PR-04 | 16/2 | 14/2 | 16/4 | `test_duplicate_pk_entries_exceeding_availabl`; `test_generated_case[stockAdd:items[].quantit` | verified + defect found |
+| BR-1 | A,B | boundary: 0 < N ≤ limit / ≤ available / result representable | CODE+A-1 | PR-01, PR-04 | 21/2 | 14/2 | 16/4 | `test_duplicate_pk_entries_exceeding_availabl`; `test_generated_case[stockAdd:items[].quantit` | verified + defect found |
 | BR-2 | A,B | adjustability decision (5 conditions) | CODE | PR-03 | 54/0 | 2/0 | 0/0 | `test_installed_item_is_rejected_unchanged[ad`; `test_installed_item_is_rejected_unchanged[re` | verified |
 | BR-3 | B/A | state change: deplete / restock | CODE | PR-01 | 19/0 | 6/0 | 10/0 | `test_deleted_item_cannot_be_adjusted`; `test_depletion_deletes_item_when_flag_true_a` | verified |
 | BR-4 | A,B | role permission | CODE | PR-02 | 17/0 | 8/0 | 5/0 | `test_invalid_credentials_are_rejected`; `test_role_decision_and_read_back[add-anon-40` | verified |
@@ -30,4 +30,4 @@ Requirement coverage (tested) = requirements with ≥ 1 executed test ÷ 16. Req
 | api | 244 | 35 | 0 | 0 | 279 |
 | e2e | 26 | 4 | 0 | 0 | 30 |
 | generator | 29 | 0 | 0 | 0 | 29 |
-| unit | 279 | 8 | 0 | 0 | 287 |
+| unit | 316 | 8 | 0 | 0 | 324 |

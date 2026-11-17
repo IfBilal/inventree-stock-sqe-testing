@@ -14,7 +14,7 @@ The viva checks every component: each member reruns a selected test and explains
 | SonarQube + hand CFG | `scripts/sonar_scan.sh` (server per `docs/STATIC_ANALYSIS.md`) | each metric; V(G)=6 for `validate_pk` (E−N+2 = 14−10+2); why Sonar says 5 (it does not count `elif`) |
 | Unit tests + coverage | `scripts/coverage_unit.sh` | what "in scope" means (`tools/scope_coverage.py SCOPE`, 31 functions), why 100 %/99–100 %, the single justified branch |
 | MCC / MC/DC | `python tools/mcdc.py`; `scripts/test_unit.sh unit/test_validate_pk_mcc.py` | BR-2 truth table (32 rows), independence pairs, minimal set {1,2,3,5,9,18}; masked conditions |
-| Mutation | `python tools/mutate.py --only stock/models.py::StockItem.take_stock` | operators (standard + 4 custom CBR-1…4), surviving/equivalent mutants (`docs/MUTATION.md`), why mutmut was not usable |
+| Mutation | `python tools/mutate.py --only stock/models.py::StockItem.take_stock` | operators (standard + 4 custom CBR-1…4), surviving/equivalent mutants (`docs/MUTATION.md`), how mutmut was set up (`scripts/mutmut_run.sh`, newline lists, migrated DB) and why the custom operators need our own runner |
 | CI | `.github/workflows/quality-gate.yml`, `docs/CI_QUALITY_GATE.md` | each gate, thresholds and why, the blocked PR and the fix PR |
 **Live-task playbook (business-rule change):** e.g. "removal limit becomes 90 % of available" → predicted failures: unit `test_boundaries.py` (limit BVA), `test_mcc_other_decisions.py` BR1 rows, API generated `limit-*` cases, E2E UC02/UC03/UC06, and the **mutation gate** if surviving mutants appear; coverage gate if the new branch is not covered. Make the change in `StockRemoveSerializer.validate`, rerun `scripts/coverage_unit.sh` and show which test goes red.
 

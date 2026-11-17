@@ -3,7 +3,7 @@
 ## 1. Tool and scope
 - **Scope:** the business-rule functions of `docs/TEST_BASIS.md` §7 (32 functions in `stock/serializers.py`, `stock/models.py`, `InvenTree/fields.py`, `InvenTree/permissions.py`) — exactly the set whose coverage is gated.
 - **Tool:** `tools/mutate.py` — AST-based mutation runner of our own, executed in 5 isolated parallel copies of the backend; every mutant is judged by the **real unit suite** (`tests/team/unit`, `-x`, killed = first failing test). The repository and `upstream/` are never modified; the analyses ran on clean `git archive` exports.
-- **mutmut was tried first** (`scripts/mutation_setup.sh`; config keys `source_paths`, `pytest_add_cli_args_test_selection`, `also_copy` (all top-level directories), `mutate_only_covered_lines`): its coverage-gathering child process exits with code 1 on this Django project although the identical pytest command passes (143 tests in the copy; `evidence/mutation/mutmut_attempt.log` holds the traceback; the child's own pytest output is not surfaced by mutmut 3.8). Cosmic Ray would need one full-suite run per whole-file mutant and was not attempted. **We state plainly that the statement's tool list names mutmut/Cosmic Ray; the custom runner implements the same standard operators plus our four custom ones** (disclosed in the AI-use record).
+- **mutmut 3.8.1 was run for real** (`scripts/mutmut_run.sh`, results in §2b). Our first attempt failed and we first wrongly reported mutmut as unusable: the cause was in OUR set-up, not in mutmut — (1) mutmut reads list options in `setup.cfg` one per line, so a comma-separated `also_copy` copied nothing, and (2) InvenTree calls `sys.exit(1)` at start-up on an un-migrated database, which mutmut surfaces only as "Child exited with code 1" (reproduced by running its coverage step in-process, `evidence/mutation/mutmut_attempt.log`). With a newline-separated config and a migrated database mutmut runs. Because mutmut offers no custom operators, our own AST runner (`tools/mutate.py`) additionally implements the four business-rule operators below; both are reported.
 - **Standard operators:** ROR relational, LCR and/or, UOI remove `not`, CRP constants, RET boolean returns, AOR +/-, SDL statement deletion, NEG if-condition negation.
 - **Custom operators from OUR business rules (≥ 2 required):** **CBR-1 LIMIT_CLAMP** `min()`↔`max()` (BR-1 removal limit), **CBR-2 REFERENCE_CHECK** flip `x is None` on sales_order/belongs_to/customer/consumed_by (BR-2 adjustability), **CBR-3 DEPLETE_RULE** `delete_on_deplete`/`can_delete()` replaced by constants (BR-3), **CBR-4 POSITIVE_GUARD** `quantity <= 0` ↔ `< 0` on quantity guards (BR-1/FR-03). A custom mutant replaces the identical standard (ROR) mutant so no mutation is counted twice.
 
@@ -31,6 +31,170 @@
 | ROR | 21 | 21 | 0 |  |
 | SDL | 94 | 90 | 4 |  |
 | UOI | 9 | 9 | 0 |  |
+
+## 2b. mutmut results (the real tool, 3.8.1)
+**mutmut 3.x — real run on `stock/serializers.py` and `stock/models.py`: 652 mutants, 509 killed, 107 survived, 0 timed out, 36 without covering tests.**
+Raw score (killed ÷ (killed + survived + timeout)): **82.6 %** over all functions of both files. In-scope functions only (the 32 functions of `docs/TEST_BASIS.md` §7): 416 killed, 46 survived → **90.0 %**.
+Adjusted in-scope score (survivors proven equivalent excluded, justification per mutant below): **100.0 %** (46 of the in-scope survivors are equivalent; none is a missing test). Survivors outside the scope are display/allocation/plugin helpers and the status-field wrapper, which the add/remove workflows do not use. The 36 mutants 'without covering tests' are 12 with no test reaching them plus 24 `StockStatusCustomSerializer.__init__` mutants that hang the process (out of scope; the run was stopped there).
+
+| Function | killed | survived |
+|---|---|---|
+| `StockAddSerializer.save` | 32 | 5 |
+| `StockAdjustmentItemSerializer.__init__` | 15 | 3 |
+| `StockAdjustmentItemSerializer.validate_pk` | 28 | 9 |
+| `StockAdjustmentItemSerializer.validate_quantity` | 15 | 0 |
+| `StockAdjustmentSerializer.to_internal_value` | 23 | 2 |
+| `StockAdjustmentSerializer.validate` | 22 | 3 |
+| `StockItem.__str__` (outside scope) | 2 | 1 |
+| `StockItem._apply_model_reference_fields` | 9 | 1 |
+| `StockItem._apply_optional_transfer_fields` | 8 | 0 |
+| `StockItem._apply_status_change` | 18 | 2 |
+| `StockItem._audit_deltas` | 1 | 0 |
+| `StockItem._is_empty_tracking_event` | 6 | 0 |
+| `StockItem._resolve_status_kwarg` | 11 | 0 |
+| `StockItem._tracking_deltas` | 18 | 0 |
+| `StockItem.add_test_result` (outside scope) | 0 | 0 |
+| `StockItem.add_tracking_entry` (outside scope) | 0 | 0 |
+| `StockItem.can_delete` | 13 | 0 |
+| `StockItem.can_merge` (outside scope) | 0 | 0 |
+| `StockItem.clean` (outside scope) | 38 | 1 |
+| `StockItem.convert_serial_to_int` (outside scope) | 2 | 3 |
+| `StockItem.delete` | 30 | 6 |
+| `StockItem.get_installed_items` (outside scope) | 0 | 0 |
+| `StockItem.get_next_serialized_item` (outside scope) | 0 | 0 |
+| `StockItem.get_sales_order_allocations` (outside scope) | 3 | 11 |
+| `StockItem.get_test_keys` (outside scope) | 0 | 0 |
+| `StockItem.get_transfer_order_allocations` (outside scope) | 3 | 9 |
+| `StockItem.is_in_stock` | 20 | 0 |
+| `StockItem.lock_quantity` | 15 | 0 |
+| `StockItem.optional_transfer_fields` | 6 | 0 |
+| `StockItem.sales_order_allocation_count` (outside scope) | 0 | 0 |
+| `StockItem.save` | 50 | 11 |
+| `StockItem.transfer_order_allocation_count` (outside scope) | 0 | 0 |
+| `StockItem.update_serial_number` (outside scope) | 18 | 3 |
+| `StockItem.validate_batch_code` (outside scope) | 0 | 2 |
+| `StockItem.validate_unique` (outside scope) | 12 | 1 |
+| `StockLocation.get_items` (outside scope) | 0 | 0 |
+| `StockLocation.get_stock_items` (outside scope) | 0 | 0 |
+| `StockLocation.stock_item_count` (outside scope) | 0 | 0 |
+| `StockRemoveSerializer.save` | 34 | 3 |
+| `StockRemoveSerializer.validate` | 42 | 1 |
+| `StockStatusCustomSerializer.__init__` (outside scope) | 12 | 26 |
+| `_default_delete_on_deplete` (outside scope) | 3 | 4 |
+
+Survivor classification (107): Out of scope 56, Equivalent 51.
+
+| Function | # | Mutation (+ line) | Class | Reason |
+|---|---|---|---|---|
+| `_default_delete_on_deplete` | `2` | `+        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', No` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `_default_delete_on_deplete` | `4` | `+        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', )` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `_default_delete_on_deplete` | `6` | `+        return get_global_setting('stock_delete_depleted_default', Tr` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `_default_delete_on_deplete` | `7` | `+        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', Fa` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.__str__` | `1` | `+    if self.part.trackable or self.serial:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem._apply_model_reference_fields` | `3` | `+        instance = deltas.pop(None, None) or kwargs.pop(field, None)` | **Equivalent** | `deltas.pop(None, None)`: the dict has no `None` key, the `or kwargs.pop(field)` branch still runs. |
+| `StockItem._apply_status_change` | `16` | `+        old_custom_status if (old_custom_status) and False else old_s` | **Equivalent** | custom statuses are not configured in this deployment; the value only shapes an audit delta that is empty without them. |
+| `StockItem._apply_status_change` | `4` | `+    old_custom_status = None` | **Equivalent** | same: `get_custom_status()` is empty without configured custom statuses. |
+| `StockItem.clean` | `13` | `+    if not get_global_setting('stock_allow_edit_serial') and self.pk:` | **Equivalent** | InvenTree upper-cases setting keys, so the lower-case key reads the same setting. |
+| `StockItem.convert_serial_to_int` | `1` | `+    if InvenTree.ready.isReadOnlyCommand():` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.convert_serial_to_int` | `2` | `+        for plugin in registry.with_mixin(None):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.convert_serial_to_int` | `4` | `+    if serial not in [None, 'XXXX']:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.delete` | `10` | `+        'stock_allow_delete_serialized', cache=False` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockItem.delete` | `23` | `+            'location', 'purchase_order__supplier'` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
+| `StockItem.delete` | `24` | `+            'part', 'purchase_order__supplier'` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
+| `StockItem.delete` | `25` | `+            'part', 'location', )` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
+| `StockItem.delete` | `6` | `+        'STOCK_ALLOW_DELETE_SERIALIZED', cache=None` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
+| `StockItem.delete` | `8` | `+        'STOCK_ALLOW_DELETE_SERIALIZED', ):` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockItem.get_sales_order_allocations` | `1` | `+def get_sales_order_allocations(self, active=False, **kwargs):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `10` | `+    if active is False:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `13` | `` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `14` | `+            )` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `3` | `+    if filter_allocations := kwargs.get(None):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `4` | `+    if filter_allocations := kwargs.get('XXfilter_allocationsXX'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `5` | `+    if filter_allocations := kwargs.get('FILTER_ALLOCATIONS'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `6` | `+    if exclude_allocations := kwargs.get(None):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `7` | `+    if exclude_allocations := kwargs.get('XXexclude_allocationsXX'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `8` | `+    if exclude_allocations := kwargs.get('EXCLUDE_ALLOCATIONS'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_sales_order_allocations` | `9` | `+    if active is not True:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `1` | `+def get_transfer_order_allocations(self, active=False, **kwargs):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `10` | `+    if active is False:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `3` | `+    if filter_allocations := kwargs.get(None):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `4` | `+    if filter_allocations := kwargs.get('XXfilter_allocationsXX'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `5` | `+    if filter_allocations := kwargs.get('FILTER_ALLOCATIONS'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `6` | `+    if exclude_allocations := kwargs.get(None):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `7` | `+    if exclude_allocations := kwargs.get('XXexclude_allocationsXX'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `8` | `+    if exclude_allocations := kwargs.get('EXCLUDE_ALLOCATIONS'):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.get_transfer_order_allocations` | `9` | `+    if active is not True:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.save` | `26` | `+    notes = kwargs.pop('notes', None)` | **Equivalent** | `notes` default `None` vs `''`: both falsy, same branch and the same stored (empty) note. |
+| `StockItem.save` | `32` | `+    event = ""` | **Equivalent** | `event = ""` vs `None`: both falsy, `event or nullcontext()` is unchanged. |
+| `StockItem.save` | `33` | `+        if (user or notes) or not has_pending_event(self):` | **Equivalent** | `or not pending` only adds an `audit_event(None, notes='', actor=None)` for a bare save; the audit layer records the same field diff anyway (probe: identical entry without notes/actor). |
+| `StockItem.save` | `48` | `+            deltas=None,` | **Equivalent** | the `deltas`/`quantity` arguments of the create event are redundant: the audit entry stores the full field diff (`changes` includes status and quantity; `additional_data` is empty). |
+| `StockItem.save` | `50` | `+            quantity=None,` | **Equivalent** | same: `quantity=` of the create event is redundant with `changes['quantity']`. |
+| `StockItem.save` | `53` | `` | **Equivalent** | same: dropping `deltas` of the create event leaves `changes` unchanged. |
+| `StockItem.save` | `55` | `+            )` | **Equivalent** | same: dropping the `quantity` argument. |
+| `StockItem.save` | `56` | `+            deltas={'XXstatusXX': self.status},` | **Equivalent** | same: the key name inside the redundant `deltas` is never read. |
+| `StockItem.save` | `57` | `+            deltas={'STATUS': self.status},` | **Equivalent** | same. |
+| `StockItem.save` | `60` | `+        super().save(**kwargs)` | **Equivalent** | argument of the base-class call is unused / identical |
+| `StockItem.save` | `61` | `+        super().save(*args, )` | **Equivalent** | argument of the base-class call is unused / identical |
+| `StockItem.update_serial_number` | `11` | `+    serial = str(getattr(self, 'serial', 'XXXX')).strip()` | **Equivalent** | same. |
+| `StockItem.update_serial_number` | `5` | `+    serial = str(getattr(self, 'serial', None)).strip()` | **Equivalent** | `getattr(self, 'serial', default)`: the field always exists, the default is never used. |
+| `StockItem.update_serial_number` | `8` | `+    serial = str(getattr(self, 'serial', )).strip()` | **Equivalent** | same. |
+| `StockItem.validate_batch_code` | `1` | `+    if InvenTree.ready.isReadOnlyCommand():` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.validate_batch_code` | `2` | `+        for plugin in registry.with_mixin(None):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockItem.validate_unique` | `1` | `+    super().validate_unique(None)` | **Equivalent** | argument of the base-class call is unused / identical |
+| `StockAddSerializer.save` | `21` | `+            if quantity is None and quantity <= 0:` | **Equivalent** | `quantity is None and quantity <= 0`: `quantity` is a required decimal (never None); a zero quantity is rejected again by the model guard `quantity <= 0` in `add_stock`. |
+| `StockAddSerializer.save` | `23` | `+            if quantity is None or quantity < 0:` | **Equivalent** | `quantity < 0` instead of `<= 0`: zero is rejected by the model-level guard (`add_stock` returns False), so skipping it in `save()` is redundant. |
+| `StockAddSerializer.save` | `29` | `+                if field_value := item.get(field_name, ):` | **Equivalent** | `item.get(field_name)` has the same default `None`. |
+| `StockAddSerializer.save` | `7` | `+    notes = data.get('notes', None)` | **Equivalent** | `notes` default `None` vs `''`: both stored as an empty note. |
+| `StockAddSerializer.save` | `9` | `+    notes = data.get('notes', )` | **Equivalent** | same (`get` without default returns `None`). |
+| `StockAdjustmentItemSerializer.__init__` | `11` | `+    self.require_non_zero = kwargs.pop('require_non_zero', None)` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
+| `StockAdjustmentItemSerializer.__init__` | `17` | `+    super().__init__(**kwargs)` | **Equivalent** | argument of the base-class call is unused / identical |
+| `StockAdjustmentItemSerializer.__init__` | `18` | `+    super().__init__(*args, )` | **Equivalent** | argument of the base-class call is unused / identical |
+| `StockAdjustmentItemSerializer.validate_pk` | `11` | `+            'stock_allow_out_of_stock_transfer', backup_value=False, ` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockAdjustmentItemSerializer.validate_pk` | `12` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=True, c` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockAdjustmentItemSerializer.validate_pk` | `17` | `+            check_status=None, check_quantity=False, check_in_product` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
+| `StockAdjustmentItemSerializer.validate_pk` | `18` | `+            check_status=False, check_quantity=None, check_in_product` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
+| `StockAdjustmentItemSerializer.validate_pk` | `19` | `+            check_status=False, check_quantity=False, check_in_produc` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
+| `StockAdjustmentItemSerializer.validate_pk` | `5` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=None, c` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
+| `StockAdjustmentItemSerializer.validate_pk` | `6` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, ` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
+| `StockAdjustmentItemSerializer.validate_pk` | `8` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', cache=False` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockAdjustmentItemSerializer.validate_pk` | `9` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, ` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockAdjustmentSerializer.to_internal_value` | `18` | `+                'location'` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
+| `StockAdjustmentSerializer.to_internal_value` | `19` | `+                'part', )` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
+| `StockAdjustmentSerializer.validate` | `1` | `+    super().validate(None)` | **Equivalent** | argument of the base-class call is unused / identical |
+| `StockAdjustmentSerializer.validate` | `4` | `+    items = data.get('items', None)` | **Equivalent** | `data.get('items', None)` followed by `if not items`: identical for a missing key. |
+| `StockAdjustmentSerializer.validate` | `6` | `+    items = data.get('items', )` | **Equivalent** | same. |
+| `StockRemoveSerializer.save` | `21` | `+            if quantity is None and quantity <= 0:` | **Equivalent** | same as StockAddSerializer.save #21 (guard redundant with `take_stock`). |
+| `StockRemoveSerializer.save` | `23` | `+            if quantity is None or quantity < 0:` | **Equivalent** | same as StockAddSerializer.save #23. |
+| `StockRemoveSerializer.save` | `29` | `+                if field_value := item.get(field_name, ):` | **Equivalent** | same as StockAddSerializer.save #29. |
+| `StockRemoveSerializer.validate` | `32` | `+            available = format(stock_item.quantity.normalize(), 'F')` | **Equivalent** | `format(Decimal, 'F')` and `'f'` give the same digits for every finite quantity (they differ only for NaN/Infinity, which the DecimalField rejects). |
+| `StockStatusCustomSerializer.__init__` | `1` | `+def __init__(self, *args, include_no_change: bool = True, **kwargs):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `10` | `+            choices = [(None, _(None)), *choices]` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `11` | `+            choices = [(None, _('XXNo ChangeXX')), *choices]` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `12` | `+            choices = [(None, _('no change')), *choices]` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `13` | `+            choices = [(None, _('NO CHANGE')), *choices]` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `17` | `+    if 'XXlabelXX' not in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `18` | `+    if 'LABEL' not in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `19` | `+    if 'label' in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `2` | `+    if 'XXchoicesXX' not in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `20` | `+        kwargs['label'] = None` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `23` | `+        kwargs['label'] = _(None)` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `24` | `+        kwargs['label'] = _('XXStatusXX')` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `25` | `+        kwargs['label'] = _('status')` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `26` | `+        kwargs['label'] = _('STATUS')` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `27` | `+    if 'XXhelp_textXX' not in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `28` | `+    if 'HELP_TEXT' not in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `29` | `+    if 'help_text' in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `3` | `+    if 'CHOICES' not in kwargs:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `30` | `+        kwargs['help_text'] = None` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `33` | `+        kwargs['help_text'] = _(None)` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `34` | `+        kwargs['help_text'] = _('XXStock item status codeXX')` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `35` | `+        kwargs['help_text'] = _('stock item status code')` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `36` | `+        kwargs['help_text'] = _('STOCK ITEM STATUS CODE')` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `37` | `+    super().__init__(**kwargs)` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `7` | `+        choices = list(stock.status_codes.StockStatus.items(custom=No` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+| `StockStatusCustomSerializer.__init__` | `8` | `+        choices = list(stock.status_codes.StockStatus.items(custom=Fa` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
+
+
 
 ## 4. Results by function (final analysis, before the second test round)
 | Function | Mutants | Killed | Survived |

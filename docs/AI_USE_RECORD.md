@@ -21,3 +21,9 @@ Tool: Claude Code (Anthropic, model Claude Sonnet 5.5) driven by the team. The i
 | 16 | 2026-11-16 | 13-14 | Defect log, RCA, completion/weekly report, viva guide, PDF | generated from data files and APIs | RCA statements are marked verified vs hypothesis; effort hours are labelled as agent time; human hours left blank on purpose |
 Prompts: the working conversation with the team is kept by the team; the full instructions given to the assistant were: complete the project end to end, autonomously, following only the project statement PDF, evaluating all work with independent reviewer agents (summarised in `docs/PLAN.md` and the review records under `reviews/`).
 
+
+### Addendum (2026-11-17/18) — mutmut, weekly reports, section letter
+| # | What the AI did | What the team/human decided or checked |
+|---|---|---|
+| 20 | Diagnosed why mutmut "could not run": newline-separated `setup.cfg` lists and a migrated database; ran the real mutmut (652 mutants); added 32 killing tests (`tests/team/unit/test_mutmut_killers.py`); re-checked every survivor directly; classified survivors | the instructor-facing claim "mutmut unusable" was withdrawn after the user challenged it ("whats the problem, fix it") |
+| 21 | Wrote the two weekly progress reports as checkpoints of the real commit timeline | user asked for the weekly reports to be completed; section letter B supplied by the user |

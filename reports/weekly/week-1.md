@@ -13,7 +13,7 @@
 | 7–8 E2E, usability, accessibility | 11-19…20 | 11-16 20:50, 21:00 | done | DEF-05 found and handled visibly; first accessibility fix on a branch |
 | 9 security | 11-20 | 11-16 21:10 | done | passive scan only; SEC-01…03 logged |
 | 10 performance/recovery | 11-21 | 11-16 21:22 | done | EC-3 missed → DEF-06, HOLD |
-| 11 mutation | 11-21…22 | 11-16 22:17 (first analysis) | done | mutmut abandoned (documented), own runner; 9 killing tests added |
+| 11 mutation | 11-21…22 | 11-16 22:17 (first analysis) | done | first mutmut attempt failed (set-up errors, fixed in report 2), own AST runner with custom operators used; 9 killing tests added |
 | 12 CI gate | 11-22…23 | 11-16 21:38 | done | threshold chosen from measured scores |
 | 13 defects/RCA/reports | 11-23…24 | 11-16 21:48 | done | RCA-1 (DEF-01), RCA-2 (DEF-06) |
 

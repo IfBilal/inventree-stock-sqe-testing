@@ -91,7 +91,7 @@ Gate: passive only; evidence reports.
 Gate: 4 raw outputs; limits compared.
 
 ## PHASE 11 — Mutation analysis (R-31) — within 8 marks
-1. mutmut on business-rule module; baseline score.
+1. mutmut 3.8.1 and the own runner (custom operators) on the business-rule module; baseline score.
 2. ≥ 2 custom operators from business rules (e.g., flip `>` limit comparison; swap role check) implemented via custom mutation script; report.
 3. Analyse ≥ 15 surviving mutants (equivalent / missing test / weak assertion); kill killable ones; final score.
 

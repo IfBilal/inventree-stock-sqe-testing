@@ -30,8 +30,8 @@ Tool versions: `docs/TOOL_VERSIONS.md`. Everything runs without Docker (SQLite; 
 
 ## Results at a glance (details in the documents)
 * In-scope coverage (32 functions): **100 % statements, 99.2 % branches** (one unreachable branch, defended).
-* Unit 279 passed + 8 strict xfail (open defects); API 244 passed + 35 strict xfail, criteria 100 %; E2E 61 passed with expected-failure flows pinned for DEF-02.
-* Mutation: 248 mutants, 238 killed, 10 proven equivalent → **100 % adjusted** (own runner; mutmut 3.8 could not run on this Django project — log kept).
+* Unit 316 passed + 8 strict xfail (open defects); API 244 passed + 35 strict xfail, criteria 100 %; E2E 61 passed with expected-failure flows pinned for DEF-02.
+* Mutation: **mutmut 3.8.1** (real run, 652 mutants on `stock/serializers.py` + `stock/models.py`): 509 killed, 107 survivors all classified (51 equivalent, 56 outside the add/remove scope) → in-scope **100 % adjusted**, raw 82.6 % over both whole files; plus our own runner with the 4 custom business-rule operators: 248 mutants, 100 % adjusted (`docs/MUTATION.md`).
 * Defects: 12 recorded (`docs/DEFECTS.md`); DEF-01 (Critical, silent data loss on over-removal) fixed through PR #13 with a red→green pipeline.
 * **Release decision: HOLD** — EC-1 not met (DEF-03 Critical and DEF-06 High open), EC-3 not met (19.5 % failures at 5 users on SQLite); EC-2 met with dispositions.
 

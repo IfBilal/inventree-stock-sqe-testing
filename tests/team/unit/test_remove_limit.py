@@ -44,3 +44,13 @@ def test_the_offending_entry_index_is_reported_and_nothing_is_applied(make_item,
         _remove({'items': [{'pk': a.pk, 'quantity': 3}, {'pk': b.pk, 'quantity': 9}]}, request_ctx)
     assert list(_errors(exc)['items'].keys()) == ['1']                                       # entries are validated in pk order: a, b
     assert (reload(a).quantity, reload(b).quantity) == (10, 5)                              # atomic: the valid entry was not applied
+
+
+@pytest.mark.parametrize('available,shown', [(100, '100'), (10, '10'), ('10.5', '10.5'), ('0.00001', '0.00001'), (1000, '1000')])
+@pytest.mark.req('FR-07', 'BR-1')
+def test_over_removal_message_is_exact_and_never_uses_scientific_notation(make_item, request_ctx, available, shown):
+    """Pins the exact text, so mutations of the message construction (normalize/format/placeholder) are detected."""
+    s = make_item(Decimal(str(available)))
+    with pytest.raises(ValidationError) as exc:
+        _remove({'items': [{'pk': s.pk, 'quantity': Decimal(str(available)) + 1}]}, request_ctx)
+    assert str(_errors(exc)['items']['0']['quantity'][0]) == f'Cannot remove more than the available quantity ({shown})'

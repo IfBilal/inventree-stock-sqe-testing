@@ -1,0 +1,437 @@
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_1
+-def __init__(self, *args, include_no_change: bool = False, **kwargs):
++def __init__(self, *args, include_no_change: bool = True, **kwargs):
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_2
+-    if 'choices' not in kwargs:
++    if 'XXchoicesXX' not in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_3
+-    if 'choices' not in kwargs:
++    if 'CHOICES' not in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_7
+-        choices = list(stock.status_codes.StockStatus.items(custom=True))
++        choices = list(stock.status_codes.StockStatus.items(custom=None))
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_8
+-        choices = list(stock.status_codes.StockStatus.items(custom=True))
++        choices = list(stock.status_codes.StockStatus.items(custom=False))
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_10
+-            choices = [(None, _('No Change')), *choices]
++            choices = [(None, _(None)), *choices]
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_11
+-            choices = [(None, _('No Change')), *choices]
++            choices = [(None, _('XXNo ChangeXX')), *choices]
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_12
+-            choices = [(None, _('No Change')), *choices]
++            choices = [(None, _('no change')), *choices]
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_13
+-            choices = [(None, _('No Change')), *choices]
++            choices = [(None, _('NO CHANGE')), *choices]
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_17
+-    if 'label' not in kwargs:
++    if 'XXlabelXX' not in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_18
+-    if 'label' not in kwargs:
++    if 'LABEL' not in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_19
+-    if 'label' not in kwargs:
++    if 'label' in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_20
+-        kwargs['label'] = _('Status')
++        kwargs['label'] = None
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_23
+-        kwargs['label'] = _('Status')
++        kwargs['label'] = _(None)
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_24
+-        kwargs['label'] = _('Status')
++        kwargs['label'] = _('XXStatusXX')
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_25
+-        kwargs['label'] = _('Status')
++        kwargs['label'] = _('status')
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_26
+-        kwargs['label'] = _('Status')
++        kwargs['label'] = _('STATUS')
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_27
+-    if 'help_text' not in kwargs:
++    if 'XXhelp_textXX' not in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_28
+-    if 'help_text' not in kwargs:
++    if 'HELP_TEXT' not in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_29
+-    if 'help_text' not in kwargs:
++    if 'help_text' in kwargs:
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_30
+-        kwargs['help_text'] = _('Stock item status code')
++        kwargs['help_text'] = None
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_33
+-        kwargs['help_text'] = _('Stock item status code')
++        kwargs['help_text'] = _(None)
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_34
+-        kwargs['help_text'] = _('Stock item status code')
++        kwargs['help_text'] = _('XXStock item status codeXX')
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_35
+-        kwargs['help_text'] = _('Stock item status code')
++        kwargs['help_text'] = _('stock item status code')
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_36
+-        kwargs['help_text'] = _('Stock item status code')
++        kwargs['help_text'] = _('STOCK ITEM STATUS CODE')
+=== stock.serializers.xǁStockStatusCustomSerializerǁ__init____mutmut_37
+-    super().__init__(*args, **kwargs)
++    super().__init__(**kwargs)
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁ__init____mutmut_11
+-    self.require_non_zero = kwargs.pop('require_non_zero', False)
++    self.require_non_zero = kwargs.pop('require_non_zero', None)
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁ__init____mutmut_17
+-    super().__init__(*args, **kwargs)
++    super().__init__(**kwargs)
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁ__init____mutmut_18
+-    super().__init__(*args, **kwargs)
++    super().__init__(*args, )
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_5
+-            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, cache=False
++            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=None, cache=False
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_6
+-            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, cache=False
++            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, cache=None
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_8
+-            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, cache=False
++            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', cache=False
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_9
+-            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, cache=False
+-        )
++            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, )
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_11
+-            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, cache=False
++            'stock_allow_out_of_stock_transfer', backup_value=False, cache=False
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_12
+-            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, cache=False
++            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=True, cache=False
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_17
+-            check_status=False, check_quantity=False, check_in_production=False
++            check_status=None, check_quantity=False, check_in_production=False
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_18
+-            check_status=False, check_quantity=False, check_in_production=False
++            check_status=False, check_quantity=None, check_in_production=False
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_19
+-            check_status=False, check_quantity=False, check_in_production=False
++            check_status=False, check_quantity=False, check_in_production=None
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_28
+-            raise ValidationError(_('Stock item is not in stock'))
++            raise ValidationError(_('XXStock item is not in stockXX'))
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_29
+-            raise ValidationError(_('Stock item is not in stock'))
++            raise ValidationError(_('stock item is not in stock'))
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_35
+-            raise ValidationError(_('Stock item is already in stock'))
++            raise ValidationError(_('XXStock item is already in stockXX'))
+=== stock.serializers.xǁStockAdjustmentItemSerializerǁvalidate_pk__mutmut_36
+-            raise ValidationError(_('Stock item is already in stock'))
++            raise ValidationError(_('stock item is already in stock'))
+=== stock.serializers.xǁStockAdjustmentSerializerǁto_internal_value__mutmut_18
+-                'part', 'location'
++                'location'
+=== stock.serializers.xǁStockAdjustmentSerializerǁto_internal_value__mutmut_19
+-                'part', 'location'
+-            )
++                'part', )
+=== stock.serializers.xǁStockAdjustmentSerializerǁvalidate__mutmut_1
+-    super().validate(data)
++    super().validate(None)
+=== stock.serializers.xǁStockAdjustmentSerializerǁvalidate__mutmut_4
+-    items = data.get('items', [])
++    items = data.get('items', None)
+=== stock.serializers.xǁStockAdjustmentSerializerǁvalidate__mutmut_6
+-    items = data.get('items', [])
++    items = data.get('items', )
+=== stock.serializers.xǁStockAddSerializerǁsave__mutmut_7
+-    notes = data.get('notes', '')
++    notes = data.get('notes', None)
+=== stock.serializers.xǁStockAddSerializerǁsave__mutmut_9
+-    notes = data.get('notes', '')
++    notes = data.get('notes', )
+=== stock.serializers.xǁStockAddSerializerǁsave__mutmut_21
+-            if quantity is None or quantity <= 0:
++            if quantity is None and quantity <= 0:
+=== stock.serializers.xǁStockAddSerializerǁsave__mutmut_23
+-            if quantity is None or quantity <= 0:
++            if quantity is None or quantity < 0:
+=== stock.serializers.xǁStockAddSerializerǁsave__mutmut_29
+-                if field_value := item.get(field_name, None):
++                if field_value := item.get(field_name, ):
+=== stock.serializers.xǁStockRemoveSerializerǁvalidate__mutmut_32
+-            available = format(stock_item.quantity.normalize(), 'f')
++            available = format(stock_item.quantity.normalize(), 'F')
+=== stock.serializers.xǁStockRemoveSerializerǁsave__mutmut_21
+-            if quantity is None or quantity <= 0:
++            if quantity is None and quantity <= 0:
+=== stock.serializers.xǁStockRemoveSerializerǁsave__mutmut_23
+-            if quantity is None or quantity <= 0:
++            if quantity is None or quantity < 0:
+=== stock.serializers.xǁStockRemoveSerializerǁsave__mutmut_29
+-                if field_value := item.get(field_name, None):
++                if field_value := item.get(field_name, ):
+=== stock.models.x_default_delete_on_deplete__mutmut_2
+-        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', True)
++        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', None)
+=== stock.models.x_default_delete_on_deplete__mutmut_4
+-        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', True)
++        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', )
+=== stock.models.x_default_delete_on_deplete__mutmut_6
+-        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', True)
++        return get_global_setting('stock_delete_depleted_default', True)
+=== stock.models.x_default_delete_on_deplete__mutmut_7
+-        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', True)
++        return get_global_setting('STOCK_DELETE_DEPLETED_DEFAULT', False)
+=== stock.models.xǁStockItemǁsave__mutmut_26
+-    notes = kwargs.pop('notes', '')
++    notes = kwargs.pop('notes', None)
+=== stock.models.xǁStockItemǁsave__mutmut_31
+-    notes = kwargs.pop('notes', '')
++    notes = kwargs.pop('notes', 'XXXX')
+=== stock.models.xǁStockItemǁsave__mutmut_32
+-    event = None
++    event = ""
+=== stock.models.xǁStockItemǁsave__mutmut_33
+-        if (user or notes) and not has_pending_event(self):
++        if (user or notes) or not has_pending_event(self):
+=== stock.models.xǁStockItemǁsave__mutmut_34
+-        if (user or notes) and not has_pending_event(self):
++        if (user and notes) and not has_pending_event(self):
+=== stock.models.xǁStockItemǁsave__mutmut_47
+-            user,
++            None,
+=== stock.models.xǁStockItemǁsave__mutmut_48
+-            deltas={'status': self.status},
++            deltas=None,
+=== stock.models.xǁStockItemǁsave__mutmut_49
+-            notes=notes,
++            notes=None,
+=== stock.models.xǁStockItemǁsave__mutmut_50
+-            quantity=float(self.quantity),
++            quantity=None,
+=== stock.models.xǁStockItemǁsave__mutmut_52
+-            user,
+=== stock.models.xǁStockItemǁsave__mutmut_53
+-            deltas={'status': self.status},
+=== stock.models.xǁStockItemǁsave__mutmut_54
+-            notes=notes,
+=== stock.models.xǁStockItemǁsave__mutmut_55
+-            quantity=float(self.quantity),
+-        )
++            )
+=== stock.models.xǁStockItemǁsave__mutmut_56
+-            deltas={'status': self.status},
++            deltas={'XXstatusXX': self.status},
+=== stock.models.xǁStockItemǁsave__mutmut_57
+-            deltas={'status': self.status},
++            deltas={'STATUS': self.status},
+=== stock.models.xǁStockItemǁsave__mutmut_60
+-        super().save(*args, **kwargs)
++        super().save(**kwargs)
+=== stock.models.xǁStockItemǁsave__mutmut_61
+-        super().save(*args, **kwargs)
++        super().save(*args, )
+=== stock.models.xǁStockItemǁdelete__mutmut_6
+-        'STOCK_ALLOW_DELETE_SERIALIZED', cache=False
++        'STOCK_ALLOW_DELETE_SERIALIZED', cache=None
+=== stock.models.xǁStockItemǁdelete__mutmut_8
+-        'STOCK_ALLOW_DELETE_SERIALIZED', cache=False
+-    ):
++        'STOCK_ALLOW_DELETE_SERIALIZED', ):
+=== stock.models.xǁStockItemǁdelete__mutmut_10
+-        'STOCK_ALLOW_DELETE_SERIALIZED', cache=False
++        'stock_allow_delete_serialized', cache=False
+=== stock.models.xǁStockItemǁdelete__mutmut_23
+-            'part', 'location', 'purchase_order__supplier'
++            'location', 'purchase_order__supplier'
+=== stock.models.xǁStockItemǁdelete__mutmut_24
+-            'part', 'location', 'purchase_order__supplier'
++            'part', 'purchase_order__supplier'
+=== stock.models.xǁStockItemǁdelete__mutmut_25
+-            'part', 'location', 'purchase_order__supplier'
+-        )
++            'part', 'location', )
+=== stock.models.xǁStockItemǁconvert_serial_to_int__mutmut_1
+-    if not InvenTree.ready.isReadOnlyCommand():
++    if InvenTree.ready.isReadOnlyCommand():
+=== stock.models.xǁStockItemǁconvert_serial_to_int__mutmut_2
+-        for plugin in registry.with_mixin(PluginMixinEnum.VALIDATION):
++        for plugin in registry.with_mixin(None):
+=== stock.models.xǁStockItemǁconvert_serial_to_int__mutmut_4
+-    if serial not in [None, '']:
++    if serial not in [None, 'XXXX']:
+=== stock.models.xǁStockItemǁupdate_serial_number__mutmut_5
+-    serial = str(getattr(self, 'serial', '')).strip()
++    serial = str(getattr(self, 'serial', None)).strip()
+=== stock.models.xǁStockItemǁupdate_serial_number__mutmut_8
+-    serial = str(getattr(self, 'serial', '')).strip()
++    serial = str(getattr(self, 'serial', )).strip()
+=== stock.models.xǁStockItemǁupdate_serial_number__mutmut_11
+-    serial = str(getattr(self, 'serial', '')).strip()
++    serial = str(getattr(self, 'serial', 'XXXX')).strip()
+=== stock.models.xǁStockItemǁupdate_serial_number__mutmut_17
+-        serial_int = int(serial_int)
++        serial_int = None
+=== stock.models.xǁStockItemǁupdate_serial_number__mutmut_18
+-        serial_int = int(serial_int)
++        serial_int = int(None)
+=== stock.models.xǁStockItemǁupdate_serial_number__mutmut_20
+-        if serial_int <= 0:
++        if serial_int <= 1:
+=== stock.models.xǁStockItemǁvalidate_unique__mutmut_1
+-    super().validate_unique(exclude)
++    super().validate_unique(None)
+=== stock.models.xǁStockItemǁvalidate_unique__mutmut_5
+-            self.part.validate_serial_number(self.serial, self, raise_error=True)
++            self.part.validate_serial_number(self.serial, None, raise_error=True)
+=== stock.models.xǁStockItemǁvalidate_unique__mutmut_8
+-            self.part.validate_serial_number(self.serial, self, raise_error=True)
++            self.part.validate_serial_number(self.serial, raise_error=True)
+=== stock.models.xǁStockItemǁvalidate_unique__mutmut_11
+-            raise ValidationError({'serial': exc.message})
++            raise ValidationError(None)
+=== stock.models.xǁStockItemǁvalidate_unique__mutmut_12
+-            raise ValidationError({'serial': exc.message})
++            raise ValidationError({'XXserialXX': exc.message})
+=== stock.models.xǁStockItemǁvalidate_unique__mutmut_13
+-            raise ValidationError({'serial': exc.message})
++            raise ValidationError({'SERIAL': exc.message})
+=== stock.models.xǁStockItemǁvalidate_batch_code__mutmut_1
+-    if not InvenTree.ready.isReadOnlyCommand():
++    if InvenTree.ready.isReadOnlyCommand():
+=== stock.models.xǁStockItemǁvalidate_batch_code__mutmut_2
+-        for plugin in registry.with_mixin(PluginMixinEnum.VALIDATION):
++        for plugin in registry.with_mixin(None):
+=== stock.models.xǁStockItemǁclean__mutmut_3
+-    if type(self.serial) is str:
++    if type(None) is str:
+=== stock.models.xǁStockItemǁclean__mutmut_6
+-    if type(self.batch) is str:
++    if type(None) is str:
+=== stock.models.xǁStockItemǁclean__mutmut_7
+-    if type(self.batch) is str:
++    if type(self.batch) is not str:
+=== stock.models.xǁStockItemǁclean__mutmut_9
+-    if not get_global_setting('STOCK_ALLOW_EDIT_SERIAL') and self.pk:
++    if not get_global_setting('STOCK_ALLOW_EDIT_SERIAL') or self.pk:
+=== stock.models.xǁStockItemǁclean__mutmut_10
+-    if not get_global_setting('STOCK_ALLOW_EDIT_SERIAL') and self.pk:
++    if get_global_setting('STOCK_ALLOW_EDIT_SERIAL') and self.pk:
+=== stock.models.xǁStockItemǁclean__mutmut_12
+-    if not get_global_setting('STOCK_ALLOW_EDIT_SERIAL') and self.pk:
++    if not get_global_setting('XXSTOCK_ALLOW_EDIT_SERIALXX') and self.pk:
+=== stock.models.xǁStockItemǁclean__mutmut_13
+-    if not get_global_setting('STOCK_ALLOW_EDIT_SERIAL') and self.pk:
++    if not get_global_setting('stock_allow_edit_serial') and self.pk:
+=== stock.models.xǁStockItemǁclean__mutmut_15
+-        if self.part.trackable and self.quantity != int(self.quantity):
++        if self.part.trackable and self.quantity == int(self.quantity):
+=== stock.models.xǁStockItemǁclean__mutmut_16
+-        if self.part.trackable and self.quantity != int(self.quantity):
++        if self.part.trackable and self.quantity != int(None):
+=== stock.models.xǁStockItemǁclean__mutmut_20
+-        raise ValidationError({'quantity': _('Quantity must be greater than zero')})
++        raise ValidationError({'XXquantityXX': _('Quantity must be greater than zero')})
+=== stock.models.xǁStockItemǁclean__mutmut_22
+-        raise ValidationError({'quantity': _('Quantity must be greater than zero')})
++        raise ValidationError({'quantity': _(None)})
+=== stock.models.xǁStockItemǁclean__mutmut_23
+-        raise ValidationError({'quantity': _('Quantity must be greater than zero')})
++        raise ValidationError({'quantity': _('XXQuantity must be greater than zeroXX')})
+=== stock.models.xǁStockItemǁclean__mutmut_24
+-        raise ValidationError({'quantity': _('Quantity must be greater than zero')})
++        raise ValidationError({'quantity': _('quantity must be greater than zero')})
+=== stock.models.xǁStockItemǁclean__mutmut_26
+-        if self.supplier_part is not None:
++        if self.supplier_part is None:
+=== stock.models.xǁStockItemǁclean__mutmut_28
+-                if self.quantity > 1:
++                if self.quantity >= 1:
+=== stock.models.xǁStockItemǁclean__mutmut_32
+-                        'quantity': _(
++                        'QUANTITY': _(
+=== stock.models.xǁStockItemǁclean__mutmut_33
+-                            'Quantity must be 1 for item with a serial number'
++                            None
+=== stock.models.xǁStockItemǁclean__mutmut_35
+-                            'Quantity must be 1 for item with a serial number'
++                            'quantity must be 1 for item with a serial number'
+=== stock.models.xǁStockItemǁclean__mutmut_36
+-                            'Quantity must be 1 for item with a serial number'
++                            'QUANTITY MUST BE 1 FOR ITEM WITH A SERIAL NUMBER'
+=== stock.models.xǁStockItemǁclean__mutmut_39
+-                            'Serial number cannot be set if quantity greater than 1'
++                            None
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_1
+-def get_sales_order_allocations(self, active=True, **kwargs):
++def get_sales_order_allocations(self, active=False, **kwargs):
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_3
+-    if filter_allocations := kwargs.get('filter_allocations'):
++    if filter_allocations := kwargs.get(None):
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_4
+-    if filter_allocations := kwargs.get('filter_allocations'):
++    if filter_allocations := kwargs.get('XXfilter_allocationsXX'):
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_5
+-    if filter_allocations := kwargs.get('filter_allocations'):
++    if filter_allocations := kwargs.get('FILTER_ALLOCATIONS'):
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_6
+-    if exclude_allocations := kwargs.get('exclude_allocations'):
++    if exclude_allocations := kwargs.get(None):
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_7
+-    if exclude_allocations := kwargs.get('exclude_allocations'):
++    if exclude_allocations := kwargs.get('XXexclude_allocationsXX'):
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_8
+-    if exclude_allocations := kwargs.get('exclude_allocations'):
++    if exclude_allocations := kwargs.get('EXCLUDE_ALLOCATIONS'):
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_9
+-    if active is True:
++    if active is not True:
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_10
+-    if active is True:
++    if active is False:
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_13
+-            line__order__status__in=SalesOrderStatusGroups.OPEN,
+=== stock.models.xǁStockItemǁget_sales_order_allocations__mutmut_14
+-            shipment__shipment_date=None,
+-        )
++            )
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_1
+-def get_transfer_order_allocations(self, active=True, **kwargs):
++def get_transfer_order_allocations(self, active=False, **kwargs):
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_3
+-    if filter_allocations := kwargs.get('filter_allocations'):
++    if filter_allocations := kwargs.get(None):
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_4
+-    if filter_allocations := kwargs.get('filter_allocations'):
++    if filter_allocations := kwargs.get('XXfilter_allocationsXX'):
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_5
+-    if filter_allocations := kwargs.get('filter_allocations'):
++    if filter_allocations := kwargs.get('FILTER_ALLOCATIONS'):
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_6
+-    if exclude_allocations := kwargs.get('exclude_allocations'):
++    if exclude_allocations := kwargs.get(None):
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_7
+-    if exclude_allocations := kwargs.get('exclude_allocations'):
++    if exclude_allocations := kwargs.get('XXexclude_allocationsXX'):
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_8
+-    if exclude_allocations := kwargs.get('exclude_allocations'):
++    if exclude_allocations := kwargs.get('EXCLUDE_ALLOCATIONS'):
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_9
+-    if active is True:
++    if active is not True:
+=== stock.models.xǁStockItemǁget_transfer_order_allocations__mutmut_10
+-    if active is True:
++    if active is False:
+=== stock.models.xǁStockItemǁis_in_stock__mutmut_12
+-    if check_quantity and self.quantity <= 0:
++    if check_quantity and self.quantity <= 1:
+=== stock.models.xǁStockItemǁ_apply_model_reference_fields__mutmut_3
+-        instance = deltas.pop(field, None) or kwargs.pop(field, None)
++        instance = deltas.pop(None, None) or kwargs.pop(field, None)
+=== stock.models.xǁStockItemǁ_apply_status_change__mutmut_4
+-    old_custom_status = self.get_custom_status()
++    old_custom_status = None
+=== stock.models.xǁStockItemǁ_apply_status_change__mutmut_16
+-        old_custom_status if old_custom_status else old_status_logical
++        old_custom_status if (old_custom_status) and False else old_status_logical
+=== stock.models.xǁStockItemǁ__str____mutmut_1
+-    if self.part.trackable and self.serial:
++    if self.part.trackable or self.serial:

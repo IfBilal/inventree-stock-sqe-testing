@@ -1564,6 +1564,236 @@
 "seq": []
 },
 {
+"id": "unit/test_mutmut_killers.py::test_a_save_with_only_notes_or_only_user_records_an_update_but_a_bare_save_does_not",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_a_single_unit_is_in_stock",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_a_zero_quantity_entry_is_skipped_and_the_next_entry_is_still_processed[_add-11]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_a_zero_quantity_entry_is_skipped_and_the_next_entry_is_still_processed[_remove-12]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_clean_blocks_editing_an_existing_serial_unless_the_setting_allows_it",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_clean_negative_quantity_error_key_and_message",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_clean_serial_with_quantity_above_one_error_keys_and_messages",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_clean_strips_serial_and_batch_and_serial_quantity_rules",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_clean_trackable_part_needs_an_integer_quantity",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_clean_zero_quantity_serial_and_negative_quantity",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_create_entry_has_the_created_type_the_notes_and_the_actor",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_creating_an_item_records_a_created_event",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_deleting_a_serialized_item_is_refused_with_the_exact_message",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_duplicate_serial_error_is_reported_on_the_serial_field",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_empty_items_list_message_is_exact",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_item_cannot_belong_to_itself_error_names_the_field",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_saving_an_existing_serialized_item_again_does_not_conflict_with_itself",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serial_int_boundaries[-0]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serial_int_boundaries[-5-5]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serial_int_boundaries[0-0]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serial_int_boundaries[1-1]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serial_int_boundaries[12-12]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serial_int_boundaries[None-0]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serial_int_boundaries[abc-0]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serializer_save_passes_the_optional_item_fields_and_user_on",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serializer_save_records_notes_and_the_acting_user[_add-11-15]",
+"outcome": "passed",
+"req": [
+"FR-02",
+"FR-06"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serializer_save_records_notes_and_the_acting_user[_remove-12-5]",
+"outcome": "passed",
+"req": [
+"FR-02",
+"FR-06"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serializer_save_without_notes_records_empty_notes[_add-11]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_serializer_save_without_notes_records_empty_notes[_remove-12]",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_update_entry_records_notes_without_user_and_user_without_notes",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_validate_pk_in_stock_messages_are_exact",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_mutmut_killers.py::test_validate_quantity_messages_are_exact",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
 "id": "unit/test_recovery.py::test_multi_item_request_failure_leaves_every_item_untouched_then_retry_applies_each_once",
 "outcome": "passed",
 "req": [
@@ -1614,6 +1844,56 @@
 "risk": [
 "PR-01"
 ],
+"seq": []
+},
+{
+"id": "unit/test_remove_limit.py::test_over_removal_message_is_exact_and_never_uses_scientific_notation[0.00001-0.00001]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-07"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_remove_limit.py::test_over_removal_message_is_exact_and_never_uses_scientific_notation[10-10]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-07"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_remove_limit.py::test_over_removal_message_is_exact_and_never_uses_scientific_notation[10.5-10.5]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-07"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_remove_limit.py::test_over_removal_message_is_exact_and_never_uses_scientific_notation[100-100]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-07"
+],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_remove_limit.py::test_over_removal_message_is_exact_and_never_uses_scientific_notation[1000-1000]",
+"outcome": "passed",
+"req": [
+"BR-1",
+"FR-07"
+],
+"risk": [],
 "seq": []
 },
 {
