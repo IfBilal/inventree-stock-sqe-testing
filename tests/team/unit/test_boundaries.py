@@ -87,7 +87,6 @@ def test_add_with_total_below_and_at_max_is_accepted(item, request_ctx, q, total
 
 @pytest.mark.req('BR-1')
 @pytest.mark.risk('PR-04')
-@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-03: total just above the maximum is accepted (baseline)')
 def test_add_with_total_just_above_max_is_rejected(item, request_ctx):
     with pytest.raises(ValidationError):
         _add(payload(item, '9999999990'), request_ctx)

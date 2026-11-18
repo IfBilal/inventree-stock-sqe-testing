@@ -54,10 +54,10 @@ def test_error_body_identifies_the_failing_field(manager, new_item):
     assert r.status_code == 400 and 'quantity' in r.json()['items']['0']
 
 
-def test_w05_500_error_body_hides_internal_details_but_reports_exception_class(manager):
-    """W-05 (DEF-04): unhandled exceptions leak the Python exception class name to clients (information disclosure, minor)."""
+def test_w05_malformed_request_no_longer_leaks_the_exception_class(manager):
+    """W-05 (DEF-04, fixed): malformed `items` is now a regular 400 validation error without an exception class name."""
     r = manager.post('/api/stock/add/', json={'items': None})
-    assert r.status_code == 500 and r.json()['error'] == 'TypeError'
+    assert r.status_code == 400 and 'error' not in r.json()
 
 
 def test_session_is_not_required_stateless_basic_auth(manager, new_item):

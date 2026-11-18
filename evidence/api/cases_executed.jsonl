@@ -29,9 +29,9 @@
 {"class": "min-at", "expected": "valid", "field": "offset", "id": "auditList:offset:BVA:min-at", "location": "query", "operation": "auditList", "outcome": "match", "technique": "BVA"}
 {"class": "min-above", "expected": "valid", "field": "offset", "id": "auditList:offset:BVA:min-above", "location": "query", "operation": "auditList", "outcome": "match", "technique": "BVA"}
 {"class": "missing-required", "expected": "invalid", "field": "items", "id": "stockAdd:items:EP:missing-required", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
-{"class": "null", "expected": "invalid", "field": "items", "id": "stockAdd:items:EP:null", "location": "body", "operation": "stockAdd", "outcome": "mismatch", "technique": "EP"}
-{"class": "not-an-array", "expected": "invalid", "field": "items", "id": "stockAdd:items:EP:not-an-array", "location": "body", "operation": "stockAdd", "outcome": "mismatch", "technique": "EP"}
-{"class": "object-instead-of-array", "expected": "invalid", "field": "items", "id": "stockAdd:items:EP:object-instead-of-array", "location": "body", "operation": "stockAdd", "outcome": "mismatch", "technique": "EP"}
+{"class": "null", "expected": "invalid", "field": "items", "id": "stockAdd:items:EP:null", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
+{"class": "not-an-array", "expected": "invalid", "field": "items", "id": "stockAdd:items:EP:not-an-array", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
+{"class": "object-instead-of-array", "expected": "invalid", "field": "items", "id": "stockAdd:items:EP:object-instead-of-array", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
 {"class": "minitems-below", "expected": "invalid", "field": "items", "id": "stockAdd:items:BVA:minitems-below", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
 {"class": "minitems-at", "expected": "valid", "field": "items", "id": "stockAdd:items:BVA:minitems-at", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
 {"class": "minitems-above", "expected": "valid", "field": "items", "id": "stockAdd:items:BVA:minitems-above", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
@@ -91,7 +91,7 @@
 {"class": "too-many-decimals", "expected": "invalid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:EP:too-many-decimals", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
 {"class": "below-range", "expected": "invalid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:EP:below-range", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
 {"class": "min-below", "expected": "invalid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:BVA:min-below", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
-{"class": "min-at", "expected": "invalid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:BVA:min-at", "location": "body", "operation": "stockAdd", "outcome": "mismatch", "technique": "BVA"}
+{"class": "min-at", "expected": "invalid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:BVA:min-at", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
 {"class": "min-above", "expected": "valid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:BVA:min-above", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
 {"class": "above-range", "expected": "invalid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:EP:above-range", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
 {"class": "max-below", "expected": "valid", "field": "items[].quantity", "id": "stockAdd:items[].quantity:BVA:max-below", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
@@ -118,9 +118,9 @@
 {"class": "maxlen-above", "expected": "invalid", "field": "notes", "id": "stockAdd:notes:BVA:maxlen-above", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "BVA"}
 {"class": "multibyte-at-maxlen", "expected": "valid", "field": "notes", "id": "stockAdd:notes:EP:multibyte-at-maxlen", "location": "body", "operation": "stockAdd", "outcome": "match", "technique": "EP"}
 {"class": "missing-required", "expected": "invalid", "field": "items", "id": "stockRemove:items:EP:missing-required", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
-{"class": "null", "expected": "invalid", "field": "items", "id": "stockRemove:items:EP:null", "location": "body", "operation": "stockRemove", "outcome": "mismatch", "technique": "EP"}
-{"class": "not-an-array", "expected": "invalid", "field": "items", "id": "stockRemove:items:EP:not-an-array", "location": "body", "operation": "stockRemove", "outcome": "mismatch", "technique": "EP"}
-{"class": "object-instead-of-array", "expected": "invalid", "field": "items", "id": "stockRemove:items:EP:object-instead-of-array", "location": "body", "operation": "stockRemove", "outcome": "mismatch", "technique": "EP"}
+{"class": "null", "expected": "invalid", "field": "items", "id": "stockRemove:items:EP:null", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
+{"class": "not-an-array", "expected": "invalid", "field": "items", "id": "stockRemove:items:EP:not-an-array", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
+{"class": "object-instead-of-array", "expected": "invalid", "field": "items", "id": "stockRemove:items:EP:object-instead-of-array", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
 {"class": "minitems-below", "expected": "invalid", "field": "items", "id": "stockRemove:items:BVA:minitems-below", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
 {"class": "minitems-at", "expected": "valid", "field": "items", "id": "stockRemove:items:BVA:minitems-at", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
 {"class": "minitems-above", "expected": "valid", "field": "items", "id": "stockRemove:items:BVA:minitems-above", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
@@ -180,7 +180,7 @@
 {"class": "too-many-decimals", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:EP:too-many-decimals", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
 {"class": "below-range", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:EP:below-range", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
 {"class": "min-below", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:min-below", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
-{"class": "min-at", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:min-at", "location": "body", "operation": "stockRemove", "outcome": "mismatch", "technique": "BVA"}
+{"class": "min-at", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:min-at", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
 {"class": "min-above", "expected": "valid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:min-above", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}
 {"class": "above-range", "expected": "invalid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:EP:above-range", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "EP"}
 {"class": "max-below", "expected": "valid", "field": "items[].quantity", "id": "stockRemove:items[].quantity:BVA:max-below", "location": "body", "operation": "stockRemove", "outcome": "match", "technique": "BVA"}

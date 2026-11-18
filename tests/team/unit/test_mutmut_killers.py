@@ -26,15 +26,16 @@ def test_serializer_save_without_notes_records_empty_notes(call, code, item, req
     assert history(item, code)[0].notes in ('', None) and not history(item, code)[0].notes
 
 
-@pytest.mark.parametrize('call,code', [(_add, ADD), (_remove, REMOVE)])
-def test_a_zero_quantity_entry_is_skipped_and_the_next_entry_is_still_processed(call, code, make_item, request_ctx):
+@pytest.mark.parametrize('cls,code', [('StockAddSerializer', ADD), ('StockRemoveSerializer', REMOVE)])
+def test_a_zero_quantity_entry_is_skipped_and_the_next_entry_is_still_processed(cls, code, make_item, request_ctx):
+    """Defensive branch of save(): zero is rejected at validation (DEF-02 fix), but a zero entry that reaches save() is skipped without ending the loop."""
+    import stock.serializers as S
     a, b = make_item(10), make_item(10)
-    s = __import__('stock.serializers', fromlist=['x'])
-    ser = (s.StockAddSerializer if call is _add else s.StockRemoveSerializer)(data={'items': [{'pk': a.pk, 'quantity': 0}, {'pk': b.pk, 'quantity': 2}]}, context=request_ctx)
-    ser.is_valid(raise_exception=True)
+    ser = getattr(S, cls)(context=request_ctx)
+    ser._validated_data = {'items': [{'pk': a, 'quantity': Decimal(0)}, {'pk': b, 'quantity': Decimal(2)}], 'notes': ''}
     ser.save()
     assert reload(a).quantity == 10 and history(a, code) == []
-    assert reload(b).quantity == (12 if call is _add else 8) and len(history(b, code)) == 1
+    assert reload(b).quantity == (12 if cls == 'StockAddSerializer' else 8) and len(history(b, code)) == 1
 
 
 def test_serializer_save_passes_the_optional_item_fields_and_user_on(item, request_ctx, user, monkeypatch):

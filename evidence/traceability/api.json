@@ -1,5 +1,50 @@
 [
 {
+"id": "api/test_baseline_pins.py::test_def02_fixed_zero_quantity_is_rejected_with_a_message[add]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-04"
+],
+"seq": []
+},
+{
+"id": "api/test_baseline_pins.py::test_def02_fixed_zero_quantity_is_rejected_with_a_message[remove]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-04"
+],
+"seq": []
+},
+{
+"id": "api/test_baseline_pins.py::test_def04_fixed_malformed_items_return_400_not_500[int]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-04"
+],
+"seq": []
+},
+{
+"id": "api/test_baseline_pins.py::test_def04_fixed_malformed_items_return_400_not_500[null]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-04"
+],
+"seq": []
+},
+{
+"id": "api/test_baseline_pins.py::test_def04_fixed_malformed_items_return_400_not_500[string]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-04"
+],
+"seq": []
+},
+{
 "id": "api/test_baseline_pins.py::test_pin_def01_over_removal_returns_201_and_clamps_to_zero",
 "outcome": "passed",
 "req": [],
@@ -328,6 +373,25 @@
 "seq": []
 },
 {
+"id": "api/test_def03_overflow_rejected.py::test_def03_fixed_overflowing_addition_is_rejected_and_the_item_stays_readable",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-04"
+],
+"seq": []
+},
+{
+"id": "api/test_def03_overflow_rejected.py::test_def03_fixed_the_stock_list_stays_available",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-01",
+"PR-04"
+],
+"seq": []
+},
+{
 "id": "api/test_endpoint_weaknesses.py::test_error_body_identifies_the_failing_field",
 "outcome": "passed",
 "req": [],
@@ -441,6 +505,13 @@
 },
 {
 "id": "api/test_endpoint_weaknesses.py::test_w05_500_error_body_hides_internal_details_but_reports_exception_class",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "api/test_endpoint_weaknesses.py::test_w05_malformed_request_no_longer_leaks_the_exception_class",
 "outcome": "passed",
 "req": [],
 "risk": [],
@@ -905,7 +976,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:EP:not-an-array]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "FR-03a"
 ],
@@ -917,7 +988,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:EP:null]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "FR-03a"
 ],
@@ -929,7 +1000,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items:EP:object-instead-of-array]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "FR-03a"
 ],
@@ -1524,7 +1595,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockAdd:items[].quantity:BVA:min-at]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "BR-1",
 "FR-03a",
@@ -2139,7 +2210,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:EP:not-an-array]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "FR-03a"
 ],
@@ -2151,7 +2222,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:EP:null]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "FR-03a"
 ],
@@ -2163,7 +2234,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items:EP:object-instead-of-array]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "FR-03a"
 ],
@@ -2798,7 +2869,7 @@
 },
 {
 "id": "api/test_generated_ep_bva.py::test_generated_case[stockRemove:items[].quantity:BVA:min-at]",
-"outcome": "xfailed",
+"outcome": "passed",
 "req": [
 "BR-1",
 "FR-03a",

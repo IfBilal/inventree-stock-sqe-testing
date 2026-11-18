@@ -5,11 +5,12 @@
 | stock/serializers.py | `StockAdjustmentItemSerializer.__init__` | 1816-1823 | 4 | 0 | 100 | 0 | 0 | 100 |   |
 | stock/serializers.py | `StockAdjustmentItemSerializer.validate_pk` | 1835-1850 | 9 | 0 | 100 | 8 | 0 | 100 |   |
 | stock/serializers.py | `StockAdjustmentItemSerializer.validate_quantity` | 1856-1864 | 6 | 0 | 100 | 4 | 0 | 100 |   |
-| stock/serializers.py | `StockAdjustmentSerializer.to_internal_value` | 1914-1936 | 10 | 0 | 100 | 4 | 0 | 100 |   |
-| stock/serializers.py | `StockAdjustmentSerializer.validate` | 1938-1951 | 7 | 0 | 100 | 2 | 0 | 100 |   |
-| stock/serializers.py | `StockAddSerializer.save` | 2015-2043 | 15 | 0 | 100 | 8 | 0 | 100 |   |
-| stock/serializers.py | `StockRemoveSerializer.validate` | 2049-2080 | 12 | 0 | 100 | 6 | 0 | 100 |   |
-| stock/serializers.py | `StockRemoveSerializer.save` | 2082-2110 | 15 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/serializers.py | `StockAdjustmentSerializer.to_internal_value` | 1914-1946 | 15 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/serializers.py | `StockAdjustmentSerializer.validate` | 1948-1961 | 7 | 0 | 100 | 2 | 0 | 100 |   |
+| stock/serializers.py | `StockAddSerializer.validate` | 2031-2060 | 11 | 0 | 100 | 6 | 0 | 100 |   |
+| stock/serializers.py | `StockAddSerializer.save` | 2062-2090 | 15 | 0 | 100 | 8 | 0 | 100 |   |
+| stock/serializers.py | `StockRemoveSerializer.validate` | 2099-2130 | 12 | 0 | 100 | 6 | 0 | 100 |   |
+| stock/serializers.py | `StockRemoveSerializer.save` | 2132-2160 | 15 | 0 | 100 | 8 | 0 | 100 |   |
 | stock/models.py | `StockItem.is_in_stock` | 2313-2343 | 10 | 0 | 100 | 8 | 0 | 100 |   |
 | stock/models.py | `StockItem.lock_quantity` | 3223-3252 | 8 | 0 | 100 | 4 | 0 | 100 |   |
 | stock/models.py | `StockItem.updateQuantity` | 3255-3293 | 17 | 0 | 100 | 6 | 0 | 100 |   |
@@ -35,4 +36,4 @@
 | InvenTree/permissions.py | `ModelPermission._queryset` | 216-230 | 7 | 0 | 100 | 4 | 1 | 75 |  ['(227, 230) JUSTIFIED'] |
 | InvenTree/permissions.py | `RolePermission.has_permission` | 255-292 | 19 | 0 | 100 | 10 | 0 | 100 |   |
 
-**Total in scope:** statements 297/297 (100.0 %), branches 131/132 (99.2 %). Uncovered branches: 1, of which defended in `docs/COVERAGE_JUSTIFICATION.md`: 1; **unjustified: 0**.
+**Total in scope:** statements 313/313 (100.0 %), branches 141/142 (99.3 %). Uncovered branches: 1, of which defended in `docs/COVERAGE_JUSTIFICATION.md`: 1; **unjustified: 0**.

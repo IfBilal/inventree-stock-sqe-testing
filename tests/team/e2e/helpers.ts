@@ -101,12 +101,6 @@ export async function expectBadge(page: Page, n: number | string) {
   await expect(page.getByText(new RegExp(`^quantity:\\s*${txt}$`, 'i')).first()).toBeVisible();
 }
 
-/** Mark a test as an EXPECTED failure on the unmodified baseline (the defect it exposes); it flips to failed when the defect is fixed. */
-export function knownDefect(test: any, id: string) {
-  test.fail(true, `Baseline defect ${id}: expected behaviour is not met (see GitHub issues); remove after the fix`);
-}
-
-
 /** Newest history entry of one event type with its decoded facts: delta, quantity before/after, notes, actor. */
 export async function lastEntry(a: APIRequestContext, pk: number, type: 11 | 12) {
   const h = (await history(a, pk, type)).sort((x: any, y: any) => y.pk - x.pk);

@@ -127,12 +127,6 @@ def test_remove_serializer_applies_and_records(item, request_ctx):
     assert reload(item).quantity == 6 and len(history(item, REMOVE)) == 1
 
 
-def test_characterisation_remove_save_skips_zero_quantity_item(item, request_ctx):
-    """Baseline characterisation of the defensive `quantity <= 0: continue` branch (DEF-02)."""
-    _remove(payload(item, 0), request_ctx)
-    assert reload(item).quantity == 10 and history(item, REMOVE) == []
-
-
 def test_remove_serializer_passes_optional_fields(item, request_ctx):
     _remove(payload(item, 1, batch='B6', packaging='crate'), request_ctx)
     got = reload(item)
@@ -146,7 +140,7 @@ def test_remove_serializer_blank_optional_fields_keep_existing_values(make_item,
     assert (got.batch, got.packaging) == ('KEEP', 'crate')
 
 
-# ------------------------------------------------------------- DEF-01/02/03: EXPECTED behaviour (fail on baseline)
+# ------------------------------------------------------------- DEF-01..04: EXPECTED behaviour (failed on the baseline; fixed in PRs #13 and the validation fix)
 @pytest.mark.req('FR-07', 'BR-1')
 @pytest.mark.risk('PR-01')
 def test_expected_over_removal_is_rejected_and_quantity_unchanged(item, request_ctx):
@@ -157,7 +151,6 @@ def test_expected_over_removal_is_rejected_and_quantity_unchanged(item, request_
 
 @pytest.mark.req('FR-03b')
 @pytest.mark.risk('PR-04')
-@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-02: zero quantity accepted as silent no-op (baseline)')
 @pytest.mark.parametrize('call', [_add, _remove], ids=['add', 'remove'])
 def test_expected_zero_quantity_is_rejected(item, request_ctx, call):
     with pytest.raises(ValidationError):
@@ -166,7 +159,6 @@ def test_expected_zero_quantity_is_rejected(item, request_ctx, call):
 
 @pytest.mark.req('BR-1')
 @pytest.mark.risk('PR-04')
-@pytest.mark.xfail(strict=True, raises=pytest.fail.Exception, reason='DEF-03: resulting quantity may exceed the representable maximum (baseline)')
 def test_expected_add_exceeding_representable_total_is_rejected(item, request_ctx):
     with pytest.raises(ValidationError):
         _add(payload(item, '9999999999.99999'), request_ctx)
@@ -174,7 +166,6 @@ def test_expected_add_exceeding_representable_total_is_rejected(item, request_ct
 
 @pytest.mark.req('FR-03a')
 @pytest.mark.risk('PR-04')
-@pytest.mark.xfail(strict=True, raises=(TypeError, AttributeError), reason='DEF-04: malformed `items` raises an unhandled exception (HTTP 500) instead of a validation error (baseline)')
 @pytest.mark.parametrize('bad', [None, 'abc', 5, {'a': 1}], ids=['null', 'string', 'int', 'dict'])
 def test_expected_malformed_items_is_a_validation_error_not_a_crash(request_ctx, bad):
     with pytest.raises(ValidationError):

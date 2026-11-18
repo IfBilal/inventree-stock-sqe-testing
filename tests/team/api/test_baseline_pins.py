@@ -1,5 +1,4 @@
-"""PINNED baseline behaviour of the defects (exact status codes and bodies). The strict-xfail generated cases only prove 'expected != actual';
-these tests pin WHAT the baseline actually does, so a xfail cannot hide a different failure. They must be updated/removed in the fix PR."""
+"""Exact status codes and bodies of the fixed defects DEF-02 and DEF-04 (they were pins of the baseline behaviour (201 / HTTP 500) until the fix PR)."""
 from decimal import Decimal
 import pytest
 from conftest import REMOVE, adjust, history, qty
@@ -9,13 +8,15 @@ MAXQ = '9999999999.99999'
 
 @pytest.mark.risk('PR-04')
 @pytest.mark.parametrize('op', ['add', 'remove'])
-def test_pin_def02_zero_quantity_returns_201_without_effect(op, manager, new_item):
+def test_def02_fixed_zero_quantity_is_rejected_with_a_message(op, manager, new_item):
     pk = new_item(10)
-    assert adjust(manager, op, pk, 0).status_code == 201 and qty(manager, pk) == 10 and history(manager, pk) == []
+    r = adjust(manager, op, pk, 0)
+    assert r.status_code == 400 and r.json()['items']['0']['quantity'] == ['Quantity must be greater than zero']
+    assert qty(manager, pk) == 10 and history(manager, pk) == []
 
 
 @pytest.mark.risk('PR-04')
-@pytest.mark.parametrize('bad, error', [(None, 'TypeError'), ('abc', 'AttributeError'), (5, 'TypeError')], ids=['null', 'string', 'int'])
-def test_pin_def04_malformed_items_returns_500_with_exception_class(bad, error, manager):
+@pytest.mark.parametrize('bad', [None, 'abc', 5], ids=['null', 'string', 'int'])
+def test_def04_fixed_malformed_items_return_400_not_500(bad, manager):
     r = manager.post('/api/stock/add/', json={'items': bad})
-    assert r.status_code == 500 and r.json()['error'] == error
+    assert r.status_code == 400 and 'items' in r.json()
