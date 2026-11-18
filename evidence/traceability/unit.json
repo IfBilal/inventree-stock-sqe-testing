@@ -2361,6 +2361,48 @@
 "seq": []
 },
 {
+"id": "unit/test_security_headers.py::test_an_existing_policy_of_the_response_is_kept",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_security_headers.py::test_csp_header_is_added_with_the_default_policy",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_security_headers.py::test_csp_header_is_not_added_for_the_admin_and_api_documentation",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_security_headers.py::test_session_and_csrf_cookies_default_to_samesite_lax",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_security_headers.py::test_sqlite_uses_immediate_transactions_with_a_busy_timeout",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
+"id": "unit/test_security_headers.py::test_the_policy_can_be_replaced_by_a_setting",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
 "id": "unit/test_state_transitions.py::test_deleted_item_cannot_be_adjusted",
 "outcome": "passed",
 "req": [],

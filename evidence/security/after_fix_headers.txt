@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
+Set-Cookie:  csrftoken=HvlTkjZfFJwY8eQ573YKBL2i0K3m8Jmg; expires=Wed, 17 Nov 2027 15:39:36 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+HTTP/1.1 403 Forbidden

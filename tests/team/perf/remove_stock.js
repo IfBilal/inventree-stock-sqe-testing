@@ -7,6 +7,9 @@ import { check } from 'k6';
 
 const BASE = __ENV.BASE_URL || 'http://127.0.0.1:8000';
 const VUS = parseInt(__ENV.VUS || '1');
+// AUTH=basic (default): every request carries HTTP Basic credentials, i.e. the server verifies the password hash on EACH request (stress variant);
+// AUTH=token: one API token is fetched in setup() and sent with every request (how a client normally works after logging in).
+const AUTH = __ENV.AUTH || 'basic';
 const basic = (u, p) => 'Basic ' + encoding_b64(`${u}:${p}`);
 import encoding from 'k6/encoding';
 function encoding_b64(s) { return encoding.b64encode(s); }
@@ -31,7 +34,11 @@ export function setup() {
   const r = http.post(`${BASE}/api/stock/`, JSON.stringify({ part: 1, location: 1, quantity: '5000000', delete_on_deplete: false }),
     { headers: { 'Content-Type': 'application/json', Authorization: basic('admin', 'admin12345') }, responseCallback: http.expectedStatuses(201) });
   const body = r.json();
-  return { pk: (Array.isArray(body) ? body[0] : body).pk };
+  let header = basic('manager', 'manager12345');
+  if (AUTH === 'token') {
+    header = 'Token ' + http.get(`${BASE}/api/user/token/`, { headers: { Authorization: basic('manager', 'manager12345') } }).json().token;
+  }
+  return { pk: (Array.isArray(body) ? body[0] : body).pk, auth: header };
 }
 
 export function adjust(data) {

@@ -3,43 +3,43 @@
   █ THRESHOLDS 
 
     http_req_duration{phase:hold}
-    ✗ 'p(95)<500' p(95)=521.79ms
+    ✗ 'p(95)<500' p(95)=593.73ms
 
     http_req_failed{phase:hold}
-    ✗ 'rate<0.01' rate=19.66%
+    ✓ 'rate<0.01' rate=0.00%
 
     http_reqs{phase:hold}
-    ✓ 'count>0' count=656
+    ✓ 'count>0' count=583
 
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 778    11.041522/s
-    checks_succeeded...: 80.59% 627 out of 778
-    checks_failed......: 19.40% 151 out of 778
+    checks_total.......: 682     9.610244/s
+    checks_succeeded...: 100.00% 682 out of 682
+    checks_failed......: 0.00%   0 out of 682
 
-    ✗ status is 201
-      ↳  80% — ✓ 627 / ✗ 151
+    ✓ status is 201
 
     HTTP
-    http_req_duration..............: avg=451.06ms min=257.54ms med=447.75ms max=595.81ms p(90)=509.6ms  p(95)=519.95ms p(99)=548.34ms
-      { expected_response:true }...: avg=446.07ms min=257.54ms med=441.79ms max=595.81ms p(90)=499.78ms p(95)=513.76ms p(99)=535.33ms
-      { phase:hold }...............: avg=457.7ms  min=393.74ms med=449.48ms max=595.81ms p(90)=509.89ms p(95)=521.79ms p(99)=548.17ms
-    http_req_failed................: 19.38% 151 out of 779
-      { phase:hold }...............: 19.66% 129 out of 656
-    http_reqs......................: 779    11.055715/s
-      { phase:hold }...............: 656    9.310075/s
+    http_req_duration..............: avg=516.72ms min=442.78ms med=512.68ms max=884.9ms  p(90)=575.8ms  p(95)=593.88ms p(99)=641.9ms 
+      { expected_response:true }...: avg=516.72ms min=442.78ms med=512.68ms max=884.9ms  p(90)=575.8ms  p(95)=593.88ms p(99)=641.9ms 
+      { phase:hold }...............: avg=516.5ms  min=443.8ms  med=511.78ms max=884.9ms  p(90)=575.8ms  p(95)=593.73ms p(99)=641.9ms 
+    http_req_failed................: 0.00%  0 out of 683
+      { phase:hold }...............: 0.00%  0 out of 583
+    http_reqs......................: 683    9.624335/s
+      { phase:hold }...............: 583    8.215209/s
 
     EXECUTION
-    iteration_duration.............: avg=451.49ms min=257.9ms  med=448.01ms max=595.97ms p(90)=509.78ms p(95)=520.23ms p(99)=548.63ms
-    iterations.....................: 778    11.041522/s
-    vus............................: 5      min=5          max=5 
-    vus_max........................: 10     min=10         max=10
+    iteration_duration.............: avg=517ms    min=443.01ms med=512.94ms max=885.12ms p(90)=576.02ms p(95)=594.64ms p(99)=642.12ms
+    iterations.....................: 682    9.610244/s
+    vus............................: 5      min=5        max=6 
+    vus_max........................: 10     min=10       max=10
 
     NETWORK
-    data_received..................: 489 kB 6.9 kB/s
-    data_sent......................: 176 kB 2.5 kB/s
+    data_received..................: 581 kB 8.2 kB/s
+    data_sent......................: 154 kB 2.2 kB/s
 
 
 
-time="2026-11-16T21:20:41+05:00" level=error msg="thresholds on metrics 'http_req_duration{phase:hold}, http_req_failed{phase:hold}' have been crossed"
+time="2026-11-18T20:05:49+05:00" level=error msg="thresholds on metrics 'http_req_duration{phase:hold}' have been crossed"
+k6 exit code 99 (99 = a threshold was crossed, which is a RESULT, not a script error)

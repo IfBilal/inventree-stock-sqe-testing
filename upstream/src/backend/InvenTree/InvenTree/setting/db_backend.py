@@ -227,7 +227,7 @@ def set_mysql_options(db_options: dict):
     # Timeout values
     if 'connect_timeout' not in db_options:
         db_options['connect_timeout'] = int(
-            get_setting('INVENTREE_DB_TIMEOUT', 'database.timeout', 10)
+            get_setting('INVENTREE_DB_TIMEOUT', 'database.timeout', 30)
         )
 
     # MariaDB's default isolation level is Repeatable Read which is
@@ -252,20 +252,19 @@ def set_sqlite_options(db_options: dict):
     - https://docs.djangoproject.com/en/5.0/ref/databases/#sqlite-notes
     - https://docs.djangoproject.com/en/6.0/ref/databases/#database-is-locked-errors
     """
-    import InvenTree.ready
-
     # Specify minimum timeout behavior for SQLite connections
     if 'timeout' not in db_options:
         db_options['timeout'] = int(
-            get_setting('INVENTREE_DB_TIMEOUT', 'database.timeout', 10)
+            get_setting('INVENTREE_DB_TIMEOUT', 'database.timeout', 30)
         )
 
-    # Specify the transaction mode for the database
-    # For the backend worker thread, IMMEDIATE mode is used,
-    # it has been determined to provide better protection against database locks in the worker thread
-    db_options['transaction_mode'] = (
-        'IMMEDIATE' if InvenTree.ready.isInWorkerThread() else 'DEFERRED'
-    )
+    # Specify the transaction mode for the database.
+    # IMMEDIATE takes the write lock when a transaction starts and then waits (up to 'timeout') for it. With DEFERRED (the previous default for
+    # web requests) a transaction that reads first and writes later cannot upgrade its lock while another writer is active and fails at once with
+    # "database is locked" - the busy timeout does not apply to a lock upgrade - so concurrent stock adjustments answered HTTP 500 (DEF-06).
+    db_options['transaction_mode'] = get_setting(
+        'INVENTREE_DB_TRANSACTION_MODE', 'database.transaction_mode', 'IMMEDIATE'
+    ).upper()
 
     # SQLite's default isolation level is Serializable due to SQLite's
     # single writer implementation.  Presumably as a result of this, it is

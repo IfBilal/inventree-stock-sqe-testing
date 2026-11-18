@@ -1,0 +1,9 @@
+date: 2026-11-16T21:11:57+05:00
+commit: 66a9d1016a925a74168e33fbaa90072830bc25a8
+kernel: Linux 7.0.0-38-generic
+cpu: 12th Gen Intel(R) Core(TM) i5-1235U x12
+memory: 15Gi
+python: Python 3.12.3
+k6: k6 v2.3.0 (commit/e088784614, go1.26.8, linux/amd64)
+server: Django runserver (single process, threaded), SQLite, DEBUG=False
+operation: POST /api/stock/remove/ quantity 1 (manager)
