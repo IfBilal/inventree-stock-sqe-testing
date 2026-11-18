@@ -17,6 +17,7 @@ def gh(*args):
 
 defects = J('docs/defects.json')
 open_def = [d for d in defects if d['status'].startswith('Open')]
+n_closed = sum(1 for d in defects if d['status'].startswith('Closed'))
 crit_high_open = [d for d in open_def if d['severity'] in ('Critical', 'High')]
 mut = J('evidence/mutation/results.json')
 eq = J('docs/mutation_equivalents.json')
@@ -73,14 +74,14 @@ o = ['# TEST COMPLETION REPORT AND RELEASE / HOLD DECISION\n',
      '| Accessibility | Lighthouse accessibility 78 → 85 and SEO 75 → 83 on the fixed screen; image-alt and landmark-one-main resolved; remaining issues logged | `docs/ACCESSIBILITY.md` |',
      f"| Security | access matrix {sum(1 for x in am if x['ok'])}/{len(am)}; ZAP passive ({zmsg_n} messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |",
      '| Performance and recovery | targets declared first; 1 vs 5 users × 2 runs; failure-and-recovery test with test double (rollback, retry, no duplicates) | `docs/PERFORMANCE.md` |',
-     f"| Mutation | {mut['total']} mutants, raw {mut['score_raw']} %, adjusted **{mut_adj:.1f} %** (10 survivors proven equivalent, 16 killed by added tests over two rounds); 4 custom operators | `docs/MUTATION.md` |",
+     f"| Mutation | {mut['total']} mutants, raw {mut['score_raw']} %, adjusted **{mut_adj:.1f} %** (the survivors are proven equivalent, the others were killed by added tests over two rounds); 4 custom operators | `docs/MUTATION.md` |",
      '| CI quality gate | 8-job pipeline, branch protection, no escape hatches, fix PR red→green, blocked PR | `docs/CI_QUALITY_GATE.md` |',
      f"| Requirements coverage | tested {req_tested}/{req_total}, verified passing {req_ver}/{req_total} | `docs/TRACEABILITY.md` |",
      '\n## 3. Tested / not tested (scope and residual gaps)\n| Tested | Not tested (and why) |\n|---|---|\n| Both workflows (add/remove), BR-1…BR-4, FR-01…FR-11, roles manager/viewer/anonymous, UI + API + model level, SQLite, Basic/session auth | transfer, count, serialization, merge, disassemble workflows (out of scope); purchase/sales/build orders; plugins; PostgreSQL/MySQL behaviour and true row locking (no server available — assumption A-4); OAuth2 token authentication; mobile/barcode UIs; i18n; ZAP **active** scanning (statement requires passive only); frontend unit tests |',
      '\n## 4. Open defects (GitHub Issues; triage in `docs/DEFECTS.md`)\n| ID | Issue | Title | Severity | Priority | Status |\n|---|---|---|---|---|---|']
 for d in defects:
     o.append(f"| {d['id']} | [#{d['issue']}](https://github.com/{REPO}/issues/{d['issue']}) | {d['title']} | {d['severity']} | {d['priority']} | {d['status']} |")
-o.append('\nPareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 2 closed defects reopened (target ≤ 10 %).\n')
+o.append(f'\nPareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of {n_closed} closed defects reopened (target ≤ 10 %).\n')
 o.append('## 5. Residual risk per risk (register `docs/RISK_REGISTER.md`; re-assessed from evidence)\n| Risk | Initial L×I | Evidence-based residual L×I | Rationale | Linked defects |\n|---|---|---|---|---|')
 RES = [('PR-01', 25, '1×5 = 5', 'over-removal rejected after the fix; limit BVA at 3 levels; CBR-1 mutants 2/2 killed', 'DEF-01 (fixed), DEF-03'),
        ('PR-02', 10, '1×5 = 5', f'access matrix {sum(1 for x in am if x["ok"])}/{len(am)}; no side effect on denied calls; CSP header and SameSite=Lax added (PR #18)', 'SEC-01, SEC-02 (fixed)'),
@@ -128,10 +129,10 @@ w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-1
      '| Final PDF and zip | 11-18 | **done** | section B; human review hours estimated and recorded |',
      '\n## 2. GQM metrics now (definitions and targets: `docs/GQM.md`)\n| Goal | Metric | Value | Target | Reading |\n|---|---|---|---|---|',
      f"| G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc {sonar.get('ncloc')}) | {len([d for d in defects if d['id'].startswith('DEF')])} ÷ 5.114 = **{len([d for d in defects if d['id'].startswith('DEF')]) / 5.114:.2f}/KLOC** (all 12 findings: {len(defects) / 5.114:.2f}) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |",
-     f"| G2 Cover requirements | Requirements coverage | tested **{req_tested}/{req_total}**, verified passing {req_ver}/{req_total} | 100 % tested | FR-07's over-removal rule is now passing (DEF-01 fixed); FR-03b stays unverified until DEF-02 is fixed |",
-     '| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 2 = **0 %** (DEF-01, A11Y-01 closed) | ≤ 10 % | met, on a small sample |',
+     f"| G2 Cover requirements | Requirements coverage | tested **{req_tested}/{req_total}**, verified passing {req_ver}/{req_total} | 100 % tested | all requirements have a passing test since DEF-01 and DEF-02 are fixed |",
+     f'| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ {n_closed} = **0 %** ({n_closed} defects closed, none reopened) | ≤ 10 % | met |',
      f"| G4 Effective tests | Mutation score (adjusted) | **{mut_adj:.1f} %** (raw {mut['score_raw']} %) | ≥ 85 % (CI gate 95 %) | met; the gate itself was tightened after PR #16 |",
-     '\n## 3. Control actions taken in this period\n- Mutation gate 85 → 90 → **95 %** (evidence: PR #16 run 43927877708 passed at 90.4 %, run 43933840489 blocked at 94.3 %).\n- Merge of PR #15 by admin bypass was not used; the branch was updated and the pipeline re-run to green instead (strict branch protection).\n- Keyboard test made independent of the focus-trap start state after it failed in CI only (run 43931016096).\n- Open Critical/High at the end: DEF-03, DEF-06 → release decision stays **HOLD** (`docs/COMPLETION_REPORT.md`).\n',
+     '\n## 3. Control actions taken in this period\n- Mutation gate 85 → 90 → **95 %** (evidence: PR #16 run 43927877708 passed at 90.4 %, run 43933840489 blocked at 94.3 %).\n- Merge of PR #15 by admin bypass was not used; the branch was updated and the pipeline re-run to green instead (strict branch protection).\n- Keyboard test made independent of the focus-trap start state after it failed in CI only (run 43931016096).\n- No Critical/High defect is open at the end; the release decision stays **HOLD** only because EC-3 (5-user p95) is not met (`docs/COMPLETION_REPORT.md`).\n',
      f"## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)\nAgent hours logged for the whole project: **{tot_agent:.2f} h** against a three-point estimate of 70.0 h (the estimate assumed human effort; human review hours are estimated at 32.0 h in `docs/EFFORT_NOTE.md`). The corrective work of this period (review rounds, PR fixes, final package) is part of the rows \"CI quality gate + PRs\", \"Defects, RCA, reports\" and \"Final PDF + package\".\n",
      '## 5. Plan for the next period (after submission)\nReduce the per-request cost of the write path or move to PostgreSQL and re-run the k6 protocol (EC-3); migrate to react-router 7 (SEC-03); keyboard Enter-to-submit and contrast fixes (UX-01, A11Y-02); investigate the first-login failure (DEF-05).\n']
 os.makedirs(os.path.join(R, 'reports/weekly'), exist_ok=True)

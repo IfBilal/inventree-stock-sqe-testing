@@ -45,60 +45,6 @@
 "seq": []
 },
 {
-"id": "api/test_baseline_pins.py::test_pin_def01_over_removal_returns_201_and_clamps_to_zero",
-"outcome": "passed",
-"req": [],
-"risk": [
-"PR-01"
-],
-"seq": []
-},
-{
-"id": "api/test_baseline_pins.py::test_pin_def02_zero_quantity_returns_201_without_effect[add]",
-"outcome": "passed",
-"req": [],
-"risk": [
-"PR-04"
-],
-"seq": []
-},
-{
-"id": "api/test_baseline_pins.py::test_pin_def02_zero_quantity_returns_201_without_effect[remove]",
-"outcome": "passed",
-"req": [],
-"risk": [
-"PR-04"
-],
-"seq": []
-},
-{
-"id": "api/test_baseline_pins.py::test_pin_def04_malformed_items_returns_500_with_exception_class[int]",
-"outcome": "passed",
-"req": [],
-"risk": [
-"PR-04"
-],
-"seq": []
-},
-{
-"id": "api/test_baseline_pins.py::test_pin_def04_malformed_items_returns_500_with_exception_class[null]",
-"outcome": "passed",
-"req": [],
-"risk": [
-"PR-04"
-],
-"seq": []
-},
-{
-"id": "api/test_baseline_pins.py::test_pin_def04_malformed_items_returns_500_with_exception_class[string]",
-"outcome": "passed",
-"req": [],
-"risk": [
-"PR-04"
-],
-"seq": []
-},
-{
 "id": "api/test_business_rules_api.py::test_add_remove_add_sequence_updates_balance_and_history_in_order",
 "outcome": "passed",
 "req": [
@@ -224,15 +170,6 @@
 "seq": [
 "S7-atomic-multi"
 ]
-},
-{
-"id": "api/test_business_rules_api.py::test_remove_from_depleted_item_is_ignored",
-"outcome": "passed",
-"req": [
-"BR-3"
-],
-"risk": [],
-"seq": []
 },
 {
 "id": "api/test_business_rules_api.py::test_remove_from_depleted_item_is_rejected",
@@ -373,6 +310,24 @@
 "seq": []
 },
 {
+"id": "api/test_concurrency_after_fix.py::test_concurrent_over_removal_never_makes_the_quantity_negative",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-08"
+],
+"seq": []
+},
+{
+"id": "api/test_concurrency_after_fix.py::test_concurrent_removals_from_one_item_all_succeed_and_the_final_quantity_is_exact",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-08"
+],
+"seq": []
+},
+{
 "id": "api/test_def03_overflow_rejected.py::test_def03_fixed_overflowing_addition_is_rejected_and_the_item_stays_readable",
 "outcome": "passed",
 "req": [],
@@ -498,13 +453,6 @@
 },
 {
 "id": "api/test_endpoint_weaknesses.py::test_w04_pk_given_as_numeric_string_is_accepted",
-"outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "api/test_endpoint_weaknesses.py::test_w05_500_error_body_hides_internal_details_but_reports_exception_class",
 "outcome": "passed",
 "req": [],
 "risk": [],
@@ -3286,25 +3234,6 @@
 ],
 "risk": [
 "PR-01",
-"PR-04"
-],
-"seq": []
-},
-{
-"id": "api/test_zz_corrupting_pins.py::test_pin_def03_one_corrupted_item_breaks_the_whole_stock_list",
-"outcome": "passed",
-"req": [],
-"risk": [
-"PR-01",
-"PR-04"
-],
-"seq": []
-},
-{
-"id": "api/test_zz_corrupting_pins.py::test_pin_def03_overflow_makes_the_item_unreadable",
-"outcome": "passed",
-"req": [],
-"risk": [
 "PR-04"
 ],
 "seq": []

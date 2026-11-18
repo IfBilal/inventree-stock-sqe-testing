@@ -25,5 +25,12 @@ Prompts: the working conversation with the team is kept by the team; the full in
 ### Addendum (2026-11-17/18) — mutmut, weekly reports, section letter
 | # | What the AI did | What the team/human decided or checked |
 |---|---|---|
+| 17 | Fix pull request for DEF-01 (red→green pipeline), blocked pull request #14, accessibility fix PR #15 | tests-first commit, fix commit, CI runs; I read every diff and the run results |
+| 18 | Review-driven corrections (graders' findings, contradictions between documents, stale numbers) | reports regenerated from evidence files instead of hand-edited text |
+| 19 | PR #16 (killing tests removed) and threshold change 90 % → 95 % | the first run passed at 90.4 %, so the gate was tightened; the re-run was blocked at 94.3 % |
 | 20 | Diagnosed why mutmut "could not run": newline-separated `setup.cfg` lists and a migrated database; ran the real mutmut (652 mutants); added 32 killing tests (`tests/team/unit/test_mutmut_killers.py`); re-checked every survivor directly; classified survivors | the instructor-facing claim "mutmut unusable" was withdrawn after the user challenged it ("whats the problem, fix it") |
 | 21 | Wrote the two weekly progress reports as checkpoints of the real commit timeline | user asked for the weekly reports to be completed; section letter B supplied by the user |
+| 22 | Fixes DEF-02/03/04 (PR #17) and DEF-06, SEC-01, SEC-02 (PR #18); k6 re-measurement incl. the token-auth and gunicorn variants; mutation re-run on the final code (263 mutants) | each fix merged only after a green pipeline; the p95 gap (EC-3) was reported, not hidden |
+
+### Final-state statement (supersedes earlier rows where they differ)
+Row 8 listed an early unit-test count and row 14 said mutmut could not run: both are **outdated**. Final state: 338 unit tests (0 expected failures), 252 API tests passed + 27 strict-xfail upstream weaknesses, 57 browser tests, mutmut 3.8.1 ran for real (652 mutants) in addition to the custom runner (263 mutants). Prompts: the working prompt history is the Claude Code session transcript on the team machine (not copied to the repository); every AI output was checked by running the tools, by CI, and by independent grader agents (`reviews/README.md`). The team members must be able to explain each owned area (`docs/VIVA_PREP.md`).

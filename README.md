@@ -30,10 +30,10 @@ Tool versions: `docs/TOOL_VERSIONS.md`. Everything runs without Docker (SQLite; 
 
 ## Results at a glance (details in the documents)
 * In-scope coverage (32 functions): **100 % statements, 99.2 % branches** (one unreachable branch, defended).
-* Unit 337 passed (0 expected failures); API 250 passed + 27 strict xfail (loose typing / unvalidated audit parameters of upstream); E2E 57 passed (0 expected failures); API coverage criteria 100 %.
-* Mutation: **mutmut 3.8.1** (real run, 652 mutants on `stock/serializers.py` + `stock/models.py`): 509 killed, 107 survivors all classified (51 equivalent, 56 outside the add/remove scope) → in-scope **100 % adjusted**, raw 82.6 % over both whole files; plus our own runner with the 4 custom business-rule operators: 248 mutants, 100 % adjusted (`docs/MUTATION.md`).
+* Unit 338 passed (0 expected failures); API 252 passed + 27 strict xfail (loose typing / unvalidated audit parameters of upstream); E2E 57 passed (0 expected failures); API coverage criteria 100 %.
+* Mutation: **mutmut 3.8.1** (real run, 652 mutants on `stock/serializers.py` + `stock/models.py`): 509 killed, 107 survivors, every one classified (51 equivalent, 56 outside the add/remove scope; raw 82.6 %, in-scope 90.0 % raw / 100 % after excluding the equivalents); plus our own runner with the 4 custom business-rule operators on the final code: 263 mutants, 254 killed, 9 equivalent → 100 % adjusted (96.6 % raw). Adjusted scores rest on the team's documented equivalence rulings (`docs/MUTATION.md`).
 * Defects: 12 recorded (`docs/DEFECTS.md`); **9 fixed through pull requests merged after a green pipeline** (DEF-01 #13, DEF-02/03/04 #17, DEF-06 + SEC-01/02 #18, A11Y-01 #15); SEC-03 accepted; DEF-05, A11Y-02, UX-01 open (Medium/Low).
 * **Release decision: HOLD** — EC-1 and EC-2 met; EC-3 not met: at 5 users failures are 0 % (were 19.5 %) but p95 is 545–556 ms against the declared 500 ms (`docs/COMPLETION_REPORT.md`).
 
 ## Honest limitations
-Human review hours are blank in `docs/EFFORT_LOG.csv` for the members to fill; AI assistance is documented in `docs/AI_USE_RECORD.md`; the commit history needs each member's own commits before submission.
+Human review hours (`docs/EFFORT_LOG.csv`) are **estimates** (32 h) that each member confirms; AI assistance is documented in `docs/AI_USE_RECORD.md` (prompt history = the Claude Code session transcript on the team machine); mutation scores that are "adjusted" depend on the team's documented equivalence rulings (raw scores are reported next to them); the 5-user p95 of the remove operation (545–556 ms) still misses the declared 500 ms (EC-3), hence HOLD.

@@ -22,15 +22,15 @@ Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: t
 | Goal | Metric | Value | Target | Reading |
 |---|---|---|---|---|
 | G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc 5114) | 6 ÷ 5.114 = **1.17/KLOC** (all 12 findings: 2.35) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |
-| G2 Cover requirements | Requirements coverage | tested **16/16**, verified passing 16/16 | 100 % tested | FR-07's over-removal rule is now passing (DEF-01 fixed); FR-03b stays unverified until DEF-02 is fixed |
-| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 2 = **0 %** (DEF-01, A11Y-01 closed) | ≤ 10 % | met, on a small sample |
+| G2 Cover requirements | Requirements coverage | tested **16/16**, verified passing 16/16 | 100 % tested | all requirements have a passing test since DEF-01 and DEF-02 are fixed |
+| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 8 = **0 %** (8 defects closed, none reopened) | ≤ 10 % | met |
 | G4 Effective tests | Mutation score (adjusted) | **100.0 %** (raw 96.6 %) | ≥ 85 % (CI gate 95 %) | met; the gate itself was tightened after PR #16 |
 
 ## 3. Control actions taken in this period
 - Mutation gate 85 → 90 → **95 %** (evidence: PR #16 run 43927877708 passed at 90.4 %, run 43933840489 blocked at 94.3 %).
 - Merge of PR #15 by admin bypass was not used; the branch was updated and the pipeline re-run to green instead (strict branch protection).
 - Keyboard test made independent of the focus-trap start state after it failed in CI only (run 43931016096).
-- Open Critical/High at the end: DEF-03, DEF-06 → release decision stays **HOLD** (`docs/COMPLETION_REPORT.md`).
+- No Critical/High defect is open at the end; the release decision stays **HOLD** only because EC-3 (5-user p95) is not met (`docs/COMPLETION_REPORT.md`).
 
 ## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)
 Agent hours logged for the whole project: **16.55 h** against a three-point estimate of 70.0 h (the estimate assumed human effort; human review hours are estimated at 32.0 h in `docs/EFFORT_NOTE.md`). The corrective work of this period (review rounds, PR fixes, final package) is part of the rows "CI quality gate + PRs", "Defects, RCA, reports" and "Final PDF + package".

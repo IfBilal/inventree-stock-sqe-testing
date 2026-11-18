@@ -22,12 +22,12 @@ Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects:
 | Static analysis (SonarQube) | bugs 0, smells 0, vulnerabilities 0, ratings A, duplication 0.6 %, coverage 40.2 % (whole module); V(G) of `validate_pk` hand = 6 (radon 6, Sonar 5: `elif` not counted) | `docs/STATIC_ANALYSIS.md` |
 | White-box unit tests | 338 passed, 0 expected failures; in-scope coverage statements 100.0 % / branches 99.3 % over 33 functions; complete MCC for 13 decisions, MC/DC sets, BR-2 32 rows | `docs/UNIT_TESTING.md`, `docs/MCC_MCDC.md`, `docs/COVERAGE_SCOPE.md` |
 | Test-data generation | OpenAPI 3.0.3 contract (validated), generator with 29 tests, 223 cases, two constraint-change demos | `docs/TEST_DATA_GENERATION.md` |
-| API / integration | 260 passed, 27 strict-xfail (loose typing / audit-parameter weaknesses of upstream); API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
+| API / integration | 252 passed, 27 strict-xfail (loose typing / audit-parameter weaknesses of upstream); API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
 | Browser E2E (6 use cases, 30 flows) + usability | Playwright: 33 as expected, 0 unexpected, 0 flaky (no flow is an expected failure any more; DEF-05 shows as a visible annotation of the login set-up) | `docs/USE_CASES.md`, `docs/USABILITY.md` |
 | Accessibility | Lighthouse accessibility 78 → 85 and SEO 75 → 83 on the fixed screen; image-alt and landmark-one-main resolved; remaining issues logged | `docs/ACCESSIBILITY.md` |
 | Security | access matrix 20/20; ZAP passive (1599 messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |
 | Performance and recovery | targets declared first; 1 vs 5 users × 2 runs; failure-and-recovery test with test double (rollback, retry, no duplicates) | `docs/PERFORMANCE.md` |
-| Mutation | 263 mutants, raw 96.6 %, adjusted **100.0 %** (10 survivors proven equivalent, 16 killed by added tests over two rounds); 4 custom operators | `docs/MUTATION.md` |
+| Mutation | 263 mutants, raw 96.6 %, adjusted **100.0 %** (the survivors are proven equivalent, the others were killed by added tests over two rounds); 4 custom operators | `docs/MUTATION.md` |
 | CI quality gate | 8-job pipeline, branch protection, no escape hatches, fix PR red→green, blocked PR | `docs/CI_QUALITY_GATE.md` |
 | Requirements coverage | tested 16/16, verified passing 16/16 | `docs/TRACEABILITY.md` |
 
@@ -52,7 +52,7 @@ Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects:
 | A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, button names, ARIA) | Medium | P3 | Open (deferred) |
 | UX-01 | [#12](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/12) | Enter in quantity field does not submit the dialog | Low | P3 | Open (deferred) |
 
-Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 2 closed defects reopened (target ≤ 10 %).
+Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 8 closed defects reopened (target ≤ 10 %).
 
 ## 5. Residual risk per risk (register `docs/RISK_REGISTER.md`; re-assessed from evidence)
 | Risk | Initial L×I | Evidence-based residual L×I | Rationale | Linked defects |
@@ -83,7 +83,8 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
-| 44353495633 | push | `main` | queued | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44353495633 |
+| 44353555729 | push | `main` | in_progress | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44353555729 |
+| 44353495633 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44353495633 |
 | 44343888095 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343888095 |
 | 44343663684 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343663684 |
 | 44343471926 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343471926 |
@@ -94,7 +95,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 44158035639 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44158035639 |
 | 44095413130 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44095413130 |
 | 44007547805 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44007547805 |
-| 44007531207 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44007531207 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.

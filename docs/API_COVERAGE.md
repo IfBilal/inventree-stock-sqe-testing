@@ -1,12 +1,12 @@
-# API coverage criteria — computed by `tools/api_coverage.py` from the real run (1763 logged requests, 223 executed generated cases)
+# API coverage criteria — computed by `tools/api_coverage.py` from the real run (1768 logged requests, 223 executed generated cases)
 
 ## C1 Endpoint and C2 operation coverage
 | Operation | Requests |
 |---|---|
 | POST `/api/stock/add/` | 123 |
 | POST `/api/stock/remove/` | 111 |
-| GET `/api/stock/{id}/` | 471 |
-| GET `/api/audit/` | 806 |
+| GET `/api/stock/{id}/` | 473 |
+| GET `/api/audit/` | 807 |
 
 ## C3 Documented status-code coverage
 | Operation | Documented | Observed | Missing |
@@ -16,7 +16,7 @@
 | GET `/api/stock/{id}/` | 200, 404, 500 | 200, 404 | 500 |
 | GET `/api/audit/` | 200, 400 | 200, 400 | — |
 
-Status classes observed: 2xx: 1595, 4xx: 168.
+Status classes observed: 2xx: 1600, 4xx: 168.
 
 ## C4 Role / authentication coverage
 | Operation | admin | manager | viewer | anonymous |
@@ -65,7 +65,7 @@ Status classes observed: 2xx: 1595, 4xx: 168.
 | `/api/stock/remove/` | 405 ✔ | 405 ✔ | 405 ✔ | 405 ✔ |
 
 ## C9 Response-schema validation
-Every response whose status has a schema in the spec is validated against it inside the HTTP client (a violation fails the test): **1364** responses validated, 1366 had a schema in the spec.
+Every response whose status has a schema in the spec is validated against it inside the HTTP client (a violation fails the test): **1367** responses validated, 1369 had a schema in the spec.
 
 ## C10 Sequence / dependency coverage (tests tagged `@pytest.mark.seq`)
 | Sequence | Result |
@@ -90,5 +90,5 @@ Every response whose status has a schema in the spec is validated against it ins
 | C6 parameter-value coverage: generated cases executed | 223 | 223 | 100 |
 | C7 content types per write endpoint | 4 | 4 | 100 |
 | C8 unsupported methods rejected with 405 | 8 | 8 | 100 |
-| C9 responses with a spec schema that were validated | 1364 | 1366 | 100 |
+| C9 responses with a spec schema that were validated | 1367 | 1369 | 100 |
 | C10 operation sequences passing | 7 | 7 | 100 |

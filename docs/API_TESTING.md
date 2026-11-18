@@ -1,6 +1,6 @@
 # API AND INTEGRATION TESTING (Phase 6)
 Run: `scripts/test_api.sh api` (resets the DB, starts the server, runs pytest + requests against `http://127.0.0.1:8000`). Every test creates its own item (order-independent). Evidence: `evidence/api/request_log.jsonl` (all requests), `docs/API_COVERAGE.md`, `docs/TRACEABILITY.md`.
-**Result (2026-11-18, final):** 250 passed, 27 strict xfail (each = a remaining weakness of the upstream API, see below), 0 failed — `scripts/test_api.sh api`, 8 min 14 s.
+**Result (2026-11-18, final):** 252 passed, 27 strict xfail (each = a remaining weakness of the upstream API, see below), 0 failed — `scripts/test_api.sh api`, 8 min 14 s.
 
 ## What is tested
 | File | Content |
@@ -29,3 +29,6 @@ Endpoint 4/4, operation 4/4, documented status codes 11/11 (201, 400, 401, 403, 
 | W-05 | 500 responses expose the Python exception class (`"error":"TypeError"`) | PR-04 | generic error body (see DEF-04) |
 | W-06 | The audit endpoint silently ignores the `object_pk` filter and returns every item's history | PR-07 | support or reject the filter |
 | W-07 | Add/remove on a serialized item or on a depleted item returns 201 although nothing changed | PR-05 | return 400/200 with a message |
+
+## Concurrency after the DEF-06 fix (`tests/team/api/test_concurrency_after_fix.py`)
+Two live tests run 5 parallel clients against one item: (1) 100 removals of 1 from an item with 1000 → all 100 answer 201, the final quantity is exactly 900 and the history holds exactly 100 removal entries (no lost or duplicated update); (2) 25 removals from an item with 10 → exactly 10 succeed, 15 are rejected with 400 and the quantity ends at 0 (never negative). Before the fix about one request in five answered HTTP 500 (`reports/performance/concurrency_probe.txt`).

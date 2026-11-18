@@ -17,7 +17,7 @@ Actor: Manager. Trigger: wants to record received units. Pre (all flows): logged
 | UC01-MAIN | Main | Open Keyboard → Stock actions → Add stock → quantity 5 → Submit | Success message shown; item page shows 15; history has 1 add entry (5, 15) | PASS |
 | UC01-AF1 | Alternative | Same, quantity 0.5 (decimal) | qty 10.5; history entry added 0.5 | PASS |
 | UC01-AF2 | Alternative | Same, quantity 5 with notes "restock" | qty 15; history entry carries note "restock" | PASS |
-| UC01-EF1 | Exception | quantity 0 | The dialog stays open and an error message is shown; qty stays 10; **no** history entry (baseline: "Success — Stock added", silent no-op) | baseline baseline FAIL (DEF-02) → PASS after PR #17 → PASS after PR #17 |
+| UC01-EF1 | Exception | quantity 0 | The dialog stays open and an error message is shown; qty stays 10; **no** history entry (baseline: "Success — Stock added", silent no-op) | baseline FAIL (DEF-02) → PASS after PR #17 |
 | UC01-EF2 | Exception | typed quantity −3 | An error message is shown; qty stays 10; no history entry (baseline: the field accepts −3, the UI reports "Success — Stock added" and nothing changes) | baseline FAIL (DEF-02 family) → PASS after PR #17 |
 
 ## UC-02 Remove stock from an item (M1) — WF-B — FR-05, FR-06, FR-07, BR-1
@@ -30,7 +30,7 @@ Actor: Manager. Pre: logged in as manager, Keyboard qty 10.
 | UC02-AF1 | Alternative | remove 9 | qty 1; history (9, 1) | PASS |
 | UC02-AF2 | Alternative | remove 4 with notes "damaged" | qty 6; history note "damaged" | PASS |
 | UC02-EF1 | Exception | remove 11 (> 10) | **Rejected** with a message naming the available quantity (10); qty stays 10; no history entry (baseline: "Success — Stock removed", quantity becomes 0) | baseline FAIL (DEF-01) → PASS after PR #13 |
-| UC02-EF2 | Exception | quantity 0 | Error shown; qty stays 10; no history entry | baseline baseline FAIL (DEF-02) → PASS after PR #17 → PASS after PR #17 |
+| UC02-EF2 | Exception | quantity 0 | Error shown; qty stays 10; no history entry | baseline FAIL (DEF-02) → PASS after PR #17 |
 **Post (main):** qty 6, one `STOCK_REMOVE` history (audit) entry. **Post (EF):** qty and history unchanged.
 
 ## UC-03 Deplete an item (M2) — WF-B — FR-08, BR-3

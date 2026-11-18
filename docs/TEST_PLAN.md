@@ -93,7 +93,7 @@ Basis: author experience with the tools plus the observed effort for completed p
 ## 10. Control, reporting and traceability
 - Weekly progress reports (`reports/weekly/`) against this plan with control actions and GQM metrics with targets (`docs/GQM.md`).
 - Defects live in GitHub Issues of **this** repository (never upstream).
-- **Traceability matrix:** `docs/TRACEABILITY.md` (requirement → risk → technique/level → test IDs → status). Requirements coverage = requirements with ≥ 1 passing test ÷ total (16 items: FR-01, FR-02, FR-03a, FR-03b, FR-04…FR-11, BR-1…BR-4 — i.e. 11 FR + FR-03 split + 4 BR). Current value (generated): **tested 16 / 16 (100 %), verified passing 15 / 16 (FR-03b "zero rejected" is only covered by strict-xfail tests: DEF-02 is open)**, verified passing as in `docs/TRACEABILITY.md`; updated at every gate.
+- **Traceability matrix:** `docs/TRACEABILITY.md` (requirement → risk → technique/level → test IDs → status). Requirements coverage = requirements with ≥ 1 passing test ÷ total (16 items: FR-01, FR-02, FR-03a, FR-03b, FR-04…FR-11, BR-1…BR-4 — i.e. 11 FR + FR-03 split + 4 BR). Current value (generated): **tested 16 / 16 (100 %), verified passing 16 / 16 (100 %)** (every requirement has at least one passing test; `docs/TRACEABILITY.md`); updated at every gate.
 
 ## 11. Version history
 | Version | Date | Change |

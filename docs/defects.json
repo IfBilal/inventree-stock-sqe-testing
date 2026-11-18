@@ -318,7 +318,7 @@
    {
     "when": "2026-11-18",
     "status": "Open",
-    "note": "Low/P4: Enter in the quantity field of the stock-adjust dialog does not submit (table-row fields have no form context)"
+    "note": "Low/P3: Enter in the quantity field of the stock-adjust dialog does not submit (table-row fields have no form context)"
    }
   ]
  }

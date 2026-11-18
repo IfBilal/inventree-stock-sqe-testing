@@ -20,6 +20,6 @@
 | SonarQube Community Build | 26.10.0.133078 (Python analyzer 5.32) | static analysis |
 | SonarScanner | 6.2.1.4610 | static analysis |
 | JDK (SonarQube runtime) | openjdk version "21.0.13" 2026-10-20 LTS | SonarQube |
-| Google Chrome | 142.0.7444.175 | Lighthouse (planned) |
+| Google Chrome | 142.0.7444.175 | Lighthouse 13.6.0 runner (accessibility before/after) |
 | Git | 2.43.0 | VCS |
 | Docker client | 29.8.0 (daemon not running on this machine; not used for SonarQube) | — |

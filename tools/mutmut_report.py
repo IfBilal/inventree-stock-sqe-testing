@@ -7,6 +7,7 @@ res = {}
 for l in open(os.path.join(R, 'evidence/mutation/mutmut_results_all.txt')):
     m = re.match(r'\s*(\S+): (\S+)', l)
     if m: res[m.group(1)] = m.group(2)
+# how the final counts are derived (documented in the report): mutmut's own results file + the direct re-checks of its survivors
 # survivors of the mutmut run were re-checked by applying each mutant directly (MUTANT_UNDER_TEST) against the full unit suite, because mutmut kept stale statuses after tests were added
 for f in ('mutmut_survivor_recheck.txt', 'mutmut_survivor_recheck2.txt'):
     p = os.path.join(R, 'evidence/mutation', f)
@@ -92,6 +93,7 @@ out.append(f"**mutmut {os.popen('pip show mutmut 2>/dev/null | grep ^Version').r
 out.append(f"Raw score (killed ÷ (killed + survived + timeout)): **{100 * tot['killed'] / max(1, tested):.1f} %** over all functions of both files. In-scope functions only (the {len(SCOPE_FN)} functions of `docs/TEST_BASIS.md` §7): {scope_tot['killed']} killed, {scope_tot['survived']} survived → **{100 * scope_tot['killed'] / max(1, scope_tot['killed'] + scope_tot['survived']):.1f} %**.")
 insc_eq = sum(1 for n, st in res.items() if st == 'survived' and fn(n) in SCOPE_FN)
 out.append(f"Adjusted in-scope score (survivors proven equivalent excluded, justification per mutant below): **{100 * scope_tot['killed'] / max(1, scope_tot['killed'] + scope_tot['survived'] - insc_eq):.1f} %** ({insc_eq} of the in-scope survivors are equivalent; none is a missing test). Survivors outside the scope are display/allocation/plugin helpers and the status-field wrapper, which the add/remove workflows do not use. The 36 mutants 'without covering tests' are 12 with no test reaching them plus 24 `StockStatusCustomSerializer.__init__` mutants that hang the process (out of scope; the run was stopped there).")
+out.append('**Derivation of the numbers:** mutmut itself reported 471 killed, 145 survived and 36 without covering tests (`evidence/mutation/mutmut_results_all.txt`). Its survivor statuses stayed stale after the killing tests were added, so each survivor was re-applied directly (`MUTANT_UNDER_TEST`, whole unit suite): re-check 1 (`mutmut_survivor_recheck.txt`) killed 16, re-check 2 (`mutmut_survivor_recheck2.txt`, after the clean()/save() tests) killed 20, and two `validate_unique` mutants were killed after a last test: 471 + 16 + 22 = **509 killed**, 145 − 16 − 22 = **107 survivors**.')
 out.append('\n| Function | killed | survived |\n|---|---|---|')
 for f, c in sorted(rows.items()):
     out.append(f"| `{f}`{'' if f in SCOPE_FN else ' (outside scope)'} | {c['killed']} | {c['survived']} |")
