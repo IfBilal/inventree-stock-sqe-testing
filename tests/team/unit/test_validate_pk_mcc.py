@@ -46,8 +46,8 @@ def test_every_condition_has_an_independence_pair_in_the_mcdc_set():
         assert any(a in s and b in s for a, b in pairs[c]), c
 
 
-# --- six basis paths of V(G)=6 (docs/STATIC_ANALYSIS.md §2). Paths 4-6 (require_in_stock=True) are executed by the MCC rows (path4 = MCC02 ALLOW=T;
-# path5 = MCC01 all F; path6 = MCC05 BT=T) and are NOT repeated here; paths 1-3 (require_in_stock False/None) are the cases below.
+# --- six basis paths of V(G)=6 (docs/STATIC_ANALYSIS.md §2): paths 1-3 (require_in_stock False/None) are test_basis_paths below, paths 4-6
+# (require_in_stock True) are test_basis_paths_in_stock_required further down — six named tests, one per path.
 @pytest.mark.parametrize('name,req_in_stock,allow,set_belongs_to,expect', [
     ('path1 p1F,p4F -> return',            None,  False, False, 'ok'),
     ('path2 p1F,p4T,p5F -> return',        False, False, False, 'ok'),   # item not in stock (qty 0) set below
@@ -82,3 +82,23 @@ def test_flags_that_validate_pk_ignores_do_not_cause_rejection(what, item, monke
     if what == 'location-excluded': item.location = StockLocation.objects.create(name='X', exclude_from_stock=True)
     if what == 'quantity-zero': item.quantity = 0
     assert StockAdjustmentItemSerializer(require_in_stock=True).validate_pk(item) is item
+
+
+@pytest.mark.parametrize('name,allow,reference,expect', [
+    ('path4 p1T,p2F -> return (out-of-stock transfer allowed by the setting)', True, 'customer', 'ok'),
+    ('path5 p1T,p2T,p3F -> return (adjustable item)',                           False, None,       'ok'),
+    ('path6 p1T,p2T,p3T -> raise "not in stock"',                               False, 'customer', 'raise'),
+])
+@pytest.mark.risk('PR-03')
+def test_basis_paths_in_stock_required(name, allow, reference, expect, make_item, markers, monkeypatch):
+    from stock.serializers import StockAdjustmentItemSerializer
+    monkeypatch.setattr('stock.serializers.get_global_setting', lambda *a, **k: allow)
+    it = make_item(10)
+    if reference:
+        it.customer = markers.customer                      # makes the item non-adjustable (BR-2): is_in_stock(...) is False
+    ser = StockAdjustmentItemSerializer(require_in_stock=True)
+    if expect == 'ok':
+        assert ser.validate_pk(it) is it
+    else:
+        with pytest.raises(ValidationError, match='not in stock'):
+            ser.validate_pk(it)

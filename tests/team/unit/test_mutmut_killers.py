@@ -247,3 +247,15 @@ def test_saving_an_existing_serialized_item_again_does_not_conflict_with_itself(
     s.save()                                    # must not raise "duplicate serial"
     s.refresh_from_db()
     assert s.serial == 'RS-1'
+
+
+def test_create_entry_records_the_field_diff_and_no_additional_data(part, user):
+    """Documents why the `deltas=`/`quantity=` arguments of the create event are inert: the audit entry stores the full field diff in `changes`
+    (status and quantity included) and leaves `additional_data` empty (basis of the equivalence rulings of mutmut mutants StockItem.save #48-#57)."""
+    from audit.models import AuditLogEntry
+    from stock.models import StockItem
+    s = StockItem(part=part, quantity=Decimal('7'), status=10)
+    s.save(user=user, notes='first')
+    e = AuditLogEntry.objects.filter(object_pk=str(s.pk), event_type=1).get()
+    assert e.additional_data is None
+    assert e.changes['quantity'] == [None, '7'] and e.changes['status'] == [None, 10]

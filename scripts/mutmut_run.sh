@@ -10,4 +10,4 @@ cp "$ROOT/data/inventree.sqlite3" "$ROOT/mutation/mm.sqlite3"
 export INVENTREE_DB_NAME="$ROOT/mutation/mm.sqlite3"
 cd "$ROOT/mutation/work" && rm -rf mutants
 "$PY" -m mutmut run "$@"
-"$PY" -m mutmut results > "$ROOT/evidence/mutation/mutmut_results.txt" || true
+"$PY" -m mutmut results --all true > "$ROOT/evidence/mutation/mutmut_results_all.txt"

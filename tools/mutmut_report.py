@@ -78,7 +78,7 @@ def classify(name):
     if "'part'" in minus and 'location' in minus or 'select_related' in minus:
         return 'Equivalent', 'query-optimisation argument (select_related): same rows, fewer queries'
     if 'backup_value' in minus or 'cache=' in minus:
-        return 'Equivalent', 'settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration'
+        return 'Equivalent', 'settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart'
     return 'Review', 'see diff'
 
 
@@ -105,7 +105,7 @@ for n, st in sorted(res.items()):
     cls[c] += 1
     plus = ' '.join(x for x in diffs.get(n, []) if x.startswith('+'))[:70].replace('|', '\\|')
     srows.append(f"| `{fn(n)}` | `{n.split('__mutmut_')[1]}` | `{plus}` | **{c}** | {why} |")
-out.append(f"\nSurvivor classification ({sum(cls.values())}): " + ', '.join(f'{k} {v}' for k, v in cls.items()) + '.\n')
+out.append(f"\nSurvivor classification ({sum(cls.values())}; the {cls['Equivalent']} equivalents are the {insc_eq} in-scope survivors plus {cls['Equivalent'] - insc_eq} mutants of `clean`/`validate_unique`/`update_serial_number`, which sit outside the scope list but carry an individual argument): " + ', '.join(f'{k} {v}' for k, v in cls.items()) + '.\n')
 out.append('| Function | # | Mutation (+ line) | Class | Reason |\n|---|---|---|---|---|')
 out += srows
 print('\n'.join(out))

@@ -1,6 +1,6 @@
 # API AND INTEGRATION TESTING (Phase 6)
 Run: `scripts/test_api.sh api` (resets the DB, starts the server, runs pytest + requests against `http://127.0.0.1:8000`). Every test creates its own item (order-independent). Evidence: `evidence/api/request_log.jsonl` (all requests), `docs/API_COVERAGE.md`, `docs/TRACEABILITY.md`.
-**Result (2026-11-18, final):** 252 passed, 27 strict xfail (each = a remaining weakness of the upstream API, see below), 0 failed — `scripts/test_api.sh api`, 8 min 14 s.
+**Result (2026-11-18, final):** 253 passed, 27 strict xfail (each = a remaining weakness of the upstream API, see below), 0 failed — `scripts/test_api.sh api`, 8 min 14 s.
 
 ## What is tested
 | File | Content |

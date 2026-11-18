@@ -37,6 +37,7 @@ ORDER = [  # (section title, file)
     ('15. Area ownership, viva preparation', 'docs/VIVA_PREP.md'),
     ('16. AI-use record', 'docs/AI_USE_RECORD.md'),
     ('17. Tool versions', 'docs/TOOL_VERSIONS.md'),
+    ('18. Final release / hold decision and evidence links', 'docs/FINAL_DECISION.md'),
 ]
 CSS = """body{font-family:DejaVu Sans,Arial,sans-serif;font-size:9.5pt;line-height:1.35;margin:0}
 h1{font-size:17pt;border-bottom:2px solid #333;padding-bottom:3px;margin-top:22px;page-break-before:always}

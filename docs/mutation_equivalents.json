@@ -1,6 +1,6 @@
 {
  "StockAdjustmentItemSerializer.validate_pk|False -> True|False": {
-  "justification": "`backup_value=False` of `get_global_setting`: it only applies when the setting is not defined, which cannot happen for `STOCK_ALLOW_OUT_OF_STOCK_TRANSFER` (a declared global setting with a default) \u2014 unobservable. (The `cache=False` constant of the same call IS observable and is killed by `test_validate_pk_does_not_use_a_cached_setting_value`.)",
+  "justification": "`backup_value=False` of `get_global_setting`: it only applies when the setting is not defined, which cannot happen for `STOCK_ALLOW_OUT_OF_STOCK_TRANSFER` (declared with a default); and the `cache` argument cannot be distinguished in the unit-test configuration (the test `test_validate_pk_does_not_use_a_cached_setting_value` exists but passes with either value because the test settings do not enable the settings cache). The `cache=False` argument of `StockItem.delete` IS observable and is killed (`test_delete_does_not_use_a_cached_setting_value`).",
   "line": 1839,
   "operator": "CRP"
  },

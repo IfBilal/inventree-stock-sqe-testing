@@ -1,5 +1,5 @@
 # Coverage justification (EC-1: "0 unjustified uncovered lines")
-**In-scope business logic** (`SCOPE` in `tools/scope_coverage.py`, listed in `docs/TEST_BASIS.md` §7; 32 functions, incl. the DEF-01 fix `StockRemoveSerializer.validate`): **statements 297/297 = 100 %**, **branches 131/132 = 99.2 % with the single missed branch defended below → 0 unjustified uncovered branches** (`docs/COVERAGE_SCOPE.md`, raw `evidence/coverage/coverage.json`).
+**In-scope business logic** (`SCOPE` in `tools/scope_coverage.py`, listed in `docs/TEST_BASIS.md` §7; 33 functions, incl. the fixes `StockRemoveSerializer.validate` and `StockAddSerializer.validate`): **statements 313/313 = 100 %**, **branches 141/142 = 99.3 % with the single missed branch defended below → 0 unjustified uncovered branches** (`docs/COVERAGE_SCOPE.md`, raw `evidence/coverage/coverage.json`).
 
 | Item | Treatment |
 |---|---|

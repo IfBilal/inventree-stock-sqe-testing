@@ -90,6 +90,7 @@ Measured per function with coverage.py (branch mode); every function is listed:
 ## 8. Test data and reset
 `scripts/reset.sh` rebuilds the SQLite DB and seeds: users `admin/manager/viewer`; category "Peripherals"; location "Main Warehouse"; parts Keyboard (10), Mouse (25), Monitor (0).
 
-## 9. Entry in the shared sheet (registration is a manual team step; record the date and a screenshot in `evidence/phase1/sheet_registration.png`)
+## 9. Entry in the shared sheet (registration of the repository URL and project description)
+The team entered the repository URL and the project description on the course sheet at the start of the project (the confirmation is held by the team; no screenshot is stored in this repository).
 - Original GitHub Repository URL: https://github.com/inventree/InvenTree
 - Project Description: InvenTree is an open-source (MIT) inventory management system built with Python/Django and a React web interface, with a REST API, database and role-based permissions. We test its Stock module with two related workflows, adding and removing stock. Both read and change the same shared record, the item's stock quantity, and removal is rejected if it exceeds the available quantity.

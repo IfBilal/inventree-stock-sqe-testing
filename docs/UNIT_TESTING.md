@@ -1,7 +1,7 @@
 # WHITE-BOX UNIT TESTING (Phase 4) — own tests in `tests/team/unit/`
 Run: `scripts/test_unit.sh` (tests) · `scripts/coverage_unit.sh` (branch coverage + per-function scope check; writes `evidence/coverage/` and `docs/COVERAGE_SCOPE.md`).
 Tools: pytest 9.2.0, pytest-django 4.14.0, coverage.py 7.17.3 (branch mode). Hermetic throw-away SQLite DB (`data/unit_test.sqlite3`), never the app DB. Upstream tests are not run or counted.
-**Result (2026-11-18, final):** 338 passed, **0 expected failures**: the strict-xfail tests of DEF-01, DEF-02, DEF-03 and DEF-04 lost their markers when the defects were fixed (PRs #13 and #17). In-scope coverage **statements 313/313 = 100 %, branches 141/142 (the single missed branch is unreachable and defended)** over 33 functions (`docs/COVERAGE_SCOPE.md`); new function `StockAddSerializer.validate` (DEF-03 fix) is in the scope.
+**Result (2026-11-18, final):** 342 passed, **0 expected failures**: the strict-xfail tests of DEF-01, DEF-02, DEF-03 and DEF-04 lost their markers when the defects were fixed (PRs #13 and #17). In-scope coverage **statements 313/313 = 100 %, branches 141/142 (the single missed branch is unreachable and defended)** over 33 functions (`docs/COVERAGE_SCOPE.md`); new function `StockAddSerializer.validate` (DEF-03 fix) is in the scope.
 
 ## Scope (business logic of WF-A/WF-B)
 See `docs/TEST_BASIS.md` §7 (identical to `SCOPE` in `tools/scope_coverage.py`): serializers, `StockItem` model logic incl. `can_delete` and the tracking/audit helpers, the pk-prefetch field, and the permission classes.
@@ -39,10 +39,10 @@ They were written first as strict expected failures (they documented the defect 
 | 1: p1F, p4F → return (`require_in_stock=None`) | `test_basis_paths[path1…]` |
 | 2: p1F, p4T, p5F → return (depleted item, `require_in_stock=False`) | `test_basis_paths[path2…]` |
 | 3: p1F, p4T, p5T → raise "already in stock" | `test_basis_paths[path3…]` |
-| 4: p1T, p2F → return (ALLOW setting true) | MCC row 17-32 family, e.g. `MCC18-TFFFF`-style row with ALLOW=T (also the MC/DC pair row 18) |
-| 5: p1T, p2T, p3F → return (adjustable item) | MCC row 1 (all F) |
-| 6: p1T, p2T, p3T → raise "not in stock" | MCC rows with ALLOW=F and a reference set, e.g. MCC row 5 (BT=T) |
-Other duplicate cases found by review were removed (the boolean `is_in_stock` cases and `updateQuantity` deletion cases are executed once, as MCC rows).
+| 4: p1T, p2F → return (ALLOW setting true) | `test_basis_paths_in_stock_required[path4…]` |
+| 5: p1T, p2T, p3F → return (adjustable item) | `test_basis_paths_in_stock_required[path5…]` |
+| 6: p1T, p2T, p3T → raise "not in stock" | `test_basis_paths_in_stock_required[path6…]` |
+(The MCC rows execute the same paths again with every combination of the five conditions; the six tests above are the named basis-path set.) Other duplicate cases found by review were removed (the boolean `is_in_stock` cases and `updateQuantity` deletion cases are executed once, as MCC rows).
 
 ## Counting rule
 Each executable case is counted once within this level and under one primary technique (MCC rows under MCC, basis paths under path coverage, state tests under state transition, BVA/EP rows under their partition). Review round 1 removed the duplicated `validate_pk` cases, the duplicate invalid-quantity case in the view tests and six of eight near-duplicate non-adjustable state tests. The same behaviours are re-tested at API (Phase 6) and E2E (Phase 7) levels, where they are counted for those levels.

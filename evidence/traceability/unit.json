@@ -1634,6 +1634,13 @@
 "seq": []
 },
 {
+"id": "unit/test_mutmut_killers.py::test_create_entry_records_the_field_diff_and_no_additional_data",
+"outcome": "passed",
+"req": [],
+"risk": [],
+"seq": []
+},
+{
 "id": "unit/test_mutmut_killers.py::test_creating_an_item_records_a_created_event",
 "outcome": "passed",
 "req": [],
@@ -2503,6 +2510,33 @@
 },
 {
 "id": "unit/test_validate_pk_mcc.py::test_basis_paths[path3 p1F,p4T,p5T -> raise B-False-False-False-raiseB]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-03"
+],
+"seq": []
+},
+{
+"id": "unit/test_validate_pk_mcc.py::test_basis_paths_in_stock_required[path4 p1T,p2F -> return (out-of-stock transfer allowed by the setting)-True-customer-ok]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-03"
+],
+"seq": []
+},
+{
+"id": "unit/test_validate_pk_mcc.py::test_basis_paths_in_stock_required[path5 p1T,p2T,p3F -> return (adjustable item)-False-None-ok]",
+"outcome": "passed",
+"req": [],
+"risk": [
+"PR-03"
+],
+"seq": []
+},
+{
+"id": "unit/test_validate_pk_mcc.py::test_basis_paths_in_stock_required[path6 p1T,p2T,p3T -> raise \"not in stock\"-False-customer-raise]",
 "outcome": "passed",
 "req": [],
 "risk": [

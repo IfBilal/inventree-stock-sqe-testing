@@ -12,6 +12,7 @@
 |---|---|---|---|---|
 | **First analysis** (code before PR #13) — before improving the tests | 244 | 217 | 27 | **88.9 %** |
 | First analysis — after 9 killing tests (12 survivors killed, 15 equivalents) | 244 | 229 | 15 | 93.9 % |
+| Intermediate analysis (code with the DEF-01 fix, before the DEF-02/03/04/06 fixes; `results_final_run_v1_pre_fix.json`) | 248 | 238 | 10 | 96.0 % (100 % adjusted) |
 | **Final analysis** (final code incl. the DEF-01..04 fixes and the dedupe of CBR-4/ROR) — before the second test round | 263 | 253 | 10 | **96.2 %** |
 | Final analysis — after more killing tests (1 survivors killed, 9 equivalents) | 263 | 254 | 9 | 96.6 % |
 | **Final, adjusted** (the 9 survivors proven equivalent are excluded) | 254 | 254 | 0 | **100.0 %** |
@@ -38,6 +39,7 @@
 **mutmut 3.x — real run on `stock/serializers.py` and `stock/models.py`: 652 mutants, 509 killed, 107 survived, 0 timed out, 36 without covering tests.**
 Raw score (killed ÷ (killed + survived + timeout)): **82.6 %** over all functions of both files. In-scope functions only (the 32 functions of `docs/TEST_BASIS.md` §7): 416 killed, 46 survived → **90.0 %**.
 Adjusted in-scope score (survivors proven equivalent excluded, justification per mutant below): **100.0 %** (46 of the in-scope survivors are equivalent; none is a missing test). Survivors outside the scope are display/allocation/plugin helpers and the status-field wrapper, which the add/remove workflows do not use. The 36 mutants 'without covering tests' are 12 with no test reaching them plus 24 `StockStatusCustomSerializer.__init__` mutants that hang the process (out of scope; the run was stopped there).
+**Derivation of the numbers:** mutmut itself reported 471 killed, 145 survived and 36 without covering tests (`evidence/mutation/mutmut_results_all.txt`). Its survivor statuses stayed stale after the killing tests were added, so each survivor was re-applied directly (`MUTANT_UNDER_TEST`, whole unit suite): re-check 1 (`mutmut_survivor_recheck.txt`) killed 16, re-check 2 (`mutmut_survivor_recheck2.txt`, after the clean()/save() tests) killed 20, and two `validate_unique` mutants were killed after a last test: 471 + 16 + 22 = **509 killed**, 145 − 16 − 22 = **107 survivors**.
 
 | Function | killed | survived |
 |---|---|---|
@@ -84,7 +86,7 @@ Adjusted in-scope score (survivors proven equivalent excluded, justification per
 | `StockStatusCustomSerializer.__init__` (outside scope) | 12 | 26 |
 | `_default_delete_on_deplete` (outside scope) | 3 | 4 |
 
-Survivor classification (107): Out of scope 56, Equivalent 51.
+Survivor classification (107; the 51 equivalents are the 46 in-scope survivors plus 5 mutants of `clean`/`validate_unique`/`update_serial_number`, which sit outside the scope list but carry an individual argument): Out of scope 56, Equivalent 51.
 
 | Function | # | Mutation (+ line) | Class | Reason |
 |---|---|---|---|---|
@@ -100,12 +102,12 @@ Survivor classification (107): Out of scope 56, Equivalent 51.
 | `StockItem.convert_serial_to_int` | `1` | `+    if InvenTree.ready.isReadOnlyCommand():` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
 | `StockItem.convert_serial_to_int` | `2` | `+        for plugin in registry.with_mixin(None):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
 | `StockItem.convert_serial_to_int` | `4` | `+    if serial not in [None, 'XXXX']:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
-| `StockItem.delete` | `10` | `+        'stock_allow_delete_serialized', cache=False` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockItem.delete` | `10` | `+        'stock_allow_delete_serialized', cache=False` | **Equivalent** | settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart |
 | `StockItem.delete` | `23` | `+            'location', 'purchase_order__supplier'` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
 | `StockItem.delete` | `24` | `+            'part', 'purchase_order__supplier'` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
 | `StockItem.delete` | `25` | `+            'part', 'location', )` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
 | `StockItem.delete` | `6` | `+        'STOCK_ALLOW_DELETE_SERIALIZED', cache=None` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
-| `StockItem.delete` | `8` | `+        'STOCK_ALLOW_DELETE_SERIALIZED', ):` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockItem.delete` | `8` | `+        'STOCK_ALLOW_DELETE_SERIALIZED', ):` | **Equivalent** | settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart |
 | `StockItem.get_sales_order_allocations` | `1` | `+def get_sales_order_allocations(self, active=False, **kwargs):` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
 | `StockItem.get_sales_order_allocations` | `10` | `+    if active is False:` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
 | `StockItem.get_sales_order_allocations` | `13` | `` | **Out of scope** | helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper) |
@@ -151,15 +153,15 @@ Survivor classification (107): Out of scope 56, Equivalent 51.
 | `StockAdjustmentItemSerializer.__init__` | `11` | `+    self.require_non_zero = kwargs.pop('require_non_zero', None)` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
 | `StockAdjustmentItemSerializer.__init__` | `17` | `+    super().__init__(**kwargs)` | **Equivalent** | argument of the base-class call is unused / identical |
 | `StockAdjustmentItemSerializer.__init__` | `18` | `+    super().__init__(*args, )` | **Equivalent** | argument of the base-class call is unused / identical |
-| `StockAdjustmentItemSerializer.validate_pk` | `11` | `+            'stock_allow_out_of_stock_transfer', backup_value=False, ` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
-| `StockAdjustmentItemSerializer.validate_pk` | `12` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=True, c` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockAdjustmentItemSerializer.validate_pk` | `11` | `+            'stock_allow_out_of_stock_transfer', backup_value=False, ` | **Equivalent** | settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart |
+| `StockAdjustmentItemSerializer.validate_pk` | `12` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=True, c` | **Equivalent** | settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart |
 | `StockAdjustmentItemSerializer.validate_pk` | `17` | `+            check_status=None, check_quantity=False, check_in_product` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
 | `StockAdjustmentItemSerializer.validate_pk` | `18` | `+            check_status=False, check_quantity=None, check_in_product` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
 | `StockAdjustmentItemSerializer.validate_pk` | `19` | `+            check_status=False, check_quantity=False, check_in_produc` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
 | `StockAdjustmentItemSerializer.validate_pk` | `5` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=None, c` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
 | `StockAdjustmentItemSerializer.validate_pk` | `6` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, ` | **Equivalent** | falsy constant replaced by another falsy one (None for False/empty): no observable difference |
-| `StockAdjustmentItemSerializer.validate_pk` | `8` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', cache=False` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
-| `StockAdjustmentItemSerializer.validate_pk` | `9` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, ` | **Equivalent** | settings-lookup argument: the setting is defined and the cache is not enabled in the test configuration |
+| `StockAdjustmentItemSerializer.validate_pk` | `8` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', cache=False` | **Equivalent** | settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart |
+| `StockAdjustmentItemSerializer.validate_pk` | `9` | `+            'STOCK_ALLOW_OUT_OF_STOCK_TRANSFER', backup_value=False, ` | **Equivalent** | settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart |
 | `StockAdjustmentSerializer.to_internal_value` | `18` | `+                'location'` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
 | `StockAdjustmentSerializer.to_internal_value` | `19` | `+                'part', )` | **Equivalent** | query-optimisation argument (select_related): same rows, fewer queries |
 | `StockAdjustmentSerializer.validate` | `1` | `+    super().validate(None)` | **Equivalent** | argument of the base-class call is unused / identical |
@@ -236,7 +238,7 @@ Survivor classification (107): Out of scope 56, Equivalent 51.
 ### 5.1 Final analysis (10 survivors)
 | ID | Operator | Function (line) | Mutation | Classification | Action / argument | After the second test round |
 |---|---|---|---|---|---|---|
-| M010 | CRP | `StockAdjustmentItemSerializer.validate_pk` (L1839) | False -> True | **Equivalent** | `backup_value=False` of `get_global_setting`: it only applies when the setting is not defined, which cannot happen for `STOCK_ALLOW_OUT_OF_STOCK_TRANSFER` (a declared global setting with a default) — unobservable. (The `cache=False` constant of the same call IS observable and is killed by `test_validate_pk_does_not_use_a_cached_setting_value`.) | survives (equivalent) |
+| M010 | CRP | `StockAdjustmentItemSerializer.validate_pk` (L1839) | False -> True | **Equivalent** | `backup_value=False` of `get_global_setting`: it only applies when the setting is not defined, which cannot happen for `STOCK_ALLOW_OUT_OF_STOCK_TRANSFER` (declared with a default); and the `cache` argument cannot be distinguished in the unit-test configuration (the test `test_validate_pk_does_not_use_a_cached_setting_value` exists but passes with either value because the test settings do not enable the settings cache). The `cache=False` argument of `StockItem.delete` IS observable and is killed (`test_delete_does_not_use_a_cached_setting_value`). | survives (equivalent) |
 | M037 | SDL | `StockAdjustmentSerializer.validate` (L1950) | delete statement: super().validate(data) | **Equivalent** | The base `serializers.Serializer.validate` returns its argument unchanged and its return value is discarded: deleting the call has no effect. | survives (equivalent) |
 | M048 | SDL | `StockAddSerializer.validate` (L2045) | delete statement: stock_item = entry['pk'] | **Missing test** | two different items in one request: the limit is checked per item and the error points at the offending entry (`test_add_limit_is_checked_per_item_and_the_error_points_at_the_offending_entry`) | **killed** |
 | M059 | LCR | `StockAddSerializer.save` (L2079) | or -> and | **Equivalent** | Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable. | survives (equivalent) |

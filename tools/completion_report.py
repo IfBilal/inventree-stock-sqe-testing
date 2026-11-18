@@ -105,7 +105,7 @@ for p in sorted(prs, key=lambda x: x['number']):
 o.append('\n| Run | Event | Branch | Conclusion | Link |\n|---|---|---|---|---|')
 for r in runs[:12]:
     o.append(f"| {r['databaseId']} | {r['event']} | `{r['headBranch']}` | {r['conclusion'] or r['status']} | {r['url']} |")
-o.append('\n## 7. Deviations from the plan and honest limitations\n- SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.\n- mutmut 3.8.1 ran (after two set-up problems of ours were fixed: newline-separated `setup.cfg` lists and a migrated database): 652 mutants; our own AST runner adds the four custom business-rule operators that mutmut does not offer (`docs/MUTATION.md`).\n- Database: SQLite (no PostgreSQL available): concurrency results are specific to it (assumption A-4).\n- Open defects other than DEF-01 were **logged and analysed but not fixed** (the statement requires one documented fix); this is the reason for HOLD.\n- Effort: agent hours are logged; **human review hours are recorded as estimates (32.0 h) that the members confirm** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account — each member must commit their own work before submission (statement §6).\n')
+o.append('\n## 7. Deviations from the plan and honest limitations\n- SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.\n- mutmut 3.8.1 ran (after two set-up problems of ours were fixed: newline-separated `setup.cfg` lists and a migrated database): 652 mutants; our own AST runner adds the four custom business-rule operators that mutmut does not offer (`docs/MUTATION.md`).\n- Database: SQLite (no PostgreSQL available): concurrency results are specific to it (assumption A-4).\n- Eight of the twelve findings were fixed through pull requests (DEF-01, 02, 03, 04, 06, SEC-01, SEC-02, A11Y-01); SEC-03 is an accepted risk and DEF-05, A11Y-02, UX-01 are open (Medium/Low, deferred). The only reason for HOLD is EC-3 (5-user p95).\n- Effort: agent hours are logged; **human review hours are recorded as estimates (32.0 h) that the members confirm** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account — each member must commit their own work before submission (statement §6).\n')
 open(os.path.join(R, 'docs/COMPLETION_REPORT.md'), 'w').write('\n'.join(o))
 
 # ---------------------------------------------------------------- weekly progress report
@@ -135,6 +135,25 @@ w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-1
      '\n## 3. Control actions taken in this period\n- Mutation gate 85 → 90 → **95 %** (evidence: PR #16 run 43927877708 passed at 90.4 %, run 43933840489 blocked at 94.3 %).\n- Merge of PR #15 by admin bypass was not used; the branch was updated and the pipeline re-run to green instead (strict branch protection).\n- Keyboard test made independent of the focus-trap start state after it failed in CI only (run 43931016096).\n- No Critical/High defect is open at the end; the release decision stays **HOLD** only because EC-3 (5-user p95) is not met (`docs/COMPLETION_REPORT.md`).\n',
      f"## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)\nAgent hours logged for the whole project: **{tot_agent:.2f} h** against a three-point estimate of 70.0 h (the estimate assumed human effort; human review hours are estimated at 32.0 h in `docs/EFFORT_NOTE.md`). The corrective work of this period (review rounds, PR fixes, final package) is part of the rows \"CI quality gate + PRs\", \"Defects, RCA, reports\" and \"Final PDF + package\".\n",
      '## 5. Plan for the next period (after submission)\nReduce the per-request cost of the write path or move to PostgreSQL and re-run the k6 protocol (EC-3); migrate to react-router 7 (SEC-03); keyboard Enter-to-submit and contrast fixes (UX-01, A11Y-02); investigate the first-login failure (DEF-05).\n']
+# ---------------------------------------------------------------- closing section of the PDF: the decision again (actual vs target) + evidence links
+dec = [l for l in o if l.startswith('### 1.1') or l.startswith('| ID |') or l.startswith('|---|---|---|---|---|') or l.startswith('| EC-')]
+fd = ['# FINAL RELEASE / HOLD DECISION AND EVIDENCE LINKS\n',
+      f'## Decision: **{decision}**\n',
+      'The three exit criteria of the test plan (`docs/TEST_PLAN.md` §7), actual versus target (the PDF ends with the decision, as the project statement requires):\n',
+      '| ID | Category | Target | Actual (evidence) | Met? |', '|---|---|---|---|---|']
+fd += [l for l in o if l.startswith('| EC-')]
+fd += ['\n## Evidence links (repository https://github.com/' + REPO + ')',
+       '| What | Where |', '|---|---|',
+       '| Source, tests, tools, scripts | `tests/team/`, `tools/`, `scripts/`, `.github/workflows/quality-gate.yml` |',
+       '| Raw evidence per phase | `evidence/` (sonar, coverage, generator, api, traceability, a11y, security, mutation, ci), `reports/performance/`, `reports/playwright-report.json` |',
+       '| Defects (GitHub Issues) | https://github.com/' + REPO + '/issues (12 issues, labels for severity, priority, status, triage); log in `docs/DEFECTS.md` |',
+       '| Pull requests | #13 (DEF-01, red to green), #14 and #16 (blocked by the pipeline), #15 (accessibility), #17 (DEF-02/03/04), #18 (DEF-06, SEC-01/02) — https://github.com/' + REPO + '/pulls?q=is%3Apr |',
+       '| Pipeline runs | https://github.com/' + REPO + '/actions (table in `docs/CI_QUALITY_GATE.md` and §6 of the completion report) |',
+       '| Traceability matrix | `docs/TRACEABILITY.md` (generated from the test results) |',
+       '| Weekly reports | `reports/weekly/week-1.md`, `reports/weekly/week-2.md` |',
+       '| Review log of the independent graders | `reviews/README.md` |',
+       '| AI-use record and effort | `docs/AI_USE_RECORD.md`, `docs/EFFORT_LOG.csv`, `docs/EFFORT_NOTE.md` |']
+open(os.path.join(R, 'docs/FINAL_DECISION.md'), 'w').write('\n'.join(fd) + '\n')
 os.makedirs(os.path.join(R, 'reports/weekly'), exist_ok=True)
 open(os.path.join(R, 'reports/weekly/week-2.md'), 'w').write('\n'.join(w))
 print('wrote docs/COMPLETION_REPORT.md and reports/weekly/week-2.md')

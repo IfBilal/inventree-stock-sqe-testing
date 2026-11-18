@@ -1,5 +1,17 @@
 [
 {
+"id": "api/test_admin_role.py::test_admin_can_add_and_remove_stock",
+"outcome": "passed",
+"req": [
+"BR-4",
+"FR-09"
+],
+"risk": [
+"PR-02"
+],
+"seq": []
+},
+{
 "id": "api/test_baseline_pins.py::test_def02_fixed_zero_quantity_is_rejected_with_a_message[add]",
 "outcome": "passed",
 "req": [],
