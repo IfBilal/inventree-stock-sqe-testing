@@ -237,6 +237,11 @@
     "when": "2026-11-18",
     "status": "Accepted",
     "note": "no patched react-router 6.x exists (fix = major migration to >= 7.18); exploitation narrowed by CSP/SameSite; re-evaluate with the next upstream release"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Closed (accepted)",
+    "note": "issue #9 closed as not planned: accepted risk with a documented disposition"
    }
   ]
  },

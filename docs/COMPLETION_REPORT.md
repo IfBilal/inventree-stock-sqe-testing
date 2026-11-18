@@ -75,14 +75,15 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | PR | Title | Branch | State | Pipeline result |
 |---|---|---|---|---|
 | [#13](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/13) | Fix DEF-01: reject removal larger than the available quantity (issue #1) | `fix/def-01-over-removal` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
-| [#14](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/14) | Allow adjusting stock items that are installed in another item | `bad/relax-adjustability-rule` | OPEN | hygiene: SUCCESS, unit: FAILURE, api: FAILURE, e2e: SUCCESS, mutation: FAILURE, sonar: SKIPPED, gate: SKIPPED, deploy: SKIPPED |
+| [#14](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/14) | Allow adjusting stock items that are installed in another item | `bad/relax-adjustability-rule` | CLOSED | hygiene: SUCCESS, unit: FAILURE, api: FAILURE, e2e: SUCCESS, mutation: FAILURE, sonar: SKIPPED, gate: SKIPPED, deploy: SKIPPED |
 | [#15](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/15) | a11y: alt text on item images and a main landmark on the stock item page (issue #10) | `fix/a11y-stock-item-page` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
-| [#16](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/16) | Remove redundant-looking tests (test_mutation_killers.py) | `bad/remove-mutation-killing-tests` | OPEN | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: FAILURE, sonar: SUCCESS, gate: SKIPPED, deploy: SKIPPED |
+| [#16](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/16) | Remove redundant-looking tests (test_mutation_killers.py) | `bad/remove-mutation-killing-tests` | CLOSED | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: FAILURE, sonar: SUCCESS, gate: SKIPPED, deploy: SKIPPED |
 | [#17](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/17) | Fix DEF-02, DEF-03 and DEF-04: reject zero quantity, unrepresentable totals and malformed items | `fix/def-02-03-04-input-validation` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
 | [#18](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/18) | Fix DEF-06 (concurrent adjustments fail), SEC-01 (no CSP) and SEC-02 (cookies without SameSite) | `fix/def-06-sqlite-locking` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
+| 44369200021 | push | `main` | in_progress | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44369200021 |
 | 44365060860 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44365060860 |
 | 44362445511 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44362445511 |
 | 44357367524 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44357367524 |
@@ -94,7 +95,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 44339141434 | pull_request | `fix/def-06-sqlite-locking` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44339141434 |
 | 44332822200 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44332822200 |
 | 44326688189 | pull_request | `fix/def-02-03-04-input-validation` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44326688189 |
-| 44322551459 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44322551459 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.

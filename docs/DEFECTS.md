@@ -43,6 +43,7 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | SEC-02 | 2026-11-18 | Closed | PR #18: SameSite=Lax is the default; issue #8 closed |
 | SEC-03 | 2026-11-16 | Opened | triage: accepted |
 | SEC-03 | 2026-11-18 | Accepted | no patched react-router 6.x exists (fix = major migration to >= 7.18); exploitation narrowed by CSP/SameSite; re-evaluate with the next upstream release |
+| SEC-03 | 2026-11-18 | Closed (accepted) | issue #9 closed as not planned: accepted risk with a documented disposition |
 | A11Y-01 | 2026-11-16 21:15 | Opened | Phase 8, Medium/P2 |
 | A11Y-01 | 2026-11-16 21:20 | Fix proposed | branch fix/a11y-stock-item-page; Lighthouse 78→85 |
 | A11Y-01 | 2026-11-17 | Fix revised | first alt="" version introduced axe presentation-role-conflict; alt now uses aria-label (review finding) |
@@ -50,7 +51,7 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | A11Y-02 | 2026-11-16 | Opened | triage: accepted |
 | A11Y-02 | 2026-11-18 | Open | Medium/P3: remaining contrast / button-name / ARIA findings of the UI (need frontend design decisions) |
 | UX-01 | 2026-11-16 | Opened | triage: accepted |
-| UX-01 | 2026-11-18 | Open | Low/P4: Enter in the quantity field of the stock-adjust dialog does not submit (table-row fields have no form context) |
+| UX-01 | 2026-11-18 | Open | Low/P3: Enter in the quantity field of the stock-adjust dialog does not submit (table-row fields have no form context) |
 
 ## Pareto by category
 | Category | Defects | Severity-weighted points | Share | Cumulative |
