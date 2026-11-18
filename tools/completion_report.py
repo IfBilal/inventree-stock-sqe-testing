@@ -33,7 +33,7 @@ for lv in ('unit', 'api'):
         c = collections.Counter(r['outcome'] for r in J(f'evidence/traceability/{lv}.json'))
         fl[lv] = c
 gen_tests = 29
-pw = J('evidence/phase7/playwright_report_e2e.json')
+pw = J('reports/playwright-report.json')
 pw_stats = pw.get('stats', {})
 am = J('evidence/security/access_matrix_results.json')
 zmsg_n = J('evidence/security/zap_number_of_messages.json')['numberOfMessages']
