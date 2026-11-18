@@ -37,7 +37,7 @@
     "note": "pipeline green (run 43920009616), unit/API/E2E tests of the defect pass without xfail"
    },
    {
-    "when": "2026-11-16 23:05",
+    "when": "2026-11-16 22:57",
     "status": "Closed",
     "note": "PR #13 merged; issue #1 closed"
    }

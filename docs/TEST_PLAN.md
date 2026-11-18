@@ -13,7 +13,7 @@ Verify the quality of the Stock adjustment workflows of InvenTree 1.8.0 dev (com
 | Critical | PR-01 | Unit, API, E2E, mutation, CI gate | EP, 3-point BVA, decision table, state transition, **MCC + MC/DC**, mutation |
 | High | PR-02, PR-03, PR-04, PR-06, PR-07, PR-10, PJ-01..03 | Unit/API with read-back, access matrix, dependency audit | EP, BVA, decision table, **MCC + MC/DC for the multi-condition decision (PR-03)**, recovery test |
 | Medium | PR-05, PR-08, PR-09 | API/E2E/tool-based | API integration with mixed items, k6, Lighthouse + axe |
-| Low | — | smoke | none currently (no risk scored ≤ 5) |
+| Low | — | not applicable | no risk scored ≤ 5, so no technique/depth is defined for this level |
 Levels from the project statement: Unit (pytest + coverage.py), API/integration (pytest + requests, generated EP/BVA), Browser E2E (Playwright, 6 use cases), usability/accessibility (Playwright, Lighthouse, axe-core), security (access matrix, ZAP passive, pip-audit), performance/recovery (k6, test double), static analysis (SonarQube), mutation (own AST runner with standard + 4 custom operators; mutmut attempted and unusable), CI (GitHub Actions).
 
 ## 3. Roles and responsibilities
@@ -43,8 +43,8 @@ Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (1
 | 9 security | 11-20 | 11-16 done | M3 |
 | 10 performance/recovery | 11-21 | 11-16 done | M3 |
 | 11–12 mutation and CI | 11-21 – 11-23 | 11-16 done | M1 |
-| 13 defects, monitoring, completion | 11-23 – 11-24 | 11-16 done | M2 (defects), M3 (reports) |
-| 14 final package | 11-24 – 11-26 | 11-16/17 in progress | all |
+| 13 defects, monitoring, completion | 11-23 – 11-24 | first pass 11-16; defect fixes, re-measurement and closure 11-17/18 (done) | M2 (defects), M3 (reports) |
+| 14 final package | 11-24 – 11-26 | 11-18 done (PDF + zip rebuilt after each review round) | all |
 
 ## 7. Entry, exit, suspension, resumption criteria
 **Entry criteria (all levels):** `scripts/reset.sh` reproducible; server answers `/api/`; seed counts match; previous phase gate passed.
@@ -60,7 +60,7 @@ Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (1
 **Exit (release) criteria** — exactly three; they are also the release criteria in the completion report. "Highest risks" = Critical + High.
 | ID | Category | Criterion (measurable) | Target | Tied to risk |
 |---|---|---|---|---|
-| EC-1 | Functional | On the fixed build: 100 % of own business-rule tests pass; **0 open Critical/High defects**; **0 unjustified uncovered lines** (each uncovered line listed with reason in `docs/COVERAGE_JUSTIFICATION.md`) in the in-scope logic with 100 % statement + branch coverage; all 6 basis paths and all MC/DC pairs of `validate_pk` pass; repeated/retried request test yields 0 duplicate adjustments | 100 % pass, 0 open C/H, 100 %/100 %, 0 duplicates | **PR-01 (Critical)**, **PR-03 (High)**, **PR-06 (High)** |
+| EC-1 | Functional | On the fixed build: 100 % of own business-rule tests pass; **0 open Critical/High defects**; **0 unjustified uncovered lines** (each uncovered statement/branch listed with reason in `docs/COVERAGE_JUSTIFICATION.md`) in the in-scope logic: 100 % statements and ≥ 99 % branches (the one unreachable branch is justified); all 6 basis paths and all MC/DC pairs of `validate_pk` pass; repeated/retried request test yields 0 duplicate adjustments | 100 % pass, 0 open C/H, 100 % statements / ≥ 99 % branches with justification, 0 duplicates after a retry (no idempotency key exists, W-03; the test shows a retry after a FAILED attempt is safe) | **PR-01 (Critical)**, **PR-03 (High)**, **PR-06 (High)** |
 | EC-2 | Security | All access-matrix decisions (≥ 4, ≥ 1 allowed, ≥ 1 denied) match the matrix, **and** 0 unresolved High/Critical findings in the audited dependency set (each finding listed with disposition) | 100 % decisions correct, 0 unresolved High/Critical | **PR-02 (High)**, **PR-10 (High)** |
 | EC-3 | Performance | `POST /api/stock/remove/` at 5 users: p95 ≤ **500 ms** and unexpected failures < **1 %** (declared in `docs/PERF_TARGETS.md`) | p95 ≤ 500 ms, failures < 1 % | PR-08 (Medium) |
 CI quality-gate thresholds (coverage, mutation score, Sonar) are separate and justified in Phase 12.

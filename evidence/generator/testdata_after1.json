@@ -2101,8 +2101,8 @@
     ]
    },
    "class": "null",
-   "constraint": "nullable=true",
-   "expected": "valid",
+   "constraint": "nullable=false",
+   "expected": "invalid",
    "expected_status": null,
    "field": "items[].status",
    "id": "stockAdd:items[].status:EP:null",
@@ -4276,8 +4276,8 @@
     ]
    },
    "class": "null",
-   "constraint": "nullable=true",
-   "expected": "valid",
+   "constraint": "nullable=false",
+   "expected": "invalid",
    "expected_status": null,
    "field": "items[].status",
    "id": "stockRemove:items[].status:EP:null",
@@ -4948,5 +4948,5 @@
  ],
  "count": 223,
  "spec": "evidence/generator/stock_changed1.yaml",
- "spec_sha256": "431965f9517f4a270daf10163da064dbf09a355eaa428fddf9b751376ea7b22d"
+ "spec_sha256": "28423f23a10e3ef6755dfbfc350aed1da0ee7ca96c32d579b78cb92f014b68be"
 }

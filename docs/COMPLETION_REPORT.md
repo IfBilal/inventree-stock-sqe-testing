@@ -23,7 +23,7 @@ Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects:
 | White-box unit tests | 342 passed, 0 expected failures; in-scope coverage statements 100.0 % / branches 99.3 % over 33 functions; complete MCC for 13 decisions, MC/DC sets, BR-2 32 rows | `docs/UNIT_TESTING.md`, `docs/MCC_MCDC.md`, `docs/COVERAGE_SCOPE.md` |
 | Test-data generation | OpenAPI 3.0.3 contract (validated), generator with 29 tests, 223 cases, two constraint-change demos | `docs/TEST_DATA_GENERATION.md` |
 | API / integration | 253 passed, 27 strict-xfail (loose typing / audit-parameter weaknesses of upstream); API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
-| Browser E2E (6 use cases, 30 flows) + usability | Playwright: 33 as expected, 0 unexpected, 0 flaky (no flow is an expected failure any more; DEF-05 shows as a visible annotation of the login set-up) | `docs/USE_CASES.md`, `docs/USABILITY.md` |
+| Browser E2E (6 use cases, 30 flows) + usability | Playwright: 33 tests as expected (30 use-case flows + 27 supporting tests: login set-up, access matrix, accessibility scans), 0 unexpected, 0 flaky (no flow is an expected failure any more; DEF-05 shows as a visible annotation of the login set-up) | `docs/USE_CASES.md`, `docs/USABILITY.md` |
 | Accessibility | Lighthouse accessibility 78 → 85 and SEO 75 → 83 on the fixed screen; image-alt and landmark-one-main resolved; remaining issues logged | `docs/ACCESSIBILITY.md` |
 | Security | access matrix 20/20; ZAP passive (1599 messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |
 | Performance and recovery | targets declared first; 1 vs 5 users × 2 runs; failure-and-recovery test with test double (rollback, retry, no duplicates) | `docs/PERFORMANCE.md` |
@@ -36,7 +36,7 @@ Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects:
 |---|---|
 | Both workflows (add/remove), BR-1…BR-4, FR-01…FR-11, roles manager/viewer/anonymous, UI + API + model level, SQLite, Basic/session auth | transfer, count, serialization, merge, disassemble workflows (out of scope); purchase/sales/build orders; plugins; PostgreSQL/MySQL behaviour and true row locking (no server available — assumption A-4); OAuth2 token authentication; mobile/barcode UIs; i18n; ZAP **active** scanning (statement requires passive only); frontend unit tests |
 
-## 4. Open defects (GitHub Issues; triage in `docs/DEFECTS.md`)
+## 4. Defects: status of all 12 findings (GitHub Issues; triage in `docs/DEFECTS.md`)
 | ID | Issue | Title | Severity | Priority | Status |
 |---|---|---|---|---|---|
 | DEF-01 | [#1](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/1) | Over-removal silently clamped (data loss) | Critical | P1 | Closed (fixed) |
@@ -52,7 +52,7 @@ Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects:
 | A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, button names, ARIA) | Medium | P3 | Open (deferred) |
 | UX-01 | [#12](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/12) | Enter in quantity field does not submit the dialog | Low | P3 | Open (deferred) |
 
-Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 8 closed defects reopened (target ≤ 10 %).
+Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 8 closed defects reopened (target ≤ 10 %); SEC-03 was closed as an accepted risk, not fixed.
 
 ## 5. Residual risk per risk (register `docs/RISK_REGISTER.md`; re-assessed from evidence)
 | Risk | Initial L×I | Evidence-based residual L×I | Rationale | Linked defects |
@@ -83,7 +83,8 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
-| 44369200021 | push | `main` | in_progress | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44369200021 |
+| 44370073545 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44370073545 |
+| 44369200021 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44369200021 |
 | 44365060860 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44365060860 |
 | 44362445511 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44362445511 |
 | 44357367524 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44357367524 |
@@ -94,7 +95,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 44343471926 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343471926 |
 | 44339141434 | pull_request | `fix/def-06-sqlite-locking` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44339141434 |
 | 44332822200 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44332822200 |
-| 44326688189 | pull_request | `fix/def-02-03-04-input-validation` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44326688189 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.

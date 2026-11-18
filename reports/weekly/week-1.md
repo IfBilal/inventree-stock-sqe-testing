@@ -1,4 +1,4 @@
-# WEEKLY PROGRESS REPORT 1 of 2 — build-up and measurement (checkpoint 2026-11-16 21:48, commit "Defect log with Pareto…") against the plan (`docs/TEST_PLAN.md` v0.2)
+# WEEKLY PROGRESS REPORT 1 of 2 — build-up and measurement (checkpoint 2026-11-16 21:48, commit "Defect log with Pareto…") against the plan (`docs/TEST_PLAN.md` v0.2, the version valid at that checkpoint)
 *Reporting period note:* the whole project ran inside two working days, so the two "weekly" reports are the two checkpoints of the real commit timeline (`git log`): report 1 = everything up to the first complete measurement of all test levels (Phases 0–13, first pass), report 2 = the corrective and closure work that followed. Figures below are those valid at the checkpoint (taken from the commits and evidence files of that time).
 
 ## 1. Progress against the plan (v0.2 schedule)

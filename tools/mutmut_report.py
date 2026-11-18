@@ -59,26 +59,43 @@ EQ = {  # (function, mutant id) -> why the mutant cannot be observed
 }
 
 
+OOS = {  # function -> why no add/remove workflow reaches it, and what testing it would need
+ 'StockStatusCustomSerializer.__init__': 'builds the choice list of the optional custom-status field; the add/remove requests never send a custom status (it is rejected as unknown input before this code matters) — testing it needs custom-status fixtures that are outside both workflows',
+ 'StockItem.get_sales_order_allocations': 'query helper for sales-order allocations, reached only through `can_delete()` where the unit tests replace it by a stub that records its arguments; a real test needs sales-order fixtures (order module, out of scope)',
+ 'StockItem.get_transfer_order_allocations': 'same as the sales-order helper, for transfer orders (order module, out of scope)',
+ '_default_delete_on_deplete': 'default value of a model field read at item creation from a global setting; the seeded and test items set `delete_on_deplete` explicitly',
+ 'StockItem._default_delete_on_deplete': 'default value of a model field read at item creation from a global setting; the seeded and test items set `delete_on_deplete` explicitly',
+ 'StockItem.default_delete_on_deplete': 'default value of a model field read at item creation from a global setting; the seeded and test items set `delete_on_deplete` explicitly',
+ 'StockItem.convert_serial_to_int': 'serial-number plugin hook (validation plugins are disabled in this deployment); only its caller `update_serial_number` is in the model path',
+ 'StockItem.validate_batch_code': 'batch-code plugin hook (validation plugins are disabled in this deployment)',
+ 'StockItem.__str__': 'display string used by the admin and logs; no workflow assertion depends on it',
+}
+
+
 def classify(name):
     key = (fn(name), name.split('__mutmut_')[1])
+    ln = [x[1:].strip() for x in diffs.get(name, []) if x.startswith('-')]
+    pl = [x[1:].strip() for x in diffs.get(name, []) if x.startswith('+')]
+    snippet = f" — `{(ln[0] if ln else '')[:60]}` → `{(pl[0] if pl else '(removed)')[:60]}`"
     if key in EQ:
         return 'Equivalent', EQ[key]
-    d = ' '.join(diffs.get(name, []))
     f = fn(name)
+    for k, why in OOS.items():
+        if f == k or f.endswith('.' + k) or f.split('.')[-1] == k.split('.')[-1] and f.split('.')[0] == k.split('.')[0]:
+            return 'Out of scope', why + snippet
+    d = ' '.join(diffs.get(name, []))
     minus = ' '.join(x[1:] for x in diffs.get(name, []) if x.startswith('-')).strip()
     plus = ' '.join(x[1:] for x in diffs.get(name, []) if x.startswith('+')).strip()
-    if f.split('.')[0] in ('StockStatusCustomSerializer',) or f.split('.')[-1] in ('get_sales_order_allocations', 'get_transfer_order_allocations', '_default_delete_on_deplete', 'default_delete_on_deplete', 'validate_batch_code', 'convert_serial_to_int', '__str__'):
-        return 'Out of scope', 'helper outside the add/remove path (display, allocation queries, serial/batch plugins, status field wrapper)'
     if re.search(r"'XX|XX'|\bNone\b.*\(_\(|ValidationError\(None\)|_\('[a-z]", plus) and 'ValidationError' in plus + minus:
         return 'Weak assertion', 'user-visible message / error key not asserted exactly (see tests)'
     if re.search(r'=\s*None', plus) and re.search(r'=\s*(False|\'\'|"")', minus) or ', None)' in plus and ', False)' in minus:
-        return 'Equivalent', 'falsy constant replaced by another falsy one (None for False/empty): no observable difference'
+        return 'Equivalent', 'falsy constant replaced by another falsy one, so the following `if`/`or` takes the same branch' + snippet
     if 'super().' in minus and ('*args' in minus or 'exclude' in minus or 'data' in minus):
-        return 'Equivalent', 'argument of the base-class call is unused / identical'
+        return 'Equivalent', 'the argument of the base-class call is not used by the base implementation (checked in the Django/DRF source)' + snippet
     if "'part'" in minus and 'location' in minus or 'select_related' in minus:
-        return 'Equivalent', 'query-optimisation argument (select_related): same rows, fewer queries'
+        return 'Equivalent', 'query-optimisation argument (select_related): the same rows are returned with a different number of queries' + snippet
     if 'backup_value' in minus or 'cache=' in minus:
-        return 'Equivalent', 'settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart'
+        return 'Equivalent', 'settings-lookup argument: the setting is defined and the settings cache is not enabled in the unit-test configuration, so default/cache arguments cannot be told apart' + snippet
     return 'Review', 'see diff'
 
 

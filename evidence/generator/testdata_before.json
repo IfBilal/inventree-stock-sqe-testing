@@ -2101,8 +2101,8 @@
     ]
    },
    "class": "null",
-   "constraint": "nullable=true",
-   "expected": "valid",
+   "constraint": "nullable=false",
+   "expected": "invalid",
    "expected_status": null,
    "field": "items[].status",
    "id": "stockAdd:items[].status:EP:null",
@@ -4276,8 +4276,8 @@
     ]
    },
    "class": "null",
-   "constraint": "nullable=true",
-   "expected": "valid",
+   "constraint": "nullable=false",
+   "expected": "invalid",
    "expected_status": null,
    "field": "items[].status",
    "id": "stockRemove:items[].status:EP:null",
@@ -4948,5 +4948,5 @@
  ],
  "count": 223,
  "spec": "openapi/stock.yaml",
- "spec_sha256": "cfd65dc992bd30807db54de7586287de906c642645cc123678ca2f1a260ac1f4"
+ "spec_sha256": "4d07b03b9ff502555c9eb9e9d4ffccf47cb04db8233c6397a8efbcf5a361eed5"
 }

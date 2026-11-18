@@ -1,6 +1,6 @@
 # AUTOMATED TEST-DATA GENERATION (Phase 5)
 **Spec:** `openapi/stock.yaml` (OpenAPI 3.0.3 contract of the two workflows + read-backs). We wrote our own because InvenTree's generated schema (`/api/schema/`, v580) is inaccurate for testing: it allows negative quantities (regex `^-?\d{0,10}…`), has no numeric minimum/maximum, no `minItems` on `items` even though the server rejects an empty list, and documents only status 201.
-**Generator:** `tools/gen_testdata.py` — reads the spec and emits, for **every input of every operation with a request body**, equivalence-partition classes (EP) and 3-point boundary values (BVA), with the expected outcome, as complete request bodies. Exact decimals (no float rounding), deterministic output, 103 cases for the current spec (`evidence/generator/testdata_before.json`).
+**Generator:** `tools/gen_testdata.py` — reads the spec and emits, for **every input of every operation with a request body**, equivalence-partition classes (EP) and 3-point boundary values (BVA), with the expected outcome, as complete request bodies. Exact decimals (no float rounding), deterministic output, 223 cases for the current spec (`evidence/generator/testdata_before.json`).
 Run: `.venv/bin/python tools/gen_testdata.py openapi/stock.yaml -o evidence/generator/testdata_before.json`.
 
 ## Constraints handled and cases produced
@@ -15,11 +15,12 @@ Run: `.venv/bin/python tools/gen_testdata.py openapi/stock.yaml -o evidence/gene
 Each case = a **valid template body with exactly one mutation**, so a rejection is attributable to that input ("one invalid value per test").
 
 ## API tests must use the generator output
-`tests/team/api/test_generated_ep_bva.py` imports `gen_testdata.generate()` and parametrises **all 103 cases** (one test per case id, e.g. `stockAdd:items[].quantity:BVA:max-at`). No boundary value is hard-coded in that file; the initial state of the item is derived from the case (limit cases use quantity 10, remove cases use the maximum, add-near-max uses an empty item so the result stays representable).
+`tests/team/api/test_generated_ep_bva.py` imports `gen_testdata.generate()` and parametrises **all 223 cases** (one test per case id, e.g. `stockAdd:items[].quantity:BVA:max-at`). No boundary value is hard-coded in that file; the initial state of the item is derived from the case (limit cases use quantity 10, remove cases use the maximum, add-near-max uses an empty item so the result stays representable).
 
 ## Constraint change demo (required by the project statement)
-`scripts/gen_demo.sh` changes **two constraints** in a copy of the spec — `quantity.maximum` 9999999999.99999 → **1000** and `notes.maxLength` 512 → **100** — regenerates, and diffs (`evidence/generator/spec_changes.diff`, `testdata_after.json`, `effect.md`):
-- **14 of 103 cases changed**, and only those derived from the two constraints (quantity `max-below/at/above` and `above-range` for add and remove = 8; notes `maxlen-below/at/above` for add and remove = 6).
+`scripts/gen_demo.sh` changes **two constraints** in a copy of the spec — `quantity.maximum` 9999999999.99999 → **1000** and `notes.maxLength` 512 → **100** — regenerates, and diffs (`evidence/generator/spec_changes1.txt`, `testdata_after1.json`, `effect1.md`) — **demo 1**:
+- **16 of 223 cases changed**, and only those derived from the two constraints (quantity `max-below/at/above` and `above-range` for add and remove = 8; notes `maxlen-below/at/above` for add and remove = 8, incl. the `above-range` neighbours).
+- **Demo 2** (`effect2.md`): `quantity.exclusiveMinimum` true → false and `items.minItems` 1 → 2 → **8 cases changed** (the zero-quantity boundary becomes valid; the one-item list becomes invalid).
 - Example: `stockAdd:items[].quantity:BVA:max-at` `9999999999.99999 → valid` becomes `1000 → valid`; `notes maxlen-at` 512 chars → 100 chars.
 Expect to regenerate and update the spec live in the viva (`scripts/gen_demo.sh`, then `scripts/test_api.sh api/test_generated_ep_bva.py`).
 
