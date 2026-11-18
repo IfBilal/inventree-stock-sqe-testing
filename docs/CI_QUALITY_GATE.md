@@ -36,7 +36,7 @@ Workflow: `.github/workflows/quality-gate.yml` (runs on every **pull request** t
 | 43916978299 | #14 (BR-2 violation) | **red, blocked** | unit, api, mutation fail |
 | 43933840489 | #16 (killing tests removed) | **red, blocked** | mutation 94.3 % < 95 % |
 | 43943448899 | #15 accessibility fix (after update from main) | **green** → merged | all 7 required jobs |
-| 44326688189 | #17 DEF-02/03/04 validation fixes | **green** → merged | all 7 required jobs (unit 331, API 250 + 27 xfail, E2E 57, mutation gate 95 %) |
+| 44326688189 | #17 DEF-02/03/04 validation fixes | **green** → merged | all 7 required jobs (historical run: counts at that time were unit 331, API 250 + 27 xfail, E2E 57; the final counts are unit 342, API 253 + 27 xfail, E2E 57 — `docs/COMPLETION_REPORT.md` §2) |
 | 44339141434 | #18 DEF-06, SEC-01, SEC-02 | **green** → merged | all 7 required jobs (E2E passes under the new Content-Security-Policy) |
 
 ## CI-produced mutation scores

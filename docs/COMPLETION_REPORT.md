@@ -100,5 +100,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.
 - mutmut 3.8.1 ran (after two set-up problems of ours were fixed: newline-separated `setup.cfg` lists and a migrated database): 652 mutants; our own AST runner adds the four custom business-rule operators that mutmut does not offer (`docs/MUTATION.md`).
 - Database: SQLite (no PostgreSQL available): concurrency results are specific to it (assumption A-4).
+- Only two weekly progress reports exist: the whole project was executed in a compressed schedule of about three days (11-16 to 11-18), so the two reports are two checkpoints of the real timeline (`reports/weekly/`), not two calendar weeks.
 - Eight of the twelve findings were fixed through pull requests (DEF-01, 02, 03, 04, 06, SEC-01, SEC-02, A11Y-01); SEC-03 is an accepted risk and DEF-05, A11Y-02, UX-01 are open (Medium/Low, deferred). The only reason for HOLD is EC-3 (5-user p95).
 - Effort: agent hours are logged; **human review hours are recorded as estimates (32.0 h) that the members confirm** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account — each member must commit their own work before submission (statement §6).
