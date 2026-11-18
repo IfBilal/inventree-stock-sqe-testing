@@ -74,5 +74,5 @@ for sid, title in SCREENS:
         impact, fix = KB.get(r, ('—', '—'))
         out.append(f"| `{r}` | {PRIO.get(r, 'P3')} | minor | axe only | **NEW after the fix** | — | {impact} | {fix} | **introduced by the fix** |")
     nb = len(rules); na = (len([r for r in rules if r in after_axe or r in after_lh]) + len(new_after)) if (aa is not None or la) else None
-    out.append(f"\nDistinct issues (deduplicated across tools): **before {nb}**" + (f", **after {na}**." if na is not None else '.'))
+    out.append(f"\nDistinct issues (deduplicated across tools): **before {nb}**" + (f", **after {na}**." if na is not None else '.') + " Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.")
 print('\n'.join(out))

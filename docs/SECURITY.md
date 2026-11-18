@@ -41,7 +41,7 @@ Expected decisions come from the role design (TEST_BASIS §4): `stock_manager` v
 
 Denied add **and remove** requests additionally assert that **no side effect occurred** (quantity unchanged, no history entry) — asserted in `access.spec.ts` for both actions. Verdict: **no access-control weakness found** (control working: RuleSet → Django permission → `ModelPermission` on `StockItem`).
 
-## 3. OWASP ZAP passive scan while the Playwright tests run both workflows
+## 3. OWASP ZAP passive scan (baseline, before the PR #18 fixes; counts are distinct alert types) while the Playwright tests run both workflows
 Script: `scripts/zap_passive_run.sh` (launch command saved in `evidence/security/zap_launch_command.txt`; **mode queried from the ZAP API: `safe`** — passive scanners only, no spider, no active scan, `zap_mode.json`). The Playwright specs UC-01 (add) and UC-02 (remove) — 13 tests, 0 unexpected results — ran through the proxy: **1599 HTTP messages** recorded (236 distinct URLs), including **10 POST requests to the workflow endpoints** (/api/stock/add/: 5, /api/stock/remove/: 5; `zap_workflow_post_evidence.json`), passive queue drained before export. Raw alerts: `zap_alerts_raw.json`; raw `Set-Cookie` headers: `zap_set_cookie_headers.txt`.
 
 | Risk | Alert | Instances | Evidence (first) | Component | Likely impact | Recommended correction |
