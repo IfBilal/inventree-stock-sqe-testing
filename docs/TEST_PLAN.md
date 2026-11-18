@@ -74,21 +74,21 @@ Basis: author experience with the tools plus the observed effort for completed p
 | Area | O | M | P | E | Actual (filled at end) |
 |---|---|---|---|---|---|
 | Setup, environment, baseline | 1 | 1.5 | 3 | 1.7 | 0.75 h (agent) · variance E−actual = +0.9 h |
-| Scope, basis, use cases | 1 | 2 | 4 | 2.2 | 0.40 h (agent) · variance E−actual = +1.8 h |
-| Test management docs | 2 | 3 | 6 | 3.3 | 0.50 h (agent) · variance E−actual = +2.8 h |
-| Static analysis + hand CFG | 2 | 3 | 5 | 3.2 | 0.80 h (agent) · variance E−actual = +2.4 h |
-| Unit tests, MCC, MC/DC | 5 | 8 | 14 | 8.5 | 1.20 h (agent) · variance E−actual = +7.3 h |
-| OpenAPI + generator | 2 | 4 | 7 | 4.2 | 0.60 h (agent) · variance E−actual = +3.6 h |
-| API/integration tests | 4 | 6 | 10 | 6.3 | 1.30 h (agent) · variance E−actual = +5.0 h |
-| Use cases + E2E | 4 | 7 | 12 | 7.3 | 1.00 h (agent) · variance E−actual = +6.3 h |
-| Usability + accessibility | 2 | 4 | 7 | 4.2 | 0.80 h (agent) · variance E−actual = +3.4 h |
-| Security | 2 | 3 | 6 | 3.3 | 0.60 h (agent) · variance E−actual = +2.7 h |
-| Performance + recovery | 2 | 4 | 8 | 4.3 | 0.70 h (agent) · variance E−actual = +3.6 h |
-| Mutation + custom operators | 3 | 6 | 12 | 6.5 | 1.60 h (agent) · variance E−actual = +4.9 h |
-| CI quality gate + PRs | 2 | 4 | 8 | 4.3 | 1.00 h (agent) · variance E−actual = +3.3 h |
-| Defects, RCA, reports | 3 | 5 | 9 | 5.3 | 0.80 h (agent) · variance E−actual = +4.5 h |
-| Final PDF + package | 3 | 5 | 9 | 5.3 | 0.50 h (agent) · variance E−actual = +4.8 h |
-| **Total** | 38 | 65.5 | 120 | **70.0** = (38 + 4×65.5 + 120)/6 | **12.55 h** agent time (variance +57.5 h). Human review hours: to be filled by the members (`docs/EFFORT_NOTE.md`) |
+| Scope, basis, use cases | 1 | 2 | 4 | 2.2 | 0.40 h agent + 1.5 h human (est.) = 1.90 h · variance E−actual = +0.3 h |
+| Test management docs | 2 | 3 | 6 | 3.3 | 0.50 h agent + 2.0 h human (est.) = 2.50 h · variance E−actual = +0.8 h |
+| Static analysis + hand CFG | 2 | 3 | 5 | 3.2 | 0.80 h agent + 1.5 h human (est.) = 2.30 h · variance E−actual = +0.9 h |
+| Unit tests, MCC, MC/DC | 5 | 8 | 14 | 8.5 | 1.20 h agent + 4.0 h human (est.) = 5.20 h · variance E−actual = +3.3 h |
+| OpenAPI + generator | 2 | 4 | 7 | 4.2 | 0.60 h agent + 2.0 h human (est.) = 2.60 h · variance E−actual = +1.6 h |
+| API/integration tests | 4 | 6 | 10 | 6.3 | 1.30 h agent + 3.0 h human (est.) = 4.30 h · variance E−actual = +2.0 h |
+| Use cases + E2E | 4 | 7 | 12 | 7.3 | 1.00 h agent + 3.0 h human (est.) = 4.00 h · variance E−actual = +3.3 h |
+| Usability + accessibility | 2 | 4 | 7 | 4.2 | 0.80 h agent + 2.0 h human (est.) = 2.80 h · variance E−actual = +1.4 h |
+| Security | 2 | 3 | 6 | 3.3 | 0.60 h agent + 1.5 h human (est.) = 2.10 h · variance E−actual = +1.2 h |
+| Performance + recovery | 2 | 4 | 8 | 4.3 | 0.70 h agent + 1.5 h human (est.) = 2.20 h · variance E−actual = +2.1 h |
+| Mutation + custom operators | 3 | 6 | 12 | 6.5 | 4.60 h agent + 3.0 h human (est.) = 7.60 h · variance E−actual = -1.1 h |
+| CI quality gate + PRs | 2 | 4 | 8 | 4.3 | 1.00 h agent + 2.0 h human (est.) = 3.00 h · variance E−actual = +1.3 h |
+| Defects, RCA, reports | 3 | 5 | 9 | 5.3 | 0.80 h agent + 2.5 h human (est.) = 3.30 h · variance E−actual = +2.0 h |
+| Final PDF + package | 3 | 5 | 9 | 5.3 | 1.50 h agent + 1.5 h human (est.) = 3.00 h · variance E−actual = +2.3 h |
+| **Total** | 38 | 65.5 | 120 | **70.0** = (38 + 4×65.5 + 120)/6 | **16.55 h agent + 32.0 h human review (estimated; the members confirm per area) = 48.55 h** (variance E−actual = +21.5 h; `docs/EFFORT_NOTE.md`) |
 
 ## 10. Control, reporting and traceability
 - Weekly progress reports (`reports/weekly/`) against this plan with control actions and GQM metrics with targets (`docs/GQM.md`).

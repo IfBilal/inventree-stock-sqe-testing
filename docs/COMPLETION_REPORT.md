@@ -81,6 +81,7 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
+| 44158035639 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44158035639 |
 | 44095413130 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44095413130 |
 | 44007547805 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44007547805 |
 | 44007531207 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44007531207 |
@@ -92,11 +93,10 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 43938002471 | pull_request | `fix/a11y-stock-item-page` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43938002471 |
 | 43937961734 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43937961734 |
 | 43933840489 | pull_request | `bad/remove-mutation-killing-tests` | failure | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43933840489 |
-| 43933792483 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43933792483 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.
 - mutmut 3.8.1 ran (after two set-up problems of ours were fixed: newline-separated `setup.cfg` lists and a migrated database): 652 mutants; our own AST runner adds the four custom business-rule operators that mutmut does not offer (`docs/MUTATION.md`).
 - Database: SQLite (no PostgreSQL available): concurrency results are specific to it (assumption A-4).
 - Open defects other than DEF-01 were **logged and analysed but not fixed** (the statement requires one documented fix); this is the reason for HOLD.
-- Effort: agent hours are logged; **human review hours must be filled in by the members** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account — each member must commit their own work before submission (statement §6).
+- Effort: agent hours are logged; **human review hours are recorded as estimates (32.0 h) that the members confirm** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account — each member must commit their own work before submission (statement §6).

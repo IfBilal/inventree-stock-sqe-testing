@@ -12,7 +12,7 @@ Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: t
 | E2E in traceability | 11-17 01:38 (`tools/gen_traceability.py` reads the Playwright report) | **done** | — |
 | Final review round | 4 independent graders 11-17 | **done** | contradictions between documents reconciled (test counts, access matrix 20/20, mutation figures) |
 | Complete MCC for all four business rules | BR-4 added 11-17 08:04 | **done** | 13 decisions now covered |
-| Final PDF and zip | 11-17 08:04 | **done** | section B; human review hours left for the members |
+| Final PDF and zip | 11-17 08:04 | **done** | section B; human review hours estimated and recorded |
 
 ## 2. GQM metrics now (definitions and targets: `docs/GQM.md`)
 | Goal | Metric | Value | Target | Reading |
@@ -29,7 +29,7 @@ Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: t
 - Open Critical/High at the end: DEF-03, DEF-06 → release decision stays **HOLD** (`docs/COMPLETION_REPORT.md`).
 
 ## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)
-Agent hours logged for the whole project: **12.55 h** against a three-point estimate of 70.0 h (the estimate assumed human effort; human review hours are to be added by the members, `docs/EFFORT_NOTE.md`). The corrective work of this period (review rounds, PR fixes, final package) is part of the rows "CI quality gate + PRs", "Defects, RCA, reports" and "Final PDF + package".
+Agent hours logged for the whole project: **16.55 h** against a three-point estimate of 70.0 h (the estimate assumed human effort; human review hours are estimated at 32.0 h in `docs/EFFORT_NOTE.md`). The corrective work of this period (review rounds, PR fixes, final package) is part of the rows "CI quality gate + PRs", "Defects, RCA, reports" and "Final PDF + package".
 
 ## 5. Plan for the next period (after submission)
 Fix DEF-02 and DEF-04 (small validation changes), then DEF-03 (representable total) and DEF-06 (move to a database with row locks); rerun the k6 test against EC-3.
