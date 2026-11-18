@@ -30,10 +30,10 @@ Tool versions: `docs/TOOL_VERSIONS.md`. Everything runs without Docker (SQLite; 
 
 ## Results at a glance (details in the documents)
 * In-scope coverage (32 functions): **100 % statements, 99.2 % branches** (one unreachable branch, defended).
-* Unit 316 passed + 8 strict xfail (open defects); API 244 passed + 35 strict xfail, criteria 100 %; E2E 61 passed with expected-failure flows pinned for DEF-02.
+* Unit 337 passed (0 expected failures); API 250 passed + 27 strict xfail (loose typing / unvalidated audit parameters of upstream); E2E 57 passed (0 expected failures); API coverage criteria 100 %.
 * Mutation: **mutmut 3.8.1** (real run, 652 mutants on `stock/serializers.py` + `stock/models.py`): 509 killed, 107 survivors all classified (51 equivalent, 56 outside the add/remove scope) → in-scope **100 % adjusted**, raw 82.6 % over both whole files; plus our own runner with the 4 custom business-rule operators: 248 mutants, 100 % adjusted (`docs/MUTATION.md`).
-* Defects: 12 recorded (`docs/DEFECTS.md`); DEF-01 (Critical, silent data loss on over-removal) fixed through PR #13 with a red→green pipeline.
-* **Release decision: HOLD** — EC-1 not met (DEF-03 Critical and DEF-06 High open), EC-3 not met (19.5 % failures at 5 users on SQLite); EC-2 met with dispositions.
+* Defects: 12 recorded (`docs/DEFECTS.md`); **9 fixed through reviewed pull requests with a green pipeline** (DEF-01 #13, DEF-02/03/04 #17, DEF-06 + SEC-01/02 #18, A11Y-01 #15); SEC-03 accepted; DEF-05, A11Y-02, UX-01 open (Medium/Low).
+* **Release decision: HOLD** — EC-1 and EC-2 met; EC-3 not met: at 5 users failures are 0 % (were 19.5 %) but p95 is 545–556 ms against the declared 500 ms (`docs/COMPLETION_REPORT.md`).
 
 ## Honest limitations
 Human review hours are blank in `docs/EFFORT_LOG.csv` for the members to fill; AI assistance is documented in `docs/AI_USE_RECORD.md`; the commit history needs each member's own commits before submission.

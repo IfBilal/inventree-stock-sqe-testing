@@ -3,26 +3,26 @@
 System under test: InvenTree 1.8.0 dev, Stock module (WF-A Add stock, WF-B Remove stock), upstream commit `1f51dfe64bf4717fd95df51f1055ffb7a991a01d`, MIT. Repository: https://github.com/IfBilal/inventree-stock-sqe-testing. Team: 24I-3166, 24I-3015, 24I-3106.
 
 ## 1. Decision
-> # **HOLD** — the build is **not recommended for release** as it stands.
+> # **HOLD** — one exit criterion is still not met, so the build is **not recommended for release** yet.
 
-Reasons (evidence-based): exit criteria **EC-1 (functional) and EC-3 (performance) are not met**, EC-2 (security) is met on the tested scope. Open Critical/High defects: DEF-03, DEF-06 (see §4). The over-removal data-loss defect DEF-01 was fixed through a pull request (§6) and verified by the unit, API and browser levels, but DEF-03 (overflow makes an item unreadable and breaks the whole stock list) and DEF-06 (concurrent adjustments fail with HTTP 500 on SQLite) remain. A release would be justified after those are fixed and the performance test is repeated on the production database (PostgreSQL).
+Reasons (evidence-based): EC-1 (functional) **NOT met** (open Critical/High defects: DEF-03, DEF-06), EC-2 (security) **met** on the tested scope, EC-3 (performance) **NOT met**: at 5 users the failure rate is 0.0 % / 0.0 % (was 19.3 % / 19.7 % before the DEF-06 fix) but p95 is 556 / 545 ms against the declared 500 ms. All five functional defects found in the add/remove workflows were fixed through reviewed pull requests with a green pipeline (DEF-01 PR #13; DEF-02, DEF-03, DEF-04 PR #17; DEF-06 PR #18), together with SEC-01, SEC-02 and the accessibility fix A11Y-01. Still open (none Critical/High): DEF-02, DEF-03, DEF-04, DEF-05, DEF-06, SEC-01, SEC-02, SEC-03, A11Y-02, UX-01.
 
 ### 1.1 Release criteria — actual versus target (the three exit criteria of the test plan, `docs/TEST_PLAN.md` §7)
 | ID | Category | Target | Actual (evidence) | Met? |
 |---|---|---|---|---|
-| EC-1 | Functional (risks PR-01, PR-03, PR-06) | 100 % of own business-rule tests pass on the fixed build; **0 open Critical/High defects**; 0 unjustified uncovered lines (in-scope statements 100 %, branches 100 % with justification); all 6 basis paths and MC/DC pairs of `validate_pk` pass; retried request yields 0 duplicates | Tests pass on the fixed build (unit/API/E2E, §2). In-scope coverage statements **100.0 %**, branches **99.2 %** (1 unreachable branch justified: `docs/COVERAGE_JUSTIFICATION.md`). MCC rows 32/32, MC/DC set and 6 basis paths pass. Recovery tests: 0 duplicates. **Open Critical/High defects: 2 (DEF-03, DEF-06)** | **NO** (open Critical/High) |
+| EC-1 | Functional (risks PR-01, PR-03, PR-06) | 100 % of own business-rule tests pass on the fixed build; **0 open Critical/High defects**; 0 unjustified uncovered lines (in-scope statements 100 %, branches 100 % with justification); all 6 basis paths and MC/DC pairs of `validate_pk` pass; retried request yields 0 duplicates | Tests pass on the fixed build (unit/API/E2E, §2). In-scope coverage statements **100.0 %**, branches **99.3 %** (1 unreachable branch justified: `docs/COVERAGE_JUSTIFICATION.md`). MCC rows 32/32, MC/DC set and 6 basis paths pass. Recovery tests: 0 duplicates. **Open Critical/High defects: 2 (DEF-03, DEF-06)** | **NO** |
 | EC-2 | Security (risks PR-02, PR-10) | all access-matrix decisions (≥ 4, ≥ 1 allowed, ≥ 1 denied) match; 0 unresolved High/Critical in the audited dependency set | **20/20** access decisions match (allowed and denied). Backend: 166 packages, 0 vulnerabilities. Frontend: 1 High advisory (`zod`, build tooling only, not in the served bundle) — dispositioned (accepted, SEC-03 / `docs/SECURITY.md` §4.2); 2 moderate `react-router` advisories in the shipped bundle (SEC-03, open, Medium) | **YES** on the tested scope (with dispositions) |
-| EC-3 | Performance (risk PR-08) | `POST /api/stock/remove/` at 5 users: p95 ≤ 500 ms and unexpected failures < 1 % | 1 user: p95 299 / 298 ms, failures 0.0 % / 0.0 % (met). **5 users: p95 518 / 522 ms, failures 19.3 % / 19.7 %** (both runs miss both limits) — DEF-06 | **NO** |
+| EC-3 | Performance (risk PR-08) | `POST /api/stock/remove/` at 5 users: p95 ≤ 500 ms and unexpected failures < 1 % | 1 user: p95 301 / 308 ms, failures 0.0 % / 0.0 % (met). **5 users (token auth, after the DEF-06 fix): p95 556 / 545 ms, failures 0.0 % / 0.0 %** — the failure criterion is met, the p95 criterion is not. Baseline before the fix: p95 518 / 522 ms, failures 19.3 % / 19.7 %. Variants (Basic auth, gunicorn) in `docs/PERFORMANCE.md` §7 | **NO** |
 
-**Conditions to move from HOLD to RELEASE:** (1) fix DEF-03 and DEF-06 (or accept PR-08 for single-user deployments and run on PostgreSQL), (2) re-run EC-1 and EC-3, (3) address SEC-03 (`react-router`) and SEC-01 (CSP) in the deployment, (4) re-run the full pipeline green.
+**Conditions to move from HOLD to RELEASE:** (1) bring the 5-user p95 under 500 ms (the write path costs about 100 ms of server time per request and SQLite serialises writers: reduce the per-request work or deploy on PostgreSQL and re-measure with `scripts/perf_run.sh`), or have the product owner approve a revised target with the evidence of `docs/PERFORMANCE.md`; (2) disposition of the remaining Medium/Low findings (DEF-05, SEC-03, A11Y-02, UX-01) in the release notes; (3) full pipeline green on the release commit.
 
 ## 2. Results per testing activity (what was tested)
 | Activity | Result | Evidence |
 |---|---|---|
 | Static analysis (SonarQube) | bugs 0, smells 0, vulnerabilities 0, ratings A, duplication 0.6 %, coverage 40.2 % (whole module); V(G) of `validate_pk` hand = 6 (radon 6, Sonar 5: `elif` not counted) | `docs/STATIC_ANALYSIS.md` |
-| White-box unit tests | 316 passed, 8 strict-xfail (defects); in-scope coverage statements 100.0 % / branches 99.2 % over 31 functions; complete MCC for 12 decisions, MC/DC sets, BR-2 32 rows | `docs/UNIT_TESTING.md`, `docs/MCC_MCDC.md`, `docs/COVERAGE_SCOPE.md` |
+| White-box unit tests | 337 passed, ? strict-xfail (defects); in-scope coverage statements 100.0 % / branches 99.3 % over 31 functions; complete MCC for 12 decisions, MC/DC sets, BR-2 32 rows | `docs/UNIT_TESTING.md`, `docs/MCC_MCDC.md`, `docs/COVERAGE_SCOPE.md` |
 | Test-data generation | OpenAPI 3.0.3 contract (validated), generator with 29 tests, 223 cases, two constraint-change demos | `docs/TEST_DATA_GENERATION.md` |
-| API / integration | 244 passed, 35 strict-xfail; API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
+| API / integration | 260 passed, 27 strict-xfail; API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
 | Browser E2E (6 use cases, 30 flows) + usability | Playwright: 33 as expected, 0 unexpected, 0 flaky (flows annotated as expected failures expose the still-open defects) | `docs/USE_CASES.md`, `docs/USABILITY.md` |
 | Accessibility | Lighthouse accessibility 78 → 85 and SEO 75 → 83 on the fixed screen; image-alt and landmark-one-main resolved; remaining issues logged | `docs/ACCESSIBILITY.md` |
 | Security | access matrix 20/20; ZAP passive (1599 messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |
@@ -58,15 +58,15 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | Risk | Initial L×I | Evidence-based residual L×I | Rationale | Linked defects |
 |---|---|---|---|---|
 | PR-01 | 25 | 1×5 = 5 | over-removal rejected after the fix; limit BVA at 3 levels; CBR-1 mutants 2/2 killed | DEF-01 (fixed), DEF-03 |
-| PR-02 | 10 | 1×5 = 5 | access matrix 20/20; no side effect on denied calls; SameSite/CSP hardening open | SEC-01, SEC-02 |
+| PR-02 | 10 | 1×5 = 5 | access matrix 20/20; no side effect on denied calls; CSP header and SameSite=Lax added (PR #18) | SEC-01, SEC-02 (fixed) |
 | PR-03 | 12 | 1×4 = 4 | complete MCC 32/32 + MC/DC; CBR-2 mutants 5/5 killed | — |
-| PR-04 | 12 | 4×3 = 12 (High) | zero accepted, overflow and malformed items still open | DEF-02, DEF-03, DEF-04 |
+| PR-04 | 12 | 1×3 = 3 | zero, unrepresentable totals and malformed items are rejected (PR #17); 3-point BVA at API level | DEF-02, DEF-03, DEF-04 (fixed) |
 | PR-05 | 8 | 1×4 = 4 | atomicity verified at unit, API and recovery level | — |
 | PR-06 | 12 | 2×4 = 8 (Medium) | recovery test: retry after failure is safe; no idempotency key remains (W-03) | — |
 | PR-07 | 12 | 2×4 = 8 (Medium) | history read back after success and rejection; W-01, W-06 weaknesses | — |
-| PR-08 | 9 | 5×3 = 15 (High) | measured: 19.5 % failures at 5 users on SQLite | DEF-06 |
+| PR-08 | 9 | 3×3 = 9 (Medium) | failures 19.5 % → 0 % at 5 users after the DEF-06 fix; p95 545–556 ms still above the 500 ms limit | DEF-06 (fixed) |
 | PR-09 | 8 | 3×2 = 6 (Medium) | one screen fixed (78→85); other findings open | A11Y-01/02, UX-01, DEF-05 |
-| PR-10 | 12 | 2×4 = 8 (Medium) | backend 0/166; frontend moderate advisories open | SEC-03 |
+| PR-10 | 12 | 2×4 = 8 (Medium) | backend 0/166; frontend advisories dispositioned (react-router has no patched 6.x release; SEC-03 accepted) | SEC-03 (accepted) |
 | PJ-01 | 16 | 1×4 = 4 | all tools ran (SonarQube via zip, ZAP, k6, mutation, CI) | — |
 | PJ-02 | 15 | 2×5 = 10 (High) | depends on the team preparing for the viva (`docs/VIVA_PREP.md`) | — |
 | PJ-03 | 12 | 1×3 = 3 | full mutation run took 25 min on 5 workers | — |
@@ -78,9 +78,14 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | [#14](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/14) | Allow adjusting stock items that are installed in another item | `bad/relax-adjustability-rule` | OPEN | hygiene: SUCCESS, unit: FAILURE, api: FAILURE, e2e: SUCCESS, mutation: FAILURE, sonar: SKIPPED, gate: SKIPPED, deploy: SKIPPED |
 | [#15](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/15) | a11y: alt text on item images and a main landmark on the stock item page (issue #10) | `fix/a11y-stock-item-page` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
 | [#16](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/16) | Remove redundant-looking tests (test_mutation_killers.py) | `bad/remove-mutation-killing-tests` | OPEN | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: FAILURE, sonar: SUCCESS, gate: SKIPPED, deploy: SKIPPED |
+| [#17](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/17) | Fix DEF-02, DEF-03 and DEF-04: reject zero quantity, unrepresentable totals and malformed items | `fix/def-02-03-04-input-validation` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
+| [#18](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/18) | Fix DEF-06 (concurrent adjustments fail), SEC-01 (no CSP) and SEC-02 (cookies without SameSite) | `fix/def-06-sqlite-locking` | OPEN | — |
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
+| 44332822200 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44332822200 |
+| 44326688189 | pull_request | `fix/def-02-03-04-input-validation` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44326688189 |
+| 44322551459 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44322551459 |
 | 44158035639 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44158035639 |
 | 44095413130 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44095413130 |
 | 44007547805 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44007547805 |
@@ -90,9 +95,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 43949292832 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43949292832 |
 | 43943448899 | pull_request | `fix/a11y-stock-item-page` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43943448899 |
 | 43939159652 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43939159652 |
-| 43938002471 | pull_request | `fix/a11y-stock-item-page` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43938002471 |
-| 43937961734 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43937961734 |
-| 43933840489 | pull_request | `bad/remove-mutation-killing-tests` | failure | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/43933840489 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.

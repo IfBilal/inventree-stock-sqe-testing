@@ -1,6 +1,6 @@
 # API AND INTEGRATION TESTING (Phase 6)
 Run: `scripts/test_api.sh api` (resets the DB, starts the server, runs pytest + requests against `http://127.0.0.1:8000`). Every test creates its own item (order-independent). Evidence: `evidence/api/request_log.jsonl` (all requests), `docs/API_COVERAGE.md`, `docs/TRACEABILITY.md`.
-**Result (2026-11-17, final):** 244 passed, 35 strict xfail (each = a baseline defect, see below), 0 failed — `scripts/test_api.sh api`, 8 min 14 s.
+**Result (2026-11-18, final):** 250 passed, 27 strict xfail (each = a remaining weakness of the upstream API, see below), 0 failed — `scripts/test_api.sh api`, 8 min 14 s.
 
 ## What is tested
 | File | Content |
@@ -11,13 +11,13 @@ Run: `scripts/test_api.sh api` (resets the DB, starts the server, runs pytest + 
 ## API coverage criteria (measured, `docs/API_COVERAGE.md`)
 Endpoint 4/4, operation 4/4, documented status codes 11/11 (201, 400, 401, 403, 200, 404), roles per write endpoint 6/6, inputs with EP cases 14/14, content types 4/4, unsupported methods 8/8 (405), plus sequence/state coverage. All figures are computed from the logged requests.
 
-## Defects exposed (strict xfail, GitHub Issues in this repository)
+## Defects exposed by the generated cases (all fixed in pull requests; the cases now pass without markers)
 | Defect | Cases | Issue |
 |---|---|---|
-| DEF-01 over-removal clamped, not rejected | `stockRemove:…quantity:BVA:limit-above`; `test_duplicate_pk_entries_exceeding_available_are_rejected` | #1 |
-| DEF-02 zero accepted as silent no-op | `…quantity:BVA:min-at` (add, remove) | #2 |
-| DEF-03 resulting quantity overflow → 500 on read | unit tests (`test_add_with_total_just_above_max_is_rejected`) — not an API case because it corrupts the shared test data | #3 |
-| DEF-04 `items` null / string → HTTP 500 | `stockAdd|stockRemove:items:EP:null|not-an-array` (found by the generator on its first run) | #4 |
+| DEF-01 over-removal clamped, not rejected | `stockRemove:…quantity:BVA:limit-above`; `test_duplicate_pk_entries_exceeding_available_are_rejected` | #1 (fixed, PR #13) |
+| DEF-02 zero accepted as silent no-op | `…quantity:BVA:min-at` (add, remove) | #2 (fixed, PR #17) |
+| DEF-03 resulting quantity overflow → 500 on read | unit tests (`test_add_with_total_just_above_max_is_rejected`) — now an API test too (`test_def03_overflow_rejected.py`, no longer corrupting) | #3 (fixed, PR #17) |
+| DEF-04 `items` null / string → HTTP 500 | `stockAdd|stockRemove:items:EP:null|not-an-array` (found by the generator on its first run) | #4 (fixed, PR #17) |
 
 ## Endpoint weaknesses (observed behaviour, each asserted by a test)
 | ID | Weakness | Risk | Recommended fix |

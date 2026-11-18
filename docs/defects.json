@@ -50,7 +50,7 @@
   "category": "Validation",
   "severity": "Medium",
   "priority": "P2",
-  "status": "Open",
+  "status": "Closed (fixed)",
   "risk": "PR-04",
   "found": "Phase 1/6/7",
   "tests": "unit + API + E2E",
@@ -59,6 +59,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Closed",
+    "note": "PR #17: StockAdd/StockRemove serializers require a non-zero quantity; tests and E2E flows pass without expected-failure markers; issue #2 closed"
    }
   ]
  },
@@ -69,7 +74,7 @@
   "category": "Data integrity",
   "severity": "Critical",
   "priority": "P1",
-  "status": "Open",
+  "status": "Closed (fixed)",
   "risk": "PR-04, PR-01",
   "found": "Phase 1/6",
   "tests": "unit + API pins",
@@ -83,6 +88,11 @@
     "when": "2026-11-16 20:15",
     "status": "Re-triaged",
     "note": "severity High\u2192Critical, P2\u2192P1: one corrupted item breaks the whole stock list (found in Phase 6)"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Closed",
+    "note": "PR #17: StockAddSerializer.validate rejects totals above 9 999 999 999.99999 (entries of one item summed); the unreadable-item and broken-list failures cannot be produced any more; issue #3 closed"
    }
   ]
  },
@@ -93,7 +103,7 @@
   "category": "Validation",
   "severity": "Medium",
   "priority": "P2",
-  "status": "Open",
+  "status": "Closed (fixed)",
   "risk": "PR-04",
   "found": "Phase 6 (generator)",
   "tests": "unit + API generated",
@@ -102,6 +112,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Closed",
+    "note": "PR #17: malformed items answer HTTP 400 with a validation message; issue #4 closed"
    }
   ]
  },
@@ -112,7 +127,7 @@
   "category": "Usability",
   "severity": "Medium",
   "priority": "P3",
-  "status": "Open",
+  "status": "Open (deferred)",
   "risk": "PR-09",
   "found": "Phase 7",
   "tests": "setup test (annotated)",
@@ -121,6 +136,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Open",
+    "note": "Medium/P3: first login after a server start fails once; documented workaround in the E2E set-up; not part of the add/remove workflows"
    }
   ]
  },
@@ -131,7 +151,7 @@
   "category": "Performance",
   "severity": "High",
   "priority": "P2",
-  "status": "Open",
+  "status": "Closed (fixed)",
   "risk": "PR-08",
   "found": "Phase 10",
   "tests": "k6 runs",
@@ -140,6 +160,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Closed",
+    "note": "PR #18: SQLite IMMEDIATE transactions + 30 s timeout; failures at 5 users 19.5 % -> 0 % (k6, 4 runs); the p95 gap of EC-3 is tracked as risk PR-08, not as this defect; issue #6 closed"
    }
   ]
  },
@@ -150,7 +175,7 @@
   "category": "Security",
   "severity": "Medium",
   "priority": "P3",
-  "status": "Open",
+  "status": "Closed (fixed)",
   "risk": "PR-02, PR-10",
   "found": "Phase 9",
   "tests": "ZAP passive",
@@ -159,6 +184,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Closed",
+    "note": "PR #18: Content-Security-Policy header; whole Playwright suite passes under it; issue #7 closed"
    }
   ]
  },
@@ -169,7 +199,7 @@
   "category": "Security",
   "severity": "Low",
   "priority": "P3",
-  "status": "Open",
+  "status": "Closed (fixed)",
   "risk": "PR-02",
   "found": "Phase 9",
   "tests": "ZAP passive + source",
@@ -178,6 +208,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Closed",
+    "note": "PR #18: SameSite=Lax is the default; issue #8 closed"
    }
   ]
  },
@@ -188,7 +223,7 @@
   "category": "Security",
   "severity": "Medium",
   "priority": "P3",
-  "status": "Open",
+  "status": "Accepted (risk)",
   "risk": "PR-10",
   "found": "Phase 9",
   "tests": "yarn audit",
@@ -197,6 +232,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Accepted",
+    "note": "no patched react-router 6.x exists (fix = major migration to >= 7.18); exploitation narrowed by CSP/SameSite; re-evaluate with the next upstream release"
    }
   ]
  },
@@ -241,7 +281,7 @@
   "category": "Accessibility",
   "severity": "Medium",
   "priority": "P3",
-  "status": "Open",
+  "status": "Open (deferred)",
   "risk": "PR-09",
   "found": "Phase 8",
   "tests": "Lighthouse + axe",
@@ -250,6 +290,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Open",
+    "note": "Medium/P3: remaining contrast / button-name / ARIA findings of the UI (need frontend design decisions)"
    }
   ]
  },
@@ -260,7 +305,7 @@
   "category": "Usability",
   "severity": "Low",
   "priority": "P3",
-  "status": "Open",
+  "status": "Open (deferred)",
   "risk": "PR-09",
   "found": "Phase 7",
   "tests": "E2E keyboard test",
@@ -269,6 +314,11 @@
     "when": "2026-11-16",
     "status": "Opened",
     "note": "triage: accepted"
+   },
+   {
+    "when": "2026-11-18",
+    "status": "Open",
+    "note": "Low/P4: Enter in the quantity field of the stock-adjust dialog does not submit (table-row fields have no form context)"
    }
   ]
  }

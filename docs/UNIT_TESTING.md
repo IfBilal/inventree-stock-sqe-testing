@@ -1,7 +1,7 @@
 # WHITE-BOX UNIT TESTING (Phase 4) — own tests in `tests/team/unit/`
 Run: `scripts/test_unit.sh` (tests) · `scripts/coverage_unit.sh` (branch coverage + per-function scope check; writes `evidence/coverage/` and `docs/COVERAGE_SCOPE.md`).
 Tools: pytest 9.2.0, pytest-django 4.14.0, coverage.py 7.17.3 (branch mode). Hermetic throw-away SQLite DB (`data/unit_test.sqlite3`), never the app DB. Upstream tests are not run or counted.
-**Result (2026-11-16, final):** 316 passed, **8 strict-xfail** (each documents an open baseline defect, with `raises=` so they cannot pass vacuously: DEF-02 ×2, DEF-03 ×2, DEF-04 ×4); in-scope coverage **statements 297/297 = 100 %, branches 131/132 (the single missed branch is unreachable and defended)** over 32 functions in 5 files (`docs/COVERAGE_SCOPE.md`). DEF-01's strict-xfail tests were turned into normal passing tests by the fix (PR #13).
+**Result (2026-11-18, final):** 337 passed, **0 expected failures**: the strict-xfail tests of DEF-01, DEF-02, DEF-03 and DEF-04 lost their markers when the defects were fixed (PRs #13 and #17). In-scope coverage **statements 313/313 = 100 %, branches 141/142 (the single missed branch is unreachable and defended)** over 33 functions (`docs/COVERAGE_SCOPE.md`); new function `StockAddSerializer.validate` (DEF-03 fix) is in the scope.
 
 ## Scope (business logic of WF-A/WF-B)
 See `docs/TEST_BASIS.md` §7 (identical to `SCOPE` in `tools/scope_coverage.py`): serializers, `StockItem` model logic incl. `can_delete` and the tracking/audit helpers, the pk-prefetch field, and the permission classes.
@@ -24,13 +24,14 @@ Decision tables: every multi-condition decision (BR-1 guards, BR-2, BR-3, BR-4, 
 ## Critical module: complete MCC → MC/DC
 `StockAdjustmentItemSerializer.validate_pk` implements BR-2: `REJECT = ¬ALLOW ∧ (SO ∨ BT ∨ CU ∨ CB)`, 5 conditions ⇒ 32 combinations, **all executed** against the real function (`MCC01…MCC32`). From the MCC table (`docs/MCC_MCDC.md`) the independence pairs are derived mechanically; the minimal MC/DC set is rows **{1, 2, 3, 5, 9, 18}** = n+1 = 6 tests. Pairs: CB (1,2), CU (1,3), BT (1,5), SO (1,9), ALLOW (2,18). Tests `test_mcdc_set_…` assert the set is minimal and contains a pair per condition.
 
-## Defects exposed (8 strict-xfail tests = expected behaviour that the baseline still fails)
-| Test(s) | Defect | Why strict |
+## Defects exposed by the unit tests (all fixed; the tests are normal passing tests now)
+| Test(s) | Defect | Fix |
 |---|---|---|
-| `test_expected_zero_quantity_is_rejected[add/remove]` | DEF-02 (zero accepted) — Issue #2, open | After a fix the xfail turns into XPASS and **fails CI**, forcing the marker's removal |
-| `test_expected_add_exceeding_representable_total_is_rejected`, `test_add_with_total_just_above_max_is_rejected` | DEF-03 (overflow → 500 on read) — Issue #3, open | same |
-| `test_expected_malformed_items_is_a_validation_error_not_a_crash[null/string/int/dict]` | DEF-04 (unhandled TypeError/AttributeError → HTTP 500) — Issue #4, open | same; `raises=(TypeError, AttributeError)` pins the failure mode |
-**DEF-01 (Issue #1) is fixed** (PR #13): `test_expected_over_removal_is_rejected_and_quantity_unchanged` and `test_remove_just_above_limit_is_rejected` lost their xfail markers in the tests-first commit (pipeline red) and pass since the fix commit (`tests/team/unit/test_remove_limit.py` adds 4 tests for the new function). Characterisation test `test_characterisation_remove_more_than_available_is_clamped_upstream_behaviour` documents that the model-level clamp is unchanged (the fix is at serializer level).
+| `test_expected_over_removal_is_rejected_and_quantity_unchanged`, `test_remove_just_above_limit_is_rejected` | DEF-01 over-removal clamped | PR #13 (`StockRemoveSerializer.validate`) |
+| `test_expected_zero_quantity_is_rejected[add/remove]` | DEF-02 zero accepted | PR #17 (`require_non_zero` for add/remove items) |
+| `test_expected_add_exceeding_representable_total_is_rejected`, `test_add_with_total_just_above_max_is_rejected` | DEF-03 overflow → 500 on read | PR #17 (`StockAddSerializer.validate`, entries summed) |
+| `test_expected_malformed_items_is_a_validation_error_not_a_crash[null/string/int/dict]` | DEF-04 unhandled TypeError/AttributeError | PR #17 (`to_internal_value` tolerates malformed `items`) |
+They were written first as strict expected failures (they documented the defect and failed on the baseline), then flipped when the fix was merged; `tests/team/unit/test_remove_limit.py` adds the tests of the new validation functions (exact messages, boundary, summed entries, malformed input).
 
 ## Basis-path accounting (V(G) = 6 for `validate_pk`, `docs/STATIC_ANALYSIS.md` §2) — each path is executed exactly once
 | Path | Executed by |

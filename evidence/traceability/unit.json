@@ -33,13 +33,6 @@
 "seq": []
 },
 {
-"id": "unit/test_adjustment_serializers.py::test_characterisation_remove_save_skips_zero_quantity_item",
-"outcome": "failed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
 "id": "unit/test_adjustment_serializers.py::test_empty_items_list_rejected",
 "outcome": "passed",
 "req": [],
@@ -1587,20 +1580,6 @@
 {
 "id": "unit/test_mutmut_killers.py::test_a_zero_quantity_entry_is_skipped_and_the_next_entry_is_still_processed[StockRemoveSerializer-12]",
 "outcome": "passed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mutmut_killers.py::test_a_zero_quantity_entry_is_skipped_and_the_next_entry_is_still_processed[_add-11]",
-"outcome": "failed",
-"req": [],
-"risk": [],
-"seq": []
-},
-{
-"id": "unit/test_mutmut_killers.py::test_a_zero_quantity_entry_is_skipped_and_the_next_entry_is_still_processed[_remove-12]",
-"outcome": "failed",
 "req": [],
 "risk": [],
 "seq": []

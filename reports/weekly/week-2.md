@@ -32,4 +32,4 @@ Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: t
 Agent hours logged for the whole project: **16.55 h** against a three-point estimate of 70.0 h (the estimate assumed human effort; human review hours are estimated at 32.0 h in `docs/EFFORT_NOTE.md`). The corrective work of this period (review rounds, PR fixes, final package) is part of the rows "CI quality gate + PRs", "Defects, RCA, reports" and "Final PDF + package".
 
 ## 5. Plan for the next period (after submission)
-Fix DEF-02 and DEF-04 (small validation changes), then DEF-03 (representable total) and DEF-06 (move to a database with row locks); rerun the k6 test against EC-3.
+Reduce the per-request cost of the write path or move to PostgreSQL and re-run the k6 protocol (EC-3); migrate to react-router 7 (SEC-03); keyboard Enter-to-submit and contrast fixes (UX-01, A11Y-02); investigate the first-login failure (DEF-05).

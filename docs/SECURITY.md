@@ -18,26 +18,26 @@ Expected decisions come from the role design (TEST_BASIS §4): `stock_manager` v
 
 | Role | Action | Route | Expected | Observed | Result | Evidence |
 |---|---|---|---|---|---|---|
-| manager | view item | `GET /api/stock/{id}/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 19 |
-| manager | add stock (WF-A) | `POST /api/stock/add/` | 201 | 201 | **ALLOWED as expected** | HTTP 201; quantity after = 11; item pk 20 |
-| manager | remove stock (WF-B) | `POST /api/stock/remove/` | 201 | 201 | **ALLOWED as expected** | HTTP 201; quantity after = 9; item pk 21 |
-| manager | edit item (change right) | `PATCH /api/stock/{id}/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 22 |
-| manager | delete item (delete right) | `DELETE /api/stock/{id}/` | 204 | 204 | **ALLOWED as expected** | HTTP 204; item pk 23 |
-| manager | read history (audit) | `GET /api/audit/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 24 |
-| viewer | view item | `GET /api/stock/{id}/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 25 |
-| viewer | add stock (WF-A) | `POST /api/stock/add/` | 403 | 403 | **DENIED as expected** | HTTP 403; quantity after = 10; item pk 26 |
-| viewer | remove stock (WF-B) | `POST /api/stock/remove/` | 403 | 403 | **DENIED as expected** | HTTP 403; quantity after = 10; item pk 27 |
-| viewer | edit item (change right) | `PATCH /api/stock/{id}/` | 403 | 403 | **DENIED as expected** | HTTP 403; item pk 28 |
-| viewer | delete item (delete right) | `DELETE /api/stock/{id}/` | 403 | 403 | **DENIED as expected** | HTTP 403; item pk 29 |
-| viewer | read history (audit) | `GET /api/audit/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 30 |
-| anonymous | view item | `GET /api/stock/{id}/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 31 |
-| anonymous | add stock (WF-A) | `POST /api/stock/add/` | 401 | 401 | **DENIED as expected** | HTTP 401; quantity after = 10; item pk 32 |
-| anonymous | remove stock (WF-B) | `POST /api/stock/remove/` | 401 | 401 | **DENIED as expected** | HTTP 401; quantity after = 10; item pk 33 |
-| anonymous | edit item (change right) | `PATCH /api/stock/{id}/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 34 |
-| anonymous | delete item (delete right) | `DELETE /api/stock/{id}/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 35 |
-| anonymous | read history (audit) | `GET /api/audit/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 36 |
-| viewer | stock operations menu in the UI | `/web/stock/item/{id}/details` | 0 | 0 | **ALLOWED as expected** | menu elements = 0; item pk 37 |
-| manager | stock operations menu in the UI | `/web/stock/item/{id}/details` | 1 | 1 | **ALLOWED as expected** | menu elements = 1; item pk 38 |
+| manager | view item | `GET /api/stock/{id}/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 4 |
+| manager | add stock (WF-A) | `POST /api/stock/add/` | 201 | 201 | **ALLOWED as expected** | HTTP 201; quantity after = 11; item pk 5 |
+| manager | remove stock (WF-B) | `POST /api/stock/remove/` | 201 | 201 | **ALLOWED as expected** | HTTP 201; quantity after = 9; item pk 6 |
+| manager | edit item (change right) | `PATCH /api/stock/{id}/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 7 |
+| manager | delete item (delete right) | `DELETE /api/stock/{id}/` | 204 | 204 | **ALLOWED as expected** | HTTP 204; item pk 8 |
+| manager | read history (audit) | `GET /api/audit/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 9 |
+| viewer | view item | `GET /api/stock/{id}/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 10 |
+| viewer | add stock (WF-A) | `POST /api/stock/add/` | 403 | 403 | **DENIED as expected** | HTTP 403; quantity after = 10; item pk 11 |
+| viewer | remove stock (WF-B) | `POST /api/stock/remove/` | 403 | 403 | **DENIED as expected** | HTTP 403; quantity after = 10; item pk 12 |
+| viewer | edit item (change right) | `PATCH /api/stock/{id}/` | 403 | 403 | **DENIED as expected** | HTTP 403; item pk 13 |
+| viewer | delete item (delete right) | `DELETE /api/stock/{id}/` | 403 | 403 | **DENIED as expected** | HTTP 403; item pk 14 |
+| viewer | read history (audit) | `GET /api/audit/` | 200 | 200 | **ALLOWED as expected** | HTTP 200; item pk 15 |
+| anonymous | view item | `GET /api/stock/{id}/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 16 |
+| anonymous | add stock (WF-A) | `POST /api/stock/add/` | 401 | 401 | **DENIED as expected** | HTTP 401; quantity after = 10; item pk 17 |
+| anonymous | remove stock (WF-B) | `POST /api/stock/remove/` | 401 | 401 | **DENIED as expected** | HTTP 401; quantity after = 10; item pk 18 |
+| anonymous | edit item (change right) | `PATCH /api/stock/{id}/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 19 |
+| anonymous | delete item (delete right) | `DELETE /api/stock/{id}/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 20 |
+| anonymous | read history (audit) | `GET /api/audit/` | 401 | 401 | **DENIED as expected** | HTTP 401; item pk 21 |
+| viewer | stock operations menu in the UI | `/web/stock/item/{id}/details` | 0 | 0 | **ALLOWED as expected** | menu elements = 0; item pk 22 |
+| manager | stock operations menu in the UI | `/web/stock/item/{id}/details` | 1 | 1 | **ALLOWED as expected** | menu elements = 1; item pk 23 |
 
 Denied add **and remove** requests additionally assert that **no side effect occurred** (quantity unchanged, no history entry) — asserted in `access.spec.ts` for both actions. Verdict: **no access-control weakness found** (control working: RuleSet → Django permission → `ModelPermission` on `StockItem`).
 
@@ -88,4 +88,14 @@ Packages checked: **166** (full list with versions: `evidence/security/pip_audit
 | F-4 | Frontend dependency `react-router@6.30.6` has 2 moderate advisories in the shipped bundle | `yarn.lock` | yarn audit | Moderate | upgrade to ≥ 7.18 (major) or apply backport | PR-10 |
 | F-5 | Build-tool advisories (glob, minimatch, zod high) | dev dependencies | yarn audit | Low (not served) | upgrade tooling | PR-10 |
 | — | **No access-control, injection or authentication weakness found** in the two workflows; backend dependencies clean | — | §2, §4.1 | — | — | EC-2 met on the tested scope |
+
+
+## 6. Remediation after the first assessment (pull request #18)
+| Finding | Fix | Verification |
+|---|---|---|
+| F-1 / SEC-01 no CSP | `ContentSecurityPolicyMiddleware` (`InvenTree/middleware.py`): `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; …; frame-ancestors 'self'` (the admin and API-documentation pages are excluded) | the response header is present (`evidence/security/after_fix_headers.txt`), 5 unit tests, and the **whole Playwright suite (57 tests) passes with the policy**, so the UI works under it |
+| F-2 / SEC-02 cookies without SameSite | the default of `INVENTREE_COOKIE_SAMESITE` changed from `False` to `Lax` | `Set-Cookie: csrftoken=…; SameSite=Lax` in the same evidence file; unit test |
+| F-4 / SEC-03 `react-router` advisories | **accepted risk, not fixed:** there is no patched 6.x release (fixed in ≥ 7.18, a major migration of the whole UI). Impact: an open redirect through a crafted `<Link>` with a backslash and a deserialisation of server errors that the app does not use; the new CSP and `SameSite=Lax` narrow the exploitation | disposition recorded in `docs/DEFECTS.md` (Accepted) |
+| F-5 build-tool advisories | accepted: development-time packages that are not part of the served bundle | — |
+A repeated ZAP passive scan was not possible after the fixes (ZAP was removed from the disk to make room for the other tools); the header evidence and the unit and browser tests above replace it, and the first scan stays the baseline.
 

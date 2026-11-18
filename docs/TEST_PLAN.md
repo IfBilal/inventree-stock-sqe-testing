@@ -1,4 +1,4 @@
-# TEST PLAN — InvenTree Stock Module (Add Stock / Remove Stock)  · v0.3
+# TEST PLAN — InvenTree Stock Module (Add Stock / Remove Stock)  · v0.4
 Living document, updated at each phase gate (version history at the end).
 
 ## 1. Purpose and scope
@@ -99,5 +99,6 @@ Basis: author experience with the tools plus the observed effort for completed p
 | Version | Date | Change |
 |---|---|---|
 | 0.1 | 2026-11-16 | Initial plan after Phase 1 |
-| 0.3 | 2026-11-16 | After Phases 4–12: schedule actuals (all phases done on 11-16), estimate table completed with actual agent hours and variance per area, requirements coverage generated from test results, exit criteria evaluated in `docs/COMPLETION_REPORT.md` (EC-1 and EC-3 not met → HOLD), risk statuses re-assessed from evidence |
 | 0.2 | 2026-11-16 | After review of Phases 2–3: estimate total corrected (67.9 → 70.0 with a Setup row); Docker claim removed (SonarQube ran from zip on JDK 21); exit criteria re-tied to the highest risks and given numeric targets; per-level entry criteria; owners and responsibility columns; Low row; actual schedule dates; traceability skeleton and tool-version document added |
+| 0.3 | 2026-11-16 | After Phases 4–12: schedule actuals (all phases done on 11-16), estimate table completed with actual agent hours and variance per area, requirements coverage generated from test results, exit criteria evaluated in `docs/COMPLETION_REPORT.md` (EC-1 and EC-3 not met → HOLD), risk statuses re-assessed from evidence |
+| 0.4 | 2026-11-18 | After the defect fixes (PRs #13, #15, #17, #18): exit criteria re-evaluated (EC-1 met, EC-2 met, EC-3 p95 not met), human review hours estimated, risk statuses updated (risk register v0.4), real mutmut run added |

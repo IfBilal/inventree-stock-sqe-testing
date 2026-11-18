@@ -83,4 +83,14 @@ o.append('\n## 5. Findings and links to the risk register\n| ID | Finding | Comp
  '| F-4 | Frontend dependency `react-router@6.30.6` has 2 moderate advisories in the shipped bundle | `yarn.lock` | yarn audit | Moderate | upgrade to ≥ 7.18 (major) or apply backport | PR-10 |\n'
  '| F-5 | Build-tool advisories (glob, minimatch, zod high) | dev dependencies | yarn audit | Low (not served) | upgrade tooling | PR-10 |\n'
  '| — | **No access-control, injection or authentication weakness found** in the two workflows; backend dependencies clean | — | §2, §4.1 | — | — | EC-2 met on the tested scope |\n')
+o.append('''
+## 6. Remediation after the first assessment (pull request #18)
+| Finding | Fix | Verification |
+|---|---|---|
+| F-1 / SEC-01 no CSP | `ContentSecurityPolicyMiddleware` (`InvenTree/middleware.py`): `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; …; frame-ancestors 'self'` (the admin and API-documentation pages are excluded) | the response header is present (`evidence/security/after_fix_headers.txt`), 5 unit tests, and the **whole Playwright suite (57 tests) passes with the policy**, so the UI works under it |
+| F-2 / SEC-02 cookies without SameSite | the default of `INVENTREE_COOKIE_SAMESITE` changed from `False` to `Lax` | `Set-Cookie: csrftoken=…; SameSite=Lax` in the same evidence file; unit test |
+| F-4 / SEC-03 `react-router` advisories | **accepted risk, not fixed:** there is no patched 6.x release (fixed in ≥ 7.18, a major migration of the whole UI). Impact: an open redirect through a crafted `<Link>` with a backslash and a deserialisation of server errors that the app does not use; the new CSP and `SameSite=Lax` narrow the exploitation | disposition recorded in `docs/DEFECTS.md` (Accepted) |
+| F-5 build-tool advisories | accepted: development-time packages that are not part of the served bundle | — |
+A repeated ZAP passive scan was not possible after the fixes (ZAP was removed from the disk to make room for the other tools); the header evidence and the unit and browser tests above replace it, and the first scan stays the baseline.
+''')
 print('\n'.join(o))

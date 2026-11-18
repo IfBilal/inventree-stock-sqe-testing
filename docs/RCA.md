@@ -66,3 +66,14 @@ Statements are marked **[verified]** (read in source / observed in a run) or **[
 1. Performance targets declared before measuring (`docs/PERF_TARGETS.md`, done) and a k6 smoke run (1 vs 5 users) as a release check (`scripts/perf_run.sh`).
 2. Add the concurrency requirement to the test basis; keep PR-08 at High until the production database is tested.
 3. Recovery test (`tests/team/unit/test_recovery.py`) already proves a failed attempt leaves no partial state, so a client retry is safe.
+
+### Implementation status of RCA-2 (update after pull request #18)
+| Action | Status | Evidence |
+|---|---|---|
+| Corrective 1 — PostgreSQL / several workers | **Partly tested, not adopted:** gunicorn with 4 workers was measured on SQLite and does not help (p95 681–687 ms: writers are serialised); PostgreSQL is not available on this machine | `docs/PERFORMANCE.md` §7 |
+| **New corrective action (implemented)** — take the SQLite write lock at the start of the transaction (`IMMEDIATE`) and wait up to 30 s | **Done** (PR #18): unexpected failures at 5 users 19.3/19.7 % → 0 % in all re-measurements | `reports/performance/`, `tests/team/unit/test_security_headers.py::test_sqlite_uses_immediate_transactions_with_a_busy_timeout` |
+| Corrective 2 — 503/409 with retry | not needed after the fix (no lock errors observed); remains a recommendation for PostgreSQL deployments | — |
+| Corrective 3 — shorten the write transaction | open (would address the remaining p95 gap, EC-3) | — |
+| Preventive 1 — performance targets declared first, k6 release check | **Done and used** (the re-measurement followed the same protocol) | `scripts/perf_run.sh` |
+| Preventive 2 — keep PR-08 elevated until the production database is tested | PR-08 re-assessed to Medium (failures gone, latency gap remains) | `docs/RISK_REGISTER.md` |
+| Preventive 3 — recovery test | **Done** | `tests/team/unit/test_recovery.py` |

@@ -2,7 +2,7 @@
 
 Actors: **Manager** = `manager` (group `stock_manager`), **Viewer** = `viewer` (group `stock_viewer`), **Admin** = `admin` (superuser).
 **Independence:** every flow is one Playwright test (`tests/team/e2e/`) that first creates its **own fresh item** of the seeded "Keyboard" part through the API with the quantity stated in the flow's precondition (so flows are order-free and need no reset); postconditions are read back **independently of the UI** through the API (`GET /api/stock/{id}/`, history via `/api/audit/`). The seeded values (Keyboard 10, Mouse 25, Monitor 0) only illustrate the starting states.
-"Baseline" = predicted result on the unmodified upstream build; **FAIL** = the flow exposes a defect there. After PR #13 (DEF-01 fixed) the over-removal flows pass; the DEF-02 flows remain expected failures (`test.fail`) with companion pin tests (`defect_pins.spec.ts`).
+"Baseline" = predicted result on the unmodified upstream build; **FAIL** = the flow exposes a defect there. After PR #13 (DEF-01 fixed) the over-removal flows pass; the DEF-02 flows (zero quantity) pass since PR #17. No flow is an expected failure any more.
 Ownership: M1 = 24I-3166 (UC-01, UC-02), M2 = 24I-3015 (UC-03, UC-04), M3 = 24I-3106 (UC-05, UC-06).
 
 **Common structure per use case:** *Actor*, *Trigger*, *Precondition*, *Main flow*, *Alternative flows (≥ 2)*, *Exception flows (≥ 2)*, *Postcondition (success)*, *Postcondition (exception)*.
@@ -17,8 +17,8 @@ Actor: Manager. Trigger: wants to record received units. Pre (all flows): logged
 | UC01-MAIN | Main | Open Keyboard → Stock actions → Add stock → quantity 5 → Submit | Success message shown; item page shows 15; history has 1 add entry (5, 15) | PASS |
 | UC01-AF1 | Alternative | Same, quantity 0.5 (decimal) | qty 10.5; history entry added 0.5 | PASS |
 | UC01-AF2 | Alternative | Same, quantity 5 with notes "restock" | qty 15; history entry carries note "restock" | PASS |
-| UC01-EF1 | Exception | quantity 0 | The dialog stays open and an error message is shown; qty stays 10; **no** history entry (baseline: "Success — Stock added", silent no-op) | FAIL (A-2, DEF-02) |
-| UC01-EF2 | Exception | typed quantity −3 | An error message is shown; qty stays 10; no history entry (baseline: the field accepts −3, the UI reports "Success — Stock added" and nothing changes) | FAIL (silent clamp to 0, DEF-02 family) |
+| UC01-EF1 | Exception | quantity 0 | The dialog stays open and an error message is shown; qty stays 10; **no** history entry (baseline: "Success — Stock added", silent no-op) | baseline baseline FAIL (DEF-02) → PASS after PR #17 → PASS after PR #17 |
+| UC01-EF2 | Exception | typed quantity −3 | An error message is shown; qty stays 10; no history entry (baseline: the field accepts −3, the UI reports "Success — Stock added" and nothing changes) | baseline FAIL (DEF-02 family) → PASS after PR #17 |
 
 ## UC-02 Remove stock from an item (M1) — WF-B — FR-05, FR-06, FR-07, BR-1
 - **Actor / trigger:** Manager records consumed/removed units. **Precondition:** logged in as manager; an item with quantity 10, no history.
@@ -30,7 +30,7 @@ Actor: Manager. Pre: logged in as manager, Keyboard qty 10.
 | UC02-AF1 | Alternative | remove 9 | qty 1; history (9, 1) | PASS |
 | UC02-AF2 | Alternative | remove 4 with notes "damaged" | qty 6; history note "damaged" | PASS |
 | UC02-EF1 | Exception | remove 11 (> 10) | **Rejected** with a message naming the available quantity (10); qty stays 10; no history entry (baseline: "Success — Stock removed", quantity becomes 0) | baseline FAIL (DEF-01) → PASS after PR #13 |
-| UC02-EF2 | Exception | quantity 0 | Error shown; qty stays 10; no history entry | FAIL (A-2) |
+| UC02-EF2 | Exception | quantity 0 | Error shown; qty stays 10; no history entry | baseline baseline FAIL (DEF-02) → PASS after PR #17 → PASS after PR #17 |
 **Post (main):** qty 6, one `STOCK_REMOVE` history (audit) entry. **Post (EF):** qty and history unchanged.
 
 ## UC-03 Deplete an item (M2) — WF-B — FR-08, BR-3
@@ -80,6 +80,6 @@ Actor: Manager. Pre: logged in as manager, fresh item with qty 10.
 | UC06-MAIN | Main (Add) | Add 1.123456 → rejected, the error says "Ensure that there are no more than 5 decimal places." → change to 1.12345 → Submit | Error first (dialog open, qty unchanged); then success "Stock added"; qty 11.12345; one history entry | PASS |
 | UC06-AF1 | Alternative (Remove) | Remove 15 → rejected with a message that names the available quantity (10) → correct to 10 → Submit | Error first (qty 10, no history); then success; qty 0 (item retained); one history entry | baseline FAIL (DEF-01) → PASS after PR #13 |
 | UC06-AF2 | Alternative (keyboard) | Keyboard only: focus reaches quantity → notes → Submit in that order; Enter inside the quantity field does not submit (UX-01); Tab to Submit and Enter submits | Focus order as stated; dialog still open after Enter in the field; form submitted from the Submit button; qty 12 | PASS |
-| UC06-EF1 | Exception | After the 6-decimal rejection correct to 0 | Rejected again with a message; qty stays 10 | FAIL (DEF-02) |
+| UC06-EF1 | Exception | After the 6-decimal rejection correct to 0 | Rejected again with a message; qty stays 10 | baseline FAIL (DEF-02) → PASS after PR #17 |
 | UC06-EF2 | Exception | After the rejection enter text "abc" | "A valid number is required."; qty stays 10 | PASS |
 Post: rejected attempts leave no history entries.

@@ -11,7 +11,7 @@ Automated only (no participants). Scripts: `tests/team/e2e/*.spec.ts` (Playwrigh
 | Submit scripts, Playwright report, Lighthouse and axe reports (before and after) | `tests/team/...`, `evidence/phase7/playwright_report_e2e.json`, `evidence/a11y/*_before.json`, `*_after.json` |
 
 ## Key usability observations
-- The dialog's validation messages are specific and actionable (decimals, digits before the point, "valid number"), but the two business-rule defects are **silent**: adding 0 and removing more than available both show "Success" (DEF-02, DEF-01).
+- The dialog's validation messages are specific and actionable (decimals, digits before the point, "valid number"), but the two business-rule defects were **silent** on the baseline: adding 0 and removing more than available both showed "Success" (DEF-02, DEF-01); both are rejected with a message since PR #17 and PR #13, and the E2E flows UC01-EF1, UC02-EF2, UC06-EF1 assert the message.
 - The UI protects against one API weakness: an out-of-stock item shows "No entries available" in the Remove dialog (UC03-EF1) while the API would accept the call as a silent no-op.
 - DEF-05: the first login after a server start silently fails (Issue #5).
 - UX-01: Enter in the quantity field does not submit.
