@@ -83,18 +83,18 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
-| 44375251730 | push | `main` | in_progress | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44375251730 |
+| 44375296975 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44375296975 |
 | 44370073545 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44370073545 |
-| 44369200021 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44369200021 |
 | 44365060860 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44365060860 |
-| 44362445511 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44362445511 |
 | 44357367524 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44357367524 |
-| 44353555729 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44353555729 |
-| 44353495633 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44353495633 |
 | 44343888095 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343888095 |
-| 44343663684 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343663684 |
-| 44343471926 | push | `main` | cancelled | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343471926 |
 | 44339141434 | pull_request | `fix/def-06-sqlite-locking` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44339141434 |
+| 44332822200 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44332822200 |
+| 44326688189 | pull_request | `fix/def-02-03-04-input-validation` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44326688189 |
+| 44322551459 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44322551459 |
+| 44158035639 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44158035639 |
+| 44095413130 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44095413130 |
+| 44007547805 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44007547805 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.
