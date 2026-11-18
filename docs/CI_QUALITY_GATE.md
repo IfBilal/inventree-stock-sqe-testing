@@ -24,6 +24,7 @@ Workflow: `.github/workflows/quality-gate.yml` (runs on every **pull request** t
 | **One documented fix that fails before and passes after** | **PR #13** "Fix DEF-01: reject removal larger than the available quantity" (closes issue #1). Commit 1 changes only the tests (defect still present) → pipeline **red**; commit 2 adds the fix → pipeline **green** | run links and results in the table below (generated from the GitHub API) |
 | **One pull request the pipeline blocked** | **PR #14** "Allow adjusting stock items that are installed in another item" (branch `bad/relax-adjustability-rule`) — a plausible-looking product request that removes the `belongs_to is None` condition from `StockItem.is_in_stock` and so violates **BR-2 / FR-04** (risk PR-03). Never merged | run 43916978299: **unit, api and mutation fail**, e2e passes (the UI flows do not touch installed items), `sonar`/`gate`/`deploy` skipped → merge blocked |
 | **A second blocked PR — mutation score** | **PR #16** "Remove redundant-looking tests (test_mutation_killers.py)" (branch `bad/remove-mutation-killing-tests`) — deletes the 12-mutant killing tests; every other test still passes | run 43933840489: unit, api, e2e, sonar, hygiene **pass**; **`mutation` fails: 94.3 % < 95 % gate** (`evidence/ci/mutation_ci_pr16_blocked_run_43933840489.txt`). The first run of this PR (run 43927877708) scored 90.4 % and *passed* the then 90 % gate, which is why the threshold was raised to 95 % |
+| Further fix PRs | **PR #17** (closes #2, #3, #4) and **PR #18** (closes #6, #7, #8) — each merged only after a green pipeline, never by bypassing the protection (an attempted admin merge of #15 was refused and the branch was updated and re-run instead) | run table below |
 | Accessibility fix | **PR #15** "a11y: alt text on item images and a main landmark on the stock item page" (closes issue #10), see `docs/ACCESSIBILITY.md` | passes the full pipeline (run link in the table below) |
 
 ## Run links (GitHub Actions, repository IfBilal/inventree-stock-sqe-testing)
@@ -34,7 +35,9 @@ Workflow: `.github/workflows/quality-gate.yml` (runs on every **pull request** t
 | 43920009616 | #13 commit 3 (fix corrected) | **green** | all 7 required jobs pass → merged |
 | 43916978299 | #14 (BR-2 violation) | **red, blocked** | unit, api, mutation fail |
 | 43933840489 | #16 (killing tests removed) | **red, blocked** | mutation 94.3 % < 95 % |
-| a11y PR #15 | see `docs/COMPLETION_REPORT.md` §6 | green before merge | all required jobs |
+| 43943448899 | #15 accessibility fix (after update from main) | **green** → merged | all 7 required jobs |
+| 44326688189 | #17 DEF-02/03/04 validation fixes | **green** → merged | all 7 required jobs (unit 331, API 250 + 27 xfail, E2E 57, mutation gate 95 %) |
+| 44339141434 | #18 DEF-06, SEC-01, SEC-02 | **green** → merged | all 7 required jobs (E2E passes under the new Content-Security-Policy) |
 
 ## CI-produced mutation scores
 `evidence/ci/mutation_ci_run_43911640347.txt`: 159 mutants, 140 killed → **88.1 %** (gate then 85 %: passed). `evidence/ci/mutation_ci_run_43920009616.txt`: after the first killing tests, **98.7 % adjusted** (gate 90 %: passed). PR #16 (first run) shows the same sample without the killing tests: 90.4 % raw → 94.3 % adjusted once equivalents were listed. Hence the gate is now 95 %.
