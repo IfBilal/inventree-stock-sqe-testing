@@ -1,0 +1,45 @@
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{phase:hold}
+    ✗ 'p(95)<500' p(95)=687.3ms
+
+    http_req_failed{phase:hold}
+    ✓ 'rate<0.01' rate=0.00%
+
+    http_reqs{phase:hold}
+    ✓ 'count>0' count=583
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 689     9.702862/s
+    checks_succeeded...: 100.00% 689 out of 689
+    checks_failed......: 0.00%   0 out of 689
+
+    ✓ status is 201
+
+    HTTP
+    http_req_duration..............: avg=511.07ms min=251.98ms med=501.78ms max=850.15ms p(90)=633.07ms p(95)=680.88ms p(99)=761.12ms
+      { expected_response:true }...: avg=511.07ms min=251.98ms med=501.78ms max=850.15ms p(90)=633.07ms p(95)=680.88ms p(99)=761.12ms
+      { phase:hold }...............: avg=516.56ms min=354.53ms med=506.29ms max=850.15ms p(90)=636.54ms p(95)=687.3ms  p(99)=761.69ms
+    http_req_failed................: 0.00%  0 out of 690
+      { phase:hold }...............: 0.00%  0 out of 583
+    http_reqs......................: 690    9.716944/s
+      { phase:hold }...............: 583    8.210114/s
+
+    EXECUTION
+    iteration_duration.............: avg=511.45ms min=252.36ms med=502.09ms max=850.59ms p(90)=633.52ms p(95)=681.3ms  p(99)=761.66ms
+    iterations.....................: 689    9.702862/s
+    vus............................: 1      min=1        max=5 
+    vus_max........................: 10     min=10       max=10
+
+    NETWORK
+    data_received..................: 585 kB 8.2 kB/s
+    data_sent......................: 156 kB 2.2 kB/s
+
+
+
+time="2026-11-18T20:23:44+05:00" level=error msg="thresholds on metrics 'http_req_duration{phase:hold}' have been crossed"
+k6 exit code 99 (99 = a threshold was crossed, which is a RESULT, not a script error)

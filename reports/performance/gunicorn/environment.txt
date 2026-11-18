@@ -1,0 +1,9 @@
+date: 2026-11-18T20:11:32+05:00
+commit: c41f5d697e8bd6b1ba870e9a9ce2c3fb703d38b2
+kernel: Linux 7.0.0-38-generic
+cpu: 12th Gen Intel(R) Core(TM) i5-1235U x12
+memory: 15Gi
+python: Python 3.12.3
+k6: k6 v2.3.0 (commit/e088784614, go1.26.8, linux/amd64)
+server: gunicorn (dev = Django runserver single process threaded; gunicorn = 4 worker processes), SQLite, DEBUG=False
+operation: POST /api/stock/remove/ quantity 1 (manager)

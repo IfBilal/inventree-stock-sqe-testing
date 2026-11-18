@@ -415,6 +415,7 @@ MIDDLEWARE = CONFIG.get(
     'middleware',
     [
         'django.middleware.security.SecurityMiddleware',
+        'InvenTree.middleware.ContentSecurityPolicyMiddleware',  # Content-Security-Policy header
         'x_forwarded_for.middleware.XForwardedForMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'allauth.usersessions.middleware.UserSessionsMiddleware',  # DB user sessions
@@ -956,7 +957,7 @@ if (
     sys.exit(-1)
 
 COOKIE_MODE = (
-    str(get_setting('INVENTREE_COOKIE_SAMESITE', 'cookie.samesite', 'False'))
+    str(get_setting('INVENTREE_COOKIE_SAMESITE', 'cookie.samesite', 'Lax'))
     .lower()
     .strip()
 )

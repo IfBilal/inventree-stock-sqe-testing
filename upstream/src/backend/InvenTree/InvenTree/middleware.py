@@ -463,3 +463,34 @@ class InvenTreeVersionHeaderMiddleware(MiddlewareMixin):
         response['X-InvenTree-Python'] = inventreePythonVersion()
         response['X-InvenTree-Installer'] = inventreeInstaller()
         return response
+
+
+class ContentSecurityPolicyMiddleware:
+    """Add a Content-Security-Policy header to every response (SEC-01: it was missing).
+
+    The web UI is a single-page application served from the same origin: scripts only from the origin (no inline script), styles may be inline
+    (the UI library injects style elements), images may be data/blob URLs. Pages that need inline scripts (the Django admin and the API
+    documentation viewers) keep the default of the framework. The policy can be replaced with the setting ``CONTENT_SECURITY_POLICY``.
+    """
+
+    DEFAULT_POLICY = (
+        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; "
+        "font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+    )
+    SKIPPED_PREFIXES = ('/admin/', '/api/schema', '/api/docs', '/api-doc')
+
+    def __init__(self, get_response):
+        """Store the next handler."""
+        self.get_response = get_response
+
+    def __call__(self, request):
+        """Add the header unless the response sets its own policy or the path is excluded."""
+        response = self.get_response(request)
+
+        if not request.path.startswith(self.SKIPPED_PREFIXES):
+            response.headers.setdefault(
+                'Content-Security-Policy',
+                getattr(settings, 'CONTENT_SECURITY_POLICY', self.DEFAULT_POLICY),
+            )
+
+        return response

@@ -3,41 +3,42 @@
   █ THRESHOLDS 
 
     http_req_duration{phase:hold}
-    ✓ 'p(95)<500' p(95)=297.58ms
+    ✓ 'p(95)<500' p(95)=302.3ms
 
     http_req_failed{phase:hold}
     ✓ 'rate<0.01' rate=0.00%
 
     http_reqs{phase:hold}
-    ✓ 'count>0' count=208
+    ✓ 'count>0' count=203
 
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 243     3.444738/s
-    checks_succeeded...: 100.00% 243 out of 243
-    checks_failed......: 0.00%   0 out of 243
+    checks_total.......: 238     3.385605/s
+    checks_succeeded...: 100.00% 238 out of 238
+    checks_failed......: 0.00%   0 out of 238
 
     ✓ status is 201
 
     HTTP
-    http_req_duration..............: avg=288.87ms min=239.18ms med=288.54ms max=318.62ms p(90)=294.91ms p(95)=297.56ms p(99)=314.3ms 
-      { expected_response:true }...: avg=288.87ms min=239.18ms med=288.54ms max=318.62ms p(90)=294.91ms p(95)=297.56ms p(99)=314.3ms 
-      { phase:hold }...............: avg=289.3ms  min=239.18ms med=288.82ms max=318.62ms p(90)=295.17ms p(95)=297.58ms p(99)=312.53ms
-    http_req_failed................: 0.00%  0 out of 244
-      { phase:hold }...............: 0.00%  0 out of 208
-    http_reqs......................: 244    3.458914/s
-      { phase:hold }...............: 208    2.948582/s
+    http_req_duration..............: avg=294.57ms min=241.84ms med=290.54ms max=504.48ms p(90)=298.43ms p(95)=302.89ms p(99)=459.81ms
+      { expected_response:true }...: avg=294.57ms min=241.84ms med=290.54ms max=504.48ms p(90)=298.43ms p(95)=302.89ms p(99)=459.81ms
+      { phase:hold }...............: avg=295.32ms min=247.42ms med=290.54ms max=504.48ms p(90)=298.26ms p(95)=302.3ms  p(99)=460.46ms
+    http_req_failed................: 0.00%  0 out of 239
+      { phase:hold }...............: 0.00%  0 out of 203
+    http_reqs......................: 239    3.39983/s
+      { phase:hold }...............: 203    2.887722/s
 
     EXECUTION
-    iteration_duration.............: avg=289.34ms min=239.65ms med=288.97ms max=319.02ms p(90)=295.51ms p(95)=297.99ms p(99)=314.74ms
-    iterations.....................: 243    3.444738/s
+    iteration_duration.............: avg=295ms    min=242.23ms med=290.9ms  max=504.81ms p(90)=298.83ms p(95)=303.48ms p(99)=460.26ms
+    iterations.....................: 238    3.385605/s
     vus............................: 1      min=1        max=1
     vus_max........................: 2      min=2        max=2
 
     NETWORK
-    data_received..................: 148 kB 2.1 kB/s
-    data_sent......................: 55 kB  782 B/s
+    data_received..................: 204 kB 2.9 kB/s
+    data_sent......................: 54 kB  769 B/s
 
 
 
+k6 exit code 0 (99 = a threshold was crossed, which is a RESULT, not a script error)
