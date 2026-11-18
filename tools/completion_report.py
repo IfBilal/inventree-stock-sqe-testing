@@ -111,7 +111,7 @@ open(os.path.join(R, 'docs/COMPLETION_REPORT.md'), 'w').write('\n'.join(o))
 rows = list(csv.DictReader(open(os.path.join(R, 'docs/EFFORT_LOG.csv'))))
 tot_agent = sum(float(r['agent_hours']) for r in rows)
 tot_human = sum(float(r['human_review_hours'] or 0) for r in rows)
-w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-11-16 22:17 … 2026-11-17) against the plan (`docs/TEST_PLAN.md` v0.3)\n',
+w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-11-16 22:17 … 2026-11-18) against the plan (`docs/TEST_PLAN.md` v0.3)\n',
      'Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: the two reports are the two checkpoints of the real commit timeline.\n',
      '## 1. Progress against the plan\n| Planned item (from report 1 §5) | Actual (commit/PR time) | Status | Control action |\n|---|---|---|---|',
      '| Fix DEF-01 with a red → green pipeline | PR #13: tests-only 22:17 (red), fix 22:28 (red on a depleted-item test), corrected 22:35 (green), merged 22:57 | **done** | the pipeline caught my own over-reach (removal from a depleted item); fixed before merge |',
@@ -121,7 +121,11 @@ w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-1
      '| E2E in traceability | 11-17 01:38 (`tools/gen_traceability.py` reads the Playwright report) | **done** | — |',
      '| Final review round | 4 independent graders 11-17 | **done** | contradictions between documents reconciled (test counts, access matrix 20/20, mutation figures) |',
      '| Complete MCC for all four business rules | BR-4 added 11-17 08:04 | **done** | 13 decisions now covered |',
-     '| Final PDF and zip | 11-17 08:04 | **done** | section B; human review hours estimated and recorded |',
+     '| Real mutmut run (the first attempt had failed because of our set-up) | 11-17/18: 652 mutants, all survivors classified | **done** | set-up fixed (newline lists, migrated DB); mutmut statuses went stale after tests were added, so every survivor was re-checked directly |',
+     '| Fix the remaining functional defects (not planned in report 1 beyond DEF-01) | PR #17 DEF-02/03/04, PR #18 DEF-06 + SEC-01/02 (11-18), each merged after a green pipeline | **done** | DEF-03 (Critical) and DEF-06 (High) closed: EC-1 is met now |',
+     '| Re-measure performance after DEF-06 | k6, 4 setups x 2 runs x 1/5 users (11-18) | **done** | failures 19.5 % -> 0 %; p95 545-556 ms is still above 500 ms: EC-3 stays NOT met; the Basic-auth artefact of the script was found and reported next to the token-auth result |',
+     '| Re-run the custom-operator mutation analysis on the final code | 263 mutants, 254 killed, 9 equivalent (11-18) | **done** | a missing per-item overflow test was found and added |',
+     '| Final PDF and zip | 11-18 | **done** | section B; human review hours estimated and recorded |',
      '\n## 2. GQM metrics now (definitions and targets: `docs/GQM.md`)\n| Goal | Metric | Value | Target | Reading |\n|---|---|---|---|---|',
      f"| G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc {sonar.get('ncloc')}) | {len([d for d in defects if d['id'].startswith('DEF')])} ÷ 5.114 = **{len([d for d in defects if d['id'].startswith('DEF')]) / 5.114:.2f}/KLOC** (all 12 findings: {len(defects) / 5.114:.2f}) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |",
      f"| G2 Cover requirements | Requirements coverage | tested **{req_tested}/{req_total}**, verified passing {req_ver}/{req_total} | 100 % tested | FR-07's over-removal rule is now passing (DEF-01 fixed); FR-03b stays unverified until DEF-02 is fixed |",
