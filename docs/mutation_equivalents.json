@@ -48,5 +48,10 @@
   "justification": "DRF `GenericAPIView.get_serializer_context` already supplies `request`; the explicit assignment is redundant.",
   "line": 240,
   "operator": "SDL"
+ },
+ "StockItem.updateQuantity|False -> True|False": {
+  "justification": "`save(add_note=False)` -> `add_note=True`: the flag only controls the 'created' audit note and is ignored for an existing row (`if self.pk`), and updateQuantity only saves existing items.",
+  "line": 3287,
+  "operator": "CRP"
  }
 }

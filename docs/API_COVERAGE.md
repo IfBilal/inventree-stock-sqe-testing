@@ -11,12 +11,12 @@
 ## C3 Documented status-code coverage
 | Operation | Documented | Observed | Missing |
 |---|---|---|---|
-| POST `/api/stock/add/` | 201, 400, 401, 403, 415, 500 | 201, 400, 401, 403, 415, 500 | — |
-| POST `/api/stock/remove/` | 201, 400, 401, 403, 415, 500 | 201, 400, 401, 403, 415, 500 | — |
-| GET `/api/stock/{id}/` | 200, 404, 500 | 200, 404, 500 | — |
+| POST `/api/stock/add/` | 201, 400, 401, 403, 415, 500 | 201, 400, 401, 403, 415 | 500 |
+| POST `/api/stock/remove/` | 201, 400, 401, 403, 415, 500 | 201, 400, 401, 403, 415 | 500 |
+| GET `/api/stock/{id}/` | 200, 404, 500 | 200, 404 | 500 |
 | GET `/api/audit/` | 200, 400 | 200, 400 | — |
 
-Status classes observed: 2xx: 1599, 4xx: 152, 5xx: 12.
+Status classes observed: 2xx: 1595, 4xx: 168.
 
 ## C4 Role / authentication coverage
 | Operation | admin | manager | viewer | anonymous |
@@ -32,25 +32,25 @@ Status classes observed: 2xx: 1599, 4xx: 152, 5xx: 12.
 | auditList | `event_type` | query | 4/4 | 0/0 | 1 |
 | auditList | `limit` | query | 10/10 | 3/3 | 10 |
 | auditList | `offset` | query | 10/10 | 3/3 | 10 |
-| stockAdd | `items` | body | 4/4 | 3/3 | 3 |
+| stockAdd | `items` | body | 4/4 | 3/3 | 0 |
 | stockAdd | `items[].batch` | body | 7/7 | 3/3 | 0 |
 | stockAdd | `items[].merge` | body | 8/8 | 0/0 | 2 |
 | stockAdd | `items[].packaging` | body | 7/7 | 3/3 | 0 |
 | stockAdd | `items[].pk` | body | 12/12 | 3/3 | 1 |
-| stockAdd | `items[].quantity` | body | 13/13 | 6/6 | 1 |
+| stockAdd | `items[].quantity` | body | 13/13 | 6/6 | 0 |
 | stockAdd | `items[].status` | body | 10/10 | 0/0 | 0 |
 | stockAdd | `notes` | body | 7/7 | 3/3 | 0 |
 | stockItemRead | `id` | path | 9/9 | 3/3 | 0 |
-| stockRemove | `items` | body | 4/4 | 3/3 | 3 |
+| stockRemove | `items` | body | 4/4 | 3/3 | 0 |
 | stockRemove | `items[].batch` | body | 7/7 | 3/3 | 0 |
 | stockRemove | `items[].merge` | body | 8/8 | 0/0 | 2 |
 | stockRemove | `items[].packaging` | body | 7/7 | 3/3 | 0 |
 | stockRemove | `items[].pk` | body | 12/12 | 3/3 | 1 |
-| stockRemove | `items[].quantity` | body | 13/13 | 9/9 | 1 |
+| stockRemove | `items[].quantity` | body | 13/13 | 9/9 | 0 |
 | stockRemove | `items[].status` | body | 10/10 | 0/0 | 0 |
 | stockRemove | `notes` | body | 7/7 | 3/3 | 0 |
 
-**C6:** 223/223 generated cases executed; 188 matched the contract, 35 mismatched (each mismatch is a documented baseline defect/weakness: DEF-01, DEF-02, DEF-04, W-08, W-09 — strict xfail).
+**C6:** 223/223 generated cases executed; 196 matched the contract, 27 mismatched (each mismatch is a documented baseline defect/weakness: DEF-01, DEF-02, DEF-04, W-08, W-09 — strict xfail).
 
 ## C7 Content-type coverage (write endpoints; JSON documented, text/plain = unsupported probe)
 | Path | application/json | text/plain |
@@ -65,7 +65,7 @@ Status classes observed: 2xx: 1599, 4xx: 152, 5xx: 12.
 | `/api/stock/remove/` | 405 ✔ | 405 ✔ | 405 ✔ | 405 ✔ |
 
 ## C9 Response-schema validation
-Every response whose status has a schema in the spec is validated against it inside the HTTP client (a violation fails the test): **1369** responses validated, 1371 had a schema in the spec.
+Every response whose status has a schema in the spec is validated against it inside the HTTP client (a violation fails the test): **1364** responses validated, 1366 had a schema in the spec.
 
 ## C10 Sequence / dependency coverage (tests tagged `@pytest.mark.seq`)
 | Sequence | Result |
@@ -83,12 +83,12 @@ Every response whose status has a schema in the spec is validated against it ins
 |---|---|---|---|
 | C1 endpoints exercised | 4 | 4 | 100 |
 | C2 operations exercised | 4 | 4 | 100 |
-| C3 documented status codes observed | 17 | 17 | 100 |
-| C3b status classes 2xx/4xx/5xx observed | 3 | 3 | 100 |
+| C3 documented status codes observed | 14 | 17 | 82 |
+| C3b status classes 2xx/4xx/5xx observed | 2 | 3 | 67 |
 | C4 required roles per operation (write: manager/viewer/anonymous; reads: manager) | 8 | 8 | 100 |
 | C5 inputs with ALL generated EP and BVA cases executed | 20 | 20 | 100 |
 | C6 parameter-value coverage: generated cases executed | 223 | 223 | 100 |
 | C7 content types per write endpoint | 4 | 4 | 100 |
 | C8 unsupported methods rejected with 405 | 8 | 8 | 100 |
-| C9 responses with a spec schema that were validated | 1369 | 1371 | 100 |
+| C9 responses with a spec schema that were validated | 1364 | 1366 | 100 |
 | C10 operation sequences passing | 7 | 7 | 100 |

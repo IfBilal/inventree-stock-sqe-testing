@@ -18,9 +18,9 @@ Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: t
 | Goal | Metric | Value | Target | Reading |
 |---|---|---|---|---|
 | G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc 5114) | 6 ÷ 5.114 = **1.17/KLOC** (all 12 findings: 2.35) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |
-| G2 Cover requirements | Requirements coverage | tested **16/16**, verified passing 15/16 | 100 % tested | FR-07's over-removal rule is now passing (DEF-01 fixed); FR-03b stays unverified until DEF-02 is fixed |
+| G2 Cover requirements | Requirements coverage | tested **16/16**, verified passing 16/16 | 100 % tested | FR-07's over-removal rule is now passing (DEF-01 fixed); FR-03b stays unverified until DEF-02 is fixed |
 | G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 2 = **0 %** (DEF-01, A11Y-01 closed) | ≤ 10 % | met, on a small sample |
-| G4 Effective tests | Mutation score (adjusted) | **100.0 %** (raw 96.0 %) | ≥ 85 % (CI gate 95 %) | met; the gate itself was tightened after PR #16 |
+| G4 Effective tests | Mutation score (adjusted) | **100.0 %** (raw 96.6 %) | ≥ 85 % (CI gate 95 %) | met; the gate itself was tightened after PR #16 |
 
 ## 3. Control actions taken in this period
 - Mutation gate 85 → 90 → **95 %** (evidence: PR #16 run 43927877708 passed at 90.4 %, run 43933840489 blocked at 94.3 %).

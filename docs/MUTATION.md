@@ -12,27 +12,29 @@
 |---|---|---|---|---|
 | **First analysis** (code before PR #13) — before improving the tests | 244 | 217 | 27 | **88.9 %** |
 | First analysis — after 9 killing tests (12 survivors killed, 15 equivalents) | 244 | 229 | 15 | 93.9 % |
-| **Final analysis** (final code incl. the DEF-01 fix and the dedupe of CBR-4/ROR) — before the second test round | 248 | 234 | 14 | **94.4 %** |
-| Final analysis — after 7 more killing tests (4 survivors killed, 10 equivalents) | 248 | 238 | 10 | 96.0 % |
-| **Final, adjusted** (the 10 survivors proven equivalent are excluded) | 238 | 238 | 0 | **100.0 %** |
+| **Final analysis** (final code incl. the DEF-01..04 fixes and the dedupe of CBR-4/ROR) — before the second test round | 263 | 253 | 10 | **96.2 %** |
+| Final analysis — after more killing tests (1 survivors killed, 9 equivalents) | 263 | 254 | 9 | 96.6 % |
+| **Final, adjusted** (the 9 survivors proven equivalent are excluded) | 254 | 254 | 0 | **100.0 %** |
 
 ## 3. Results by operator (final analysis, before the second test round)
 | Operator | Mutants | Killed | Survived | Note |
 |---|---|---|---|---|
-| AOR | 3 | 2 | 1 |  |
+| AOR | 5 | 5 | 0 |  |
 | CBR-1 | 2 | 2 | 0 | custom — limit clamp |
 | CBR-2 | 5 | 5 | 0 | custom — reference conditions |
 | CBR-3 | 3 | 3 | 0 | custom — deplete rule |
 | CBR-4 | 8 | 5 | 3 | custom — positive guard (3 survivors are equivalent: redundant guards) |
-| CRP | 26 | 22 | 4 |  |
-| LCR | 15 | 13 | 2 |  |
-| NEG | 42 | 42 | 0 |  |
-| RET | 20 | 20 | 0 |  |
-| ROR | 21 | 21 | 0 |  |
-| SDL | 94 | 90 | 4 |  |
-| UOI | 9 | 9 | 0 |  |
+| CRP | 27 | 25 | 2 |  |
+| LCR | 19 | 17 | 2 |  |
+| NEG | 46 | 46 | 0 |  |
+| RET | 18 | 18 | 0 |  |
+| ROR | 23 | 23 | 0 |  |
+| SDL | 95 | 92 | 3 |  |
+| UOI | 12 | 12 | 0 |  |
 
 ## 2b. mutmut results (the real tool, 3.8.1)
+*The mutmut run was made on the code of commit `c9bb115`, i.e. before the fixes of DEF-02/03/04/06 (PRs #17, #18); the functions changed since then (`StockAddSerializer.validate`, the `items` declarations, `to_internal_value`) are covered by the custom-operator analysis above, which was repeated on the final code.*
+
 **mutmut 3.x — real run on `stock/serializers.py` and `stock/models.py`: 652 mutants, 509 killed, 107 survived, 0 timed out, 36 without covering tests.**
 Raw score (killed ÷ (killed + survived + timeout)): **82.6 %** over all functions of both files. In-scope functions only (the 32 functions of `docs/TEST_BASIS.md` §7): 416 killed, 46 survived → **90.0 %**.
 Adjusted in-scope score (survivors proven equivalent excluded, justification per mutant below): **100.0 %** (46 of the in-scope survivors are equivalent; none is a missing test). Survivors outside the scope are display/allocation/plugin helpers and the status-field wrapper, which the add/remove workflows do not use. The 36 mutants 'without covering tests' are 12 with no test reaching them plus 24 `StockStatusCustomSerializer.__init__` mutants that hang the process (out of scope; the run was stopped there).
@@ -204,11 +206,12 @@ Survivor classification (107): Out of scope 56, Equivalent 51.
 | `PrefetchedPrimaryKeyRelatedField.to_internal_value` | 7 | 7 | 0 |
 | `RolePermission.has_permission` | 14 | 14 | 0 |
 | `StockAddSerializer.save` | 14 | 12 | 2 |
+| `StockAddSerializer.validate` | 9 | 8 | 1 |
 | `StockAdjustView.get_serializer_context` | 2 | 1 | 1 |
 | `StockAdjustmentItemSerializer.__init__` | 5 | 5 | 0 |
-| `StockAdjustmentItemSerializer.validate_pk` | 14 | 12 | 2 |
+| `StockAdjustmentItemSerializer.validate_pk` | 14 | 13 | 1 |
 | `StockAdjustmentItemSerializer.validate_quantity` | 7 | 7 | 0 |
-| `StockAdjustmentSerializer.to_internal_value` | 4 | 4 | 0 |
+| `StockAdjustmentSerializer.to_internal_value` | 10 | 10 | 0 |
 | `StockAdjustmentSerializer.validate` | 6 | 5 | 1 |
 | `StockItem._apply_model_reference_fields` | 5 | 5 | 0 |
 | `StockItem._apply_optional_transfer_fields` | 4 | 4 | 0 |
@@ -217,36 +220,32 @@ Survivor classification (107): Out of scope 56, Equivalent 51.
 | `StockItem._is_empty_tracking_event` | 6 | 6 | 0 |
 | `StockItem._resolve_status_kwarg` | 1 | 1 | 0 |
 | `StockItem._tracking_deltas` | 7 | 7 | 0 |
-| `StockItem.add_stock` | 14 | 12 | 2 |
+| `StockItem.add_stock` | 14 | 14 | 0 |
 | `StockItem.can_delete` | 14 | 14 | 0 |
-| `StockItem.delete` | 11 | 10 | 1 |
-| `StockItem.is_in_stock` | 14 | 13 | 1 |
+| `StockItem.delete` | 11 | 11 | 0 |
+| `StockItem.is_in_stock` | 14 | 14 | 0 |
 | `StockItem.lock_quantity` | 10 | 10 | 0 |
 | `StockItem.save` | 14 | 14 | 0 |
 | `StockItem.take_stock` | 14 | 13 | 1 |
 | `StockItem.tracking_event` | 5 | 5 | 0 |
-| `StockItem.updateQuantity` | 14 | 14 | 0 |
+| `StockItem.updateQuantity` | 14 | 13 | 1 |
 | `StockRemoveSerializer.save` | 14 | 12 | 2 |
-| `StockRemoveSerializer.validate` | 9 | 8 | 1 |
+| `StockRemoveSerializer.validate` | 9 | 9 | 0 |
 
-## 5. Analysis of the surviving mutants (27 + 14 = 41 analysed; ≥ 15 required): equivalent / missing test / weak assertion
-### 5.1 Final analysis (14 survivors)
+## 5. Analysis of the surviving mutants (27 + 10 = 37 analysed; ≥ 15 required): equivalent / missing test / weak assertion
+### 5.1 Final analysis (10 survivors)
 | ID | Operator | Function (line) | Mutation | Classification | Action / argument | After the second test round |
 |---|---|---|---|---|---|---|
 | M010 | CRP | `StockAdjustmentItemSerializer.validate_pk` (L1839) | False -> True | **Equivalent** | `backup_value=False` of `get_global_setting`: it only applies when the setting is not defined, which cannot happen for `STOCK_ALLOW_OUT_OF_STOCK_TRANSFER` (a declared global setting with a default) — unobservable. (The `cache=False` constant of the same call IS observable and is killed by `test_validate_pk_does_not_use_a_cached_setting_value`.) | survives (equivalent) |
-| M011 | CRP | `StockAdjustmentItemSerializer.validate_pk` (L1839) | False -> True | **Missing test (cache=False)** | a direct DB update of the setting exposes a stale cached read (`test_validate_pk_does_not_use_a_cached_setting_value`); the `backup_value` constant is equivalent | **killed** |
-| M031 | SDL | `StockAdjustmentSerializer.validate` (L1940) | delete statement: super().validate(data) | **Equivalent** | The base `serializers.Serializer.validate` returns its argument unchanged and its return value is discarded: deleting the call has no effect. | survives (equivalent) |
-| M044 | LCR | `StockAddSerializer.save` (L2032) | or -> and | **Equivalent** | Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable. | survives (equivalent) |
-| M045 | CBR-4 | `StockAddSerializer.save` (L2032) | POSITIVE_GUARD quantity <= 0 boundary moved | **Equivalent** | Redundant guard (see above): the model-level `quantity <= 0` check returns False anyway. | survives (equivalent) |
-| M051 | SDL | `StockRemoveSerializer.validate` (L2055) | delete statement: data = super().validate(data) | **Missing test** | base validation of the remove serializer: empty list rejected and error index follows the pk-sorted order (`test_remove_rejects_an_empty_items_list`, `test_remove_reports_the_error_index_of_the_pk_sorted_entry`) | **killed** |
-| M067 | LCR | `StockRemoveSerializer.save` (L2100) | or -> and | **Equivalent** | Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable. | survives (equivalent) |
-| M068 | CBR-4 | `StockRemoveSerializer.save` (L2100) | POSITIVE_GUARD quantity <= 0 boundary moved | **Equivalent** | Redundant guard (see above): `take_stock(0)` returns False. | survives (equivalent) |
-| M075 | CRP | `StockItem.is_in_stock` (L2317) | True -> False | **Weak assertion** | defaults test: each of the three checks is ON by default (`test_is_in_stock_defaults_check_status_quantity_and_production`) | **killed** |
-| M123 | SDL | `StockItem.add_stock` (L3429) | delete statement: tracking_info['quantity'] = float(sel | **Equivalent** | The quantity delta is dropped from the stored audit data: the observed entry is `additional_data={'deltas': {'added': 2.5}}` and `changes={'quantity': ['10.00000','12.50000'], …}` (the quantity is recorded as a FIELD CHANGE, asserted by `test_add_records_history_with_deltas_and_notes`), so the value of `tracking_info['quantity']` is inert. | survives (equivalent) |
-| M124 | AOR | `StockItem.add_stock` (L3429) | + -> - | **Equivalent** | Same statement: the arithmetic of the inert `tracking_info['quantity']` value (see above) is unobservable. | survives (equivalent) |
-| M130 | CBR-4 | `StockItem.take_stock` (L3466) | POSITIVE_GUARD quantity <= 0 boundary moved | **Equivalent** | First `quantity <= 0` guard: the second guard after the `min()` clamp rejects the same input, so moving this boundary has no effect. | survives (equivalent) |
-| M193 | CRP | `StockItem.delete` (L578) | False -> True | **Missing test (cache=False)** | same technique for `STOCK_ALLOW_DELETE_SERIALIZED` (`test_delete_does_not_use_a_cached_setting_value`) | **killed** |
-| M219 | SDL | `StockAdjustView.get_serializer_context` (L240) | delete statement: context['request'] = self.request | **Equivalent** | DRF `GenericAPIView.get_serializer_context` already supplies `request`; the explicit assignment is redundant. | survives (equivalent) |
+| M037 | SDL | `StockAdjustmentSerializer.validate` (L1950) | delete statement: super().validate(data) | **Equivalent** | The base `serializers.Serializer.validate` returns its argument unchanged and its return value is discarded: deleting the call has no effect. | survives (equivalent) |
+| M048 | SDL | `StockAddSerializer.validate` (L2045) | delete statement: stock_item = entry['pk'] | **Missing test** | two different items in one request: the limit is checked per item and the error points at the offending entry (`test_add_limit_is_checked_per_item_and_the_error_points_at_the_offending_entry`) | **killed** |
+| M059 | LCR | `StockAddSerializer.save` (L2079) | or -> and | **Equivalent** | Redundant guard: for quantity 0 (or negative) `add_stock` itself returns False (model-level guard), so skipping the item in `save()` is unobservable. | survives (equivalent) |
+| M060 | CBR-4 | `StockAddSerializer.save` (L2079) | POSITIVE_GUARD quantity <= 0 boundary moved | **Equivalent** | Redundant guard (see above): the model-level `quantity <= 0` check returns False anyway. | survives (equivalent) |
+| M082 | LCR | `StockRemoveSerializer.save` (L2150) | or -> and | **Equivalent** | Redundant guard: for quantity 0 `take_stock` itself returns False, so the serializer-level skip is unobservable. | survives (equivalent) |
+| M083 | CBR-4 | `StockRemoveSerializer.save` (L2150) | POSITIVE_GUARD quantity <= 0 boundary moved | **Equivalent** | Redundant guard (see above): `take_stock(0)` returns False. | survives (equivalent) |
+| M125 | CRP | `StockItem.updateQuantity` (L3287) | False -> True | **Equivalent** | `save(add_note=False)` -> `add_note=True`: the flag only controls the 'created' audit note and is ignored for an existing row (`if self.pk`), and updateQuantity only saves existing items. | survives (equivalent) |
+| M143 | CBR-4 | `StockItem.take_stock` (L3466) | POSITIVE_GUARD quantity <= 0 boundary moved | **Equivalent** | First `quantity <= 0` guard: the second guard after the `min()` clamp rejects the same input, so moving this boundary has no effect. | survives (equivalent) |
+| M234 | SDL | `StockAdjustView.get_serializer_context` (L240) | delete statement: context['request'] = self.request | **Equivalent** | DRF `GenericAPIView.get_serializer_context` already supplies `request`; the explicit assignment is redundant. | survives (equivalent) |
 
 ### 5.2 First analysis (27 survivors, code before PR #13)
 | ID | Operator | Function | Mutation | Classification | Action | Result |

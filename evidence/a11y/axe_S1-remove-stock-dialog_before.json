@@ -35,9 +35,9 @@
      ],
      "none": [],
      "impact": "critical",
-     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-9k6wpyluv\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-start; --group-wrap: nowrap;\">",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-o7znuf833\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-start; --group-wrap: nowrap;\">",
      "target": [
-      "#mantine-9k6wpyluv"
+      "#mantine-o7znuf833"
      ],
      "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
     },
@@ -59,9 +59,9 @@
      ],
      "none": [],
      "impact": "critical",
-     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-gfphpe9e8\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: space-between; --group-wrap: nowrap;\">",
+     "html": "<div class=\"m_4081bf90 mantine-Group-root\" aria-haspopup=\"dialog\" aria-expanded=\"false\" id=\"mantine-sov563xfg\" style=\"--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: space-between; --group-wrap: nowrap;\">",
      "target": [
-      "#mantine-gfphpe9e8"
+      "#mantine-sov563xfg"
      ],
      "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"false\""
     }

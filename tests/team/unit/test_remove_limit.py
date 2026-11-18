@@ -89,3 +89,15 @@ def test_malformed_items_give_a_validation_error_with_a_message(request_ctx, bad
     with pytest.raises(ValidationError) as exc:
         _add({'items': bad}, request_ctx)
     assert 'items' in exc.value.detail
+
+
+@pytest.mark.req('BR-1')
+@pytest.mark.risk('PR-04')
+def test_add_limit_is_checked_per_item_and_the_error_points_at_the_offending_entry(make_item, request_ctx):
+    """Two different items in one request: only the second would overflow, so only entry 1 is reported (not entry 0)."""
+    from test_adjustment_serializers import _add
+    a, b = make_item(10), make_item('9999999999')
+    with pytest.raises(ValidationError) as exc:
+        _add({'items': [{'pk': a.pk, 'quantity': 5}, {'pk': b.pk, 'quantity': 5}]}, request_ctx)
+    assert list(_errors(exc)['items'].keys()) == ['1']
+    assert reload(a).quantity == 10 and reload(b).quantity == Decimal('9999999999')

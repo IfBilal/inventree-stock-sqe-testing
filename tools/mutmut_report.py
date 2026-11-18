@@ -86,7 +86,7 @@ for n, st in res.items():
     rows[fn(n)][st] += 1
 tot = collections.Counter(res.values())
 scope_tot = collections.Counter(st for n, st in res.items() if fn(n) in SCOPE_FN)
-out = []
+out = ['*The mutmut run was made on the code of commit `c9bb115`, i.e. before the fixes of DEF-02/03/04/06 (PRs #17, #18); the functions changed since then (`StockAddSerializer.validate`, the `items` declarations, `to_internal_value`) are covered by the custom-operator analysis above, which was repeated on the final code.*\n']
 tested = tot['killed'] + tot['survived'] + tot['timeout']
 out.append(f"**mutmut {os.popen('pip show mutmut 2>/dev/null | grep ^Version').read().strip() or '3.x'} — real run on `stock/serializers.py` and `stock/models.py`: {len(res)} mutants, {tot['killed']} killed, {tot['survived']} survived, {tot['timeout']} timed out, {tot['tests'] if 'tests' in tot else sum(v for k, v in tot.items() if k not in ('killed', 'survived', 'timeout'))} without covering tests.**")
 out.append(f"Raw score (killed ÷ (killed + survived + timeout)): **{100 * tot['killed'] / max(1, tested):.1f} %** over all functions of both files. In-scope functions only (the {len(SCOPE_FN)} functions of `docs/TEST_BASIS.md` §7): {scope_tot['killed']} killed, {scope_tot['survived']} survived → **{100 * scope_tot['killed'] / max(1, scope_tot['killed'] + scope_tot['survived']):.1f} %**.")
