@@ -54,3 +54,38 @@ def test_over_removal_message_is_exact_and_never_uses_scientific_notation(make_i
     with pytest.raises(ValidationError) as exc:
         _remove({'items': [{'pk': s.pk, 'quantity': Decimal(str(available)) + 1}]}, request_ctx)
     assert str(_errors(exc)['items']['0']['quantity'][0]) == f'Cannot remove more than the available quantity ({shown})'
+
+
+# ---- DEF-03 fix: StockAddSerializer.validate (resulting quantity must stay representable)
+@pytest.mark.req('BR-1')
+@pytest.mark.risk('PR-04')
+def test_add_error_names_the_maximum_and_points_at_the_quantity_field(item, request_ctx):
+    from test_adjustment_serializers import _add
+    with pytest.raises(ValidationError) as exc:
+        _add({'items': [{'pk': item.pk, 'quantity': '9999999999.99999'}]}, request_ctx)
+    assert str(_errors(exc)['items']['0']['quantity'][0]) == 'The resulting quantity must not exceed 9999999999.99999'
+    assert reload(item).quantity == 10
+
+
+@pytest.mark.req('BR-1')
+@pytest.mark.risk('PR-04')
+def test_add_split_over_several_entries_cannot_bypass_the_maximum(item, request_ctx):
+    from test_adjustment_serializers import _add
+    body = {'items': [{'pk': item.pk, 'quantity': '5000000000'}, {'pk': item.pk, 'quantity': '5000000000'}]}
+    with pytest.raises(ValidationError):
+        _add(body, request_ctx)
+    assert reload(item).quantity == 10
+
+
+def test_add_total_exactly_at_the_maximum_is_accepted(item, request_ctx):
+    from test_adjustment_serializers import _add
+    _add({'items': [{'pk': item.pk, 'quantity': '9999999989.99999'}]}, request_ctx)
+    assert reload(item).quantity == Decimal('9999999999.99999')
+
+
+@pytest.mark.parametrize('bad', [None, 'abc', 5, {'a': 1}, [1, 'x', None]], ids=['null', 'string', 'int', 'dict', 'entries-not-objects'])
+def test_malformed_items_give_a_validation_error_with_a_message(request_ctx, bad):
+    from test_adjustment_serializers import _add
+    with pytest.raises(ValidationError) as exc:
+        _add({'items': bad}, request_ctx)
+    assert 'items' in exc.value.detail

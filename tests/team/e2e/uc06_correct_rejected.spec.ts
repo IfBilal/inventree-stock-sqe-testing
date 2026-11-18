@@ -1,6 +1,6 @@
 // UC-06 Correct a rejected adjustment (owner M3, 24I-3106) — WF-A and WF-B — usability: errors explain what to correct; keyboard operation.
 import { test, expect } from '@playwright/test';
-import { api, newItem, quantity, history, lastEntry, openItem, openOp, fillAndSubmit, expectSuccess, expectRejected, expectBadge, knownDefect } from './helpers';
+import { api, newItem, quantity, history, lastEntry, openItem, openOp, fillAndSubmit, expectSuccess, expectRejected, expectBadge } from './helpers';
 
 test.use({ storageState: 'e2e/.auth/manager.json' });
 
@@ -58,13 +58,12 @@ test('UC06-AF2 keyboard only: Tab order quantity -> ... -> notes -> Cancel -> Su
 });
 
 test('UC06-EF1 after a rejection, correcting to 0 is rejected again', async ({ page }) => {
-  knownDefect(test, 'DEF-02');
   const a = await api(); const pk = await newItem(a, 10);
   await openItem(page, pk);
   await openOp(page, 'Add Stock');
   await fillAndSubmit(page, '1.123456'); await expectRejected(page);
   await fillAndSubmit(page, '0');
-  await expectRejected(page);                                                // baseline: success + silent no-op
+  await expectRejected(page, /greater than zero/);                           // DEF-02 fixed (baseline: success + silent no-op)
   expect(await quantity(a, pk)).toBe(10); expect(await history(a, pk)).toHaveLength(0);
 });
 

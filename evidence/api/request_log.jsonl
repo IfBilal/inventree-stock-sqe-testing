@@ -1,16 +1,16 @@
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": true, "status": 201}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": true, "status": 201}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 500}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 500}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": true, "status": 201}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
@@ -121,6 +121,12 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
+{"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
+{"content_type": null, "method": "GET", "path": "/api/stock/", "role": "manager", "schema_checked": false, "status": 200}
 {"content_type": "application/json", "method": "GET", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 405}
 {"content_type": "application/json", "method": "PUT", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 405}
 {"content_type": "application/json", "method": "PATCH", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 405}
@@ -150,7 +156,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
 {"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
@@ -200,7 +206,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -208,7 +214,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -216,7 +222,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -732,7 +738,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": true, "status": 201}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -964,7 +970,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -972,7 +978,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -980,7 +986,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 500}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -1496,7 +1502,7 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": true, "status": 201}
+{"content_type": "application/json", "method": "POST", "path": "/api/stock/remove/", "role": "manager", "schema_checked": false, "status": 400}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/audit/", "role": "manager", "schema_checked": true, "status": 200}
@@ -1755,9 +1761,3 @@
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": false, "status": 404}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
 {"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": true, "status": 200}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": true, "status": 201}
-{"content_type": null, "method": "GET", "path": "/api/stock/{id}/", "role": "manager", "schema_checked": false, "status": 500}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/", "role": "admin", "schema_checked": false, "status": 201}
-{"content_type": "application/json", "method": "POST", "path": "/api/stock/add/", "role": "manager", "schema_checked": true, "status": 201}
-{"content_type": null, "method": "GET", "path": "/api/stock/", "role": "manager", "schema_checked": false, "status": 500}

@@ -19,16 +19,11 @@ BIG = Decimal(MAXQ) / 10                                          # "near the ma
 EXEC_LOG = os.path.join(ROOT, 'evidence', 'api', 'cases_executed.jsonl')
 _EXEC = []
 
-# Baseline mismatches: generated cases whose EXPECTED (contract) outcome the unmodified upstream does not meet.
+# Remaining mismatches (DEF-01..04 are fixed): generated cases whose EXPECTED (contract) outcome the upstream still does not meet (loose typing, unvalidated audit parameters).
 # strict xfail + raises=AssertionError: when a defect is fixed the xfail turns XPASS and fails, forcing the marker's removal.
-DEFECT = {'W-12': 'boolean true accepted as pk 1 (loose typing)', 'DEF-01': 'over-removal clamped', 'DEF-02': 'zero accepted', 'DEF-04': 'malformed items -> HTTP 500',
-          'W-08': 'boolean accepts integers 0/1 (loose typing)', 'W-09': 'audit query parameters are not validated'}
+DEFECT = {'W-12': 'boolean true accepted as pk 1 (loose typing)', 'W-08': 'boolean accepts integers 0/1 (loose typing)', 'W-09': 'audit query parameters are not validated'}
 KNOWN = {}
 for op in ('stockAdd', 'stockRemove'):
-    KNOWN[f'{op}:items[].quantity:BVA:min-at'] = 'DEF-02'
-    KNOWN[f'{op}:items:EP:null'] = 'DEF-04'
-    KNOWN[f'{op}:items:EP:not-an-array'] = 'DEF-04'
-    KNOWN[f'{op}:items:EP:object-instead-of-array'] = 'DEF-04'
     KNOWN[f'{op}:items[].merge:EP:type-integer-1'] = 'W-08'
     KNOWN[f'{op}:items[].merge:EP:type-integer-0'] = 'W-08'
     KNOWN[f'{op}:items[].pk:EP:type-bool-true'] = 'W-12'

@@ -1,6 +1,6 @@
 // UC-03 Deplete an item (owner M2, 24I-3015) — WF-B — FR-08, BR-3.
 import { test, expect } from '@playwright/test';
-import { api, newItem, quantity, history, lastEntry, inStock, openItem, openOp, doOp, expectSuccess, expectRejected, expectBadge, knownDefect } from './helpers';
+import { api, newItem, quantity, history, lastEntry, inStock, openItem, openOp, doOp, expectSuccess, expectRejected, expectBadge } from './helpers';
 
 test.use({ storageState: 'e2e/.auth/manager.json' });
 

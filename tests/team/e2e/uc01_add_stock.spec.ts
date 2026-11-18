@@ -1,6 +1,6 @@
 // UC-01 Add stock to an item (owner M1, 24I-3166) — WF-A — FR-01, FR-02, FR-03, BR-1. One test per flow of docs/USE_CASES.md.
 import { test, expect } from '@playwright/test';
-import { api, newItem, quantity, history, lastEntry, openItem, doOp, expectSuccess, expectRejected, expectBadge, knownDefect } from './helpers';
+import { api, newItem, quantity, history, lastEntry, openItem, doOp, expectSuccess, expectRejected, expectBadge } from './helpers';
 
 test.use({ storageState: 'e2e/.auth/manager.json' });
 
@@ -34,19 +34,17 @@ test('UC01-AF2 add 5 with notes "restock"', async ({ page }) => {
 });
 
 test('UC01-EF1 quantity 0 is rejected', async ({ page }) => {
-  knownDefect(test, 'DEF-02');                                              // companion pin: defect_pins.spec.ts shows the observed baseline behaviour
   const a = await api(); const pk = await newItem(a, 10);
   await openItem(page, pk);
   await doOp(page, 'Add Stock', '0');
-  await expectRejected(page);                                               // baseline: "Success — Stock added" (silent no-op)
+  await expectRejected(page, /greater than zero/);                          // fixed (DEF-02): was "Success — Stock added" (silent no-op)
   expect(await quantity(a, pk)).toBe(10); expect(await history(a, pk)).toHaveLength(0);
 });
 
 test('UC01-EF2 typed quantity -3 is rejected', async ({ page }) => {
-  knownDefect(test, 'DEF-02');
   const a = await api(); const pk = await newItem(a, 10);
   await openItem(page, pk);
   await doOp(page, 'Add Stock', '-3');
-  await expectRejected(page);                                               // baseline: the field accepts -3 and reports success
+  await expectRejected(page);                                               // DEF-02 fixed: rejected by the server
   expect(await quantity(a, pk)).toBe(10); expect(await history(a, pk)).toHaveLength(0);
 });

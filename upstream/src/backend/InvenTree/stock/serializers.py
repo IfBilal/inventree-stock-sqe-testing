@@ -1919,7 +1919,17 @@ class StockAdjustmentSerializer(serializers.Serializer):
         """
         pks = set()
 
-        for item in data.get('items', []):
+        # Malformed input (not a list, entries that are not objects) is left to the field validation
+        # below, which answers with a regular HTTP 400 instead of an unhandled exception
+        items = data.get('items', []) if hasattr(data, 'get') else []
+
+        if not isinstance(items, (list, tuple)):
+            items = []
+
+        for item in items:
+            if not hasattr(item, 'get'):
+                continue
+
             try:
                 pks.add(int(item.get('pk')))
             except (TypeError, ValueError):
@@ -2012,6 +2022,43 @@ class StockCountSerializer(StockAdjustmentSerializer):
 class StockAddSerializer(StockAdjustmentSerializer):
     """Serializer for adding stock to stock item(s)."""
 
+    # A quantity of zero is rejected (it would be a silent no-op reported as success)
+    items = StockAdjustmentItemSerializer(many=True, require_non_zero=True)
+
+    # Largest quantity the database column can hold (DecimalField max_digits=15, decimal_places=5)
+    MAX_QUANTITY = Decimal('9999999999.99999')
+
+    def validate(self, data):
+        """Reject an addition whose resulting quantity cannot be stored.
+
+        Entries which refer to the same stock item are summed, like for the removal limit.
+        """
+        data = super().validate(data)
+
+        requested: dict[int, Decimal] = {}
+
+        for entry in data['items']:
+            stock_item = entry['pk']
+            requested[stock_item.pk] = requested.get(stock_item.pk, Decimal(0)) + entry['quantity']
+
+        for index, entry in enumerate(data['items']):
+            stock_item = entry['pk']
+
+            if stock_item.quantity + requested[stock_item.pk] > self.MAX_QUANTITY:
+                raise ValidationError({
+                    'items': {
+                        str(index): {
+                            'quantity': [
+                                _('The resulting quantity must not exceed {maximum}').format(
+                                    maximum=format(self.MAX_QUANTITY, 'f')
+                                )
+                            ]
+                        }
+                    }
+                })
+
+        return data
+
     def save(self):
         """Add stock."""
         request = self.context['request']
@@ -2045,6 +2092,9 @@ class StockAddSerializer(StockAdjustmentSerializer):
 
 class StockRemoveSerializer(StockAdjustmentSerializer):
     """Serializer for removing stock from stock item(s)."""
+
+    # A quantity of zero is rejected (it would be a silent no-op reported as success)
+    items = StockAdjustmentItemSerializer(many=True, require_non_zero=True)
 
     def validate(self, data):
         """Reject a removal which is larger than the available quantity.
