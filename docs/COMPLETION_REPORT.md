@@ -24,7 +24,7 @@ Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects:
 | Test-data generation | OpenAPI 3.0.3 contract (validated), generator with 29 tests, 223 cases, two constraint-change demos | `docs/TEST_DATA_GENERATION.md` |
 | API / integration | 253 passed, 27 strict-xfail (loose typing / audit-parameter weaknesses of upstream); API coverage criteria all 100 % (endpoint, operation, status codes, roles, inputs, content types, methods, response schemas, sequences) | `docs/API_TESTING.md`, `docs/API_COVERAGE.md` |
 | Browser E2E (6 use cases, 30 flows) + usability | Playwright: 57 tests as expected (30 use-case flows + 27 supporting tests: login set-up, access matrix, accessibility scans), 0 unexpected, 0 flaky (no flow is an expected failure any more; DEF-05 shows as a visible annotation of the login set-up) | `docs/USE_CASES.md`, `docs/USABILITY.md` |
-| Accessibility | Lighthouse accessibility 78 → 85 and SEO 75 → 83 on the fixed screen; image-alt and landmark-one-main resolved; remaining issues logged | `docs/ACCESSIBILITY.md` |
+| Accessibility | Lighthouse accessibility 78 → 96 (PR #15 then PR #19), best-practices 100, SEO 75 → 83 on the item page; image-alt, landmark-one-main, aria-required-children and button-name resolved; colour contrast, heading, region and one ARIA attribute remain open (A11Y-02) | `docs/ACCESSIBILITY.md` |
 | Security | access matrix 20/20; ZAP passive (1599 messages): 1 Medium (no CSP), 4 Low; pip-audit 0/166; yarn audit 9 advisories (1 high build-time) | `docs/SECURITY.md` |
 | Performance and recovery | targets declared first; 1 vs 5 users × 2 runs; failure-and-recovery test with test double (rollback, retry, no duplicates) | `docs/PERFORMANCE.md` |
 | Mutation | 263 mutants, raw 96.6 %, adjusted **100.0 %** (the survivors are proven equivalent, the others were killed by added tests over two rounds); 4 custom operators | `docs/MUTATION.md` |
@@ -49,7 +49,7 @@ Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects:
 | SEC-02 | [#8](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/8) | Session cookie without SameSite (default config) | Low | P3 | Closed (fixed) |
 | SEC-03 | [#9](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/9) | react-router 6.30.6 advisories in the shipped bundle | Medium | P3 | Accepted (risk) |
 | A11Y-01 | [#10](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/10) | Item page: images without alt, no main landmark | Medium | P2 | Closed (fixed) |
-| A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, button names, ARIA) | Medium | P3 | Open (deferred) |
+| A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, heading, landmark, one ARIA attribute) | Medium | P3 | Open (reduced) |
 | UX-01 | [#12](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/12) | Enter in quantity field does not submit the dialog | Low | P3 | Open (deferred) |
 
 Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0 of 8 closed defects reopened (target ≤ 10 %); SEC-03 was closed as an accepted risk, not fixed.
@@ -65,7 +65,7 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | PR-06 | 12 | 2×4 = 8 (Medium) | recovery test: retry after failure is safe; no idempotency key remains (W-03) | — |
 | PR-07 | 12 | 2×4 = 8 (Medium) | history read back after success and rejection; W-01, W-06 weaknesses | — |
 | PR-08 | 9 | 3×3 = 9 (Medium) | failures 19.5 % → 0 % at 5 users after the DEF-06 fix; p95 545–556 ms still above the 500 ms limit | DEF-06 (fixed) |
-| PR-09 | 8 | 3×2 = 6 (Medium) | one screen fixed (78→85); other findings open | A11Y-01/02, UX-01, DEF-05 |
+| PR-09 | 8 | 3×2 = 6 (Medium) | one screen fixed (78→96); colour contrast, heading, region, aria-allowed-attr open | A11Y-01/02, UX-01, DEF-05 |
 | PR-10 | 12 | 2×4 = 8 (Medium) | backend 0/166; frontend advisories dispositioned (react-router has no patched 6.x release; SEC-03 accepted) | SEC-03 (accepted) |
 | PJ-01 | 16 | 1×4 = 4 | all tools ran (SonarQube via zip, ZAP, k6, mutation, CI) | — |
 | PJ-02 | 15 | 2×5 = 10 (High) | depends on each member being able to explain the owned area (`docs/AREA_OWNERSHIP.md`) | — |
@@ -80,9 +80,11 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | [#16](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/16) | Remove redundant-looking tests (test_mutation_killers.py) | `bad/remove-mutation-killing-tests` | CLOSED | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: FAILURE, sonar: SUCCESS, gate: SKIPPED, deploy: SKIPPED |
 | [#17](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/17) | Fix DEF-02, DEF-03 and DEF-04: reject zero quantity, unrepresentable totals and malformed items | `fix/def-02-03-04-input-validation` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
 | [#18](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/18) | Fix DEF-06 (concurrent adjustments fail), SEC-01 (no CSP) and SEC-02 (cookies without SameSite) | `fix/def-06-sqlite-locking` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
+| [#19](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/19) | Fix A11Y-02 (part): tablist children, unnamed buttons, CSP hash for inline scripts | `fix/a11y-02-panel-group` | OPEN | hygiene: SUCCESS, unit: IN_PROGRESS, api: IN_PROGRESS, e2e: IN_PROGRESS, mutation: IN_PROGRESS |
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
+| 44539328889 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44539328889 |
 | 44533546393 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44533546393 |
 | 44443554139 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44443554139 |
 | 44440724442 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44440724442 |
@@ -94,7 +96,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 44343888095 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343888095 |
 | 44339141434 | pull_request | `fix/def-06-sqlite-locking` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44339141434 |
 | 44332822200 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44332822200 |
-| 44326688189 | pull_request | `fix/def-02-03-04-input-validation` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44326688189 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.

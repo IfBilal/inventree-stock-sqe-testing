@@ -14,7 +14,7 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | SEC-02 | [#8](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/8) | Session cookie without SameSite (default config) | Security | Low | P3 | Closed (fixed) | accepted | PR-02 | Phase 9 |
 | SEC-03 | [#9](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/9) | react-router 6.30.6 advisories in the shipped bundle | Security | Medium | P3 | Accepted (risk) | accepted | PR-10 | Phase 9 |
 | A11Y-01 | [#10](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/10) | Item page: images without alt, no main landmark | Accessibility | Medium | P2 | Closed (fixed) | accepted | PR-09 | Phase 8 |
-| A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, button names, ARIA) | Accessibility | Medium | P3 | Open (deferred) | accepted | PR-09 | Phase 8 |
+| A11Y-02 | [#11](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/11) | Remaining a11y issues (contrast, heading, landmark, one ARIA attribute) | Accessibility | Medium | P3 | Open (reduced) | accepted | PR-09 | Phase 8 |
 | UX-01 | [#12](https://github.com/IfBilal/inventree-stock-sqe-testing/issues/12) | Enter in quantity field does not submit the dialog | Usability | Low | P3 | Open (deferred) | accepted | PR-09 | Phase 7 |
 
 ## Lifecycle (status changes over time)
@@ -50,6 +50,7 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | A11Y-01 | 2026-11-17 | Closed | PR #15 merged after green pipeline; issue #10 closed |
 | A11Y-02 | 2026-11-16 | Opened | triage: accepted |
 | A11Y-02 | 2026-11-18 | Open | Medium/P3: remaining contrast / button-name / ARIA findings of the UI (need frontend design decisions) |
+| A11Y-02 | 2026-11-19 | Partly fixed | PR #19: tab list contains only tabs (aria-required-children) and the collapse, notification and modal close buttons have names (button-name); Lighthouse accessibility 85 -> 96, 57/57 E2E pass; still open: color-contrast, page-has-heading-one, region, aria-allowed-attr |
 | UX-01 | 2026-11-16 | Opened | triage: accepted |
 | UX-01 | 2026-11-18 | Open | Low/P3: Enter in the quantity field of the stock-adjust dialog does not submit (table-row fields have no form context) |
 
