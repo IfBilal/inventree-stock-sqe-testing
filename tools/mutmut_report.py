@@ -19,7 +19,7 @@ diffs, cur = {}, None
 for l in open(os.path.join(R, 'evidence/mutation/mutmut_diffs.txt')):
     if l.startswith('=== '): cur = l[4:].strip(); diffs[cur] = []
     elif cur: diffs[cur].append(l.rstrip())
-SCOPE_FN = set(json.load(open(os.path.join(R, 'evidence/mutation/scope_functions.json'))))   # function names of the 32 in-scope functions
+SCOPE_FN = set(json.load(open(os.path.join(R, 'evidence/mutation/scope_functions.json'))))   # function names of the 33 in-scope functions (mutmut ran before StockAddSerializer.validate existed, so it has no mutants there: 32 of 33 are scored)
 
 
 def fn(name):

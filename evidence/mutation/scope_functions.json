@@ -30,5 +30,6 @@
  "StockItem.tracking_event",
  "StockItem.updateQuantity",
  "StockRemoveSerializer.save",
- "StockRemoveSerializer.validate"
+ "StockRemoveSerializer.validate",
+ "StockAddSerializer.validate"
 ]
