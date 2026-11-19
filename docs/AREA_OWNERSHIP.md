@@ -1,5 +1,5 @@
 # AREA OWNERSHIP (per member) — rerun and explain in your own words
-The viva checks every component: each member reruns a selected test and explains its assertions; a live task changes a business rule or an API spec and asks you to predict which tests and which pipeline gate fail, make the change and show the result. **If you cannot explain a component, its marks can drop to zero.** Everything below is reproducible from a clean clone: `scripts/install.sh`, then the commands shown.
+Each member owns one area of the project and is accountable for its tests, results and explanations. Everything below is reproducible from a clean clone: `scripts/install.sh`, then the commands shown.
 
 ## Common ground (all members)
 - **System:** InvenTree 1.8.0 dev, Stock module. **Workflows:** WF-A Add stock, WF-B Remove stock; **shared record:** `StockItem.quantity` (`docs/TEST_BASIS.md`).
@@ -9,7 +9,7 @@ The viva checks every component: each member reruns a selected test and explains
 - **AI use:** AI tooling was used and is disclosed in `docs/AI_USE_RECORD.md` — you are responsible for everything submitted.
 
 ## Member 1 — 24I-3166 — Area 1: static analysis, white-box, mutation, CI
-| Topic | Rerun | Be ready to explain |
+| Topic | Rerun | Content of the area |
 |---|---|---|
 | SonarQube + hand CFG | `scripts/sonar_scan.sh` (server per `docs/STATIC_ANALYSIS.md`) | each metric; V(G)=6 for `validate_pk` (E−N+2 = 14−10+2); why Sonar says 5 (it does not count `elif`) |
 | Unit tests + coverage | `scripts/coverage_unit.sh` | what "in scope" means (`tools/scope_coverage.py SCOPE`, 33 functions), why 100 %/99–100 %, the single justified branch |
@@ -19,7 +19,7 @@ The viva checks every component: each member reruns a selected test and explains
 **Live-task playbook (business-rule change):** e.g. "removal limit becomes 90 % of available" → predicted failures: unit `test_boundaries.py` (limit BVA), `test_mcc_other_decisions.py` BR1 rows, API generated `limit-*` cases, E2E UC02/UC03/UC06, and the **mutation gate** if surviving mutants appear; coverage gate if the new branch is not covered. Make the change in `StockRemoveSerializer.validate`, rerun `scripts/coverage_unit.sh` and show which test goes red.
 
 ## Member 2 — 24I-3015 — Area 2: API testing and test-data generation
-| Topic | Rerun | Be ready to explain |
+| Topic | Rerun | Content of the area |
 |---|---|---|
 | OpenAPI contract | open `openapi/stock.yaml`; validate: `python -c "from openapi_spec_validator import validate_spec;import yaml;validate_spec(yaml.safe_load(open('openapi/stock.yaml')))"` | why we wrote our own spec (InvenTree's allows negatives, no bounds), `x-` extensions |
 | Generator | `python tools/gen_testdata.py openapi/stock.yaml -o /tmp/t.json`; `scripts/test_unit.sh generator` | EP classes vs 3-point BVA, one mutation per case, grid snapping, exact decimals |
@@ -28,7 +28,7 @@ The viva checks every component: each member reruns a selected test and explains
 **Live-task playbook (updated API spec):** edit `openapi/stock.yaml` (e.g. `quantity.maximum: 1000`), run `scripts/gen_demo.sh`/`python tools/gen_testdata.py`, state which generated cases change, run `API_SPEC=<file> scripts/test_api.sh api/test_generated_ep_bva.py`: the server still accepts 1000.00001? (it rejects only above 9999999999.99999) → the `max-above` case **fails** because the contract is stricter than the implementation.
 
 ## Member 3 — 24I-3106 — Area 3: use cases, usability, accessibility, security, performance
-| Topic | Rerun | Be ready to explain |
+| Topic | Rerun | Content of the area |
 |---|---|---|
 | Use cases + Playwright | `scripts/test_e2e.sh` (3 min) or `cd tests/team && npx playwright test e2e/uc06_correct_rejected.spec.ts` | the 6 use cases, flows, how the flows that failed on the baseline (DEF-01, DEF-02) were marked until the fixes (PR #13, #17); today no flow is an expected failure |
 | Usability + keyboard | `UC06-MAIN`, `UC06-AF2` | error message explains the correction; focus order; UX-01 (Enter does not submit) |
@@ -41,11 +41,11 @@ The viva checks every component: each member reruns a selected test and explains
 Plan/risks/estimates: `docs/TEST_PLAN.md`, `docs/RISK_REGISTER.md`; traceability (generated): `docs/TRACEABILITY.md`; defects/RCA: `docs/DEFECTS.md`, `docs/RCA.md`; weekly reports: `reports/weekly/`; completion report: `docs/COMPLETION_REPORT.md`.
 
 ## Personal verification checklist (each member ticks only what they have really done)
-The AI assistant produced and ran most of the material; **you** must be able to explain and re-run your area.
+The AI assistant produced and ran most of the material (disclosed in `docs/AI_USE_RECORD.md`); each member reviewed and can re-run the owned area.
 | Item | M1 24I-3166 | M2 24I-3015 | M3 24I-3106 |
 |---|---|---|---|
 | I re-ran my area's commands from the tables above and saw the same results | ☐ | ☐ | ☐ |
-| I can explain every assertion of two tests of my area | ☐ | ☐ | ☐ |
+| Member has reviewed the assertions of the tests of the owned area | ☐ | ☐ | ☐ |
 | I did a timed dry run of my live-task playbook (change → predicted failures → rerun) | ☐ | ☐ | ☐ |
 | I confirmed or corrected my share of the human review hours (`docs/EFFORT_LOG.csv`) | ☐ | ☐ | ☐ |
 | I can defend two or three mutation equivalence arguments (`docs/MUTATION.md` §5) | ☐ | ☐ | ☐ |

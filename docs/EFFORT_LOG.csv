@@ -13,4 +13,4 @@ date,estimate_row,owner_member,agent_hours,human_review_hours,basis,note
 2026-11-16,Mutation + custom operators,M1,4.60,3.00,"commit timestamps (mutmut attempts,  2 full runs because of an invalidated first run)","own runner, 244 mutants, survivors, killing tests; real mutmut run (652 mutants, about 3 h machine time), 32 killing tests, survivor re-checks"
 2026-11-16,CI quality gate + PRs,M1,1.00,2.00,"commit timestamps (workflow,  gates,  3 pull requests)","8-job pipeline, protection, fix PR red-to-green, blocked PR"
 2026-11-16,"Defects, RCA, reports",all,0.80,2.50,commit timestamps,"12 issues, Pareto, 2 RCAs, completion and weekly reports"
-2026-11-16,Final PDF + package,all,1.50,1.50,"commit timestamps 11-17 (final graders, document reconciliation, weekly reports, package)","PDF, zip, viva guide"
+2026-11-16,Final PDF + package,all,1.50,1.50,"commit timestamps 11-17 (final graders, document reconciliation, weekly reports, package)","PDF, zip, area ownership sheet"

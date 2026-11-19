@@ -22,7 +22,7 @@ Each case = a **valid template body with exactly one mutation**, so a rejection 
 - **16 of 223 cases changed**, and only those derived from the two constraints (quantity `max-below/at/above` and `above-range` for add and remove = 8; notes `maxlen-below/at/above` for add and remove = 8, incl. the `above-range` neighbours).
 - **Demo 2** (`effect2.md`): `quantity.exclusiveMinimum` true → false and `items.minItems` 1 → 2 → **8 cases changed** (the zero-quantity boundary becomes valid; the one-item list becomes invalid).
 - Example: `stockAdd:items[].quantity:BVA:max-at` `9999999999.99999 → valid` becomes `1000 → valid`; `notes maxlen-at` 512 chars → 100 chars.
-Expect to regenerate and update the spec live in the viva (`scripts/gen_demo.sh`, then `scripts/test_api.sh api/test_generated_ep_bva.py`).
+The spec can be changed and the data regenerated on demand (`scripts/gen_demo.sh`, then `scripts/test_api.sh api/test_generated_ep_bva.py`).
 
 ## Generator quality
 15 unit tests (`tests/team/generator/test_gen_testdata.py`): exact decimals, 3-point BVA for exclusive minimum and maximum, inclusive minimum, string length BVA, EP classes, required/optional handling, one-mutation-per-case, determinism, remove-only limit BVA, reference-field classes, skipped read-only operations, constraint change changes output, CLI. One defect was found and fixed by these tests (integer YAML bounds emitted as numbers instead of decimal strings).

@@ -1,5 +1,5 @@
 # ROOT-CAUSE ANALYSIS (two major defects) — 5 Whys + fishbone, corrective and preventive actions
-Statements are marked **[verified]** (read in source / observed in a run) or **[hypothesis]** (not verifiable from the code; stated so the viva answer is honest).
+Statements are marked **[verified]** (read in source / observed in a run) or **[hypothesis]** (not verifiable from the code; stated so the analysis is honest).
 
 ---
 ## RCA-1 — DEF-01 (Issue #1, Critical, risk PR-01): removing more than the available quantity succeeds and silently discards the excess

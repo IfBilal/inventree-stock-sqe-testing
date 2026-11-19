@@ -17,7 +17,7 @@ Verify the quality of the Stock adjustment workflows of InvenTree 1.8.0 dev (com
 Levels from the project statement: Unit (pytest + coverage.py), API/integration (pytest + requests, generated EP/BVA), Browser E2E (Playwright, 6 use cases), usability/accessibility (Playwright, Lighthouse, axe-core), security (access matrix, ZAP passive, pip-audit), performance/recovery (k6, test double), static analysis (SonarQube), mutation (own AST runner with standard + 4 custom operators; mutmut attempted and unusable), CI (GitHub Actions).
 
 ## 3. Roles and responsibilities
-| Member | Roll | Owned area (examined in viva) | Management role |
+| Member | Roll | Owned area | Management role |
 |---|---|---|---|
 | M1 | 24I-3166 | Area 1: static analysis, white-box unit tests, mutation, CI | **Plan and risk-register owner** |
 | M2 | 24I-3015 | Area 2: API testing, OpenAPI spec and test-data generation | **Defect-triage owner** (severity/priority decisions) |

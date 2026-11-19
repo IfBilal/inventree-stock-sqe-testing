@@ -17,7 +17,7 @@ Level: **Critical ≥ 20**, **High 12–19**, **Medium 6–11**, **Low ≤ 5**. 
 | PR-09 | Product | Accessibility defects in stock dialogs | React UI, third-party components | 4 | 2 | 8 | Medium | Lighthouse + axe-core, keyboard test, before/after fix | DEF-05, A11Y-01 (fixed, PR #15), A11Y-02, UX-01 |
 | PR-10 | Product | Vulnerable dependencies | Large Python/JS dependency tree (`requirements.txt` pinned) | 3 | 4 | 12 | High | pip-audit + yarn audit, record packages/versions | SEC-03 |
 | PJ-01 | Project | Tooling/disk constraints (SonarQube, ZAP, k6, mutation) | Measured: 5 GB free; SonarQube needed JDK 21 + tmpfs (Docker daemon unavailable) | 4 | 4 | 16 | High | Run tools sequentially; export evidence right after each run; tmpfs for Sonar data | — |
-| PJ-02 | Project | Team cannot explain AI-assisted work in the viva | Viva rule: unexplained component → zero | 3 | 5 | 15 | High | Per-member viva sheets, owner reruns tests, ownership by area | — |
+| PJ-02 | Project | A member cannot explain AI-assisted work in an owned component | Unexplained component loses its marks | 3 | 5 | 15 | High | Per-member area ownership sheet, owner reruns tests, ownership by area | — |
 | PJ-03 | Project | Mutation testing too slow on Django project | mutmut reruns tests per mutant (measured: ~35 s per mutant, 3 h for 652) | 4 | 3 | 12 | High | Mutate only business-rule functions, fast DB tests, parallel workers | — |
 
 Counts: 10 product, 3 project risks. **Critical 1** (PR-01), **High 9** (PR-02, PR-03, PR-04, PR-06, PR-07, PR-10, PJ-01, PJ-02, PJ-03), **Medium 3** (PR-05, PR-08, PR-09), Low 0.
