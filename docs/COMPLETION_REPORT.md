@@ -5,7 +5,7 @@ System under test: InvenTree 1.8.0 dev, Stock module (WF-A Add stock, WF-B Remov
 ## 1. Decision
 > # **HOLD** — one exit criterion is still not met, so the build is **not recommended for release** yet.
 
-Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects: none), EC-2 (security) **met** on the tested scope, EC-3 (performance) **NOT met**: at 5 users the failure rate is 0.0 % / 0.0 % (was 19.3 % / 19.7 % before the DEF-06 fix) but p95 is 556 / 545 ms against the declared 500 ms. All five functional defects found in the add/remove workflows were fixed through pull requests that merged only after a green pipeline (DEF-01 PR #13; DEF-02, DEF-03, DEF-04 PR #17; DEF-06 PR #18), together with SEC-01, SEC-02 and the accessibility fix A11Y-01. Still open (none Critical/High): DEF-05, SEC-03, A11Y-02, UX-01.
+Reasons (evidence-based): EC-1 (functional) **met** (open Critical/High defects: none), EC-2 (security) **met** on the tested scope, EC-3 (performance) **NOT met**: at 5 users the failure rate is 0.0 % / 0.0 % (was 19.3 % / 19.7 % before the DEF-06 fix) but p95 is 556 / 545 ms against the declared 500 ms. All five functional defects found in the add/remove workflows were fixed through pull requests that merged only after a green pipeline (DEF-01 PR #13; DEF-02, DEF-03, DEF-04 PR #17; DEF-06 PR #18), together with SEC-01, SEC-02 and the accessibility fixes A11Y-01 and part of A11Y-02 (PR #19). Still open (none Critical/High): DEF-05, A11Y-02, UX-01; accepted as a risk: SEC-03.
 
 ### 1.1 Release criteria — actual versus target (the three exit criteria of the test plan, `docs/TEST_PLAN.md` §7)
 | ID | Category | Target | Actual (evidence) | Met? |
@@ -80,10 +80,12 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | [#16](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/16) | Remove redundant-looking tests (test_mutation_killers.py) | `bad/remove-mutation-killing-tests` | CLOSED | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: FAILURE, sonar: SUCCESS, gate: SKIPPED, deploy: SKIPPED |
 | [#17](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/17) | Fix DEF-02, DEF-03 and DEF-04: reject zero quantity, unrepresentable totals and malformed items | `fix/def-02-03-04-input-validation` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
 | [#18](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/18) | Fix DEF-06 (concurrent adjustments fail), SEC-01 (no CSP) and SEC-02 (cookies without SameSite) | `fix/def-06-sqlite-locking` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
-| [#19](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/19) | Fix A11Y-02 (part): tablist children, unnamed buttons, CSP hash for inline scripts | `fix/a11y-02-panel-group` | OPEN | hygiene: SUCCESS, unit: IN_PROGRESS, api: IN_PROGRESS, e2e: IN_PROGRESS, mutation: IN_PROGRESS |
+| [#19](https://github.com/IfBilal/inventree-stock-sqe-testing/pull/19) | Fix A11Y-02 (part): tablist children, unnamed buttons, CSP hash for inline scripts | `fix/a11y-02-panel-group` | MERGED (merged) | hygiene: SUCCESS, unit: SUCCESS, api: SUCCESS, e2e: SUCCESS, mutation: SUCCESS, sonar: SUCCESS, gate: SUCCESS, deploy: SKIPPED |
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
+| 44549903336 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44549903336 |
+| 44545751219 | pull_request | `fix/a11y-02-panel-group` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44545751219 |
 | 44539328889 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44539328889 |
 | 44533546393 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44533546393 |
 | 44443554139 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44443554139 |
@@ -94,8 +96,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 44365060860 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44365060860 |
 | 44357367524 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44357367524 |
 | 44343888095 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44343888095 |
-| 44339141434 | pull_request | `fix/def-06-sqlite-locking` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44339141434 |
-| 44332822200 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44332822200 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.

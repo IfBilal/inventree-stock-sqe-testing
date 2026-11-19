@@ -75,7 +75,7 @@ States of a StockItem w.r.t. adjustment: `IN_STOCK (q>0)`, `DEPLETED (q=0, retai
 - **A-4 (database).** SQLite is used (no PostgreSQL available). `select_for_update` is not expected to provide row locks on SQLite (not tested); concurrency behaviour is out of scope except the k6 load test.
 - **A-5 (users).** Test users are created by `scripts/seed_data.py` and are synthetic.
 
-- **DEF candidates found during basis analysis** (to be logged as GitHub Issues in our repo in Phase 13): DEF-01 over-removal clamped/silent data loss; DEF-02 zero quantity accepted as silent 201 no-op; DEF-03 resulting quantity overflow → 500 on read.
+- **DEF candidates found during basis analysis** (logged as GitHub Issues in our repository; see `docs/DEFECTS.md`): DEF-01 over-removal clamped/silent data loss; DEF-02 zero quantity accepted as silent 201 no-op; DEF-03 resulting quantity overflow → 500 on read.
 
 ## 7. Unit-test scope (server-side business logic on the add/remove path; single source of truth = `SCOPE` in `tools/scope_coverage.py`)
 Measured per function with coverage.py (branch mode); every function is listed:

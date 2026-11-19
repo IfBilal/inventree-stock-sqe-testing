@@ -45,7 +45,8 @@ for vu in (1, 5):
             store[(vu, run)] = (d['http_req_duration{phase:hold}']['p(95)'], d['http_req_failed{phase:hold}'].get('value', d['http_req_failed{phase:hold}'].get('rate', 0)) * 100)
 ec1_met = not crit_high_open
 ec3_met = all(perf[(5, r)][0] <= 500 and perf[(5, r)][1] < 1 for r in (1, 2))
-open_ids = ', '.join(d['id'] for d in defects if d['status'].startswith('Open') or d['status'].startswith('Accepted'))
+open_ids = ', '.join(d['id'] for d in defects if d['status'].startswith('Open'))
+acc_ids = ', '.join(d['id'] for d in defects if d['status'].startswith('Accepted'))
 decision = 'RELEASE' if (ec1_met and ec3_met) else 'HOLD'
 sonar = {x['metric']: x.get('value') for x in J('evidence/sonar/project_measures.json')['component']['measures']}
 api_cov_pct = '100'
@@ -59,7 +60,7 @@ runs = gh('run', 'list', '--repo', REPO, '--limit', '30', '--json', 'databaseId,
 o = ['# TEST COMPLETION REPORT AND RELEASE / HOLD DECISION\n',
      f'System under test: InvenTree 1.8.0 dev, Stock module (WF-A Add stock, WF-B Remove stock), upstream commit `1f51dfe64bf4717fd95df51f1055ffb7a991a01d`, MIT. Repository: https://github.com/{REPO}. Team: 24I-3166, 24I-3015, 24I-3106.\n',
      f"## 1. Decision\n> # **{decision}** — " + ('the build meets all three exit criteria.' if decision == 'RELEASE' else 'one exit criterion is still not met, so the build is **not recommended for release** yet.') + '\n',
-     f"Reasons (evidence-based): EC-1 (functional) **{'met' if ec1_met else 'NOT met'}** (open Critical/High defects: {', '.join(d['id'] for d in crit_high_open) or 'none'}), EC-2 (security) **met** on the tested scope, EC-3 (performance) **{'met' if ec3_met else 'NOT met'}**: at 5 users the failure rate is {perf[(5,1)][1]:.1f} % / {perf[(5,2)][1]:.1f} % (was {perf0[(5,1)][1]:.1f} % / {perf0[(5,2)][1]:.1f} % before the DEF-06 fix) but p95 is {perf[(5,1)][0]:.0f} / {perf[(5,2)][0]:.0f} ms against the declared 500 ms. All five functional defects found in the add/remove workflows were fixed through pull requests that merged only after a green pipeline (DEF-01 PR #13; DEF-02, DEF-03, DEF-04 PR #17; DEF-06 PR #18), together with SEC-01, SEC-02 and the accessibility fix A11Y-01. Still open (none Critical/High): {open_ids}.\n",
+     f"Reasons (evidence-based): EC-1 (functional) **{'met' if ec1_met else 'NOT met'}** (open Critical/High defects: {', '.join(d['id'] for d in crit_high_open) or 'none'}), EC-2 (security) **met** on the tested scope, EC-3 (performance) **{'met' if ec3_met else 'NOT met'}**: at 5 users the failure rate is {perf[(5,1)][1]:.1f} % / {perf[(5,2)][1]:.1f} % (was {perf0[(5,1)][1]:.1f} % / {perf0[(5,2)][1]:.1f} % before the DEF-06 fix) but p95 is {perf[(5,1)][0]:.0f} / {perf[(5,2)][0]:.0f} ms against the declared 500 ms. All five functional defects found in the add/remove workflows were fixed through pull requests that merged only after a green pipeline (DEF-01 PR #13; DEF-02, DEF-03, DEF-04 PR #17; DEF-06 PR #18), together with SEC-01, SEC-02 and the accessibility fixes A11Y-01 and part of A11Y-02 (PR #19). Still open (none Critical/High): {open_ids}; accepted as a risk: {acc_ids}.\n",
      '### 1.1 Release criteria — actual versus target (the three exit criteria of the test plan, `docs/TEST_PLAN.md` §7)\n| ID | Category | Target | Actual (evidence) | Met? |\n|---|---|---|---|---|',
      f"| EC-1 | Functional (risks PR-01, PR-03, PR-06) | 100 % of own business-rule tests pass on the fixed build; **0 open Critical/High defects**; 0 unjustified uncovered lines (in-scope statements 100 %, branches 100 % with justification); all 6 basis paths and MC/DC pairs of `validate_pk` pass; retried request yields 0 duplicates | Tests pass on the fixed build (unit/API/E2E, §2). In-scope coverage statements **{st_cov} %**, branches **{br_cov} %** (1 unreachable branch justified: `docs/COVERAGE_JUSTIFICATION.md`). MCC rows 32/32, MC/DC set and 6 basis paths pass. Recovery tests: 0 duplicates. **Open Critical/High defects: {len(crit_high_open)} ({', '.join(d['id'] for d in crit_high_open) or 'none'})** | **{'YES' if ec1_met else 'NO'}** |",
      f"| EC-2 | Security (risks PR-02, PR-10) | all access-matrix decisions (≥ 4, ≥ 1 allowed, ≥ 1 denied) match; 0 unresolved High/Critical in the audited dependency set | **{sum(1 for x in am if x['ok'])}/{len(am)}** access decisions match (allowed and denied). Backend: 166 packages, 0 vulnerabilities. Frontend: 1 High advisory (`zod`, build tooling only, not in the served bundle) — dispositioned (accepted, SEC-03 / `docs/SECURITY.md` §4.2); 2 moderate `react-router` advisories in the shipped bundle (SEC-03, accepted risk: no patched 6.x release) | **YES** on the tested scope (with dispositions) |",
@@ -139,7 +140,7 @@ w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-1
 dec = [l for l in o if l.startswith('### 1.1') or l.startswith('| ID |') or l.startswith('|---|---|---|---|---|') or l.startswith('| EC-')]
 fd = ['# FINAL RELEASE / HOLD DECISION AND EVIDENCE LINKS\n',
       f'## Decision: **{decision}**\n',
-      'The three exit criteria of the test plan (`docs/TEST_PLAN.md` §7), actual versus target (the PDF ends with the decision, as the project statement requires):\n',
+      'The three exit criteria of the test plan (`docs/TEST_PLAN.md` §7), actual versus target (`docs/FINAL_DECISION.md`):\n',
       '| ID | Category | Target | Actual (evidence) | Met? |', '|---|---|---|---|---|']
 fd += [l for l in o if l.startswith('| EC-')]
 fd += ['\n## Evidence links (repository https://github.com/' + REPO + ')',

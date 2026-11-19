@@ -79,7 +79,7 @@ def main():
              f'<p><b>System under test:</b> InvenTree (Stock module: Add stock / Remove stock)<br><b>Upstream:</b> https://github.com/inventree/InvenTree — MIT — commit 1f51dfe64bf4717fd95df51f1055ffb7a991a01d</p>'
              f'<p><b>Group:</b> {rolls}</p><p><b>Repository:</b> <a href="{REPO_URL}">{REPO_URL}</a></p>'
              f'<p><b>Release / hold decision:</b> HOLD — see section 1</p></div>']
-    toc = ['<h1 style="page-break-before:avoid">Contents</h1><ol class="toc">'] + [f'<li>{t}</li>' for t, _ in ORDER] + ['</ol>']
+    toc = ['<h1 style="page-break-before:avoid">Contents</h1><ul class="toc" style="list-style:none;padding-left:0">'] + [f'<li>{t}</li>' for t, _ in ORDER] + ['</ul>']
     parts += toc
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'sane_lists'])
     for title, f in ORDER:

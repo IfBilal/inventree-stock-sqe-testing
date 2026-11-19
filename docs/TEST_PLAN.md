@@ -28,7 +28,7 @@ Test management documents are reviewed by all three; the owner is accountable fo
 Linux 7.0, Python 3.12.3, Django 5.2.19, SQLite, Node 24.11.1, Playwright 1.65.1 (Chromium), k6 2.3.0, SonarQube Community Build 26.10 run from the zip distribution on JDK 21 (the Docker daemon is not running on this machine, so Docker is **not** used), server `127.0.0.1:8000`. Exact versions: `docs/TOOL_VERSIONS.md`. 12 CPUs, 15 GB RAM, ~5 GB free disk (risk PJ-01).
 
 ## 5. Test data
-Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (10), Mouse (25), Monitor (0), all `delete_on_deplete=False`. Unit/API tests create their own data in a throw-away DB or reset per test. Boundary/EP values for API tests are produced by `tools/gen_testdata.py` from `openapi/stock.yaml` (produced in Phase 5).
+Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (10), Mouse (25), Monitor (0), all `delete_on_deplete=False`. Unit/API tests create their own data in a throw-away DB or reset per test. Boundary/EP values for API tests are produced by `tools/gen_testdata.py` from `openapi/stock.yaml`.
 
 ## 6. Schedule (internal targets; the official deadline is set by the instructor) — updated v0.2
 | Phase | Planned window | Actual | Responsible |
@@ -63,7 +63,7 @@ Synthetic only. `scripts/reset.sh` seeds users admin/manager/viewer, Keyboard (1
 | EC-1 | Functional | On the fixed build: 100 % of own business-rule tests pass; **0 open Critical/High defects**; **0 unjustified uncovered lines** (each uncovered statement/branch listed with reason in `docs/COVERAGE_JUSTIFICATION.md`) in the in-scope logic: 100 % statements and ≥ 99 % branches (the one unreachable branch is justified); all 6 basis paths and all MC/DC pairs of `validate_pk` pass; repeated/retried request test yields 0 duplicate adjustments | 100 % pass, 0 open C/H, 100 % statements / ≥ 99 % branches with justification, 0 duplicates after a retry (no idempotency key exists, W-03; the test shows a retry after a FAILED attempt is safe) | **PR-01 (Critical)**, **PR-03 (High)**, **PR-06 (High)** |
 | EC-2 | Security | All access-matrix decisions (≥ 4, ≥ 1 allowed, ≥ 1 denied) match the matrix, **and** 0 unresolved High/Critical findings in the audited dependency set (each finding listed with disposition) | 100 % decisions correct, 0 unresolved High/Critical | **PR-02 (High)**, **PR-10 (High)** |
 | EC-3 | Performance | `POST /api/stock/remove/` at 5 users: p95 ≤ **500 ms** and unexpected failures < **1 %** (declared in `docs/PERF_TARGETS.md`) | p95 ≤ 500 ms, failures < 1 % | PR-08 (Medium) |
-CI quality-gate thresholds (coverage, mutation score, Sonar) are separate and justified in Phase 12.
+CI quality-gate thresholds (coverage, mutation score, Sonar) are separate and justified in `docs/CI_QUALITY_GATE.md`.
 **Suspension:** server cannot start or seed differs from baseline; CI cannot run; > 3 blocker defects in the same area. **Resumption:** environment restored via `scripts/reset.sh`, seed check passes, blocker defects triaged.
 
 ## 8. Risks

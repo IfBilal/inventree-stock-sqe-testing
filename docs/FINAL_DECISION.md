@@ -2,7 +2,7 @@
 
 ## Decision: **HOLD**
 
-The three exit criteria of the test plan (`docs/TEST_PLAN.md` §7), actual versus target (the PDF ends with the decision, as the project statement requires):
+The three exit criteria of the test plan (`docs/TEST_PLAN.md` §7), actual versus target (`docs/FINAL_DECISION.md`):
 
 | ID | Category | Target | Actual (evidence) | Met? |
 |---|---|---|---|---|
