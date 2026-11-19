@@ -59,7 +59,7 @@ Counts: 10 product, 3 project risks. **Critical 1** (PR-01), **High 9** (PR-02, 
 | PR-06 | M3 | **Reduced** — retry after failure is safe (recovery test); no idempotency key (W-03) | 2×4 | `docs/PERFORMANCE.md` §6 |
 | PR-07 | M2 | **Reduced** — history read back after success and rejection; W-01, W-06 | 2×4 | API tests |
 | PR-08 | M3 | **Reduced → Medium** — failures 19.5 % → 0 % (DEF-06 fixed, PR #18); p95 at 5 users 545–556 ms vs 500 ms remains | 3×3 | `docs/PERFORMANCE.md` §7 |
-| PR-09 | M3 | **Reduced** — one screen fixed (78→85, PR #15); DEF-05, A11Y-02, UX-01 open (Medium/Low) | 3×2 | `docs/ACCESSIBILITY.md` |
+| PR-09 | M3 | **Reduced** — one screen fixed (78→85 with PR #15, →96 with PR #19); DEF-05, A11Y-02 (reduced: contrast, heading, region, aria-allowed-attr), UX-01 open (Medium/Low) | 3×2 | `docs/ACCESSIBILITY.md` |
 | PR-10 | M3 | **Reduced** — backend 0/166; frontend advisories dispositioned (SEC-03 accepted: no patched 6.x release) | 2×3 | audits |
 | PJ-01 | M1 | **Closed** — all tools ran | 1×4 | — |
 | PJ-02 | all | **Open** — area ownership sheet written (`docs/AREA_OWNERSHIP.md`); depends on the team | 2×5 | — |

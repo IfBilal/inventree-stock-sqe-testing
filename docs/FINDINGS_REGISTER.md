@@ -23,10 +23,10 @@ Covers every finding of the API, accessibility, security and performance activit
 |---|---|---|---|---|---|
 | A11Y-01a | `image-alt`: item pictures without a text alternative | The image component renders `<img>` without an `alt` attribute | Medium | PR-09 | Fixed (PR #15): `alt` added (empty for decorative thumbnails) |
 | A11Y-01b | `landmark-one-main`: no `main` landmark | The routed page content is not wrapped in a `<main>` element | Medium | PR-09 | Fixed (PR #15) |
-| A11Y-02a | `aria-required-children` (critical): tab list contains non-tab children | Third-party UI component (Mantine tab group) renders buttons/separators inside a `tablist` | High (axe: critical) | PR-09 | Open (deferred): needs a change in the shared navigation component |
-| A11Y-02b | `button-name` (critical): icon-only buttons without a name | Icon buttons are created without `aria-label` | High (axe: critical) | PR-09 | Open (deferred): add `aria-label` to the buttons |
-| A11Y-02c | `color-contrast` (serious): breadcrumb 4.32:1, badge 3.55:1 | Theme colours below the 4.5:1 AA ratio | Medium | PR-09 | Open (deferred): adjust theme colours |
-| A11Y-02d | `page-has-heading-one`, `region` (moderate) | Page title not rendered as `<h1>`; tip banner outside landmarks | Low | PR-09 | Open (deferred) |
+| A11Y-02a | `aria-required-children` (critical): tab list contains non-tab children | The tab list wrapped group boxes, labels, dividers and the collapse button inside the `tablist` | High (axe: critical) | PR-09 | Fixed (PR #19): wrappers are presentational and the collapse control sits outside the tab list; no longer reported on any screen |
+| A11Y-02b | `button-name` (critical): icon-only buttons without a name | The panel collapse button, notification close button and modal close button had no `aria-label` | High (axe: critical) | PR-09 | Fixed (PR #19): accessible names added (collapse button directly, notification/modal close buttons through the theme defaults); no longer reported |
+| A11Y-02c | `color-contrast` (serious): breadcrumb 4.32:1, badge 3.55:1 | Theme colours below the 4.5:1 AA ratio | Medium | PR-09 | Open: adjust theme colours (still reported) |
+| A11Y-02d | `page-has-heading-one`, `region`, `aria-allowed-attr` (moderate) | Page title not rendered as `<h1>`; tip banner outside landmarks; a `Group` carries `aria-haspopup`/`aria-expanded` without a matching role | Low | PR-09 | Open |
 | A11Y-02e | `meta-description`, `robots-txt` (SEO only) | Missing `<meta>` and `robots.txt` in the SPA shell | Low | PR-09 | Not applicable to a private application behind a login |
 | UX-01 | Enter in the quantity field does not submit the dialog | The dialog form has no `<form>` submit handler for the Enter key | Low | PR-09 | Open (deferred) |
 
