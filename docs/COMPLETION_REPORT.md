@@ -83,6 +83,7 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
+| 44440724442 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44440724442 |
 | 44379753520 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44379753520 |
 | 44375296975 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44375296975 |
 | 44370073545 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44370073545 |
@@ -94,7 +95,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 44326688189 | pull_request | `fix/def-02-03-04-input-validation` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44326688189 |
 | 44322551459 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44322551459 |
 | 44158035639 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44158035639 |
-| 44095413130 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44095413130 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.
@@ -102,4 +102,4 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 - Database: SQLite (no PostgreSQL available): concurrency results are specific to it (assumption A-4).
 - Only two weekly progress reports exist: the whole project was executed in a compressed schedule of about three days (11-16 to 11-18), so the two reports are two checkpoints of the real timeline (`reports/weekly/`), not two calendar weeks.
 - Eight of the twelve findings were fixed through pull requests (DEF-01, 02, 03, 04, 06, SEC-01, SEC-02, A11Y-01); SEC-03 is an accepted risk and DEF-05, A11Y-02, UX-01 are open (Medium/Low, deferred). The only reason for HOLD is EC-3 (5-user p95).
-- Effort: agent hours are logged; **human review hours are recorded as estimates (32.0 h) that the members confirm** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account — each member must commit their own work before submission (statement §6).
+- Effort: agent hours are logged; **human review hours are recorded as estimates (32.0 h), not stopwatch measurements** (`docs/EFFORT_NOTE.md`); commits are authored by the repository owner account.

@@ -1,5 +1,5 @@
 # AI-use record (SE3002 §7)
-Tool: Claude Code (Anthropic, model Claude Sonnet 5.5) driven by the team. AI use is disclosed here as the project statement requires (project statement section 7 requires disclosure; the team states that the instructor permits AI use). Every output is checked against real tool runs; the prompt history is the Claude Code session transcript on the team's machine (not copied into the repository; the members must keep it for the viva).
+Tool: Claude Code (Anthropic, model Claude Sonnet 5.5) driven by the team. AI use is disclosed here as the project statement requires (project statement section 7 requires disclosure; the team states that the instructor permits AI use). Every output is checked against real tool runs; the prompts of the session are listed in `docs/prompts/USER_PROMPTS.md`.
 
 | # | Date | Phase | Purpose | AI output | What was checked / changed |
 |---|---|---|---|---|---|
@@ -33,4 +33,4 @@ Prompts: the working conversation with the team is kept by the team; the full in
 | 22 | Fixes DEF-02/03/04 (PR #17) and DEF-06, SEC-01, SEC-02 (PR #18); k6 re-measurement incl. the token-auth and gunicorn variants; mutation re-run on the final code (263 mutants) | each fix merged only after a green pipeline; the p95 gap (EC-3) was reported, not hidden |
 
 ### Final-state statement (supersedes earlier rows where they differ)
-Row 8 listed an early unit-test count and row 14 said mutmut could not run: both are **outdated**. Final state: 342 unit tests (0 expected failures), 253 API tests passed + 27 strict-xfail upstream weaknesses, 57 browser tests, mutmut 3.8.1 ran for real (652 mutants) in addition to the custom runner (263 mutants). Prompts: the user prompts of the session are listed in `docs/prompts/USER_PROMPTS.md`; the full transcript is kept on the team machine; every AI output was checked by running the tools, by CI, and by independent grader agents (`reviews/README.md`). The team members must be able to explain each owned area (`docs/AREA_OWNERSHIP.md`).
+Row 8 listed an early unit-test count and row 14 said mutmut could not run: both are **outdated**. Final state: 342 unit tests (0 expected failures), 253 API tests passed + 27 strict-xfail upstream weaknesses, 57 browser tests, mutmut 3.8.1 ran for real (652 mutants) in addition to the custom runner (263 mutants). Prompts: the user prompts of the session are listed in `docs/prompts/USER_PROMPTS.md`; every AI output was checked by running the tools, by CI, and by independent grader agents (`reviews/README.md`).

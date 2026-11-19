@@ -88,7 +88,7 @@ Basis: author experience with the tools plus the observed effort for completed p
 | CI quality gate + PRs | 2 | 4 | 8 | 4.3 | 1.00 h agent + 2.0 h human (est.) = 3.00 h · variance E−actual = +1.3 h |
 | Defects, RCA, reports | 3 | 5 | 9 | 5.3 | 0.80 h agent + 2.5 h human (est.) = 3.30 h · variance E−actual = +2.0 h |
 | Final PDF + package | 3 | 5 | 9 | 5.3 | 1.50 h agent + 1.5 h human (est.) = 3.00 h · variance E−actual = +2.3 h |
-| **Total** | 38 | 65.5 | 120 | **70.0** = (38 + 4×65.5 + 120)/6 | **16.55 h agent + 32.0 h human review (estimated; the members confirm per area) = 48.55 h** (variance E−actual = +21.5 h; `docs/EFFORT_NOTE.md`) |
+| **Total** | 38 | 65.5 | 120 | **70.0** = (38 + 4×65.5 + 120)/6 | **16.55 h agent + 32.0 h human review (estimated) = 48.55 h** (variance E−actual = +21.5 h; `docs/EFFORT_NOTE.md`) |
 
 ## 10. Control, reporting and traceability
 - Weekly progress reports (`reports/weekly/`) against this plan with control actions and GQM metrics with targets (`docs/GQM.md`).
