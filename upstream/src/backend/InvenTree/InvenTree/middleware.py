@@ -468,13 +468,13 @@ class InvenTreeVersionHeaderMiddleware(MiddlewareMixin):
 class ContentSecurityPolicyMiddleware:
     """Add a Content-Security-Policy header to every response (SEC-01: it was missing).
 
-    The web UI is a single-page application served from the same origin: scripts only from the origin (no inline script), styles may be inline
+    The web UI is a single-page application served from the same origin: scripts only from the origin (no ``unsafe-inline``; the two inline scripts of the page template are allowed by their SHA-256 hashes), styles may be inline
     (the UI library injects style elements), images may be data/blob URLs. Pages that need inline scripts (the Django admin and the API
     documentation viewers) keep the default of the framework. The policy can be replaced with the setting ``CONTENT_SECURITY_POLICY``.
     """
 
     DEFAULT_POLICY = (
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; "
+        "default-src 'self'; script-src 'self' 'sha256-ho1aXE3Va7AQxtl4zhexoV3BzIGduES97Apn7jF7d9M=' 'sha256-nHjQV3HzHzj1iKOkU5jp90KKpJDYzvO2W1QspzW1e60='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; "
         "font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
     )
     SKIPPED_PREFIXES = ('/admin/', '/api/schema', '/api/docs', '/api-doc')

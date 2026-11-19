@@ -9,15 +9,15 @@ The item-details page (S1 manager, S2 viewer — the **same page**; the viewer o
 | Screen | Phase | Accessibility | Best practices | SEO |
 |---|---|---|---|---|
 | S1-item-details-manager | before | 78 | 100 | 75 |
-| S1-item-details-manager | after | 85 | 100 | 83 |
+| S1-item-details-manager | after | 96 | 100 | 83 |
 | S2-item-details-viewer | before | 78 | 100 | 75 |
-| S2-item-details-viewer | after | 85 | 100 | 83 |
+| S2-item-details-viewer | after | 96 | 100 | 83 |
 
 ## S1 Stock item details page (manager) — UC-01..UC-04, UC-06
 | Rule | Priority | Impact (axe) | Found by | Element (first) | Nodes | User impact | Proposed fix | After fix |
 |---|---|---|---|---|---|---|---|---|
-| `aria-required-children` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | still present |
-| `button-name` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"] > .m_4081bf90.mantine-Group-root > .m_8d3f4000.mantine-Ac` | 2 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | still present |
+| `aria-required-children` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | **fixed** |
+| `button-name` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"] > .m_4081bf90.mantine-Group-root > .m_8d3f4000.mantine-Ac` | 2 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | **fixed** |
 | `color-contrast` | P2 | serious | Lighthouse + axe | `a[aria-label="breadcrumb-0-stock"] > .m_4081bf90.mantine-Group-root > p[data-size="sm"]` | 7 | Low-vision users cannot read breadcrumb links (4.32:1) and the white-on-blue quantity badge (3.55:1) — below the 4.5:1 minimum for normal text. | Use a darker foreground/background pair (≥ 4.5:1), e.g. blue shade 7 for links and badge background. | still present |
 | `page-has-heading-one` | P3 | moderate | axe only | `html` | 1 | There is no level-one heading, so the page has no top-level title for screen-reader navigation. | Render the page title (item name) as an `<h1>`. | still present |
 | `region` | P3 | moderate | axe only | `#tip-ftu-nav3` | 1 | Content outside landmarks is skipped by landmark navigation. | Put page content inside landmark regions (`main`, `nav`, `header`, `footer`). | still present |
@@ -26,13 +26,13 @@ The item-details page (S1 manager, S2 viewer — the **same page**; the viewer o
 | `meta-description` | P4 (SEO only) | — | Lighthouse only | `<head>` — missing `<meta name="description">` | 0 | Only affects search engines (Lighthouse SEO); irrelevant for a private MIS behind a login. | Add `<meta name="description">` (low priority). | still present |
 | `robots-txt` | P4 (SEO only) | — | Lighthouse only | `/robots.txt` (not valid / not served) | 54 | Only affects crawlers (Lighthouse SEO); irrelevant for a private MIS. | Serve a valid `/robots.txt` (low priority). | still present |
 
-Distinct issues (deduplicated across tools): **before 9**, **after 7**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
+Distinct issues (deduplicated across tools): **before 9**, **after 5**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
 
 ## S2 Stock item details page (viewer) — UC-05
 | Rule | Priority | Impact (axe) | Found by | Element (first) | Nodes | User impact | Proposed fix | After fix |
 |---|---|---|---|---|---|---|---|---|
-| `aria-required-children` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | still present |
-| `button-name` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"] > .m_4081bf90.mantine-Group-root > .m_8d3f4000.mantine-Ac` | 2 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | still present |
+| `aria-required-children` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | **fixed** |
+| `button-name` | P1 | critical | Lighthouse + axe | `div[aria-orientation="vertical"] > .m_4081bf90.mantine-Group-root > .m_8d3f4000.mantine-Ac` | 2 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | **fixed** |
 | `color-contrast` | P2 | serious | Lighthouse + axe | `a[aria-label="breadcrumb-0-stock"] > .m_4081bf90.mantine-Group-root > p[data-size="sm"]` | 7 | Low-vision users cannot read breadcrumb links (4.32:1) and the white-on-blue quantity badge (3.55:1) — below the 4.5:1 minimum for normal text. | Use a darker foreground/background pair (≥ 4.5:1), e.g. blue shade 7 for links and badge background. | still present |
 | `page-has-heading-one` | P3 | moderate | axe only | `html` | 1 | There is no level-one heading, so the page has no top-level title for screen-reader navigation. | Render the page title (item name) as an `<h1>`. | still present |
 | `region` | P3 | moderate | axe only | `#tip-ftu-nav3` | 1 | Content outside landmarks is skipped by landmark navigation. | Put page content inside landmark regions (`main`, `nav`, `header`, `footer`). | still present |
@@ -41,29 +41,29 @@ Distinct issues (deduplicated across tools): **before 9**, **after 7**. Dedupe r
 | `meta-description` | P4 (SEO only) | — | Lighthouse only | `<head>` — missing `<meta name="description">` | 0 | Only affects search engines (Lighthouse SEO); irrelevant for a private MIS behind a login. | Add `<meta name="description">` (low priority). | still present |
 | `robots-txt` | P4 (SEO only) | — | Lighthouse only | `/robots.txt` (not valid / not served) | 54 | Only affects crawlers (Lighthouse SEO); irrelevant for a private MIS. | Serve a valid `/robots.txt` (low priority). | still present |
 
-Distinct issues (deduplicated across tools): **before 9**, **after 7**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
+Distinct issues (deduplicated across tools): **before 9**, **after 5**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
 
 ## S1 + Add Stock dialog (axe only) — UC-01, UC-04, UC-06
 | Rule | Priority | Impact (axe) | Found by | Element (first) | Nodes | User impact | Proposed fix | After fix |
 |---|---|---|---|---|---|---|---|---|
 | `aria-allowed-attr` | P2 | critical | axe only | `#mantine-mu5aqe4nj` | 2 | An ARIA attribute that is not allowed on the dialog elements is ignored or misreported by assistive technology. | Remove the unsupported `aria-*` attribute from the modal elements. | still present |
-| `aria-required-children` | P1 | critical | axe only | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | still present |
-| `button-name` | P1 | critical | axe only | `.m_8d3f4000.mantine-ActionIcon-root[data-size="lg"]` | 3 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | still present |
+| `aria-required-children` | P1 | critical | axe only | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | **fixed** |
+| `button-name` | P1 | critical | axe only | `.m_8d3f4000.mantine-ActionIcon-root[data-size="lg"]` | 3 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | **fixed** |
 | `color-contrast` | P2 | serious | axe only | `a[aria-label="breadcrumb-0-stock"] > .m_4081bf90.mantine-Group-root > p[data-size="sm"]` | 7 | Low-vision users cannot read breadcrumb links (4.32:1) and the white-on-blue quantity badge (3.55:1) — below the 4.5:1 minimum for normal text. | Use a darker foreground/background pair (≥ 4.5:1), e.g. blue shade 7 for links and badge background. | still present |
 | `region` | P3 | moderate | axe only | `#tip-ftu-nav3` | 1 | Content outside landmarks is skipped by landmark navigation. | Put page content inside landmark regions (`main`, `nav`, `header`, `footer`). | still present |
 
-Distinct issues (deduplicated across tools): **before 5**, **after 5**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
+Distinct issues (deduplicated across tools): **before 5**, **after 3**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
 
 ## S1 + Remove Stock dialog (axe only) — UC-02, UC-03
 | Rule | Priority | Impact (axe) | Found by | Element (first) | Nodes | User impact | Proposed fix | After fix |
 |---|---|---|---|---|---|---|---|---|
 | `aria-allowed-attr` | P2 | critical | axe only | `#mantine-39hu7zcyh` | 2 | An ARIA attribute that is not allowed on the dialog elements is ignored or misreported by assistive technology. | Remove the unsupported `aria-*` attribute from the modal elements. | still present |
-| `aria-required-children` | P1 | critical | axe only | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | still present |
-| `button-name` | P1 | critical | axe only | `.m_8d3f4000.mantine-ActionIcon-root[data-size="lg"]` | 3 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | still present |
+| `aria-required-children` | P1 | critical | axe only | `div[aria-orientation="vertical"]` | 1 | Screen-reader users hear an inconsistent tab list: a `tablist` contains buttons/separators that are not `tab`s, so the number of tabs and navigation hints are wrong. | Keep only `role=tab` elements inside the tab list (move the separator and action buttons out of it). | **fixed** |
+| `button-name` | P1 | critical | axe only | `.m_8d3f4000.mantine-ActionIcon-root[data-size="lg"]` | 3 | Icon-only buttons (tab-group action, notification close) are announced only as "button": users cannot tell what they do. | Add an accessible name (`aria-label`, e.g. "Close notification"). | **fixed** |
 | `color-contrast` | P2 | serious | axe only | `a[aria-label="breadcrumb-0-stock"] > .m_4081bf90.mantine-Group-root > p[data-size="sm"]` | 7 | Low-vision users cannot read breadcrumb links (4.32:1) and the white-on-blue quantity badge (3.55:1) — below the 4.5:1 minimum for normal text. | Use a darker foreground/background pair (≥ 4.5:1), e.g. blue shade 7 for links and badge background. | still present |
 | `region` | P3 | moderate | axe only | `#tip-ftu-nav3` | 1 | Content outside landmarks is skipped by landmark navigation. | Put page content inside landmark regions (`main`, `nav`, `header`, `footer`). | still present |
 
-Distinct issues (deduplicated across tools): **before 5**, **after 5**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
+Distinct issues (deduplicated across tools): **before 5**, **after 3**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
 
 ![Accessibility before/after: axe violations and Lighthouse scores](a11y_before_after.svg)
 

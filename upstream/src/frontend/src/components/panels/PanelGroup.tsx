@@ -393,10 +393,16 @@ function BasePanelGroup({
           aria-label={`panel-group-${pageKey}`}
           classNames={{ tab: classes.selectedPanelTab }}
         >
+          <Stack gap={0} style={{ flexShrink: 0 }}>
           <Tabs.List justify='left' aria-label={`panel-tabs-${pageKey}`}>
             {groupedPanels.map((group) => (
-              <Box key={`group-${group.id}`} w={'100%'}>
+              <Box
+                key={`group-${group.id}`}
+                w={'100%'}
+                role='presentation'
+              >
                 <Text
+                  role='presentation'
                   hidden={!group.label || !expanded}
                   c={vars.colors.primaryColors[7]}
                   key={`group-label-${group.id}`}
@@ -406,7 +412,12 @@ function BasePanelGroup({
                 >
                   {group.label}
                 </Text>
-                {group.label && <Divider c={vars.colors.primaryColors[7]} />}
+                {group.label && (
+                  <Divider
+                    role='presentation'
+                    c={vars.colors.primaryColors[7]}
+                  />
+                )}
                 {group.panels?.map(
                   (panel) =>
                     !panel.hidden && (
@@ -422,14 +433,18 @@ function BasePanelGroup({
                 )}
               </Box>
             ))}
-            {collapsible && <Divider />}
-            {collapsible && (
+          </Tabs.List>
+          {collapsible && <Divider />}
+          {collapsible && (
               <Group wrap='nowrap' gap='xs'>
                 <Tooltip
                   position='right'
                   label={expanded ? t`Collapse panels` : t`Expand panels`}
                 >
                   <ActionIcon
+                    aria-label={
+                      expanded ? t`Collapse panels` : t`Expand panels`
+                    }
                     style={{
                       paddingLeft: '10px'
                     }}
@@ -447,7 +462,7 @@ function BasePanelGroup({
                 {pluginPanelSet.isLoading && <Loader size='xs' />}
               </Group>
             )}
-          </Tabs.List>
+          </Stack>
           {allPanels.map(
             (panel) =>
               !panel.hidden && (

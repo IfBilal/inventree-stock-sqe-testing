@@ -2,6 +2,8 @@ import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react';
 import {
   MantineProvider,
+  Modal,
+  Notification,
   type MantineThemeOverride,
   createTheme
 } from '@mantine/core';
@@ -39,6 +41,18 @@ export function ThemeContext({
         md: '64em',
         lg: '74em',
         xl: '90em'
+      },
+      components: {
+        // accessible name for the close button of every notification (axe: button-name)
+        // ... and for the close button of every modal dialog
+        Modal: Modal.extend({
+          defaultProps: { closeButtonProps: { 'aria-label': 'Close dialog' } }
+        }),
+        Notification: Notification.extend({
+          defaultProps: {
+            closeButtonProps: { 'aria-label': 'Close notification' }
+          }
+        })
       }
     });
   } catch (error) {
