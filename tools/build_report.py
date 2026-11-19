@@ -32,6 +32,7 @@ ORDER = [  # (section title, file)
     ('12. CI quality gate', 'docs/CI_QUALITY_GATE.md'),
     ('13. Defect management and Pareto', 'docs/DEFECTS.md'),
     ('13.1 Root-cause analysis', 'docs/RCA.md'),
+    ('13.2 Findings register (API, accessibility, security, performance)', 'docs/FINDINGS_REGISTER.md'),
     ('14. Weekly progress report 1 of 2', 'reports/weekly/week-1.md'),
     ('14.1 Weekly progress report 2 of 2', 'reports/weekly/week-2.md'),
     ('15. Area ownership', 'docs/AREA_OWNERSHIP.md'),
@@ -91,7 +92,7 @@ def main():
         body = md.convert(text)
         body = inline_images(body, os.path.dirname(path))
         body = fix_links(body, os.path.dirname(f))
-        parts.append(f'<h1>{title}</h1><p style="font-size:8pt;color:#555">Source file: <a href="{BLOB}{f}">{f}</a></p>{body}')
+        parts.append(f'<h1>{title}</h1>{body}')
     html = f'<!doctype html><html><head><meta charset="utf-8"><title>SE3002 SQE Final Project</title><style>{CSS}</style></head><body>{"".join(parts)}</body></html>'
     with tempfile.NamedTemporaryFile('w', suffix='.html', delete=False, encoding='utf-8') as t:
         t.write(html); hp = t.name

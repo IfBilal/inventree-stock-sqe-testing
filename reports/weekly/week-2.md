@@ -5,7 +5,7 @@ Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: t
 ## 1. Progress against the plan
 | Planned item (from report 1 §5) | Actual (commit/PR time) | Status | Control action |
 |---|---|---|---|
-| Fix DEF-01 with a red → green pipeline | PR #13: tests-only 22:17 (red), fix 22:28 (red on a depleted-item test), corrected 22:35 (green), merged 22:57 | **done** | the pipeline caught my own over-reach (removal from a depleted item); fixed before merge |
+| Fix DEF-01 with a red → green pipeline | PR #13: tests-only 22:17 (red), fix 22:28 (red on a depleted-item test), corrected 22:35 (green), merged 22:57 | **done** | the pipeline caught an over-reach of the first fix (removal from a depleted item); fixed before merge |
 | One blocked pull request | PR #14 (BR-2 violation, run 43916978299) and PR #16 (killing tests removed, run 43933840489) | **done** | PR #16 passed a 90 % mutation gate at 90.4 % → gate raised to 95 % and the PR re-blocked (94.3 %) |
 | Fix the accessibility finding | PR #15, merged 11-17 01:23 after a green run | **done** | first version (`alt=""`) introduced an axe rule; corrected to use the aria-label; Lighthouse 78 → 85 |
 | Re-run mutation on the final code | 11-16 23:54: 248 mutants, 238 killed, 10 equivalents | **done** | 7 more killing tests; equivalents keyed by function + mutation + original code |
@@ -21,7 +21,7 @@ Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: t
 ## 2. GQM metrics now (definitions and targets: `docs/GQM.md`)
 | Goal | Metric | Value | Target | Reading |
 |---|---|---|---|---|
-| G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc 5114) | 6 ÷ 5.114 = **1.17/KLOC** (all 12 findings: 2.35) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |
+| G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc 5165) | 6 ÷ 5.165 = **1.16/KLOC** (all 12 findings: 2.32) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |
 | G2 Cover requirements | Requirements coverage | tested **16/16**, verified passing 16/16 | 100 % tested | all requirements have a passing test since DEF-01 and DEF-02 are fixed |
 | G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ 8 = **0 %** (8 defects closed, none reopened) | ≤ 10 % | met |
 | G4 Effective tests | Mutation score (adjusted) | **100.0 %** (raw 96.6 %) | ≥ 85 % (CI gate 95 %) | met; the gate itself was tightened after PR #16 |

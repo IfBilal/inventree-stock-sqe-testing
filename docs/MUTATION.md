@@ -1,6 +1,6 @@
 # MUTATION ANALYSIS (Phase 11)
 
-> **Headline (raw, no adjustment):** custom-operator analysis on the final code **96.6 %** (254 of 263 mutants killed; CI gate 95 %); real mutmut run **82.6 %** over both whole files and **90.0 %** over the 33 in-scope functions. The "100 % adjusted" figures below exclude survivors that are individually argued to be equivalent mutants — those arguments are the team's own and each member must be able to defend them.
+> **Headline (raw, no adjustment):** custom-operator analysis on the final code **96.6 %** (254 of 263 mutants killed; CI gate 95 %); real mutmut run **82.6 %** over both whole files and **90.0 %** over the 33 in-scope functions. The "100 % adjusted" figures below exclude survivors that are individually argued to be equivalent mutants — the equivalence arguments are the team's own rulings and are listed in `docs/mutation_equivalents.json`.
 
 ## 1. Tool and scope
 - **Scope:** the business-rule functions of `docs/TEST_BASIS.md` §7 (33 functions in `stock/serializers.py`, `stock/models.py`, `InvenTree/fields.py`, `InvenTree/permissions.py`) — exactly the set whose coverage is gated.
@@ -39,7 +39,7 @@
 *The mutmut run was made on the code of commit `c9bb115`, i.e. before the fixes of DEF-02/03/04/06 (PRs #17, #18); the functions changed since then (`StockAddSerializer.validate`, the `items` declarations, `to_internal_value`) are covered by the custom-operator analysis above, which was repeated on the final code.*
 
 **mutmut 3.x — real run on `stock/serializers.py` and `stock/models.py`: 652 mutants, 509 killed, 107 survived, 0 timed out, 36 without covering tests.**
-Raw score (killed ÷ (killed + survived + timeout)): **82.6 %** over all functions of both files. In-scope functions only (the 32 functions of `docs/TEST_BASIS.md` §7): 416 killed, 46 survived → **90.0 %**.
+Raw score (killed ÷ (killed + survived + timeout)): **82.6 %** over all functions of both files. In-scope functions only (the 32 of the 33 functions of `docs/TEST_BASIS.md` §7 that are in the two mutated files): 416 killed, 46 survived → **90.0 %**.
 Adjusted in-scope score (survivors proven equivalent excluded, justification per mutant below): **100.0 %** (46 of the in-scope survivors are equivalent; none is a missing test). Survivors outside the scope are display/allocation/plugin helpers and the status-field wrapper, which the add/remove workflows do not use. The 36 mutants 'without covering tests' are 12 with no test reaching them plus 24 `StockStatusCustomSerializer.__init__` mutants that hang the process (out of scope; the run was stopped there).
 **Derivation of the numbers:** mutmut itself reported 471 killed, 145 survived and 36 without covering tests (`evidence/mutation/mutmut_results_all.txt`). Its survivor statuses stayed stale after the killing tests were added, so each survivor was re-applied directly (`MUTANT_UNDER_TEST`, whole unit suite): re-check 1 (`mutmut_survivor_recheck.txt`) killed 16, re-check 2 (`mutmut_survivor_recheck2.txt`, after the clean()/save() tests) killed 20, and two `validate_unique` mutants were killed after a last test: 471 + 16 + 22 = **509 killed**, 145 − 16 − 22 = **107 survivors**.
 

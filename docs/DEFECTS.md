@@ -25,7 +25,7 @@ Defects live in **GitHub Issues of this repository** (https://github.com/IfBilal
 | DEF-01 | 2026-11-16 22:30 | Fix pushed | commit 35683ef; pipeline red on a related test (depleted item) → commit 05a49ce |
 | DEF-01 | 2026-11-16 23:00 | In verification | pipeline run 43920009616: unit, api, e2e, sonar green |
 | DEF-01 | 2026-11-16 23:00 | Verified | pipeline green (run 43920009616), unit/API/E2E tests of the defect pass without xfail |
-| DEF-01 | 2026-11-16 22:57 | Closed | PR #13 merged; issue #1 closed |
+| DEF-01 | 2026-11-16 22:57 | Fix merged | PR #13 merged; issue #1 closed by the merge; verification of the merged state followed at 23:00 |
 | DEF-02 | 2026-11-16 | Opened | triage: accepted |
 | DEF-02 | 2026-11-18 | Closed | PR #17: StockAdd/StockRemove serializers require a non-zero quantity; tests and E2E flows pass without expected-failure markers; issue #2 closed |
 | DEF-03 | 2026-11-16 17:50 | Opened | Phase 1 audit, High/P2 |

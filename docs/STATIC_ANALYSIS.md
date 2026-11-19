@@ -9,7 +9,7 @@ Analyzer validation: a throw-away file with a hard-coded password and `a == a` p
 ## 1. Metrics — BASELINE export (2026-11-16 18:24, before any test; `evidence/sonar/project_measures_baseline.json`, `dashboard_baseline.png`; coverage is 0 because no coverage report existed yet)
 | Metric | Value | What it shows / how we read it |
 |---|---|---|
-| Lines / Lines of code (ncloc) | 8 390 / 5 114 | Size of the analysed module (11 files, 223 functions, 117 classes). Basis for density measures; ncloc excludes comments and blanks. |
+| Lines / Lines of code (ncloc) | 8 390 / 5 114 (baseline scan; final scan after the fixes: 8 473 / 5 165) | Size of the analysed module (11 files, 223 functions, 117 classes). Basis for density measures; ncloc excludes comments and blanks. |
 | Cyclomatic complexity | 773 | Sum of independent paths over the module. Mean ≈ 3.5 per function (773/223): mostly simple functions. Higher values mean more tests are needed to cover branches. |
 | Cognitive complexity | 803 | How hard the code is to *understand* (nesting weighted). Close to cyclomatic → little deep nesting. |
 | Duplicated lines density | 0.6 % (2 blocks, 1 file) | Copy-paste risk: very low; one file contains 2 duplicate blocks (change one, forget the other). |
@@ -27,7 +27,17 @@ Important limits: a clean static report does not contradict the dynamic defects 
 |---|---|---|---|
 | Coverage / line / branch | 0 % / 0 % / – | **40.2 % / 47.1 % / 18.2 %** | Imported coverage.py XML. Low for the **whole module** because merge, disassemble, serialization, transfer, count, filters and generators are out of scope; our in-scope functions are at 100 %/99–100 % (`docs/COVERAGE_SCOPE.md`). SonarQube cannot restrict coverage to a function list, hence the separate per-function check in CI (Phase 12). |
 | Bugs / smells / vulnerabilities / hotspots | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 (after fix) | — |
-| Complexity, cognitive, duplication, ncloc | 773 / 803 / 0.6 % / 5 114 | unchanged | production code untouched |
+| Complexity, cognitive, duplication, ncloc | 773 / 803 / 0.6 % / 5 114 | unchanged at Phase 4 | production code untouched at that point |
+
+## 1-ter. Final scan after the defect fixes (`evidence/sonar/project_measures.json`)
+The fixes (DEF-01…04, DEF-06, SEC-01) changed production code and the unit tests were extended, so the final scan differs from Phase 4:
+
+| Metric | After Phase 4 | Final | Note |
+|---|---|---|---|
+| Coverage / line / branch | 40.2 % / 47.1 % / 18.2 % | **41.6 % / 48.2 % / 20.7 %** | whole analysed module; the in-scope functions are 100 % statements / 99.3 % branches (`docs/COVERAGE_SCOPE.md`) |
+| ncloc / lines | 5 114 / 8 390 | **5 165 / 8 473** | added validation, security middleware, DB options |
+| Complexity / cognitive | 773 / 803 | **784 / 815** | added branches in the fixed validators |
+| Bugs / smells / vulnerabilities / hotspots / debt | 0 / 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 / 0 min | quality gate OK |
 **A real finding by the tool on our own code:** the first Phase 4/6 scan reported **1 bug** (`python:S5779`, CRITICAL, `tests/team/api/conftest.py`: an `assert` inside a `try/except Exception`, whose `except` would swallow the assertion). It was fixed (explicit status check) and the issue is now CLOSED/FIXED (`evidence/sonar/issues.json`). Analyzer rule set evidence: `evidence/sonar/python_quality_profile.json` (232 active rules, profile "Sonar way").
 Quality gate "OK" is evaluated on **new code** (Sonar way gate); on a first analysis it is not strong evidence, so our CI gate (Phase 12) adds explicit thresholds.
 
@@ -76,7 +86,8 @@ def validate_pk(self, stock_item):                       # entry
 | N8 | `raise ValidationError('already in stock')` |
 | N9 | `return stock_item` |
 | N10 | exit |
-| Edge | | Edge | |
+
+| Edge | Transition | Edge | Transition |
 |---|---|---|---|
 | e1 | N1→N2 (p1 true) | e8 | N6→N7 (p4 true) |
 | e2 | N1→N6 (p1 false) | e9 | N6→N9 (p4 false) |
@@ -86,20 +97,7 @@ def validate_pk(self, stock_item):                       # entry
 | e6 | N4→N5 (p3 true) | e13 | N9→N10 |
 | e7 | N4→N9 (p3 false) | e14 | N5→N10 |
 
-```mermaid
-flowchart TD
-N1{p1} -->|T| N2[allow=...] --> N3{p2}
-N1 -->|F| N6{p4}
-N3 -->|T| N4{p3}
-N3 -->|F| N9[return]
-N4 -->|T| N5[raise A] --> N10((exit))
-N4 -->|F| N9
-N6 -->|T| N7{p5}
-N6 -->|F| N9
-N7 -->|T| N8[raise B] --> N10
-N7 -->|F| N9
-N9 --> N10
-```
+![Control-flow graph of validate_pk (predicate nodes p1..p5, V(G)=6)](cfg_validate_pk.svg)
 **Calculation:** E = 14, N = 10, P = 1 → **V(G) = E − N + 2P = 14 − 10 + 2 = 6**.
 Cross-check by predicates: 5 atomic predicates (p1…p5) + 1 = **6**. Cross-check by regions of the planar graph: 6 regions (5 bounded + 1 outer).
 Independent basis paths (6): (1) p1F,p4F → return; (2) p1F,p4T,p5F → return; (3) p1F,p4T,p5T → raise B; (4) p1T,p2F → return; (5) p1T,p2T,p3F → return; (6) p1T,p2T,p3T → raise A. Each is exercised by a unit test in Phase 4.

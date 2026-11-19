@@ -64,3 +64,6 @@ Distinct issues (deduplicated across tools): **before 5**, **after 5**. Dedupe r
 | `region` | P3 | moderate | axe only | `#tip-ftu-nav3` | 1 | Content outside landmarks is skipped by landmark navigation. | Put page content inside landmark regions (`main`, `nav`, `header`, `footer`). | still present |
 
 Distinct issues (deduplicated across tools): **before 5**, **after 5**. Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.
+
+![Accessibility before/after: axe violations and Lighthouse scores](a11y_before_after.svg)
+

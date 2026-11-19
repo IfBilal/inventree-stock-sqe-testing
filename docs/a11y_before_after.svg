@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 224" width="640" font-family="DejaVu Sans,Arial" font-size="11"><rect width="640" height="224" fill="#fff"/>
+<text x="10" y="16" font-weight="bold">axe violations per screen (red before, green after); LH = Lighthouse score</text>
+<text x="10" y="46">S1-item-details-manager</text>
+<rect x="230" y="34" width="200" height="14" fill="#d9534f"/><text x="434" y="45">5 before (LH 78)</text>
+<rect x="230" y="52" width="200" height="14" fill="#5cb85c"/><text x="434" y="63">5 after (LH 85)</text>
+<text x="10" y="92">S2-item-details-viewer</text>
+<rect x="230" y="80" width="200" height="14" fill="#d9534f"/><text x="434" y="91">5 before (LH 78)</text>
+<rect x="230" y="98" width="200" height="14" fill="#5cb85c"/><text x="434" y="109">5 after (LH 85)</text>
+<text x="10" y="138">S1-add-stock-dialog</text>
+<rect x="230" y="126" width="200" height="14" fill="#d9534f"/><text x="434" y="137">5 before</text>
+<rect x="230" y="144" width="200" height="14" fill="#5cb85c"/><text x="434" y="155">5 after</text>
+<text x="10" y="184">S1-remove-stock-dialog</text>
+<rect x="230" y="172" width="200" height="14" fill="#d9534f"/><text x="434" y="183">5 before</text>
+<rect x="230" y="190" width="200" height="14" fill="#5cb85c"/><text x="434" y="201">5 after</text>
+</svg>

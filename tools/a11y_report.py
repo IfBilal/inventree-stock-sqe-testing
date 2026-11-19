@@ -75,4 +75,33 @@ for sid, title in SCREENS:
         out.append(f"| `{r}` | {PRIO.get(r, 'P3')} | minor | axe only | **NEW after the fix** | — | {impact} | {fix} | **introduced by the fix** |")
     nb = len(rules); na = (len([r for r in rules if r in after_axe or r in after_lh]) + len(new_after)) if (aa is not None or la) else None
     out.append(f"\nDistinct issues (deduplicated across tools): **before {nb}**" + (f", **after {na}**." if na is not None else '.') + " Dedupe rule: issues are keyed by rule id; Lighthouse audits and axe rules that share an id (e.g. `image-alt`, `button-name`) count once, and every id is a row of the table above.")
+
+# before/after chart (evidence taken from the raw Lighthouse and axe JSON files)
+def _chart():
+    rows = []
+    for scr, _ in SCREENS:
+        try:
+            b = len(json.load(open(os.path.join(E, f'axe_{scr}_before.json')))['violations'])
+            a = len(json.load(open(os.path.join(E, f'axe_{scr}_after.json')))['violations'])
+        except Exception:
+            continue
+        lh = {}
+        for ph in ('before', 'after'):
+            try:
+                lh[ph] = {x['screen']: x['scores']['accessibility'] for x in json.load(open(os.path.join(E, f'lighthouse_summary_{ph}.json')))}.get(scr)
+            except Exception:
+                lh[ph] = None
+        rows.append((scr, b, a, lh['before'], lh['after']))
+    h = 40 + 46 * len(rows)
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 {h}" width="640" font-family="DejaVu Sans,Arial" font-size="11"><rect width="640" height="{h}" fill="#fff"/>',
+         '<text x="10" y="16" font-weight="bold">axe violations per screen (red before, green after); LH = Lighthouse score</text>']
+    for i, (scr, b, a, lb, la) in enumerate(rows):
+        y = 34 + 46 * i
+        o.append(f'<text x="10" y="{y + 12}">{scr}</text>')
+        o.append(f'<rect x="230" y="{y}" width="{b * 40}" height="14" fill="#d9534f"/><text x="{234 + b * 40}" y="{y + 11}">{b} before' + (f' (LH {lb})' if lb else '') + '</text>')
+        o.append(f'<rect x="230" y="{y + 18}" width="{a * 40}" height="14" fill="#5cb85c"/><text x="{234 + a * 40}" y="{y + 29}">{a} after' + (f' (LH {la})' if la else '') + '</text>')
+    o.append('</svg>')
+    open(os.path.join(ROOT, 'docs/a11y_before_after.svg'), 'w').write('\n'.join(o))
+_chart()
+out.append('\n![Accessibility before/after: axe violations and Lighthouse scores](a11y_before_after.svg)\n')
 print('\n'.join(out))

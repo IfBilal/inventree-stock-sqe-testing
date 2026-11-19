@@ -47,7 +47,7 @@ ec1_met = not crit_high_open
 ec3_met = all(perf[(5, r)][0] <= 500 and perf[(5, r)][1] < 1 for r in (1, 2))
 open_ids = ', '.join(d['id'] for d in defects if d['status'].startswith('Open') or d['status'].startswith('Accepted'))
 decision = 'RELEASE' if (ec1_met and ec3_met) else 'HOLD'
-sonar = {x['metric']: x.get('value') for x in J('evidence/sonar/project_measures_phase4.json')['component']['measures']}
+sonar = {x['metric']: x.get('value') for x in J('evidence/sonar/project_measures.json')['component']['measures']}
 api_cov_pct = '100'
 tr = open(os.path.join(R, 'docs/TRACEABILITY.md')).read()
 mt = re.search(r'tested: (\d+) / (\d+).*?verified passing: (\d+) / (\d+)', tr, re.S)
@@ -115,7 +115,7 @@ tot_human = sum(float(r['human_review_hours'] or 0) for r in rows)
 w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-11-16 22:17 … 2026-11-18) against the plan (`docs/TEST_PLAN.md` v0.3)\n',
      'Continues `reports/weekly/week-1.md` (checkpoint 2026-11-16 21:48). Same note: the two reports are the two checkpoints of the real commit timeline.\n',
      '## 1. Progress against the plan\n| Planned item (from report 1 §5) | Actual (commit/PR time) | Status | Control action |\n|---|---|---|---|',
-     '| Fix DEF-01 with a red → green pipeline | PR #13: tests-only 22:17 (red), fix 22:28 (red on a depleted-item test), corrected 22:35 (green), merged 22:57 | **done** | the pipeline caught my own over-reach (removal from a depleted item); fixed before merge |',
+     '| Fix DEF-01 with a red → green pipeline | PR #13: tests-only 22:17 (red), fix 22:28 (red on a depleted-item test), corrected 22:35 (green), merged 22:57 | **done** | the pipeline caught an over-reach of the first fix (removal from a depleted item); fixed before merge |',
      '| One blocked pull request | PR #14 (BR-2 violation, run 43916978299) and PR #16 (killing tests removed, run 43933840489) | **done** | PR #16 passed a 90 % mutation gate at 90.4 % → gate raised to 95 % and the PR re-blocked (94.3 %) |',
      '| Fix the accessibility finding | PR #15, merged 11-17 01:23 after a green run | **done** | first version (`alt=""`) introduced an axe rule; corrected to use the aria-label; Lighthouse 78 → 85 |',
      '| Re-run mutation on the final code | 11-16 23:54: 248 mutants, 238 killed, 10 equivalents | **done** | 7 more killing tests; equivalents keyed by function + mutation + original code |',
@@ -128,7 +128,7 @@ w = ['# WEEKLY PROGRESS REPORT 2 of 2 — corrective actions and closure (2026-1
      '| Re-run the custom-operator mutation analysis on the final code | 263 mutants, 254 killed, 9 equivalent (11-18) | **done** | a missing per-item overflow test was found and added |',
      '| Final PDF and zip | 11-18 | **done** | section B; human review hours estimated and recorded |',
      '\n## 2. GQM metrics now (definitions and targets: `docs/GQM.md`)\n| Goal | Metric | Value | Target | Reading |\n|---|---|---|---|---|',
-     f"| G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc {sonar.get('ncloc')}) | {len([d for d in defects if d['id'].startswith('DEF')])} ÷ 5.114 = **{len([d for d in defects if d['id'].startswith('DEF')]) / 5.114:.2f}/KLOC** (all 12 findings: {len(defects) / 5.114:.2f}) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |",
+     f"| G1 Find defects effectively | Defect density = functional defects (DEF-01…06) ÷ KLOC (module ncloc {sonar.get('ncloc')}) | {len([d for d in defects if d['id'].startswith('DEF')])} ÷ {float(sonar.get('ncloc',5114))/1000:.3f} = **{len([d for d in defects if d['id'].startswith('DEF')]) / (float(sonar.get('ncloc',5114))/1000):.2f}/KLOC** (all 12 findings: {len(defects) / (float(sonar.get('ncloc',5114))/1000):.2f}) | reported; > 1.0 triggers extra exploratory testing | unchanged: no new functional defect was found after report 1, so detection has saturated for this scope |",
      f"| G2 Cover requirements | Requirements coverage | tested **{req_tested}/{req_total}**, verified passing {req_ver}/{req_total} | 100 % tested | all requirements have a passing test since DEF-01 and DEF-02 are fixed |",
      f'| G3 Healthy defect process | Reopen rate = reopened ÷ closed | 0 ÷ {n_closed} = **0 %** ({n_closed} defects closed, none reopened) | ≤ 10 % | met |',
      f"| G4 Effective tests | Mutation score (adjusted) | **{mut_adj:.1f} %** (raw {mut['score_raw']} %) | ≥ 85 % (CI gate 95 %) | met; the gate itself was tightened after PR #16 |",

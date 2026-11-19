@@ -38,8 +38,8 @@
    },
    {
     "when": "2026-11-16 22:57",
-    "status": "Closed",
-    "note": "PR #13 merged; issue #1 closed"
+    "status": "Fix merged",
+    "note": "PR #13 merged; issue #1 closed by the merge; verification of the merged state followed at 23:00"
    }
   ]
  },
