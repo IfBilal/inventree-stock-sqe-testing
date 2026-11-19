@@ -1,4 +1,4 @@
-# VIVA PREPARATION (per member) — read, rerun, then explain in your own words
+# AREA OWNERSHIP (per member) — rerun and explain in your own words
 The viva checks every component: each member reruns a selected test and explains its assertions; a live task changes a business rule or an API spec and asks you to predict which tests and which pipeline gate fail, make the change and show the result. **If you cannot explain a component, its marks can drop to zero.** Everything below is reproducible from a clean clone: `scripts/install.sh`, then the commands shown.
 
 ## Common ground (all members)

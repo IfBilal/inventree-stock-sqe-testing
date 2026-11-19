@@ -34,7 +34,7 @@ ORDER = [  # (section title, file)
     ('13.1 Root-cause analysis', 'docs/RCA.md'),
     ('14. Weekly progress report 1 of 2', 'reports/weekly/week-1.md'),
     ('14.1 Weekly progress report 2 of 2', 'reports/weekly/week-2.md'),
-    ('15. Area ownership, viva preparation', 'docs/VIVA_PREP.md'),
+    ('15. Area ownership', 'docs/AREA_OWNERSHIP.md'),
     ('16. AI-use record', 'docs/AI_USE_RECORD.md'),
     ('17. Tool versions', 'docs/TOOL_VERSIONS.md'),
     ('18. Final release / hold decision and evidence links', 'docs/FINAL_DECISION.md'),

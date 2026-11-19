@@ -94,7 +94,7 @@ RES = [('PR-01', 25, '1×5 = 5', 'over-removal rejected after the fix; limit BVA
        ('PR-09', 8, '3×2 = 6 (Medium)', 'one screen fixed (78→85); other findings open', 'A11Y-01/02, UX-01, DEF-05'),
        ('PR-10', 12, '2×4 = 8 (Medium)', 'backend 0/166; frontend advisories dispositioned (react-router has no patched 6.x release; SEC-03 accepted)', 'SEC-03 (accepted)'),
        ('PJ-01', 16, '1×4 = 4', 'all tools ran (SonarQube via zip, ZAP, k6, mutation, CI)', '—'),
-       ('PJ-02', 15, '2×5 = 10 (High)', 'depends on the team preparing for the viva (`docs/VIVA_PREP.md`)', '—'),
+       ('PJ-02', 15, '2×5 = 10 (High)', 'depends on each member being able to explain the owned area (`docs/AREA_OWNERSHIP.md`)', '—'),
        ('PJ-03', 12, '1×3 = 3', 'full mutation run took 25 min on 5 workers', '—')]
 for r in RES: o.append('| ' + ' | '.join(str(x) for x in r) + ' |')
 o.append('\n## 6. Pull requests and pipeline evidence (from the GitHub API)\n| PR | Title | Branch | State | Pipeline result |\n|---|---|---|---|---|')

@@ -68,7 +68,7 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | PR-09 | 8 | 3×2 = 6 (Medium) | one screen fixed (78→85); other findings open | A11Y-01/02, UX-01, DEF-05 |
 | PR-10 | 12 | 2×4 = 8 (Medium) | backend 0/166; frontend advisories dispositioned (react-router has no patched 6.x release; SEC-03 accepted) | SEC-03 (accepted) |
 | PJ-01 | 16 | 1×4 = 4 | all tools ran (SonarQube via zip, ZAP, k6, mutation, CI) | — |
-| PJ-02 | 15 | 2×5 = 10 (High) | depends on the team preparing for the viva (`docs/VIVA_PREP.md`) | — |
+| PJ-02 | 15 | 2×5 = 10 (High) | depends on each member being able to explain the owned area (`docs/AREA_OWNERSHIP.md`) | — |
 | PJ-03 | 12 | 1×3 = 3 | full mutation run took 25 min on 5 workers | — |
 
 ## 6. Pull requests and pipeline evidence (from the GitHub API)
@@ -83,6 +83,7 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 
 | Run | Event | Branch | Conclusion | Link |
 |---|---|---|---|---|
+| 44379753520 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44379753520 |
 | 44375296975 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44375296975 |
 | 44370073545 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44370073545 |
 | 44365060860 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44365060860 |
@@ -94,7 +95,6 @@ Pareto and root-cause analyses: `docs/DEFECTS.md`, `docs/RCA.md`. Reopen rate: 0
 | 44322551459 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44322551459 |
 | 44158035639 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44158035639 |
 | 44095413130 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44095413130 |
-| 44007547805 | push | `main` | success | https://github.com/IfBilal/inventree-stock-sqe-testing/actions/runs/44007547805 |
 
 ## 7. Deviations from the plan and honest limitations
 - SonarQube ran from the zip distribution (no Docker daemon on the machine; JDK 21, data on tmpfs); in CI it runs as a service container.

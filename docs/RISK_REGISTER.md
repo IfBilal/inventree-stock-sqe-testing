@@ -62,7 +62,7 @@ Counts: 10 product, 3 project risks. **Critical 1** (PR-01), **High 9** (PR-02, 
 | PR-09 | M3 | **Reduced** — one screen fixed (78→85, PR #15); DEF-05, A11Y-02, UX-01 open (Medium/Low) | 3×2 | `docs/ACCESSIBILITY.md` |
 | PR-10 | M3 | **Reduced** — backend 0/166; frontend advisories dispositioned (SEC-03 accepted: no patched 6.x release) | 2×3 | audits |
 | PJ-01 | M1 | **Closed** — all tools ran | 1×4 | — |
-| PJ-02 | all | **Open** — viva guide written (`docs/VIVA_PREP.md`); depends on the team | 2×5 | — |
+| PJ-02 | all | **Open** — area ownership sheet written (`docs/AREA_OWNERSHIP.md`); depends on the team | 2×5 | — |
 | PJ-03 | M1 | **Closed** — real mutmut run (652 mutants, ~3 h) and own runner (25 min) completed | 1×3 | `docs/MUTATION.md` |
 
 ## Technique/depth by risk level (see TEST_PLAN §2)
