@@ -32,7 +32,7 @@
 - Open Critical/High at the checkpoint: DEF-01, DEF-03, DEF-06 → release decision HOLD.
 
 ## 4. Effort (estimate vs actual, `docs/EFFORT_LOG.csv`)
-Agent hours logged for all areas except "Final PDF + package": **12.05 h** against the three-point estimate 64.7 h for the same areas (estimate = human effort; human review hours to be added by the members).
+Agent hours logged for all areas except "Final PDF + package": **12.05 h** against the three-point estimate 64.7 h for the same areas (estimate = human effort; human review hours are estimated, see `docs/EFFORT_NOTE.md`).
 
 ## 5. Plan for the next period
 Fix DEF-01 through a pull request with a failing-then-passing pipeline; show one blocked pull request; fix the accessibility finding; re-run the full mutation analysis on the final code; complete traceability for E2E; final review round; build the PDF and zip.

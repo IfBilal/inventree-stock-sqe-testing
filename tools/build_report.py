@@ -88,6 +88,12 @@ def main():
             print('MISSING', f, file=sys.stderr); continue
         text = open(path, encoding='utf-8').read()
         text = re.sub(r'^(#{1,5}) ', r'\1# ', text, flags=re.M)          # demote headings: the section title is the only h1 (one page break per section)
+        out_l, fence, prev = [], False, ''
+        for ln in text.split('\n'):          # a table needs a blank line before it (otherwise it renders as raw pipes)
+            if ln.lstrip().startswith('```'): fence = not fence
+            if not fence and ln.startswith('|') and prev.strip() and not prev.startswith('|'): out_l.append('')
+            out_l.append(ln); prev = ln
+        text = '\n'.join(out_l)
         md.reset()
         body = md.convert(text)
         body = inline_images(body, os.path.dirname(path))

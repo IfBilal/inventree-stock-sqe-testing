@@ -41,7 +41,7 @@ for i, c in enumerate(order):
 svg.append('<polyline fill="none" stroke="#e03131" stroke-width="2" points="' + ' '.join(f'{x:.0f},{y:.0f}' for x, y in pts) + '"/>')
 for x, y in pts: svg.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="3" fill="#e03131"/>')
 svg.append(f'<line x1="{ml}" y1="{y0}" x2="{w - 10}" y2="{y0}" stroke="#333"/><line x1="{ml}" y1="{ytop}" x2="{ml}" y2="{y0}" stroke="#333"/>')
-svg.append('<text x="12" y="60" font-size="10" fill="#e03131">cumulative %</text></svg>')
+svg.append(f'<text x="{w - 260}" y="20" font-size="10" fill="#e03131">red line: cumulative % (to 100 % at the top)</text></svg>')
 open(os.path.join(R, 'docs/pareto_defects.svg'), 'w').write('\n'.join(svg))
 out.append('\n![Pareto of defects by category](pareto_defects.svg)\n')
 print('\n'.join(out))
