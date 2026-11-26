@@ -10,6 +10,11 @@ Automated only (no participants). Scripts: `tests/team/e2e/*.spec.ts` (Playwrigh
 | Fix one screen (in the MIS or own page), rerun both tools, compare before/after | **Fixed in the MIS** (pull request from branch `fix/a11y-stock-item-page`, two source changes in `upstream/src/frontend`; see PR link in `docs/COMPLETION_REPORT.md` §6): `alt` on the item images (`ApiImage.tsx`) and the routed content rendered inside `<main>` (`Layout.tsx`). Lighthouse accessibility **78 → 85** with PR #15 and **→ 96** with the follow-up PR #19 (tab list, unnamed buttons), SEO 75 → 83 (S1 and S2); `image-alt` and `landmark-one-main` resolved on the item details page; axe distinct issues on S1: 9 → 7 (deduplicated with Lighthouse) |
 | Submit scripts, Playwright report, Lighthouse and axe reports (before and after) | `tests/team/...`, `evidence/phase7/playwright_report_e2e.json`, `evidence/a11y/*_before.json`, `*_after.json` |
 
+## Playwright report
+HTML report of the full browser suite (57 tests: use cases UC01-UC06, usability and keyboard checks, accessibility scans, access matrix); all 57 passed, none failed or flaky:
+
+![Playwright HTML report, 57 passed](../evidence/screenshots/playwright_report.png)
+
 ## Key usability observations
 - The dialog's validation messages are specific and actionable (decimals, digits before the point, "valid number"), but the two business-rule defects were **silent** on the baseline: adding 0 and removing more than available both showed "Success" (DEF-02, DEF-01); both are rejected with a message since PR #17 and PR #13, and the E2E flows UC01-EF1, UC02-EF2, UC06-EF1 assert the message.
 - The UI protects against one API weakness: an out-of-stock item shows "No entries available" in the Remove dialog (UC03-EF1) while the API would accept the call as a silent no-op.
