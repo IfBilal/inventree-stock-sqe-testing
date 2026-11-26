@@ -27,6 +27,19 @@ Workflow: `.github/workflows/quality-gate.yml` (runs on every **pull request** t
 | Further fix PRs | **PR #17** (closes #2, #3, #4) and **PR #18** (closes #6, #7, #8) — each merged only after a green pipeline, never by bypassing the protection (an attempted admin merge of #15 was refused and the branch was updated and re-run instead) | run table below |
 | Accessibility fix | **PR #15** "a11y: alt text on item images and a main landmark on the stock item page" (closes issue #10), see `docs/ACCESSIBILITY.md` | passes the full pipeline (run link in the table below) |
 
+## Screenshots
+**Green pipeline on `main`** (all 8 jobs: hygiene, unit, api, e2e, mutation, sonar, gate, deploy):
+
+![GitHub Actions run on main, all jobs green](../evidence/screenshots/ci_run_main_green.png)
+
+**Blocked pull request #16** (closed without merging; the mutation gate rejected it):
+
+![Pull request 16 closed without merging](../evidence/screenshots/pr16_blocked.png)
+
+**Fix pull request #19 merged after all checks passed:**
+
+![Pull request 19 merged, 8 checks passed](../evidence/screenshots/pr19_fix_merged.png)
+
 ## Run links (GitHub Actions, repository IfBilal/inventree-stock-sqe-testing)
 | Run | Pull request / branch | Result | Jobs |
 |---|---|---|---|

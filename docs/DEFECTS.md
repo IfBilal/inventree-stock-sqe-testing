@@ -68,3 +68,8 @@ The top three categories (Data integrity, Security, Accessibility) account for 6
 
 ![Pareto of defects by category](pareto_defects.svg)
 
+
+**GitHub issue tracker of the team repository (12 findings, 3 open):**
+
+![GitHub issues list](../evidence/screenshots/issues_list.png)
+

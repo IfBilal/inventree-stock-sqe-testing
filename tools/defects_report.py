@@ -44,4 +44,5 @@ svg.append(f'<line x1="{ml}" y1="{y0}" x2="{w - 10}" y2="{y0}" stroke="#333"/><l
 svg.append(f'<text x="{w - 260}" y="20" font-size="10" fill="#e03131">red line: cumulative % (to 100 % at the top)</text></svg>')
 open(os.path.join(R, 'docs/pareto_defects.svg'), 'w').write('\n'.join(svg))
 out.append('\n![Pareto of defects by category](pareto_defects.svg)\n')
+out.append('\n**GitHub issue tracker of the team repository (12 findings, 3 open):**\n\n![GitHub issues list](../evidence/screenshots/issues_list.png)\n')
 print('\n'.join(out))

@@ -22,6 +22,14 @@ Analyzer validation: a throw-away file with a hard-coded password and `a == a` p
 | Quality gate | OK | Sonar way gate evaluates *new* code; on first analysis it passes. |
 Important limits: a clean static report does not contradict the dynamic defects we found (DEF-01 over-removal clamping, DEF-02 zero accepted, DEF-03 overflow → 500): they are *behavioural* defects against our requirements that static rules cannot know. This is itself a finding for the test completion report.
 
+**SonarQube dashboard, baseline scan (before any test):**
+
+![SonarQube dashboard, baseline scan](../evidence/sonar/dashboard_baseline.png)
+
+**SonarQube dashboard after the unit-test coverage report was imported (Phase 4 scan):**
+
+![SonarQube dashboard, Phase 4 scan](../evidence/sonar/dashboard_phase4.png)
+
 ## 1-bis. Evolution after Phase 4 (re-scan with the unit-test coverage report; `evidence/sonar/project_measures_phase4.json`)
 | Metric | Baseline | After Phase 4 | Why |
 |---|---|---|---|
